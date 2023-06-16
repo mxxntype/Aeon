@@ -17,7 +17,7 @@
       commit.gpgSign = true;
       tag.gpgSign = true;
       user.signingKey = "~/.ssh/id_ed25519.pub";
-      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers"; # ISSUE: Does not work for some reason
+      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
     };
 
     lfs.enable = true;
