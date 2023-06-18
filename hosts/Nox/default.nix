@@ -14,6 +14,8 @@
     ../common/optional/fde.nix
     ../common/optional/quiet-boot.nix
 
+    ../common/optional/sound/pipewire
+
 
     # Other features
     ../common/optional/langs/c
