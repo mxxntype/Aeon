@@ -7,6 +7,7 @@
     ./global
 
     ./features/desktop/hyprland
+
     ./features/apps/kitty
     ./features/apps/wezterm
     ./features/apps/obsidian

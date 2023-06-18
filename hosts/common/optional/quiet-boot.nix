@@ -13,6 +13,7 @@
     # the ability to boot a previous generation
     # loader.timeout = 0;
 
+    # BUG: Plymouth does not `cover` the entire boot process, some messages still leak
     plymouth = {
       enable = true;
     };

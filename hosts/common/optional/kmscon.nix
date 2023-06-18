@@ -1,4 +1,4 @@
-# INFO: A replacement for the default Linux console
+# INFO: KMSCon, an alternative console
 
 {
   pkgs,
@@ -16,6 +16,7 @@
       }
     ];
 
+    # HACK: For some reason, my usual 250/50 are way too slow inside KMSCon
     extraConfig = "\n
       xkb-repeat-delay=200\n
       xkb-repeat-rate=30\n
