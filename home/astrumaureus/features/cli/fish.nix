@@ -49,22 +49,26 @@
       abbr --add --position command -- "grst" "git restore --staged"
       abbr --add --position command -- "gd" "git diff"
       abbr --add --position command -- "gds" "git diff --staged"
-      abbr --add --position command -- "glg" "git log"
+      abbr --add --position command -- "glg" "git log --show-signature"
       # Commits
       abbr --add --position command -- "gc" "git commit --verbose"
       abbr --add --position command -- "gce" "git commit --verbose --edit"
       abbr --add --position command -- "gcmsg" "git commit --message"
       # Remotes & stash
       abbr --add --position command -- "gp" "git push"
+      abbr --add --position command -- "gpf" "git push --force"
       abbr --add --position command -- "gl" "git pull"
       abbr --add --position command -- "gsta" "git stash"
       abbr --add --position command -- "gstaa" "git stash apply"
+      abbr --add --position command -- "gstac" "git stash clear"
 
       # --[[ Nix & NixOS | Home-manager ]]--
-      abbr --add --position anywhere -- "n" "nix"
       abbr --add --position command -- "n" "nix"
+      abbr --add --position command -- "ns" "nix shell"
+      abbr --add --position command -- "nr" "nix run"
       abbr --add --position command -- "nf" "nix flake"
       abbr --add --position command -- "nfu" "nix flake update"
+      abbr --add --position command -- "nfc" "nix flake check"
       abbr --add --position command -- "nd" "nix develop"
       abbr --add --position command -- "hm" "home-manager"
 
