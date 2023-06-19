@@ -11,7 +11,6 @@
 }: {
   boot = {
     kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
 
     initrd = {
       availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
@@ -27,14 +26,14 @@
   # 02:00.0 3D controller: NVIDIA Corporation GM107M [GeForce GTX 960M] (rev a2)
 
   # GPU: Nvidia GTX 960M
-  services.xserver.videoDrivers = [ "nvidia" "intel" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl = {
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
   };
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     nvidiaPersistenced = true;
     modesetting.enable = true;
     prime = {
