@@ -12,7 +12,8 @@ in {
   imports = [
     inputs.hyprland.homeManagerModules.default
     ./config.nix
-    ../common/gtk
+    ../common
+    ../../common/gtk
   ];
 
   home.packages = with pkgs; [
