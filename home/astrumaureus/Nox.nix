@@ -6,10 +6,10 @@
   imports = [
     ./global
 
-    ./features/desktop/hyprland
+    ./features/desktop/wayland/swayfx
 
-    ./features/apps/kitty
     ./features/apps/wezterm
+    ./features/apps/librewolf
     ./features/apps/obsidian
     ./features/apps/telegram/kotatogram
   ];
