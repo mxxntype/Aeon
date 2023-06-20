@@ -17,5 +17,7 @@
 
     jq      # JSON processor
 
+    killall # Friendlier `kill`
+
   ];
 }
