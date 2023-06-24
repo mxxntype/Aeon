@@ -158,6 +158,8 @@ in {
         quick_select_match_fg = { Color = '#ffffff' },
       }
 
+      config.disable_default_key_bindings = true;
+
       return config
     '';
   };
