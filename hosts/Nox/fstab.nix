@@ -13,6 +13,10 @@ sda
 {
   ...
 }: {
+  imports = [
+    ../common/features/boot/fde.nix
+  ];
+
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/NOX_ROOT";

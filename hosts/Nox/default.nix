@@ -11,8 +11,7 @@
 
 
     # Optinonal system-level modules
-    ../common/features/fde.nix
-    ../common/features/quiet-boot.nix
+    ../common/features/boot/quiet-boot.nix
 
     ../common/features/sound/pipewire
 
