@@ -8,14 +8,16 @@
   ...
 }: {
   imports = [
+
+    ../features/boot
+    ../features/environment.nix
+    ../features/locale.nix
+    ../features/network.nix
+    ../features/nix.nix
+    ../features/sops.nix
+    ../features/ssh.nix
+
     inputs.home-manager.nixosModules.home-manager
-    ./boot.nix
-    ./environment.nix
-    ./locale.nix
-    ./network.nix
-    ./nix.nix
-    ./sops.nix
-    ./ssh.nix
   ]; # ++ (builtins.attrValues outputs.nixosModules);
 
   home-manager.extraSpecialArgs = { 
