@@ -10,16 +10,16 @@
     ../common/users/astrumaureus
 
 
-    # Optional sys-level modules
-    ../common/optional/fde.nix
-    ../common/optional/quiet-boot.nix
+    # Optinonal system-level modules
+    ../common/features/fde.nix
+    ../common/features/quiet-boot.nix
 
-    ../common/optional/sound/pipewire
+    ../common/features/sound/pipewire
 
 
     # Other features
-    ../common/optional/langs/c
-    ../common/optional/langs/rust
+    ../common/features/langs/c
+    ../common/features/langs/rust
 
 
     # WARN: Vital stuff
@@ -30,7 +30,7 @@
 
   ];
 
-  # TODO: Move to optional & import above
+  # TODO: Move to features & import above
   programs = {
     dconf.enable = true;
   };
