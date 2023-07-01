@@ -6,7 +6,8 @@
   imports = [
     ./global
 
-    ./features/desktop/wayland/swayfx
+    # ./features/desktop/wayland/swayfx
+    ./features/desktop/x11/i3
 
     ./features/apps/wezterm
     ./features/apps/librewolf
