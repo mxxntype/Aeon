@@ -31,16 +31,20 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+    ];
   };
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-    nvidiaPersistenced = true;
     modesetting.enable = true;
     prime = {
-      sync.enable = true;
+      offload.enable = true;
+      offload.enableOffloadCmd = true;
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:2:0:0";
     };
+    powerManagement.enable = true;
   };
 
   # The REAL hardware configuration
