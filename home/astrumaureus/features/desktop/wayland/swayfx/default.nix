@@ -15,7 +15,7 @@ in {
     ../../common  # Wayland & X11 common
     ../common     # Wayland common
 
-    ./i3status.nix
+    ../../x11/i3/i3status.nix
   ];
 
   wayland.windowManager.sway = {

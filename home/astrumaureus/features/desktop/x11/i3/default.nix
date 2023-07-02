@@ -14,6 +14,8 @@ in {
   imports = [
     ../../common  # X11 & Wayland commons
     ../common/picom
+
+    ./i3status.nix
   ];
 
   xsession.windowManager.i3 = {
