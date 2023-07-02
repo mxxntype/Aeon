@@ -29,7 +29,9 @@ in {
           command = "${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1 --gamma 0.7";
         }
         { # Start compositor
-          command = "picom";
+          always = true;
+          # TODO: nvidia-offload
+          command = "kill $(pgrep picom) && sleep 0.5; nvidia-offload picom --experimental-backends";
         }
       ];
 
@@ -102,7 +104,7 @@ in {
           "${MOD}+R" = "mode resize";
 
           # Reload & Exit
-          "${MOD}++Shift+R" = "reload";
+          "${MOD}++Shift+R" = "restart";
           "${MOD}+Ctrl+Shift+E" = "exit";
       };
 
