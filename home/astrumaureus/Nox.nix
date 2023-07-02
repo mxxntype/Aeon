@@ -13,6 +13,7 @@
     ./features/apps/librewolf
     ./features/apps/obsidian
     ./features/apps/telegram/kotatogram
+    ./features/apps/upscayl
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
