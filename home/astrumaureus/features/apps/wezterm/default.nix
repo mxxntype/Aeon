@@ -16,7 +16,7 @@ in {
       config.font_size = 10.0
       config.underline_thickness = 2
 
-      config.window_background_opacity = 0.9
+      -- config.window_background_opacity = 0.9
 
       --[[ Window & Tabs ]]--
       config.window_frame = {
