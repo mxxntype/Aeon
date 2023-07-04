@@ -18,6 +18,8 @@
     ../features/sops.nix
     ../features/ssh.nix
 
+    ../features/services/dnscrypt-proxy
+
     inputs.home-manager.nixosModules.home-manager
   ]; # ++ (builtins.attrValues outputs.nixosModules);
 
