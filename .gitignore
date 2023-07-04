@@ -1,1 +1,8 @@
-.old/
+# Ignore result symlinks
+/result
+
+# Ignore temporary files
+~
+
+# Ingore local configuration files
+.local
