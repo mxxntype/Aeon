@@ -12,6 +12,7 @@
     ../features/boot
     ../features/environment.nix
     ../features/locale.nix
+    ../features/dconf.nix
     ../features/network.nix
     ../features/nix.nix
     ../features/sops.nix

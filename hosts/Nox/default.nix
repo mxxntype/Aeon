@@ -29,11 +29,6 @@
 
   ];
 
-  # TODO: Move to features & import above
-  programs = {
-    dconf.enable = true;
-  };
-
   networking.hostName = "Nox";
   system.stateVersion = "22.11";
 }
