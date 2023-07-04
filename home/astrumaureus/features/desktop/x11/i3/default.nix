@@ -13,7 +13,7 @@
 in {
   imports = [
     ../../common  # X11 & Wayland commons
-    ../common/picom
+    ../common     # X11 commons
 
     ./i3status.nix
   ];
