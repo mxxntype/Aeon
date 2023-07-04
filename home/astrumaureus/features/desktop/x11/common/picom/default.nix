@@ -24,11 +24,11 @@
       animation-clamping = false;
 
       animation-for-open-window = "zoom";
-      animation-for-menu-window = "zoom";
       animation-for-unmap-window = "zoom";
       animation-for-workspace-switch-in = "zoom";
       animation-for-workspace-switch-out = "zoom";
-      animation-for-transient-window = "zoom";
+      animation-for-transient-window = "slide-down";
+      animation-for-menu-window = "slide-down";
 
       # TODO: Inherit from host configuration
       frame-rate = 60;
