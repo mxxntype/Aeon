@@ -159,6 +159,12 @@ in {
       }
 
       config.disable_default_key_bindings = true;
+      config.keys = {
+        -- Paste from clipboard
+        { key = 'V', mods = 'CTRL', action = wezterm.action.PasteFrom 'Clipboard'},
+        -- Copy to clipboard
+        { key = 'C', mods = 'CTRL', action = wezterm.action.CopyTo 'ClipboardAndPrimarySelection'},
+      }
 
       return config
     '';
