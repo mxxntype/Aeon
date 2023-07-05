@@ -91,6 +91,9 @@
       abbr --add --position command -- "dn" "dotnet new"
       abbr --add --position command -- "db" "dotnet build"
       abbr --add --position command -- "dr" "dotnet run"
+
+      # --[[ Packwiz ]]--
+      abbr --add --position command -- "pw" "packwiz"
     '';
 
     # Aliases expand after abbreviations do, so we can use them to
