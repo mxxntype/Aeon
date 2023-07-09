@@ -43,7 +43,7 @@ in {
   };
 
   # Sets global colorscheme
-  colorscheme = lib.mkDefault colorSchemes.everforest;
+  colorscheme = lib.mkDefault colorSchemes.gruvbox-material-dark-hard;
   # Echoes it to ~/.colorscheme
   home.file.".colorscheme".text = config.colorscheme.slug; 
 }
