@@ -62,7 +62,7 @@
 
     # Available through 'home-manager --flake .#username@hostname'
     homeConfigurations = {
-      "astrumaureus@Nox" = mkHome [ ./home/astrumaureus/Nox.nix ] nixpkgs.legacyPackages."x86_64-linux" ;
+      "astrumaureus@Nox" = mkHome [ ./home/astrumaureus/Nox.nix ] nixpkgs.legacyPackages."x86_64-linux";
     };
   };
 }
