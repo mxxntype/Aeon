@@ -3,13 +3,13 @@
 {
   pkgs,
   config,
-  lib,
   ...
 }: let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
-  users.mutableUsers = false;
+  #T TODO: Get rid of this
   programs.fish.enable = true;
+
   users.users.astrumaureus = {
     isNormalUser = true;
 

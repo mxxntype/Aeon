@@ -2,6 +2,8 @@
   config,
   ...
 }: {
+  users.mutableUsers = false;
+
   users.users.root = {
     passwordFile = config.sops.secrets.root-password.path;
   };
