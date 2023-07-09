@@ -29,4 +29,8 @@ in rec {
       # "Net/IconThemeName" = "${gtk.iconTheme.name}";
     };
   };
+
+  home.packages = with pkgs; [
+    gtk-engine-murrine
+  ];
 }
