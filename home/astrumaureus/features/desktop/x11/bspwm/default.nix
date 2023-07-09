@@ -15,7 +15,6 @@
       "xrandr --output eDP-1 --gamma 0.7"
       "nvidia-offload picom --experimental-backends"
       "bspc monitor -d 1 2 3 4 5 6 7 8 9"
-      "wezterm start --always-new-process"
     ];
   };
 
