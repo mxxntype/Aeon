@@ -8,7 +8,8 @@
 
     # ./features/desktop/wayland/swayfx
     # ./features/desktop/x11/i3
-    ./features/desktop/x11/xmonad
+    # ./features/desktop/x11/xmonad
+    ./features/desktop/x11/bspwm
 
     ./features/apps/freetube
     ./features/apps/gimp
