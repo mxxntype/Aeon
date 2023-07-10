@@ -19,5 +19,7 @@
 
     killall # Friendlier `kill`
 
+    catimg  # Terminal image viewer
+
   ];
 }
