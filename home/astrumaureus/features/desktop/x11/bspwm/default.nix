@@ -1,25 +1,44 @@
 {
+  inputs,
   pkgs,
+  config,
   ...
-}: {
+}: let
+  inherit (config.colorscheme) colors;
+  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
+in {
   imports = [
     ../../common  # X11 & Wayland commons
     ../common     # X11 commons
 
+    ../common/polybar
     ./sxhkd.nix
   ];
 
   xsession.windowManager.bspwm = {
     enable = true;
-    startupPrograms = [
-      "xrandr --output eDP-1 --gamma 0.7"
-      "nvidia-offload picom --experimental-backends"
-      "bspc monitor -d 1 2 3 4 5 6 7 8 9"
-    ];
+    startupPrograms = let
+      wallpaper = nixWallpaperFromScheme {
+        scheme = config.colorscheme;
+        width = 1920;
+        height = 1080;
+        logoScale = 5.0;
+      }; in [
+        "xrandr --output eDP-1 --gamma 0.7"
+        "nvidia-offload picom --experimental-backends"
+        "feh ${wallpaper} --bg-scale"
+        "polybar"
+        "bspc monitor -d 1 2 3 4 5 6 7 8 9"
+
+        "bspc config window_gap 12"
+        "bspc config border_width 2"
+        "bspc config focused_border_color #${colors.base09}"
+        "bspc config normal_border_color #${colors.base03}"
+      ];
   };
 
   home.packages = with pkgs; [
-    dmenu
+    dmenu     # Application launcher
   ];
 
   home.file.".xinitrc" = {
