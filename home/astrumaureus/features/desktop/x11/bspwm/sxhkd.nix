@@ -3,9 +3,12 @@
   ...
 }: let
   offloadCommand = "nvidia-offload";
+
   startTerminal = "${offloadCommand} wezterm start --always-new-process";
   disposableTerminalSize = "800x600";
   startDisposableTerminal = "bspc rule -a org.wezfurlong.wezterm -o state=floating follow=on center=true rectangle=${disposableTerminalSize}+0+0 && ${startTerminal}";
+
+  reloadCommand = "killall polybar; bspc wm -r";
 in {
   services.sxhkd = {
     enable = true;
@@ -17,6 +20,9 @@ in {
 
         # Lock screen
         "super + ctrl + shift + l" = "${pkgs.betterlockscreen}/bin/betterlockscreen -l";
+
+        # Reload BSPWM
+        "super + shift + r" = "${reloadCommand}";
 
         # Force exit BSPWM
         "super + ctrl + shift + e" = "bspc quit";
@@ -59,7 +65,7 @@ in {
         "ctrl + shift + 7" = "nvidia-offload prismlauncher";
         "ctrl + shift + 8" = "keepassxc";
         "ctrl + shift + 9" = "nvidia-offload freetube";
-        # TODO: "ctrl + shift + o" = "nvidia-offload wezterm start <music-player>";
+        "ctrl + shift + o" = "${startDisposableTerminal} ncmpcpp";
 
       # --[[ Hardware control ]]--
         # Brightness
