@@ -24,17 +24,18 @@ in {
         height = 1080;
         logoScale = 5.0;
       }; in [
-        "xrandr --output eDP-1 --gamma 0.7"
-        "nvidia-offload picom --experimental-backends"
-        "feh ${wallpaper} --bg-scale"
-        "polybar"
-        "bspc monitor -d 1 2 3 4 5 6 7 8 9"
+      "xrandr --output eDP-1 --gamma 0.7"
+      "nvidia-offload picom --experimental-backends"
+      "feh ${wallpaper} --bg-scale"
+      "polybar"
+      "bspc monitor -d 1 2 3 4 5 6 7 8 9"
 
-        "bspc config window_gap 12"
-        "bspc config border_width 2"
-        "bspc config focused_border_color #${colors.base09}"
-        "bspc config normal_border_color #${colors.base03}"
-      ];
+      "bspc config window_gap 12"
+      "bspc config border_width 2"
+      "bspc config normal_border_color #${colors.base03}"
+      "bspc config active_border_color #${colors.base04}"
+      "bspc config focused_border_color #${colors.base09}"
+    ];
   };
 
   home.packages = with pkgs; [
