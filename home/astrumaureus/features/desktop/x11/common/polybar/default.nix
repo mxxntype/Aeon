@@ -12,7 +12,7 @@ in {
       "colors" = {
         base = "#${colors.base00}";
         surface = "#${colors.base01}";
-        subtext = "#${colors.base04}";
+        subtext = "#${colors.base03}";
         text = "#${colors.base05}";
         accent = "#${colors.base09}";
       };
