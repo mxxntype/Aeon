@@ -21,6 +21,8 @@
     ./features/apps/upscayl
     ./features/apps/wezterm
 
+    ./features/music
+
     ./features/games/minecraft
   ];
 
