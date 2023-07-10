@@ -9,8 +9,8 @@
     # TODO: Move to userspace
     layout = "us";
     xkbOptions = "eurosign:e";
-    autoRepeatDelay = 250;
-    autoRepeatInterval = 50;
+    autoRepeatDelay = 200;
+    autoRepeatInterval = 30;
 
     displayManager = {
       startx.enable = true;
