@@ -22,6 +22,16 @@
 
     # TODO: Declare separately & define per-device
     folders = {
+
+      music = {
+        label = "Music";
+        path = "${config.users.users.astrumaureus.home}/Music";
+        devices = [
+          "wisp"
+        ];
+        id = "fgjy6-qy5yl";
+      };
+
       obsidian-vault = {
         label = "Obsidian Vault";
         path = "${config.users.users.astrumaureus.home}/Obsidian/Vault";
@@ -30,6 +40,7 @@
         ];
         id = "3d84338a-7a26-4777-a446-67f7f8ba7faa";
       };
+
       shadow = {
         label = "Shadow";
         path = "${config.users.users.astrumaureus.home}/Files/.shadow";
@@ -38,6 +49,7 @@
         ];
         id = "in9ln-y1wl5";
       };
+
     };
 
     extraOptions = {
