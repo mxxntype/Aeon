@@ -40,6 +40,14 @@ in {
   home = {
     username = lib.mkDefault "astrumaureus";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
+
+    pointerCursor = {
+      x11.enable = true;
+      gtk.enable = true;
+      package = pkgs.catppuccin-cursors.mochaDark;
+      name = "Catppuccin-Mocha-Dark-Cursors";
+      size = 32;
+    };
   };
 
   # Sets global colorscheme
