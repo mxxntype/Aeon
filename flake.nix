@@ -58,11 +58,13 @@
     nixosConfigurations = {
       # Dell i7559
       Nox = mkNixOS [ ./hosts/Nox ];
+      Wyrm = mkNixOS [ ./hosts/Wyrm ];
     };
 
     # Available through 'home-manager --flake .#username@hostname'
     homeConfigurations = {
       "astrumaureus@Nox" = mkHome [ ./home/astrumaureus/Nox.nix ] nixpkgs.legacyPackages."x86_64-linux";
+      "astrumaureus@Wyrm" = mkHome [ ./home/astrumaureus/Wyrm.nix ] nixpkgs.legacyPackages."x86_64-linux";
     };
   };
 }
