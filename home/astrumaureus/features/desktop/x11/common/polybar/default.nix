@@ -18,7 +18,17 @@ in {
       };
 
       "bar/${barName}" = {
-        modules.center = "bspwm";
+        modules = {
+          left = "";
+          center = "bspwm";
+          right = "battery date";
+        };
+        font."0" = "JetBrainsMono Nerd Font:pixelsize=10:weight=bold;0";
+        module.margin = 1;
+        tray = {
+          position = "right";
+          padding = 8;
+        };
       };
 
       "module/bspwm" = {
@@ -37,6 +47,22 @@ in {
             foreground = "\${colors.accent}";
           };
         };
+      };
+
+      "module/date" = {
+        type = "internal/date";
+        interval = 10.0;
+
+        time = "%H:%M";
+        label = "%time%";
+        format = {
+          text = "󰥔 <label>";
+          foreground = "\${colors.text}";
+        };
+      };
+      
+      "module/battery" = {
+        type = "internal/battery";
       };
     };
 
