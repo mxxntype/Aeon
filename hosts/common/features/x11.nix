@@ -7,8 +7,8 @@
     enable = true;
 
     # TODO: Move to userspace
-    layout = "us";
-    xkbOptions = "eurosign:e";
+    layout = "us,ru";
+    xkbOptions = "grp:win_space_toggle";
     autoRepeatDelay = 200;
     autoRepeatInterval = 30;
 
