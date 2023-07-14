@@ -3,13 +3,15 @@
 # Also see https://github.com/Mic92/dotfiles/blob/master/nixos/.sops.yaml
 # for a more complex example.
 keys:
-  - &users:
+  - &users
     - &astrumaureus age167vnfruu6y7efllkfx2gytnd8c2c2kx4lzc79kghcrjtf5652sdsle68ml
-  - &hosts:
+  - &hosts
     - &Nox age132vf5d6z20ajf86pn3zenhwfy78ql5eyqaff92n04u6gdd0eg5wqtlrxjx
+    - &Wyrm age1ukjfmfhz8jjh9yf7tk390nk7vje2ltw2a9urm39d27a5cnngje5svaksur
 creation_rules:
   - path_regex: hosts/common/secrets.ya?ml$
     key_groups:
     - age:
       - *astrumaureus
       - *Nox
+      - *Wyrm
