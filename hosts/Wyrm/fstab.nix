@@ -1,7 +1,12 @@
 /* INFO: Wyrm: filesystems & mountpoints, swap & initRD secrets
 
-TODO:
-Current layout:
+NAME                 FSTYPE      FSVER    LABEL        UUID                                   FSAVAIL FSUSE% MOUNTPOINTS
+sda                                                                                                          
+├─sda1               vfat        FAT32    WYRM_EFI     8A9B-65E1                              1021.6M     0% /boot/efi
+└─sda2               crypto_LUKS 1                     03beff81-a4b3-4f1f-8f13-2687f09cfbe7                  
+  └─root             LVM2_member LVM2 001              neEcV0-Cnm8-3esJ-C9pb-jZm8-A8iZ-oeEdrO                
+    ├─ssd--wyrm-swap swap        1        WYRM_SWAP    a68b17eb-6e8d-4859-9e0a-b5205efa996c                  [SWAP]
+    └─ssd--wyrm-root btrfs                WYRM_ROOT    0be657d8-4a60-4d12-8b04-0fbc6309d606                  /nix/store
 */
 
 {
@@ -21,7 +26,7 @@ Current layout:
     "/nix" = {
       device = "/dev/disk/by-label/WYRM_ROOT";
       fsType = "btrfs";
-      options = [ "ssd" "compress=zstd" "space_cache=v2" "noatime" "subvol=@" ];
+      options = [ "ssd" "compress=zstd" "space_cache=v2" "noatime" "subvol=@nix" ];
     };
 
     "/boot/efi" = {
@@ -38,9 +43,9 @@ Current layout:
     luks = {
       devices = {
         "root" = {
-          device = "/dev/disk/by-uuid/bcd19d51-8559-48f3-95bc-46d204291c7e";
+          device = "/dev/disk/by-uuid/03beff81-a4b3-4f1f-8f13-2687f09cfbe7";
           preLVM = true;
-          keyFile = "/keyfile_wyrm.bin";
+          keyFile = "/keyfile-wyrm.bin";
           allowDiscards = true;
         };
       };
@@ -48,7 +53,7 @@ Current layout:
 
     # Include necessary keyfiles in the InitRD
     secrets = {
-      "keyfile_wyrm.bin" = "/etc/secrets/initrd/keyfile_wyrm.bin"; # Root partition key
+      "keyfile-wyrm.bin" = "/etc/secrets/initrd/keyfile-wyrm.bin"; # Root partition key
     };
   };
 }
