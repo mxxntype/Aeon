@@ -1,10 +1,18 @@
 {
+  inputs,
+  config,
+  pkgs,
   ...
-}: {
+}: let
+  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) shellThemeFromScheme;
+in {
   programs.fish = {
     enable = true; # ISSUE: users.users.*.shell complains for some reason
     
     interactiveShellInit = ''
+      # --[[ Colorscheme ]]
+      sh ${shellThemeFromScheme {scheme = config.colorscheme;}}
+
       # --[[ Common ]]--
       abbr --add --position command -- "s" "sudo"
       abbr --add --position anywhere -- "rd" "rmdir"
