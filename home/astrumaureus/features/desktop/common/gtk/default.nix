@@ -32,5 +32,6 @@ in rec {
 
   home.packages = with pkgs; [
     gtk-engine-murrine
+    gnome.adwaita-icon-theme
   ];
 }
