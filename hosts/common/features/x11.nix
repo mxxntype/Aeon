@@ -16,6 +16,18 @@
     displayManager = {
       startx.enable = true;
     };
+
+    libinput = {
+      enable = true;
+
+      mouse = {
+        accelProfile = "flat";
+      };
+
+      touchpad = {
+        accelProfile = "flat";
+      };
+    };
   };
 
   xdg.portal = {
