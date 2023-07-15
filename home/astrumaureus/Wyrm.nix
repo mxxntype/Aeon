@@ -20,6 +20,7 @@
     ./features/apps/telegram/kotatogram
     ./features/apps/upscayl
     ./features/apps/wezterm
+    ./features/apps/maps.nix
 
     ./features/music
 
