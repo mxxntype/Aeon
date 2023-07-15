@@ -23,6 +23,15 @@
     # TODO: Declare separately & define per-device
     folders = {
 
+      camera = {
+        label = "Camera";
+        path = "${config.users.users.astrumaureus.home}/Camera";
+        devices = [
+          "wisp"
+        ];
+        id = "fx4yt-picor";
+      };
+
       music = {
         label = "Music";
         path = "${config.users.users.astrumaureus.home}/Music";
