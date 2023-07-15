@@ -5,6 +5,6 @@
 }: {
   # Use kotatogram by default
   imports = [
-    ./kotatogram
+    ./kotatogram.nix
   ];
 }

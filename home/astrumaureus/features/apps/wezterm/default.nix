@@ -117,10 +117,7 @@ in {
             bg_color = '${colors.base01}',
             fg_color = '${colors.base09}',
             intensity = 'Bold',
-          },
-
-          -- Alternate styling when the mouse hovers over the new tab button
-          new_tab_hover = {
+          }, -- Alternate styling when the mouse hovers over the new tab button new_tab_hover = {
             bg_color = '${colors.base02}',
             fg_color = '${colors.base09}',
             intensity = 'Bold',
