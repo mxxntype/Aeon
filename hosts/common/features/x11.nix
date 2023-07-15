@@ -1,6 +1,7 @@
 # INFO: X.org
 
 {
+  pkgs,
   ...
 }: {
   services.xserver = {
@@ -15,5 +16,12 @@
     displayManager = {
       startx.enable = true;
     };
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
   };
 }
