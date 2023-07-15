@@ -11,7 +11,7 @@ in {
     
     interactiveShellInit = ''
       # --[[ Colorscheme ]]
-      sh ${shellThemeFromScheme {scheme = config.colorscheme;}}
+      # sh ${shellThemeFromScheme {scheme = config.colorscheme;}}
 
       # --[[ Common ]]--
       abbr --add --position command -- "s" "sudo"
