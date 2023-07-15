@@ -46,6 +46,7 @@
       glx-no-stencil = true;
       use-damage = true;
       transparent-clipping = false;
+      underir-if-possible = false;
       log-level = "warn"; 
     };
 
