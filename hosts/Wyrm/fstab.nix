@@ -10,6 +10,7 @@ sda
 */
 
 {
+  config,
   ...
 }: {
   imports = [
@@ -32,6 +33,12 @@ sda
     "/boot/efi" = {
       device = "/dev/disk/by-label/WYRM_EFI";
       fsType = "vfat";
+    };
+
+    "/mnt/windows" = {
+      device = "/dev/disk/by-uuid/E61AED861AED53D9";
+      fsType = "ntfs";
+      options = [ "rw" "uid=${builtins.toString config.users.users.astrumaureus.uid}" ];
     };
   };
 
@@ -56,4 +63,6 @@ sda
       "keyfile-wyrm.bin" = "/etc/secrets/initrd/keyfile-wyrm.bin"; # Root partition key
     };
   };
+
+  boot.supportedFilesystems = [ "ntfs" ];
 }
