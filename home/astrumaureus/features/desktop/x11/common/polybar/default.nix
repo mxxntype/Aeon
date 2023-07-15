@@ -29,6 +29,7 @@ in {
           position = "right";
           padding = 8;
         };
+        enable-ipc = true;
       };
 
       "module/bspwm" = {
