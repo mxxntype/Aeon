@@ -18,6 +18,7 @@
     # Services
     ../common/features/services/syncthing
     ../common/features/services/qemu
+    ../common/features/services/flatpak.nix
 
     # Other features
     ../common/features/langs/c
