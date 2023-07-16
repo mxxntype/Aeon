@@ -23,7 +23,7 @@
             multiline = true, -- Enable multine todo comments
             before = "",      -- "fg", "bg" or empty
             keyword = "wide", -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty
-            after = "",     -- "fg", "bg" or empty
+            after = "fg",     -- "fg", "bg" or empty
           },
         })
       '';
