@@ -45,6 +45,7 @@
       nvidiaBusId = "PCI:2:0:0";
     };
     powerManagement.enable = true;
+    enableSmartOffloadCmd = true;
   };
 
   # The REAL hardware configuration
