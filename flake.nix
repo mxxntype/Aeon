@@ -54,6 +54,8 @@
       extraSpecialArgs = { inherit inputs outputs; };
     };
   in {
+    nixosModules = import ./modules/nixos;
+
     # Available through 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
       # Dell i7559
