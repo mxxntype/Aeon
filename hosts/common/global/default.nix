@@ -21,7 +21,7 @@
     ../features/services/dnscrypt-proxy
 
     inputs.home-manager.nixosModules.home-manager
-  ]; # ++ (builtins.attrValues outputs.nixosModules);
+  ] ++ (builtins.attrValues outputs.nixosModules);
 
   home-manager.extraSpecialArgs = { 
     inherit inputs outputs;
