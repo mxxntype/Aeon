@@ -33,6 +33,7 @@
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     modesetting.enable = true;
+    enableSmartOffloadCmd = true;
     # prime = {
     #   offload.enable = true;
     #   offload.enableOffloadCmd = true;
