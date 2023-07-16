@@ -4,6 +4,7 @@
   config,
   ...
 }: let
+  offloadCommand = "smart-offload";
   inherit (config.colorscheme) colors;
   inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
 in {
@@ -25,16 +26,17 @@ in {
         logoScale = 5.0;
       }; in [
       "xrandr --output eDP-1 --gamma 0.7"
-      "nvidia-offload picom --experimental-backends"
-      "feh ${wallpaper} --bg-scale"
-      "polybar"
+      "${offloadCommand} picom --experimental-backends"
+      "${offloadCommand} feh ${wallpaper} --bg-scale"
       "bspc monitor -d 1 2 3 4 5 6 7 8 9"
 
       "bspc config window_gap 12"
       "bspc config border_width 2"
-      "bspc config normal_border_color #${colors.base03}"
-      "bspc config active_border_color #${colors.base04}"
-      "bspc config focused_border_color #${colors.base09}"
+      "bspc config normal_border_color '#${colors.base03}'"
+      "bspc config active_border_color '#${colors.base03}'"
+      "bspc config focused_border_color '#${colors.base0E}'"
+
+      "pkill polybar; sleep 0.2 && ${offloadCommand} polybar"
     ];
   };
 
@@ -81,7 +83,7 @@ in {
       fi
 
       sxhkd &
-      exec bspwm
+      exec ${offloadCommand} bspwm
     '';
     executable = true;
   };

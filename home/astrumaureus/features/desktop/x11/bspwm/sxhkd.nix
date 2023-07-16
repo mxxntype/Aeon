@@ -2,13 +2,15 @@
   pkgs,
   ...
 }: let
-  offloadCommand = "nvidia-offload";
+  offloadCommand = "smart-offload";
 
   startTerminal = "${offloadCommand} wezterm start --always-new-process";
-  disposableTerminalSize = "800x600";
+  disposableTerminalSize = "1000x800";
   startDisposableTerminal = "bspc rule -a org.wezfurlong.wezterm -o state=floating follow=on center=true rectangle=${disposableTerminalSize}+0+0 && ${startTerminal}";
 
-  reloadCommand = "killall polybar; bspc wm -r";
+  restartPicom = "pkill -SIGUSR1 picom";
+  restartSxhkd = "pkill -SIGUSR1 sxhkd";
+  reloadCommand = "${restartPicom}; ${restartSxhkd}; bspc wm -r";
 in {
   services.sxhkd = {
     enable = true;
@@ -53,18 +55,18 @@ in {
         "super + p" = "${startDisposableTerminal} btm --battery";
 
         # Application launcher
-        "super + d" = "nvidia-offload dmenu_run";
+        "super + d" = "${offloadCommand} dmenu_run";
 
         # Workspace-specific apps
         "ctrl + shift + 1" = "${startTerminal}";
-        "ctrl + shift + 2" = "nvidia-offload gimp";
-        "ctrl + shift + 3" = "nvidia-offload librewolf";
-        "ctrl + shift + 4" = "nvidia-offload kotatogram-desktop";
-        "ctrl + shift + 5" = "nvidia-offload libreoffice";
+        "ctrl + shift + 2" = "${offloadCommand} gimp";
+        "ctrl + shift + 3" = "${offloadCommand} librewolf";
+        "ctrl + shift + 4" = "${offloadCommand} kotatogram-desktop";
+        "ctrl + shift + 5" = "${offloadCommand} libreoffice";
         "ctrl + shift + 6" = "virt-manager";
-        "ctrl + shift + 7" = "nvidia-offload prismlauncher";
+        "ctrl + shift + 7" = "${offloadCommand} prismlauncher";
         "ctrl + shift + 8" = "keepassxc";
-        "ctrl + shift + 9" = "nvidia-offload freetube";
+        "ctrl + shift + 9" = "${offloadCommand} freetube";
         "ctrl + shift + o" = "${startDisposableTerminal} ncmpcpp";
 
       # --[[ Hardware control ]]--
