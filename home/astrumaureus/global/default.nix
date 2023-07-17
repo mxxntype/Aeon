@@ -35,6 +35,10 @@ in {
 
   programs = {
     home-manager.enable = true;
+    nix-index = {
+      enable = true;
+      enableFishIntegration = config.programs.fish.enable;
+    };
   };
 
   home = {
@@ -51,7 +55,7 @@ in {
   };
 
   # Sets global colorscheme
-  colorscheme = lib.mkDefault colorSchemes.gruvbox-material-dark-hard;
+  colorscheme = lib.mkDefault colorSchemes.nord;
   # Echoes it to ~/.colorscheme
-  home.file.".colorscheme".text = config.colorscheme.slug; 
+  # home.file.".colorscheme".text = config.colorscheme.slug; 
 }
