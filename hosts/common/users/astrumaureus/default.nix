@@ -23,6 +23,7 @@ in {
       "wheel"
       "video"
       "audio"
+      "input"
     ] ++ ifTheyExist [
       "networkmanager"
       "docker"
