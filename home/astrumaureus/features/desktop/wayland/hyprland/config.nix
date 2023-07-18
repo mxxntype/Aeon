@@ -2,29 +2,45 @@
 
 {
   config,
-  pkgs,
   ...
 }: let
   inherit (config.colorscheme) colors;
+  offloadCommand = "smart-offload";
+  terminalName = "kitty";
+  terminalCommand = "${offloadCommand} ${terminalName}";
+  disposableTerminalClass = "${terminalName}Disposable";
+  disposableTerminalCommand = "${terminalCommand} --class ${disposableTerminalClass}";
 in {
+  imports = [
+    ../../../apps/kitty.nix
+  ];  
+
   wayland.windowManager.hyprland = {
     # TODO: Per-host monitors
     extraConfig = ''
+      # --[[ Envvars ]]--
+      env = LIBVA_DRIVER_NAME,nvidia
+      env = XDG_SESSION_TYPE,wayland
+      env = GBM_BACKEND,nvidia-drm
+      env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+      env = WLR_NO_HARDWARE_CURSORS,1
+
       # --[[ Monitors ]]--
-      monitor = eDP-1, 1920x1080@60, auto, 1
-      workspace = eDP-1, 1
+      monitor = HDMI-A-1, 1920x1080@60, auto, 1
+      workspace = HDMI-A-1, 1
 
       # --[[ Autostart ]]--
       exec-once = wlsunset -t 5000 -T 7000 -g 0.7
       exec-once = eww daemon && eww open statusbar
       exec      = swww init; sleep 0.5 && swww clear ${colors.base01}
 
-      # --[[ kill window | exit & reload hyprland | lock screen ]]--
-      bind =      SUPER SHIFT, Q, killactive,
-      bind = CTRL SUPER SHIFT, E, exec, kill "$(pidof wlsunset)"; hyprctl dispatch exit yes
+      # --[[ Kill window | Exit / reload hyprland | Lock screen ]]--
+      bind =      SUPER SHIFT,      Q, killactive,
+      bind =      SUPER CTRL SHIFT, Q, exec, kill -9 $(hyprctl activewindow -j | jq '.pid')
+      bind = CTRL SUPER SHIFT, E, exec, pkill wlsunset; hyprctl dispatch exit yes
       bind =      SUPER SHIFT, R, exec, hyprctl reload && eww reload
 
-      # --[[ shift focus ]]--
+      # --[[ Shift focus ]]--
       bind = SUPER, H, movefocus, l
       bind = SUPER, J, movefocus, d
       bind = SUPER, K, movefocus, u
@@ -45,8 +61,14 @@ in {
       bind = SUPER, F, fullscreen,
 
       # --[[ main apps ]]--
-      bind = SUPER, RETURN, exec, wezterm start --always-new-process
-      bind = SUPER, P,      exec, wezterm start --always-new-process btm --battery
+      bind = SUPER,       RETURN, exec, ${terminalCommand}
+      bind = SUPER SHIFT, RETURN, exec, ${disposableTerminalCommand}
+      bind = SUPER,       P,      exec, ${disposableTerminalCommand} btm --battery
+      bind = SUPER,       M,      exec, ${disposableTerminalCommand} alsamixer
+
+      windowrule = float, ^(${disposableTerminalClass})$
+      windowrule = size 50% 70%, ^(${disposableTerminalClass})$
+      windowrule = move 25% 15%, ^(${disposableTerminalClass})$
 
       # --[[ switch to ws ]]--
       bind = SUPER, 1, workspace, 1
@@ -72,9 +94,26 @@ in {
       bind = SUPER SHIFT, 9, movetoworkspace, 9
       bind = SUPER SHIFT, 0, movetoworkspace, 10
 
+      # --[[ Workspace-assigned apps ]]--
+      bind = CTRL SHIFT, 1, exec, ${terminalCommand}
+      bind = CTRL SHIFT, 2, exec, ${offloadCommand} gimp
+      bind = CTRL SHIFT, 3, exec, ${offloadCommand} librewolf
+      bind = CTRL SHIFT, 4, exec, ${offloadCommand} kotatogram-desktop
+      bind = CTRL SHIFT, 5, exec, ${offloadCommand} libreoffice
+      bind = CTRL SHIFT, 6, exec, ${offloadCommand} virt-manager
+      bind = CTRL SHIFT, 7, exec, ${offloadCommand} prismlauncher
+      bind = CTRL SHIFT, 8, exec, ${offloadCommand} keepassxc
+      bind = CTRL SHIFT, 9, exec, ${offloadCommand} freetube
+      bind = CTRL SHIFT, o, exec, ${disposableTerminalCommand} ncmpcpp
+
       # --[[ brightness ]]--
       bind = , XF86MonBrightnessUp,   exec, brillo -A 10 -u 100000
       bind = , XF86MonBrightnessDown, exec, brillo -U 10 -u 100000
+
+      bind = SUPER SHIFT,         M,  exec, amixer -q set Master toggle
+      bind = , XF86AudioMute,         exec, amixer -q set Master toggle
+      bind = , XF86AudioRaiseVolume,  exec, amixer -q set Master 10%+ unmute
+      bind = , XF86AudioLowerVolume,  exec, amixer -q set Master 10%- unmute
 
       # --[[ move & resize floating windows ]]--
       bindm = SUPER, mouse:272, movewindow
@@ -124,7 +163,7 @@ in {
       }
 
       general {
-          # --[[ layout ]]--
+          # --[[ Layout ]]--
           layout = dwindle
           gaps_in = 8
           gaps_out = 32
@@ -133,12 +172,13 @@ in {
           col.active_border = rgb(${colors.base0E})
           col.inactive_border = rgb(${colors.base02})
 
-          # --[[ mouse & cursor ]]--
+          # --[[ Mouse & cursor ]]--
           apply_sens_to_raw = 1
           cursor_inactive_timeout = 0
           no_cursor_warps = true
       }
 
+      # --[[ Master layout ]]--
       master {
         special_scale_factor =  0.8
         new_is_master =         false
@@ -146,17 +186,18 @@ in {
         no_gaps_when_only =     false
       }
 
+      # --[[ Dwindle layout ]]--
       dwindle {
         force_split = 2
       }
 
       misc {
-        # --[[ wallpaper rendering ]]
+        # Built-in wallpaper things
         disable_hyprland_logo = true
         disable_splash_rendering = true
 
-        # -- variable framerate
-        vfr = false
+        # Variable framerate
+        vfr = true
       }
     '';
   };
