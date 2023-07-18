@@ -6,11 +6,14 @@
   imports = [
     ./global
 
-    # Window managers | DEs
-    # ./features/desktop/wayland/swayfx
+    # X11 Window managers | DEs
     # ./features/desktop/x11/i3
     # ./features/desktop/x11/xmonad
-    ./features/desktop/x11/bspwm
+    # ./features/desktop/x11/bspwm
+
+    # Wayland compositors
+    # ./features/desktop/wayland/swayfx
+    ./features/desktop/wayland/hyprland
 
     # Userspace apps
     ./features/apps/freetube.nix
@@ -22,7 +25,6 @@
     ./features/apps/surroundings.nix
     ./features/apps/telegram
     ./features/apps/upscayl.nix
-    ./features/apps/wezterm
 
     # Features
     ./features/music
