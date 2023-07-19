@@ -2,9 +2,17 @@
 
 {
   config,
+  lib,
   ...
 }: let
+  # Monitors
+  inherit (config) monitors;
+  enabledMonitors = lib.filter (m: m.enable) monitors;
+
+  # Colors
   inherit (config.colorscheme) colors;
+
+  # Commands
   offloadCommand = "smart-offload";
   terminalName = "kitty";
   terminalCommand = "${offloadCommand} ${terminalName}";
@@ -25,9 +33,12 @@ in {
       env = __GLX_VENDOR_LIBRARY_NAME,nvidia
       env = WLR_NO_HARDWARE_CURSORS,1
 
-      # --[[ Monitors ]]--
-      monitor = HDMI-A-1, 1920x1080@60, auto, 1
-      workspace = HDMI-A-1, 1
+      ${  # INFO: Monitors
+        lib.concatStringsSep "\n" (lib.forEach enabledMonitors (m: ''
+          monitor=${m.name}, ${toString m.width}x${toString m.height}@${toString m.refreshRate}, ${toString m.x}x${toString m.y}, 1
+          ${lib.optionalString (m.workspace != null)"workspace=${m.name},${m.workspace}"}
+        ''))
+      }
 
       # --[[ Autostart ]]--
       exec-once = wlsunset -t 5000 -T 7000 -g 0.7
