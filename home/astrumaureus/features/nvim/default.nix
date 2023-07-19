@@ -12,6 +12,7 @@ in {
     ./plugins/autopairs.nix
     ./plugins/toggleterm.nix
     ./plugins/todo-comments.nix
+    ./plugins/nvim-colorizer.nix
   ];
 
   programs.neovim = {
