@@ -1,9 +1,14 @@
-{ pkgs, ... }: {
+{
+  outputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./bat.nix
     ./fish.nix
     ./git.nix
   ];
+
   home.packages = with pkgs; [
 
     htop    # Process monitor
@@ -19,7 +24,9 @@
 
     killall # Friendlier `kill`
 
-    catimg  # Terminal image viewer
+    timg    # Terminal image viewer
+
+    # outputs.packages."x86_64-linux".repalette
 
   ];
 }
