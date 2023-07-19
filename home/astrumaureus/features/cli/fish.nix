@@ -22,6 +22,7 @@ in {
 
       # --[[ Desktops ]]--
       abbr --add --position command -- "Hyprland" "dbus-run-session Hyprland"
+      abbr --add --position command -- "hcl" "hyprctl"
 
       # --[[ Tools ]]--
       abbr --add --position command -- "free" "free -h --si"
