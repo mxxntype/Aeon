@@ -177,8 +177,8 @@ in {
       general {
           # --[[ Layout ]]--
           layout = dwindle
-          gaps_in = 8
-          gaps_out = 32
+          gaps_in = 4
+          gaps_out = 16
           border_size = 2
 
           col.active_border = rgb(${colors.base0E})
