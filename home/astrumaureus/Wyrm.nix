@@ -35,4 +35,18 @@
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
+
+  monitors = [
+    {
+      name = "HDMI-A-1";
+      width = 1920;
+      height = 1080;
+      refreshRate = 60;
+      showBar = true;
+      x = 0;
+      y = 0;
+      workspace = "1";
+      enable = true;
+    }
+  ];
 }
