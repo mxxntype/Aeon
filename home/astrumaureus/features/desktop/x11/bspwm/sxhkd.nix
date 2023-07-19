@@ -4,14 +4,18 @@
 }: let
   offloadCommand = "smart-offload";
 
-  startTerminal = "${offloadCommand} wezterm start --always-new-process";
+  startTerminal = "${offloadCommand} kitty";
   disposableTerminalSize = "1000x800";
-  startDisposableTerminal = "bspc rule -a org.wezfurlong.wezterm -o state=floating follow=on center=true rectangle=${disposableTerminalSize}+0+0 && ${startTerminal}";
+  startDisposableTerminal = "bspc rule -a kitty -o state=floating follow=on center=true rectangle=${disposableTerminalSize}+0+0 && ${startTerminal}";
 
   restartPicom = "pkill -SIGUSR1 picom";
   restartSxhkd = "pkill -SIGUSR1 sxhkd";
   reloadCommand = "${restartPicom}; ${restartSxhkd}; bspc wm -r";
 in {
+  imports = [
+    ../../../apps/kitty.nix
+  ];
+  
   services.sxhkd = {
     enable = true;
     keybindings = {
@@ -53,6 +57,9 @@ in {
         # TODO: "super + e" = "nvidia-offload wezterm start <file-manager>"
         "super + m" = "${startDisposableTerminal} alsamixer";
         "super + p" = "${startDisposableTerminal} btm --battery";
+
+        # Notes
+        "super + shift + n" = "obsidian";
 
         # Application launcher
         "super + d" = "${offloadCommand} dmenu_run";
