@@ -1,21 +1,20 @@
 # INFO: Elkowar's wacky widgets
 
 {
+  config,
   pkgs,
   ...
-}: {
-  # TODO: Eww via home-managers options
-  # programs.eww = {
-  #   enable = true;
-  #   package = pkgs.eww-wayland;
-  #   configDir = ${};
-  # };
+}: let
+  inherit (config.colorscheme) colors;
+in {
+  # TODO: Eww via home-manager options
+  /* programs.eww = {
+    enable = true;
+    package = pkgs.eww-wayland;
+    configDir = ./shit;
+  }; */
 
   home.packages = with pkgs; [
     eww-wayland
-  ];
-
-  imports = [
-    ./config.nix
   ];
 }
