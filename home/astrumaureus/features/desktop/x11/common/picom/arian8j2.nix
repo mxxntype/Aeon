@@ -6,13 +6,21 @@
 }: {
   services.picom = {
     enable = true;
+
+    # General
     backend = "glx";
     vSync = true;
+
+    # Fading
     fade = true;
     fadeDelta = 4;
-    settings = {
-      blur-method = "dual_kawase";
 
+    settings = {
+      # Blur
+      blur-method = "dual_kawase";
+      blur-strength = 6;
+
+      # Transitions
       transition = false;
       transition-offset = 200;
       transition-step = 0.02;
