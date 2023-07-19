@@ -12,6 +12,7 @@ in {
     ../../common  # X11 & Wayland commons
     ../common     # X11 commons
 
+    ../common/picom/arian8j2.nix
     ../common/polybar
     ./sxhkd.nix
   ];
@@ -26,7 +27,7 @@ in {
         logoScale = 5.0;
       }; in [
       "xrandr --output eDP-1 --gamma 0.7"
-      "${offloadCommand} picom --experimental-backends"
+      "${offloadCommand} picom"
       "${offloadCommand} feh ${wallpaper} --bg-scale"
       "bspc monitor -d 1 2 3 4 5 6 7 8 9"
 
