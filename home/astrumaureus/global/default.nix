@@ -14,7 +14,7 @@ in {
     ../features/cli
     ../features/nvim
     inputs.nix-colors.homeManagerModules.default
-  ]; # ++ (builtins.attrValues outputs.homeManagerModules);
+  ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   nixpkgs = {
     config = {

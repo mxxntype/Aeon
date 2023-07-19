@@ -55,6 +55,7 @@
     };
   in {
     nixosModules = import ./modules/nixos;
+    homeManagerModules = import ./modules/home-manager;
 
     # Available through 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
