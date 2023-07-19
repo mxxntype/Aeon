@@ -3,7 +3,6 @@
   ...
 }: {
   imports = [
-    ./picom
     ./wmutils
   ];
 
