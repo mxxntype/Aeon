@@ -65,6 +65,7 @@ in {
       bind = SUPER SHIFT, RETURN, exec, ${disposableTerminalCommand}
       bind = SUPER,       P,      exec, ${disposableTerminalCommand} btm --battery
       bind = SUPER,       M,      exec, ${disposableTerminalCommand} alsamixer
+      bind = SUPER SHIFT, N,      exec, ${offloadCommand} obsidian --ozone-platform=wayland
 
       windowrule = float, ^(${disposableTerminalClass})$
       windowrule = size 50% 70%, ^(${disposableTerminalClass})$
