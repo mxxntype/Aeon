@@ -17,5 +17,11 @@
       id = "XCQ3GEQ-KAWY5O6-W2TLUBI-MVY3653-EB67YA4-BLGWL7F-MC7ASTW-VFOVNQX";
     };
 
+    nox = {
+      name = "Nox";
+      introducer = false;
+      id = "LNPTMFK-C3ZABPC-YPQRAOY-TM275QR-54QWXX6-4Q4MASJ-NLKEHLM-P7JLMQA";
+    };
+
   };
 }

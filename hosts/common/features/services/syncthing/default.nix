@@ -28,6 +28,8 @@
         path = "${config.users.users.astrumaureus.home}/Camera";
         devices = [
           "wisp"
+          "wyrm"
+          "nox"
         ];
         id = "fx4yt-picor";
       };
@@ -37,6 +39,8 @@
         path = "${config.users.users.astrumaureus.home}/Music";
         devices = [
           "wisp"
+          "wyrm"
+          "nox"
         ];
         id = "fgjy6-qy5yl";
       };
@@ -46,6 +50,8 @@
         path = "${config.users.users.astrumaureus.home}/Obsidian/Vault";
         devices = [
           "wisp"
+          "wyrm"
+          "nox"
         ];
         id = "3d84338a-7a26-4777-a446-67f7f8ba7faa";
       };
@@ -55,6 +61,8 @@
         path = "${config.users.users.astrumaureus.home}/Files/.shadow";
         devices = [
           "wisp"
+          "wyrm"
+          "nox"
         ];
         id = "in9ln-y1wl5";
       };
