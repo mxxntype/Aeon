@@ -7,9 +7,11 @@
     ./global
 
     # X11 Window managers | DEs
+    # WARNING: Only one can be enabled at a time
     # ./features/desktop/x11/i3
     # ./features/desktop/x11/xmonad
-    ./features/desktop/x11/bspwm
+    # ./features/desktop/x11/bspwm
+    ./features/desktop/x11/awesome
 
     # Wayland compositors
     # ./features/desktop/wayland/swayfx
