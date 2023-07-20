@@ -11,5 +11,11 @@
       id = "S7DQX4P-FEELRVT-JIILMKT-CNRPGFC-6XPKH6P-I3BBB2T-4XFWCGQ-DKH6VQO";
     };
 
+    wyrm = {
+      name = "Wyrm";
+      introducer = false;
+      id = "XCQ3GEQ-KAWY5O6-W2TLUBI-MVY3653-EB67YA4-BLGWL7F-MC7ASTW-VFOVNQX";
+    };
+
   };
 }
