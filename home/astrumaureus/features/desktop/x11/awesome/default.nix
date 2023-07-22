@@ -7,21 +7,20 @@
     ../../common  # X11 & Wayland commons
     ../common     # X11 commons
 
-    ../common/picom/pijulius.nix
+    ../common/picom/arian8j2.nix
+
+    ./rc.nix
+    ./theme.nix
   ];
 
   xsession.windowManager.awesome = {
     enable = true;
   };
 
-  xdg.configFile."awesome/rc.lua" = {
-    text = builtins.readFile ./rc.lua;
-    executable = false;
-  };
-
   home.file.".xinitrc" = {
     text = ''
       #!/bin/sh
+      picom -b
       exec awesome
     '';
     executable = true;
