@@ -27,6 +27,7 @@
     ./features/apps/surroundings.nix
     ./features/apps/telegram
     ./features/apps/upscayl.nix
+    ./features/apps/rocketchat.nix
 
     # Features
     ./features/music

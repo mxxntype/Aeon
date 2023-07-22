@@ -23,6 +23,7 @@
     ./features/apps/telegram
     ./features/apps/upscayl.nix
     ./features/apps/wezterm
+    ./features/apps/rocketchat.nix
 
     # Features
     ./features/music
