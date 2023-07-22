@@ -8,6 +8,7 @@
 
   home.packages = with pkgs; [
     scrot
+    xclip
     feh
     betterlockscreen
   ];
