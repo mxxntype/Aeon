@@ -13,6 +13,7 @@ in {
   imports = [
     ../features/cli
     ../features/nvim
+    ../features/helix
     inputs.nix-colors.homeManagerModules.default
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
