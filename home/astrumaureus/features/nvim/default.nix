@@ -17,7 +17,7 @@ in {
 
   programs.neovim = {
     enable = true;
-    defaultEditor = true; # Set EDITOR=nvim
+    defaultEditor = false; # Set EDITOR=nvim
 
     # TODO: Split this into relevant files with lists and lib.strings.concatStrings
     extraLuaConfig = ''
