@@ -26,6 +26,8 @@
 
     timg    # Terminal image viewer
 
+    gnumake # Build system
+
     # outputs.packages."x86_64-linux".repalette
 
   ];

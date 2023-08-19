@@ -4,8 +4,9 @@
 }: {
   environment.systemPackages = with pkgs; [
     gcc
-    gnumake
     gdb
     clang
+    clang-tools
+    cppcheck
   ];
 }
