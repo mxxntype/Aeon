@@ -16,7 +16,7 @@
   
   wayland.windowManager.hyprland = {
     enable = true;
-    nvidiaPatches = true; # TODO: Set to `config.hardware.nvidia.something`...
+    # nvidiaPatches = true; # TODO: Set to `config.hardware.nvidia.something`...
     xwayland = {
       enable = true;
     };
