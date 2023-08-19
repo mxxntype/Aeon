@@ -17,12 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Lanzaboote, UEFI secure boot for NixOS
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Hyprland, the smooth wayland compositor
     hyprland.url = "github:hyprwm/Hyprland";
 
@@ -31,6 +25,12 @@
 
     # Stable & nightly Rust
     rust-overlay.url = "github:oxalica/rust-overlay";
+
+    # # Lanzaboote, UEFI secure boot for NixOS
+    # lanzaboote = {
+    #   url = "github:nix-community/lanzaboote";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = {
@@ -41,6 +41,9 @@
   } @ inputs: 
   let
     inherit (self) outputs;
+    # lib = nixpkgs.lib // home-manager.lib;
+    # systems = [ "x86_64-linux" ];
+    # forEachSystem = f: lib.genAttrs systems (sys: f nixpkgs.legacyPackages.${sys});
 
     # Declares a NixOS host
     mkNixOS = modules: nixpkgs.lib.nixosSystem {
@@ -54,14 +57,16 @@
       extraSpecialArgs = { inherit inputs outputs; };
     };
   in {
+    # inherit lib;
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
 
+    # packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs; });
+
     # Available through 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
-      # Dell i7559
-      Nox = mkNixOS [ ./hosts/Nox ];
-      Wyrm = mkNixOS [ ./hosts/Wyrm ];
+      Nox = mkNixOS [ ./hosts/Nox ];    # Dell i7559
+      Wyrm = mkNixOS [ ./hosts/Wyrm ];  # Desktop
     };
 
     # Available through 'home-manager --flake .#username@hostname'
