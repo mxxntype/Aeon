@@ -1,0 +1,20 @@
+scheme: "Everblush"
+slug: "everblush"
+
+base00: "141b1e"
+base01: "232a2d"
+base02: "3f4c51"
+base03: "49575d"
+base04: "b3b9b8"
+base05: "dadada"
+
+base06: "e57474" # Red
+base07: "e57474" # Maroon
+base08: "ffac7c" # Orange
+base09: "e5c76b" # Yellow
+base0A: "8ccf7e" # Green
+base0B: "6cbfbf" # Cyan
+base0C: "67b0e8" # Teal
+base0D: "67b0e8" # Blue
+base0E: "c47fd5" # Purple
+base0F: "fe80be" # Pink

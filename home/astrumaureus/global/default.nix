@@ -8,7 +8,7 @@
   pkgs,
   ...
 }: let
-  inherit (inputs.nix-colors) colorSchemes;
+  inherit (inputs.nix-colors.lib) schemeFromYAML;
 in {
   imports = [
     ../features/cli
@@ -56,7 +56,8 @@ in {
   };
 
   # Sets global colorscheme
-  colorscheme = lib.mkDefault colorSchemes.nord;
+  colorscheme = schemeFromYAML "base16" (builtins.readFile ../../../colorschemes/everblush.yaml);
+  # colorscheme = lib.mkDefault colorSchemes.catppuccin-frappe;
   # Echoes it to ~/.colorscheme
   # home.file.".colorscheme".text = config.colorscheme.slug; 
 }

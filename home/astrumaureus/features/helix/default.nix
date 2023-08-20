@@ -1,18 +1,19 @@
 # INFO: Helix, a post-modern vim-like editor
 
 {
-  config,
   pkgs,
   ...
-}: let
-  inherit (config) colorscheme;
-in {
+}: {
+  imports = [
+    ./theme.nix
+  ];
+
   programs.helix = {
     enable = true;
     defaultEditor = true;
 
     settings = {
-      theme = "${colorscheme.slug}_dark";
+      theme = "base16";
       editor = {
         idle-timeout = 0;
         completion-trigger-len = 1;
