@@ -25,7 +25,7 @@ in {
       window_margin_width = 4;
 
       # Opacity
-      background_opacity = "0.9";
+      background_opacity = "0.95";
 
       # Colors
       foreground = "#${colors.base05}";
