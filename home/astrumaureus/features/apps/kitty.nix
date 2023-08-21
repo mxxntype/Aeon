@@ -21,8 +21,12 @@ in {
     };
 
     settings = {
-      # Padding
-      window_margin_width = 4;
+      # Splits
+      enabled_layouts = "horizontal";
+      window_border_width = 2;
+      window_padding_width = 8;
+      window_margin_width = 6;
+      single_window_margin_width = 8;
 
       # Opacity
       background_opacity = "0.95";
