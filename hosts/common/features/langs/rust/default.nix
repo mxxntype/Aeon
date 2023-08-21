@@ -13,7 +13,9 @@
     ];
   };
 
-  environment.systemPackages = [
-    pkgs.rust-bin.stable.latest.default
+  environment.systemPackages = with pkgs; [
+    rust-bin.stable.latest.default
+    cargo-watch
+    # bacon
   ];
 }
