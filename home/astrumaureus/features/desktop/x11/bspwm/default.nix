@@ -31,6 +31,7 @@ in {
       "xrandr --output eDP-1 --gamma 0.7"
       "${offloadCommand} picom"
       "${offloadCommand} feh ${wallpaper} --bg-scale"
+      "betterlockscreen -u ${wallpaper}"
       "bspc monitor -d 1 2 3 4 5 6 7 8 9"
 
       "bspc config window_gap 12"

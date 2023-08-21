@@ -25,7 +25,7 @@ in {
         "super + ctrl + shift + q" = "bspc node -k";
 
         # Lock screen
-        "super + ctrl + shift + l" = "${pkgs.betterlockscreen}/bin/betterlockscreen -l";
+        "super + ctrl + shift + l" = "betterlockscreen --lock blur";
 
         # Reload BSPWM
         "super + shift + r" = "${reloadCommand}";
