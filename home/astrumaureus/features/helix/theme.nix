@@ -13,7 +13,7 @@ in {
         transparent = "none";
 
         # Backgrounds
-        mantle = "#${colors.base00}";
+        # mantle = "#${colors.base00}";
         base = "#${colors.base01}";
         surface0 = "#${colors.base02}";
         surface1 = "#${colors.base03}";
@@ -97,7 +97,7 @@ in {
         "error" = red;
 
         "special" = pink;
-        "module" = purple;
+        "module" = pink;
 
         "warning" = orange;
         "constant.character.escape" = subtext;
@@ -106,7 +106,7 @@ in {
 
         "constant.numeric" = orange;
 
-        "markup.heading" = purple;
+        "markup.heading" = maroon;
         "markup.list" = cyan;
         "markup.bold" = { modifiers = ["bold"]; };
         "markup.italic" = { modifiers = ["italic"]; };
