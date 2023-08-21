@@ -20,15 +20,15 @@
       ];
 
       directory = {
-        style = "bold blue";
+        style = "fg:bold blue";
         format = lib.concatStrings [
           "[$read_only]($read_only_style)"
-          "[󰉋 $path   ]($style)"
+          "[󰉋 $path ]($style)"
         ];
         repo_root_style = "bold purple";
         repo_root_format = lib.concatStrings [
           "[󰉋 $repo_root]($repo_root_style)"
-          "[$path   ]($style)"
+          "[$path ]($style)"
         ];
         read_only = "RO ";
         read_only_style = "bold yellow";
@@ -40,7 +40,7 @@
         format = lib.concatStrings [
           "[$symbol $branch(:$remote_branch)]($style)"
         ];
-        symbol = "";
+        symbol = "󰊢";
       };
 
       hostname = {
@@ -64,8 +64,8 @@
       };
 
       character = {
-          success_symbol = "[](bold green)";
-          error_symbol = "[](bold red)";
+          success_symbol = "[󰄾](bold green)";
+          error_symbol = "[x](bold red)";
       };
     };
   };
