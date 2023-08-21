@@ -20,12 +20,14 @@ in {
   xsession.windowManager.bspwm = {
     enable = true;
     startupPrograms = let
-      wallpaper = nixWallpaperFromScheme {
-        scheme = config.colorscheme;
-        width = 1920;
-        height = 1080;
-        logoScale = 5.0;
-      }; in [
+      # wallpaper = nixWallpaperFromScheme {
+      #   scheme = config.colorscheme;
+      #   width = 1920;
+      #   height = 1080;
+      #   logoScale = 5.0;
+      # };
+      wallpaper = "~/.wallpaper";
+    in [
       "xrandr --output eDP-1 --gamma 0.7"
       "${offloadCommand} picom"
       "${offloadCommand} feh ${wallpaper} --bg-scale"
