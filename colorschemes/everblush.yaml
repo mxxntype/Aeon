@@ -1,8 +1,8 @@
 scheme: "Everblush"
 slug: "everblush"
 
-base00: "141b1e" # Darker background
-base01: "232a2d" # Background
+base00: "000000" # Darker background
+base01: "141b1e" # Background
 base02: "3f4c51" # Surface 0
 base03: "49575d" # Surface 1
 base04: "b3b9b8" # Subtext
