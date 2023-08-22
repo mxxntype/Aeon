@@ -16,6 +16,14 @@
 
   programs.ncmpcpp = {
     enable = true;
+    bindings = [
+      { key = "h"; command = "previous_column"; }
+      { key = "j"; command = "scroll_down"; }
+      { key = "k"; command = "scroll_up"; }
+      { key = "l"; command = "next_column"; }
+      { key = "J"; command = [ "select_item" "scroll_down" ]; }
+      { key = "K"; command = [ "select_item" "scroll_up" ]; }
+    ];
   };
 
   home.packages = with pkgs; [
