@@ -33,7 +33,7 @@ in {
 
       # Colors
       foreground = "#${colors.base05}";
-      background = "#${colors.base00}";
+      background = "#${colors.base01}";
 
       color0 = "#${colors.base02}";
       color8 = "#${colors.base03}";
