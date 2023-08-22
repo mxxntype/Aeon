@@ -17,9 +17,9 @@
       editor = {
         idle-timeout = 0;
         completion-trigger-len = 1;
-        lsp = {
-          display-inlay-hints = true;
-        };
+        # lsp = {
+        #   display-inlay-hints = true;
+        # };
 
         indent-guides = {
           render = true;
