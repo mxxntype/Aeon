@@ -3,7 +3,7 @@
 {
   ...
 }: {
-  services.syncthing.devices = {
+  services.syncthing.settings.devices = {
 
     wisp = {
       name = "Wisp";

@@ -21,7 +21,7 @@
     overrideFolders = true;
 
     # TODO: Declare separately & define per-device
-    folders = {
+    settings.folders = {
 
       camera = {
         label = "Camera";
@@ -69,7 +69,7 @@
 
     };
 
-    extraOptions = {
+    settings = {
       gui.theme = "black";                    # Save your eyes
       options.globalAnnounceEnabled = false;  # Disable global discovery to protect IP address & save traffic
     };
