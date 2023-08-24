@@ -17,6 +17,7 @@
     ../features/nix.nix
     ../features/sops.nix
     ../features/ssh.nix
+    ../features/zen-kernel.nix
 
     ../features/services/dnscrypt-proxy
 
