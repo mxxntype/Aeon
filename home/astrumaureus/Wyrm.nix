@@ -15,7 +15,7 @@
 
     # Wayland compositors
     # ./features/desktop/wayland/swayfx
-    ./features/desktop/wayland/hyprland
+    # ./features/desktop/wayland/hyprland
 
     # Userspace apps
     ./features/apps/freetube.nix
