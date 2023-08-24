@@ -10,7 +10,9 @@
     # ./features/desktop/wayland/swayfx
     # ./features/desktop/x11/i3
     # ./features/desktop/x11/xmonad
-    ./features/desktop/x11/bspwm
+    # ./features/desktop/x11/bspwm
+
+    ./features/desktop/wayland/hyprland
 
     # Userspace apps
     ./features/apps/freetube.nix
@@ -34,4 +36,18 @@
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "22.11";
+
+  monitors = [
+    {
+      name = "eDP-1";
+      width = 1920;
+      height = 1080;
+      refreshRate = 60;
+      showBar = true;
+      x = 0;
+      y = 0;
+      workspace = "1";
+      enable = true;
+    }
+  ];
 }
