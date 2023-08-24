@@ -13,7 +13,7 @@
   inherit (config.colorscheme) colors;
 
   # Commands
-  offloadCommand = "smart-offload";
+  offloadCommand = ""; # TODO: Fix smart-offload
   terminalName = "kitty";
   terminalCommand = "${offloadCommand} ${terminalName}";
   disposableTerminalClass = "${terminalName}Disposable";
@@ -24,7 +24,6 @@ in {
   ];  
 
   wayland.windowManager.hyprland = {
-    # TODO: Per-host monitors
     extraConfig = ''
       # --[[ Envvars ]]--
       # env = LIBVA_DRIVER_NAME,nvidia
@@ -42,8 +41,10 @@ in {
 
       # --[[ Autostart ]]--
       exec-once = wlsunset -t 5000 -T 7000 -g 0.7
+      exec-once = swww init
       exec-once = eww daemon && eww open statusbar
-      exec      = swww init; sleep 0.5 && swww clear ${colors.base01}
+
+      exec      = swww img ~/.wallpaper --transition-duration 2 --transition-fps 60 -t wipe
 
       # --[[ Kill window | Exit / reload hyprland | Lock screen ]]--
       bind =      SUPER SHIFT,      Q, killactive,
