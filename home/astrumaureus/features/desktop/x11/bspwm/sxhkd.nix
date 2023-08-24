@@ -1,5 +1,4 @@
 {
-  pkgs,
   ...
 }: let
   offloadCommand = "smart-offload";
