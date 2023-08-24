@@ -37,7 +37,7 @@ in {
         "ui.linenr.selected" = subtext;
         "ui.cursorline.primary" = { bg = base; };
         "ui.text.focus" = { fg = purple; modifiers = ["bold"]; };
-        "ui.menu" = { fg = text; bg = base; };
+        "ui.menu" = { fg = text; bg = surface0; };
         "ui.menu.selected" = { fg = purple; bg = surface0; };
         "ui.virtual.ruler" = { bg = base; };
 
@@ -48,12 +48,12 @@ in {
         # nord0 - background color
         "ui.background" = transparent;
 
-        "ui.statusline.inactive" = { fg = base; bg = base; };
+        "ui.statusline" = { fg = subtext; bg = surface0; };
+        "ui.statusline.inactive" = { fg = subtext; bg = surface0; };
         "ui.statusline.normal" = { fg = base; bg = purple; };
         "ui.statusline.insert" = { fg = base; bg = green; };
         "ui.statusline.select" = { fg = base; bg = blue; };
 
-        "ui.statusline" = { fg = subtext; bg = base; };
         "ui.popup" = { bg = base; };
         "ui.window" = { bg = base; };
         "ui.help" = { bg = base; fg = text; };
