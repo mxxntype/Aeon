@@ -46,6 +46,13 @@ in {
       abbr --add --position anywhere -- "md" "mkdir -pv"
       abbr --add --position anywhere -- "cat" "bat"
       abbr --add --position anywhere -- "scl" "systemctl"
+      abbr --add --position anywhere -- R "| rg"
+      abbr --add --position anywhere L --set-cursor "% | less"
+
+      function last_history_item
+        echo $history[1]
+      end
+      abbr --add !! --position anywhere --function last_history_item
     '';
 
     shellAbbrs = {
