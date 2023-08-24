@@ -12,6 +12,7 @@
       format = lib.concatStrings [
         "$directory"
         "$git_branch"
+        "$battery"
         # "$package"
         "$line_break"
         "$hostname"
@@ -38,9 +39,29 @@
       git_branch = {
         style = "bold red";
         format = lib.concatStrings [
-          "[$symbol $branch(:$remote_branch)]($style)"
+          "[$symbol $branch(:$remote_branch) ]($style)"
         ];
         symbol = "󰊢";
+      };
+
+      battery = {
+        full_symbol = "󰁹 ";
+        charging_symbol = "󰂄 ";
+        discharging_symbol = "󰂃 ";
+        display = [
+          {
+            threshold = 10;
+            style = "bold red";
+          }
+          {
+            threshold = 30;
+            style = "bold yellow";
+          }
+          {
+            threshold = 100;
+            style = "bold white";
+          }
+        ];
       };
 
       hostname = {
