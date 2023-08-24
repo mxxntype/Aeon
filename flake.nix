@@ -11,6 +11,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # NixOS Hardware-related modules
+    hardware = {
+      url = "github:nixos/nixos-hardware";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Sops-nix: atomic secret provisioning for NixOS
     sops-nix = {
       url = "github:Mic92/sops-nix";

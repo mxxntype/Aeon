@@ -3,7 +3,6 @@
 # System architecture, microcode updates & etc.
 
 {
-  inputs,
   lib,
   pkgs,
   config,
@@ -26,7 +25,7 @@
   # 02:00.0 3D controller: NVIDIA Corporation GM107M [GeForce GTX 960M] (rev a2)
 
   # GPU: Nvidia GTX 960M
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "intel" ];
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -38,21 +37,24 @@
       libvdpau-va-gl
     ];
   };
-  hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    modesetting.enable = true;
-    prime = {
-      offload.enable = true;
-      offload.enableOffloadCmd = true;
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:2:0:0";
-    };
-    powerManagement.enable = true;
-    enableSmartOffloadCmd = true;
-  };
+  # hardware.nvidia = {
+  #   package = config.boot.kernelPackages.nvidiaPackages.stable;
+  #   modesetting.enable = true;
+  #   prime = {
+  #     offload.enable = true;
+  #     offload.enableOffloadCmd = true;
+  #     intelBusId = "PCI:0:2:0";
+  #     nvidiaBusId = "PCI:2:0:0";
+  #   };
+  #   powerManagement.enable = true;
+  #   enableSmartOffloadCmd = true;
+  # };
 
   # The REAL hardware configuration
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = lib.mkDefault "ondemand";
+  };
 }

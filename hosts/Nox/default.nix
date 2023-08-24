@@ -1,6 +1,7 @@
 /* INFO: Host configuration: Nox (Dell i7559) */
 
 {
+  inputs,
   ...
 }: {
   # List of features that form the host configuration
@@ -29,6 +30,8 @@
     ../common/users/root
     ./fstab.nix
     ./hardware.nix
+
+    inputs.hardware.nixosModules.common-gpu-nvidia-disable
 
   ];
 
