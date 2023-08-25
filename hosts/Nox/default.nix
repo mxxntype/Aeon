@@ -31,7 +31,7 @@
     ./fstab.nix
     ./hardware.nix
 
-    inputs.hardware.nixosModules.common-gpu-nvidia-disable
+    # inputs.hardware.nixosModules.common-gpu-nvidia-disable
 
   ];
 
