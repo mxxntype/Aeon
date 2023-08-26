@@ -21,7 +21,7 @@
   hardware.brillo.enable = true;
 
   # GPU: Nvidia GTX 1080
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "intel" "nvidia" ];
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -36,14 +36,14 @@
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     modesetting.enable = true;
+    prime = {
+      offload.enable = true;
+      offload.enableOffloadCmd = true;
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+    powerManagement.enable = true;
     enableSmartOffloadCmd = true;
-    # prime = {
-    #   offload.enable = true;
-    #   offload.enableOffloadCmd = true;
-    #   intelBusId = "PCI:0:2:0";
-    #   nvidiaBusId = "PCI:1:0:0";
-    # };
-    # powerManagement.enable = true;
   };
 
   # The REAL hardware configuration
