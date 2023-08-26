@@ -4,6 +4,9 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./services/xdg-portal.nix
+  ];
   services.xserver = {
     enable = true;
 
@@ -28,13 +31,5 @@
         accelProfile = "flat";
       };
     };
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      # xdg-desktop-portal-gtk
-      xdg-desktop-portal
-    ];
   };
 }

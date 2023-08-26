@@ -20,6 +20,7 @@
     ../features/zen-kernel.nix
 
     ../features/services/dnscrypt-proxy
+    ../features/services/xdg-portal.nix
 
     inputs.home-manager.nixosModules.home-manager
   ] ++ (builtins.attrValues outputs.nixosModules);
