@@ -23,6 +23,7 @@
 
     plugins = [
       # inputs.hyprland-plugins.packages.${pkgs.system}.borders-plus-plus
+      inputs.hyprland-hy3.packages.${pkgs.system}.hy3
     ];
   };
 }

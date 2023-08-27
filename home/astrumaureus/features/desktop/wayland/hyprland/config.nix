@@ -3,25 +3,58 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
+  # Colors
+  inherit (config.colorscheme) colors;
+
   # Monitors
   inherit (config) monitors;
   enabledMonitors = lib.filter (m: m.enable) monitors;
 
-  # Colors
-  inherit (config.colorscheme) colors;
-
-  # Commands
+  # Apps & CLI tools
   offloadCommand = ""; # TODO: Fix smart-offload
   terminalName = "kitty";
   terminalCommand = "${offloadCommand} ${terminalName}";
-  disposableTerminalClass = "${terminalName}Disposable";
-  disposableTerminalCommand = "${terminalCommand} --class ${disposableTerminalClass}";
+  floatingTerminalClass = "${terminalName}Floating";
+  floatingTerminalCommand = "${terminalCommand} --class ${floatingTerminalClass}";
+
+  # Wallpapers
+  wallpaper-base00 = let
+    maxDimensions = builtins.foldl' (acc: monitor: let
+        maxWidth = if monitor.width > acc.width then monitor.width else acc.width;
+        maxHeight = if monitor.height > acc.height then monitor.height else acc.height;
+      in {
+        width = maxWidth;
+        height = maxHeight;
+      }
+    ) { width = 0; height = 0; } enabledMonitors;
+  in pkgs.stdenv.mkDerivation {
+    name = "hyprland-wallpaper-base00";
+    buildInputs = [ pkgs.imagemagick ];
+    builder = pkgs.writeScript "builder" ''
+      source $stdenv/setup
+      convert -size ${toString maxDimensions.width}x${toString maxDimensions.height} xc:#${colors.base00} png:$out
+    '';
+  };
+
+  # Smooth exit
+  hyprexit = let
+    exitDuration = 1;
+    exitWorkspace = 11; # The '100%-empty' workspace to switch to instead of killing all windows
+  in pkgs.writeShellScriptBin "hyprexit.sh" ''
+    eww close-all
+    hyprctl dispatch workspace ${toString exitWorkspace}
+    swww img ${wallpaper-base00.outPath} -t right --transition-fps 60 --transition-duration ${toString exitDuration}
+    sleep ${toString exitDuration} && hyprctl dispatch exit
+  '';
 in {
   imports = [
     ../../../apps/kitty.nix
   ];  
+
+  home.packages = [ hyprexit ];
 
   wayland.windowManager.hyprland = {
     extraConfig = ''
@@ -40,48 +73,67 @@ in {
       }
 
       # --[[ Autostart ]]--
-      exec-once = wlsunset -t 5000 -T 7000 -g 0.7
+      ${ # INFO: Gamma setup
+        lib.concatStringsSep "\n" (lib.forEach enabledMonitors (m: ''
+          exec-once = wlsunset -t 5000 -T 7000 -g ${toString m.gamma}
+        ''))
+      }
       exec-once = swww init
       exec-once = eww daemon && eww open statusbar
 
-      exec      = swww img ~/.wallpaper --transition-duration 2 --transition-fps 60 -t wipe
+      exec      = sleep 0.5 && swww img ~/.wallpaper --transition-duration 2 --transition-fps 60 -t left
 
       # --[[ Kill window | Exit / reload hyprland | Lock screen ]]--
       bind =      SUPER SHIFT,      Q, killactive,
       bind =      SUPER CTRL SHIFT, Q, exec, kill -9 $(hyprctl activewindow -j | jq '.pid')
-      bind = CTRL SUPER SHIFT, E, exec, pkill wlsunset; hyprctl dispatch exit yes
+      bind = CTRL SUPER SHIFT, E, exec, hyprexit.sh
       bind =      SUPER SHIFT, R, exec, hyprctl reload && eww reload
 
+      bind =         , PRINT, exec, grim - | wl-copy
+      bind = ALT     , PRINT, exec, grim -g $(slurp) - | wl-copy
+      bind = CTRL    , PRINT, exec, grim
+      bind = CTRL ALT, PRINT, exec, grim -g $(slurp)
+
       # --[[ Shift focus ]]--
-      bind = SUPER, H, movefocus, l
-      bind = SUPER, J, movefocus, d
-      bind = SUPER, K, movefocus, u
-      bind = SUPER, L, movefocus, r
+      bind = SUPER, H, hy3:movefocus, l
+      bind = SUPER, J, hy3:movefocus, d
+      bind = SUPER, K, hy3:movefocus, u
+      bind = SUPER, L, hy3:movefocus, r
       # bind = SUPER, J, layoutmsg, cyclenext
       # bind = SUPER, K, layoutmsg, cycleprev
 
-      # --[[ move windows within layout ]]--
-      bind = SUPER SHIFT, H, movewindow, l
-      bind = SUPER SHIFT, J, movewindow, d
-      bind = SUPER SHIFT, K, movewindow, u
-      bind = SUPER SHIFT, L, movewindow, r
+      # --[[ Move windows within layout ]]--
+      bind = SUPER SHIFT, H, hy3:movewindow, l
+      bind = SUPER SHIFT, J, hy3:movewindow, d
+      bind = SUPER SHIFT, K, hy3:movewindow, u
+      bind = SUPER SHIFT, L, hy3:movewindow, r
       # bind = SUPER SHIFT, J, layoutmsg, swapnext
       # bind = SUPER SHIFT, K, layoutmsg, swapprev
 
-      # --[[ float | fullscreen ]]--
-      bind = SUPER, V, togglefloating,
+      # Layout control
+      bind = SUPER, V, exec, hyprctl dispatch hy3:makegroup v
+      bind = SUPER, N, exec, hyprctl dispatch hy3:makegroup h
+
+      # --[[ Float | fullscreen ]]--
+      bind = SUPER, T, togglefloating,
       bind = SUPER, F, fullscreen,
 
-      # --[[ main apps ]]--
+      # --[[ Main apps ]]--
       bind = SUPER,       RETURN, exec, ${terminalCommand}
-      bind = SUPER SHIFT, RETURN, exec, ${disposableTerminalCommand}
-      bind = SUPER,       P,      exec, ${disposableTerminalCommand} btm --battery
-      bind = SUPER,       M,      exec, ${disposableTerminalCommand} alsamixer
+      bind = SUPER SHIFT, RETURN, exec, ${floatingTerminalCommand}
+      bind = SUPER,       P,      exec, ${floatingTerminalCommand} btm --battery
+      bind = SUPER,       M,      exec, ${floatingTerminalCommand} alsamixer
       bind = SUPER SHIFT, N,      exec, ${offloadCommand} obsidian --ozone-platform=wayland
 
-      windowrule = float, ^(${disposableTerminalClass})$
-      windowrule = size 50% 70%, ^(${disposableTerminalClass})$
-      windowrule = move 25% 15%, ^(${disposableTerminalClass})$
+      windowrule = float, ^(${floatingTerminalClass})$
+      windowrule = size 50% 70%, ^(${floatingTerminalClass})$
+      windowrule = move 25% 15%, ^(${floatingTerminalClass})$
+
+      decoration {
+        drop_shadow true
+        shadow_range 16
+        col.shadow = 0xee{colors.base00}
+      }
 
       # --[[ switch to ws ]]--
       bind = SUPER, 1, workspace, 1
@@ -117,7 +169,7 @@ in {
       bind = CTRL SHIFT, 7, exec, ${offloadCommand} prismlauncher
       bind = CTRL SHIFT, 8, exec, ${offloadCommand} keepassxc
       bind = CTRL SHIFT, 9, exec, ${offloadCommand} freetube
-      bind = CTRL SHIFT, o, exec, ${disposableTerminalCommand} ncmpcpp
+      bind = CTRL SHIFT, o, exec, ${floatingTerminalCommand} ncmpcpp
 
       # --[[ brightness ]]--
       bind = , XF86MonBrightnessUp,   exec, brillo -A 10 -u 100000
@@ -171,15 +223,15 @@ in {
           animation = windowsMove,  1,        3,      expo
           animation = fade,         1,        3,      expo
           animation = fadeOut,      1,        3,      expo
-          animation = workspaces,   1,        4,      expo,     slide
+          animation = workspaces,   1,        4,      expo,     slidevert
           animation = border,       1,        8,     default
       }
 
       general {
           # --[[ Layout ]]--
-          layout = dwindle
-          gaps_in = 4
-          gaps_out = 16
+          layout = hy3
+          gaps_in = 8
+          gaps_out = 32
           border_size = 2
 
           col.active_border = rgb(${colors.base0E})
@@ -211,6 +263,32 @@ in {
 
         # Variable framerate
         vfr = true
+      }
+
+      plugin {
+        borders-plus-plus {
+          add_borders = 1
+          col.border_1 = rgb(${colors.base01})
+          col.border_2 = rgb(${colors.base01})
+        }
+
+        hy3 {
+          tabs = {
+            height = 16
+            padding = 8
+            rounding = 0
+            render_text = true
+            text_height = 10
+            text_padding = 4
+
+            col.active = rgb(${colors.base0E})
+            col.urgent = rgb(${colors.base06})
+            col.inactive = rgb(${colors.base05})
+            col.text.active = rgb(${colors.base0E})
+            col.text.urgent = rgb(${colors.base06})
+            col.text.inactive = rgb(${colors.base05})
+          }
+        }
       }
     '';
   };
