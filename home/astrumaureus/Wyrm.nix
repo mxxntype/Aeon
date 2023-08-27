@@ -41,10 +41,11 @@
 
   monitors = [
     {
-      name = "HDMI-A-1";
+      name = "HDMI-A-2";
       width = 1920;
       height = 1080;
-      refreshRate = 60;
+      refreshRate = 74;
+      gamma = 0.9;
       showBar = true;
       x = 0;
       y = 0;

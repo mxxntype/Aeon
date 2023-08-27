@@ -10,6 +10,7 @@
 }: {
   boot = {
     kernelModules = [ "kvm-intel" ];
+    kernelParams = [ "video=HDMI-A-2:1920x1080@74" ];
 
     initrd = {
       availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
