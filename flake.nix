@@ -23,14 +23,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hyprland, the smooth wayland compositor
-    hyprland.url = "github:hyprwm/Hyprland";
-
     # Nix-colors, the Nix way around ricing
     nix-colors.url = "github:misterio77/nix-colors";
 
     # Stable & nightly Rust
     rust-overlay.url = "github:oxalica/rust-overlay";
+
+    # Hyprland, the smooth wayland compositor
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+    hyprland-hy3 = {      
+      url = "github:outfoxxed/hy3";
+      inputs.hyprland.follows = "hyprland";
+    };
 
     # # Lanzaboote, UEFI secure boot for NixOS
     # lanzaboote = {
