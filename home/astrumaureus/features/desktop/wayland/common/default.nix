@@ -9,8 +9,11 @@
   ];
 
   home.packages = with pkgs; [
+    wl-clipboard
+    wlr-randr
     wlsunset
     swww
-    wl-clipboard
+    grim
+    slurp
   ];
 }
