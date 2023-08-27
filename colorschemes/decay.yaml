@@ -7,7 +7,7 @@ base01: "171a1f" # Background
 base02: "384148" # Surface 0
 base03: "384148" # Surface 1
 base04: "b6beca" # Subtext
-base05: "f5f5f5" # Text
+base05: "dadada" # Text
 
 base06: "e05f65" # Red
 base07: "fc7b81" # Maroon
