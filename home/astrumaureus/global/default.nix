@@ -53,10 +53,15 @@ in {
       name = "Catppuccin-Mocha-Dark-Cursors";
       size = 32;
     };
+
+    sessionVariables = {
+      GRIM_DEFAULT_DIR = "${config.home.homeDirectory}/Images/Screenshots";
+    };
   };
 
   # Sets global colorscheme
   colorscheme = schemeFromYAML "base16" (builtins.readFile ../../../colorschemes/everblush.yaml);
+  # colorscheme = schemeFromYAML "base16" (builtins.readFile ../../../colorschemes/decay.yaml);
   # colorscheme = lib.mkDefault colorSchemes.catppuccin-frappe;
   # Echoes it to ~/.colorscheme
   # home.file.".colorscheme".text = config.colorscheme.slug; 
