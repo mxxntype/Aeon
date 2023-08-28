@@ -3,9 +3,21 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   inherit (config.colorscheme) colors;
+  inherit (config) wm-config;
+  inherit (config) monitors;
+  enabledMonitors = lib.filter (m: m.enable) monitors;
+  maxDimensions = builtins.foldl' (acc: monitor: let
+      maxWidth = if monitor.width > acc.width then monitor.width else acc.width;
+      maxHeight = if monitor.height > acc.height then monitor.height else acc.height;
+    in {
+      width = maxWidth;
+      height = maxHeight;
+    }
+  ) { width = 0; height = 0; } enabledMonitors;
 in {
   home.packages = with pkgs; [
     eww-wayland
@@ -24,8 +36,7 @@ in {
       :monitor 0
       :geometry (geometry
         :anchor "left center"
-        ; :width "100%"
-        :height "100%"
+        :height "${toString (maxDimensions.height - (2 * wm-config.gaps.outer))}"
       )
       :stacking "fg"
       :focusable false
@@ -81,10 +92,14 @@ in {
 
         &.outer-border {
           border-right: 4px solid #${colors.base01};
+          border-top: 4px solid #${colors.base01};
+          border-bottom: 4px solid #${colors.base01};
         }
 
         &.container {
           border-right: 2px solid #${colors.base02};
+          border-top: 2px solid #${colors.base02};
+          border-bottom: 2px solid #${colors.base02};
           padding-right: 4px;
           padding-left: 4px;
         }
