@@ -26,4 +26,12 @@
       inputs.hyprland-hy3.packages.${pkgs.system}.hy3
     ];
   };
+
+  wm-config = {
+    border.thickness = 2;
+    gaps = {
+      inner = 8;
+      outer = 32;
+    };
+  };
 }

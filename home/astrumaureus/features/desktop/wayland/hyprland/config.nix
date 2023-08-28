@@ -7,6 +7,7 @@
   ...
 }: let
   # Colors
+  inherit (config) wm-config;
   inherit (config.colorscheme) colors;
 
   # Monitors
@@ -130,9 +131,14 @@ in {
       windowrule = move 25% 15%, ^(${floatingTerminalClass})$
 
       decoration {
-        drop_shadow true
-        shadow_range 16
-        col.shadow = 0xee{colors.base00}
+        drop_shadow = false
+        shadow_range = 16
+        col.shadow = rgb(${colors.base00})
+
+        blur {
+          size = 4
+          passes = 3
+        }
       }
 
       # --[[ switch to ws ]]--
@@ -216,31 +222,31 @@ in {
       bezier = expo, 0.22, 1, 0.36, 1
 
       animations {
-          enabled = 1
-          # --        <name>        <on/off>  <time>  <bezier>  <style>
-          animation = windowsIn,    1,        3,      expo,     slide
-          animation = windowsOut,   1,        3,      expo,     slide
-          animation = windowsMove,  1,        3,      expo
-          animation = fade,         1,        3,      expo
-          animation = fadeOut,      1,        3,      expo
-          animation = workspaces,   1,        4,      expo,     slidevert
-          animation = border,       1,        8,     default
+        enabled = 1
+        # --        <name>        <on/off>  <time>  <bezier>  <style>
+        animation = windowsIn,    1,        3,      expo,     slide
+        animation = windowsOut,   1,        3,      expo,     slide
+        animation = windowsMove,  1,        3,      expo
+        animation = fade,         1,        3,      expo
+        animation = fadeOut,      1,        3,      expo
+        animation = workspaces,   1,        4,      expo,     slidevert
+        animation = border,       1,        8,     default
       }
 
       general {
-          # --[[ Layout ]]--
-          layout = hy3
-          gaps_in = 8
-          gaps_out = 32
-          border_size = 2
+        # --[[ Layout ]]--
+        layout = hy3
+        gaps_in = ${toString wm-config.gaps.inner}
+        gaps_out = ${toString wm-config.gaps.outer}
+        border_size = ${toString wm-config.border.thickness}
 
-          col.active_border = rgb(${colors.base0E})
-          col.inactive_border = rgb(${colors.base02})
+        col.active_border = rgb(${colors.base0E})
+        col.inactive_border = rgb(${colors.base02})
 
-          # --[[ Mouse & cursor ]]--
-          apply_sens_to_raw = 1
-          cursor_inactive_timeout = 0
-          no_cursor_warps = true
+        # --[[ Mouse & cursor ]]--
+        apply_sens_to_raw = 1
+        cursor_inactive_timeout = 0
+        no_cursor_warps = true
       }
 
       # --[[ Master layout ]]--
