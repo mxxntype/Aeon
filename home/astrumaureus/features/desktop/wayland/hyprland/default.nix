@@ -30,7 +30,7 @@
   wm-config = {
     border.thickness = 2;
     gaps = {
-      inner = 8;
+      inner = 4;
       outer = 32;
     };
   };

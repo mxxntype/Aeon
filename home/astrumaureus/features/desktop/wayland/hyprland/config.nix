@@ -273,7 +273,7 @@ in {
 
       plugin {
         borders-plus-plus {
-          add_borders = 1
+          add_borders = 2
           col.border_1 = rgb(${colors.base01})
           col.border_2 = rgb(${colors.base01})
         }
