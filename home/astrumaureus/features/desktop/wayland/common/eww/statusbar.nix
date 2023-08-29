@@ -19,10 +19,12 @@ in {
   imports = [
     ./workspaces.nix
     ./clock.nix
+    ./battery.nix
   ];
 
   xdg.configFile."eww/statusbar/statusbar.yuck".text = ''
     (include "./statusbar/clock.yuck")
+    (include "./statusbar/battery.yuck")
     (include "./statusbar/workspaces.yuck")
 
     (defwidget statusbar []
@@ -41,7 +43,8 @@ in {
           )
           (box
             :halign "center"
-            ""
+            :valign "end"
+            (battery)
           )
         )
       )
@@ -63,6 +66,7 @@ in {
   xdg.configFile."eww/statusbar/statusbar.scss".text = ''
     @use './clock';
     @use './workspaces';
+    @use './battery';
 
     .statusbar {
       &.top {
