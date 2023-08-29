@@ -43,6 +43,7 @@
       width = 1920;
       height = 1080;
       refreshRate = 60;
+      gamma = 0.6;
       showBar = true;
       x = 0;
       y = 0;
