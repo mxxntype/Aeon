@@ -4,11 +4,11 @@
 }: {
   environment.systemPackages = with pkgs; [
     (writeShellScriptBin "powerdrain" ''
-      echo - | awk "{printf \"%.1f\", \
+      echo - | awk "{printf \"% 3d\", \
       $(( \
         $(cat /sys/class/power_supply/BAT0/current_now) * \
         $(cat /sys/class/power_supply/BAT0/voltage_now) \
-      )) / 1000000000000 }" ; echo " W "
+      )) / 1000000000000 }"
      '')
   ];
 }
