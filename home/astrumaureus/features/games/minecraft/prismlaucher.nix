@@ -12,21 +12,21 @@ in {
   home.file.".local/share/PrismLauncher/themes/custom/theme.json".text = ''
     {
       "colors": {
-        "AlternateBase": "#${colors.base01}",
-        "Base": "#${colors.base00}",
+        "AlternateBase": "#${colors.base02}",
+        "Base": "#${colors.base01}",
         "BrightText": "#${colors.base05}",
-        "Button": "#${colors.base02}",
+        "Button": "#${colors.base03}",
         "ButtonText": "#${colors.base05}",
         "Highlight": "#${colors.base09}",
-        "HighlightText": "#${colors.base00}",
-        "Link": "#${colors.base07}",
+        "HighlightText": "#${colors.base01}",
+        "Link": "#${colors.base0D}",
         "Text": "#${colors.base05}",
         "ToolTipBase": "#${colors.base01}",
         "ToolTipText": "#${colors.base05}",
-        "Window": "#${colors.base00}",
+        "Window": "#${colors.base01}",
         "WindowText": "#${colors.base05}",
         "fadeAmount": 0.5,
-        "fadeColor": "#${colors.base03}"
+        "fadeColor": "#${colors.base02}"
       },
       "name": "Nix Dynamic",
       "qssFilePath": "themeStyle.css",
