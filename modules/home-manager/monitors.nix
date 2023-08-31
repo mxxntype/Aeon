@@ -10,13 +10,13 @@ in
   options.monitors = mkOption {
     type = types.listOf (types.submodule {
       options = {
+        enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
         name = mkOption {
           type = types.str;
           example = "eDP-1";
-        };
-        showBar = mkOption {
-          type = types.bool;
-          default = true;
         };
         width = mkOption {
           type = types.int;
@@ -34,6 +34,10 @@ in
           type = types.float;
           default = 1.0;
         };
+        scale = mkOption {
+          type = types.float;
+          default = 1.0;
+        };
         x = mkOption {
           type = types.int;
           default = 0;
@@ -42,13 +46,13 @@ in
           type = types.int;
           default = 0;
         };
-        enable = mkOption {
-          type = types.bool;
-          default = true;
-        };
         workspace = mkOption {
           type = types.nullOr types.str;
           default = null;
+        };
+        showBar = mkOption {
+          type = types.bool;
+          default = true;
         };
       };
     });
