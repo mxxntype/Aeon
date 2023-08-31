@@ -40,11 +40,11 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    # # Lanzaboote, UEFI secure boot for NixOS
-    # lanzaboote = {
-    #   url = "github:nix-community/lanzaboote";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    # Lanzaboote, UEFI secure boot for NixOS
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -81,12 +81,14 @@
     nixosConfigurations = {
       Nox = mkNixOS [ ./hosts/Nox ];    # Dell i7559
       Wyrm = mkNixOS [ ./hosts/Wyrm ];  # Desktop
+      Luna = mkNixOS [ ./hosts/Luna ];  # Zenbook 14X
     };
 
     # Available through 'home-manager --flake .#username@hostname'
     homeConfigurations = {
       "astrumaureus@Nox" = mkHome [ ./home/astrumaureus/Nox.nix ] nixpkgs.legacyPackages."x86_64-linux";
       "astrumaureus@Wyrm" = mkHome [ ./home/astrumaureus/Wyrm.nix ] nixpkgs.legacyPackages."x86_64-linux";
+      "astrumaureus@Luna" = mkHome [ ./home/astrumaureus/Luna.nix ] nixpkgs.legacyPackages."x86_64-linux";
     };
   };
 }
