@@ -47,7 +47,7 @@
   in pkgs.writeShellScriptBin "hyprexit.sh" ''
     eww close-all
     hyprctl dispatch workspace ${toString exitWorkspace}
-    swww img ${wallpaper-base00.outPath} -t right --transition-fps 60 --transition-duration ${toString exitDuration}
+    swww img ${wallpaper-base00.outPath} -t right --transition-fps 120 --transition-duration ${toString exitDuration}
     sleep ${toString exitDuration} && hyprctl dispatch exit
   '';
 in {
@@ -68,7 +68,7 @@ in {
 
       ${  # INFO: Monitors
         lib.concatStringsSep "\n" (lib.forEach enabledMonitors (m: ''
-          monitor=${m.name}, ${toString m.width}x${toString m.height}@${toString m.refreshRate}, ${toString m.x}x${toString m.y}, 1
+          monitor=${m.name}, ${toString m.width}x${toString m.height}@${toString m.refreshRate}, ${toString m.x}x${toString m.y}, ${toString m.scale}
           ${lib.optionalString (m.workspace != null)"workspace=${m.name},${m.workspace}"}
         ''))
       }
@@ -83,6 +83,10 @@ in {
       exec-once = eww daemon && eww open statusbar
 
       exec      = sleep 0.5 && swww img ~/.wallpaper --transition-duration 2 --transition-fps 60 -t left
+
+      # Slight randomness in border position to protect OLED screens
+      exec = hyprctl keyword general:gaps_in  $((${toString wm-config.gaps.inner} + ($RANDOM % 8)))
+      exec = hyprctl keyword general:gaps_out $((${toString wm-config.gaps.outer} + ($RANDOM % 8)))
 
       # --[[ Kill window | Exit / reload hyprland | Lock screen ]]--
       bind =      SUPER SHIFT,      Q, killactive,
@@ -172,7 +176,7 @@ in {
       bind = CTRL SHIFT, 4, exec, ${offloadCommand} kotatogram-desktop
       bind = CTRL SHIFT, 5, exec, ${offloadCommand} libreoffice
       bind = CTRL SHIFT, 6, exec, ${offloadCommand} virt-manager
-      bind = CTRL SHIFT, 7, exec, ${offloadCommand} prismlauncher
+      bind = CTRL SHIFT, 7, exec, ${offloadCommand} smart-offload prismlauncher
       bind = CTRL SHIFT, 8, exec, ${offloadCommand} keepassxc
       bind = CTRL SHIFT, 9, exec, ${offloadCommand} freetube
       bind = CTRL SHIFT, o, exec, ${floatingTerminalCommand} ncmpcpp
@@ -192,9 +196,10 @@ in {
       input {
         # --[[ mouse ]]--
         follow_mouse = 1
-        sensitivity = -0.8
+        sensitivity = 0.4
         touchpad {
           natural_scroll = no
+          disable_while_typing = false
         }
 
         # --[[ keyboard ]]--
@@ -236,8 +241,8 @@ in {
       general {
         # --[[ Layout ]]--
         layout = hy3
-        gaps_in = ${toString wm-config.gaps.inner}
-        gaps_out = ${toString wm-config.gaps.outer}
+        # gaps_in = ${toString wm-config.gaps.inner}
+        # gaps_out = ${toString wm-config.gaps.outer}
         border_size = ${toString wm-config.border.thickness}
 
         col.active_border = rgb(${colors.base0E})
@@ -269,6 +274,9 @@ in {
 
         # Variable framerate
         vfr = true
+
+        mouse_move_enables_dpms = true
+        # key_press_enables_dpms = true
       }
 
       plugin {
