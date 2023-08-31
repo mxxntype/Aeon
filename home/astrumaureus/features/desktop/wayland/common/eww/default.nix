@@ -17,5 +17,9 @@
   '';
   xdg.configFile."eww/eww.scss".text = ''
     @use './statusbar/statusbar';
+
+    * {
+      all: unset;
+    }
   '';
 }

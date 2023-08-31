@@ -10,11 +10,13 @@
   maxDimensions = builtins.foldl' (acc: monitor: let
       maxWidth = if monitor.width > acc.width then monitor.width else acc.width;
       maxHeight = if monitor.height > acc.height then monitor.height else acc.height;
+      maxScale = if monitor.scale > acc.scale then monitor.scale else acc.scale;
     in {
       width = maxWidth;
       height = maxHeight;
+      scale = maxScale;
     }
-  ) { width = 0; height = 0; } enabledMonitors;
+  ) { width = 0; height = 0; scale = 0; } enabledMonitors;
 in {
   imports = [
     ./workspaces.nix
@@ -54,7 +56,7 @@ in {
       :monitor 0
       :geometry (geometry
         :anchor "left center"
-        :height "${toString (maxDimensions.height - (2 * wm-config.gaps.outer))}"
+        :height "${toString ((maxDimensions.height - (2 * wm-config.gaps.outer)) / maxDimensions.scale)}"
       )
       :stacking "fg"
       :focusable false

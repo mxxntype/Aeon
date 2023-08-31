@@ -7,7 +7,7 @@
 in {
   xdg.configFile."eww/statusbar/workspaces.yuck".text = let
     workspaceID = "\${ws.id}";
-    occupiedWorkspacePredicate = "\ws.windows > 0 ? \"occupied\" : \"empty\"";
+    occupiedWorkspacePredicate = "\ws.windows > 0 ? \"occupied\" : \"\"";
     activeWorkspacePredicate = "\${ws.id == active-workspace ? \"active\" : ${occupiedWorkspacePredicate}}";
   in ''
     (deflisten active-workspace "~/.cargo/bin/hyprquery -sq active-workspace")
@@ -42,18 +42,19 @@ in {
   '';
 
   xdg.configFile."eww/statusbar/workspaces.scss".text = let
-    emptyWorkspaceHeight = 4;
+    emptyWorkspaceHeight = 8;
     occupiedWorkspaceHeight = emptyWorkspaceHeight * 2;
-    activeWorkspaceHeight = emptyWorkspaceHeight * 4;
+    activeWorkspaceHeight = emptyWorkspaceHeight * 3;
   in ''
     .workspaces {
       .active-numerical { color: #${colors.base02} }
       .entry {
+        transition-duration: 200ms;
+
         min-width: ${toString emptyWorkspaceHeight}px;
-        &.empty {
-          min-height: ${toString emptyWorkspaceHeight}px;
-          background-color: #${colors.base02};
-        }
+        min-height: ${toString emptyWorkspaceHeight}px;
+        background-color: #${colors.base02};
+
         &.occupied {
           min-height: ${toString occupiedWorkspaceHeight}px;
           background-color: #${colors.base04};
