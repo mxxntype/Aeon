@@ -29,6 +29,7 @@
         devices = [
           "wisp"
           "wyrm"
+          "luna"
           "nox"
         ];
         id = "fx4yt-picor";
@@ -40,6 +41,7 @@
         devices = [
           "wisp"
           "wyrm"
+          "luna"
           "nox"
         ];
         id = "fgjy6-qy5yl";
@@ -51,6 +53,7 @@
         devices = [
           "wisp"
           "wyrm"
+          "luna"
           "nox"
         ];
         id = "3d84338a-7a26-4777-a446-67f7f8ba7faa";
@@ -62,6 +65,7 @@
         devices = [
           "wisp"
           "wyrm"
+          "luna"
           "nox"
         ];
         id = "in9ln-y1wl5";

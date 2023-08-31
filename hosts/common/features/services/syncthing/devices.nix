@@ -17,6 +17,12 @@
       id = "XCQ3GEQ-KAWY5O6-W2TLUBI-MVY3653-EB67YA4-BLGWL7F-MC7ASTW-VFOVNQX";
     };
 
+    luna = {
+      name = "Luna";
+      introducer = false;
+      id = "CZEGSIS-CWX3SB5-23SLQTP-UCESE7V-MMG2SPH-IVPTOAY-VNC3MQB-JAKYAQ4";
+    };
+
     nox = {
       name = "Nox";
       introducer = false;
