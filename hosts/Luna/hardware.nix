@@ -3,11 +3,16 @@
 # System architecture, microcode updates & etc.
 
 {
+  inputs,
   lib,
   pkgs,
   config,
   ...
 }: {
+  imports = [
+    inputs.hardware.nixosModules.common-gpu-nvidia-disable
+  ];
+
   boot = {
     kernelModules = [ "kvm-intel" ];
 
