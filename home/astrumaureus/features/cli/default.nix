@@ -29,6 +29,8 @@
 
     gnumake # Build system
 
+    unzip   # .zip tool
+
     # outputs.packages."x86_64-linux".repalette
 
   ];
