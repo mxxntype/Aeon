@@ -56,7 +56,7 @@ in {
       }
 
       .active-numerical {
-        color: #${colors.base0A}
+        color: #${colors.base0A};
       }
 
       .entry {
