@@ -36,6 +36,7 @@
     };
   };
 
+  security.pam.services.gtklock = {};
 
   environment = {
     enableAllTerminfo = true;
