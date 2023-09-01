@@ -16,7 +16,7 @@ in {
 
     (defwidget workspaces []
       (box
-        :class "workspaces top container"
+        :class "workspaces container"
         :orientation "v"
         :space-evenly false
         :spacing 4
@@ -42,18 +42,30 @@ in {
   '';
 
   xdg.configFile."eww/statusbar/workspaces.scss".text = let
-    emptyWorkspaceHeight = 8;
+    emptyWorkspaceHeight = 12;
     occupiedWorkspaceHeight = emptyWorkspaceHeight * 2;
     activeWorkspaceHeight = emptyWorkspaceHeight * 3;
   in ''
     .workspaces {
-      .active-numerical { color: #${colors.base02} }
+      &.container {
+        padding: 4px;
+        margin-top: 4px;
+        margin-left: 4px;
+        background-color: #${colors.base02};
+        border-radius: ${toString wm-config.rounding}px;
+      }
+
+      .active-numerical {
+        color: #${colors.base0A}
+      }
+
       .entry {
         transition-duration: 200ms;
 
         min-width: ${toString emptyWorkspaceHeight}px;
         min-height: ${toString emptyWorkspaceHeight}px;
-        background-color: #${colors.base02};
+        background-color: #${colors.base03};
+        border-radius: ${toString wm-config.rounding}px;
 
         &.occupied {
           min-height: ${toString occupiedWorkspaceHeight}px;

@@ -35,12 +35,14 @@ in {
         (centerbox
           :orientation "v"
           :class "statusbar top container"
-          (box
+            (box
             :halign "center"
+            :valign "start"
             (clock)
           )
           (box
             :halign "center"
+            :valign "center"
             (workspaces)
           )
           (box
@@ -75,13 +77,16 @@ in {
         background: #${colors.base01};
         color: #${colors.base05};
 
-        /* &.outer-border {
-          border-right: 4px solid #${colors.base01};
-          border-top: 4px solid #${colors.base01};
-          border-bottom: 4px solid #${colors.base01};
-        } */
+        &.outer-border {
+          background: transparent;
+          // border-right: 4px solid #${colors.base01};
+          // border-top: 4px solid #${colors.base01};
+          // border-bottom: 4px solid #${colors.base01};
+        }
 
         &.container {
+          border-top-right-radius: ${toString wm-config.rounding}px;
+          border-bottom-right-radius: ${toString wm-config.rounding}px;
           border-right: 2px solid #${colors.base02};
           border-top: 2px solid #${colors.base02};
           border-bottom: 2px solid #${colors.base02};

@@ -3,6 +3,7 @@
   ...
 }: let
   inherit (config.colorscheme) colors;
+  inherit (config) wm-config;
 in {
   xdg.configFile."eww/statusbar/clock.yuck".text = ''
     (defpoll time-hour
@@ -21,11 +22,15 @@ in {
         :orientation "vertical"
         :halign "center"
         (label
-          :class "clock label hour"
+          :class "icon"
+          :text "󰥔"
+        )
+        (label
+          :class "hour"
           :text time-hour
         )
         (label
-          :class "clock label minute"
+          :class "minute"
           :text time-minute
         )
       )
@@ -34,13 +39,19 @@ in {
 
   xdg.configFile."eww/statusbar/clock.scss".text = ''
     .clock {
+      color: #${colors.base0D};
+      font-weight: 600;
+
       &.widget {
-        padding-top: 4px;
-        padding-bottom: 4px;
+        margin-top: 4px;
+        padding: 4px;
+        background-color: #${colors.base02};
+        border-radius: ${toString wm-config.rounding}px;
       }
-      &.label {
+
+      .icon {
+        font-size: 16;
         color: #${colors.base0D};
-        font-weight: 600;
       }
     }
   '';
