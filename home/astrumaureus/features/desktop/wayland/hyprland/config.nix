@@ -50,12 +50,32 @@
     swww img ${wallpaper-base00.outPath} -t right --transition-fps 120 --transition-duration ${toString exitDuration}
     sleep ${toString exitDuration} && hyprctl dispatch exit
   '';
+
+  # Lockscreen
+  hyprlock = let
+    screenPoweroffDelay = 3;
+  in pkgs.writeShellScriptBin "hyprlock.sh" ''
+    pgrep gtklock || ${pkgs.gtklock}/bin/gtklock &
+    sleep ${toString screenPoweroffDelay} && hyprctl dispatch dpms off
+  '';
+
+  hypridle = let
+    locksreenTimeout = 120;
+  in pkgs.writeShellScriptBin "hypridle.sh" ''
+    ${pkgs.swayidle}/bin/swayidle -w \
+      timeout ${toString locksreenTimeout} 'hyprlock.sh' \
+      resume 'hyprctl dispatch dpms on'
+  '';
 in {
   imports = [
     ../../../apps/kitty.nix
   ];  
 
-  home.packages = [ hyprexit ];
+  home.packages = [
+    hyprexit
+    hyprlock
+    hypridle
+  ];
 
   wayland.windowManager.hyprland = {
     extraConfig = ''
@@ -81,6 +101,7 @@ in {
       }
       exec-once = swww init
       exec-once = eww daemon && eww open statusbar
+      exec-once = hypridle.sh
 
       exec      = sleep 0.5 && swww img ~/.wallpaper --transition-duration 2 --transition-fps 60 -t left
 
@@ -92,6 +113,7 @@ in {
       bind =      SUPER SHIFT,      Q, killactive,
       bind =      SUPER CTRL SHIFT, Q, exec, kill -9 $(hyprctl activewindow -j | jq '.pid')
       bind = CTRL SUPER SHIFT, E, exec, hyprexit.sh
+      bind = CTRL SUPER SHIFT, L, exec, hyprlock.sh
       bind =      SUPER SHIFT, R, exec, hyprctl reload && eww reload
 
       bind =         , PRINT, exec, grim - | wl-copy
@@ -135,7 +157,8 @@ in {
       windowrule = move 25% 15%, ^(${floatingTerminalClass})$
 
       decoration {
-        drop_shadow = false
+        rounding = ${toString wm-config.rounding}
+        drop_shadow = true
         shadow_range = 16
         col.shadow = rgb(${colors.base00})
 
@@ -290,7 +313,7 @@ in {
           tabs = {
             height = 16
             padding = 8
-            rounding = 0
+            rounding = ${toString wm-config.rounding}
             render_text = true
             text_height = 10
             text_padding = 4

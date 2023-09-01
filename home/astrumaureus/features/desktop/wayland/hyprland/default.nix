@@ -33,5 +33,6 @@
       inner = 4;
       outer = 32;
     };
+    rounding = 6;
   };
 }
