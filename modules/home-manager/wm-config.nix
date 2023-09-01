@@ -34,6 +34,11 @@ in
             };
           };
         };
+
+        rounding = mkOption {
+          type = types.int;
+          default = 0;
+        };
       };
     };
   };
