@@ -20,7 +20,6 @@
     ../common/features/auto-cpufreq.nix
     ../common/features/services/syncthing
     ../common/features/services/qemu
-    # ../common/features/services/vmware.nix
     ../common/features/services/flatpak.nix
 
     # Other features
