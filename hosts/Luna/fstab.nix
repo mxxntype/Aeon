@@ -11,7 +11,7 @@ nvme0n1
 */
 
 {
-  config,
+  lib,
   ...
 }: {
   imports = [
@@ -44,6 +44,7 @@ nvme0n1
     };
   };
 
+  boot.loader.efi.efiSysMountPoint = lib.mkForce "/boot";
   boot.initrd = {
     luks = {
       devices = {
