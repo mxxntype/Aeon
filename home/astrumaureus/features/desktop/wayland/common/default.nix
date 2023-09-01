@@ -15,5 +15,6 @@
     swww
     grim
     slurp
+    gtklock
   ];
 }
