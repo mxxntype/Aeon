@@ -327,6 +327,58 @@ in {
           }
         }
       }
+
+      # Gimp
+      windowrulev2 = workspace 2, class:^(.*Gimp.*)$
+
+      # Obs studio
+      windowrulev2 = workspace 2, class:^(.*obsproject.*)$
+
+      # Librewolf
+      windowrulev2 = workspace 3,                         class:^(.*LibreWolf.*)$
+      windowrulev2 = bordercolor $BORDER_COLOR_LIBREWOLF, class:^(.*LibreWolf.*)$
+
+      # Kotatogram
+      windowrulev2 = workspace 4,                          title:^(.*Kotatogram.*)$
+      windowrulev2 = bordercolor $BORDER_COLOR_KOTATOGRAM, title:^(.*Kotatogram.*)$
+
+      # Element
+      windowrulev2 = workspace 4,                          title:^(.*Element.*)$
+      windowrulev2 = bordercolor $BORDER_COLOR_ELEMENT, title:^(.*Element.*)$
+
+      # Session
+      windowrulev2 = workspace 4,                          title:^(.*Session.*)$
+      windowrulev2 = bordercolor $BORDER_COLOR_SESSION, title:^(.*Session.*)$
+
+      # Thunderbird
+      windowrulev2 = workspace 4,                           class:^(.*thunderbird.*)$
+      windowrulev2 = bordercolor $BORDER_COLOR_THUNDERBIRD, class:^(.*thunderbird.*)$
+
+      # Revolt
+      windowrulev2 = workspace 4,             class:^(.*Revolt.*)$
+      windowrulev2 = bordercolor $BORDER_COLOR_REVOLT, class:^(.*Revolt.*)$
+
+      # Libreoffice
+      windowrulev2 = workspace 5, title:^(.*LibreOffice.*)$
+
+      # Virt-manager
+      windowrulev2 = workspace 6, class:^(.*virt-manager.*)$
+
+      # Prismlauncher
+      windowrulev2 = workspace 7,                             class:^(.*prismlauncher.*)$
+      windowrulev2 = bordercolor $BORDER_COLOR_PRISMLAUNCHER, class:^(.*prismlauncher.*)$
+
+      # keepassxc ]]
+      windowrulev2 = workspace 8,                         class:^(.*keepassxc.*)$
+      windowrulev2 = bordercolor $BORDER_COLOR_KEEPASSXC, class:^(.*keepassxc.*)$
+
+      # Ncmpcpp
+      windowrulev2 = workspace 9,                    title:^(.*ncmpcpp.*)$
+
+      # Freetube
+      windowrulev2 = workspace 9,                        class:^(.*FreeTube.*)$
+      windowrulev2 = idleinhibit fullscreen,             class:^(.*FreeTube.*)$
+      windowrulev2 = bordercolor $BORDER_COLOR_FREETUBE, class:^(.*FreeTube.*)$
     '';
   };
 }
