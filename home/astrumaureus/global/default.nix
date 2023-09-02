@@ -60,7 +60,8 @@ in {
   };
 
   # Sets global colorscheme
-  colorscheme = schemeFromYAML "base16" (builtins.readFile ../../../colorschemes/everblush.yaml);
+  # colorscheme = schemeFromYAML "base16" (builtins.readFile ../../../colorschemes/everblush.yaml);
+  colorscheme = schemeFromYAML "base16" (builtins.readFile ../../../colorschemes/catppuccin-oled.yaml);
   # colorscheme = schemeFromYAML "base16" (builtins.readFile ../../../colorschemes/decay.yaml);
   # colorscheme = lib.mkDefault colorSchemes.catppuccin-frappe;
   # Echoes it to ~/.colorscheme
