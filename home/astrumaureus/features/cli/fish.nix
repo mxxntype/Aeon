@@ -124,6 +124,11 @@ in {
       cr = "cargo run";
       crr = "cargo run --release";
 
+      # C & C++
+      cppcheck = "cppcheck --enable=all --suppress=missingIncludeSystem";
+      "gcc" = "gcc -std=c11 -Wall -Werror -Wextra";
+      "g++" = "g++ -std=c++17 -Wall -Werror -Wextra";
+
       # .NET & C#
       # d = "dotnet";
       # da = "dotnet add";
