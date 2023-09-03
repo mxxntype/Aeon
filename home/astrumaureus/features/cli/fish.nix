@@ -142,6 +142,9 @@ in {
       # Desktops
       Hyprland = "dbus-run-session Hyprland";
       hcl = "hyprctl";
+
+      # CTL's
+      bcl = "bluetoothctl";
     };
 
     # Aliases expand after abbreviations do, so they can be used to
