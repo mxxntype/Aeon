@@ -273,7 +273,7 @@ in {
 
         # --[[ Mouse & cursor ]]--
         apply_sens_to_raw = 1
-        cursor_inactive_timeout = 0
+        cursor_inactive_timeout = 5
         no_cursor_warps = true
       }
 
