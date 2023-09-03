@@ -90,7 +90,7 @@ in {
 
         --faded-red:     #${colors.base06};
         --faded-orange:  #${colors.base08};
-        --faded-yellow:  #${colors.base09};
+        --faded-yellow:  #${colors.base0F};
         --faded-green:   #${colors.base0A};
         --faded-aqua:    #${colors.base0B};
         --faded-blue:    #${colors.base0D};
@@ -98,7 +98,7 @@ in {
 
         --dim-red:       #${colors.base06};
         --dim-orange:    #${colors.base08};
-        --dim-yellow:    #${colors.base09};
+        --dim-yellow:    #${colors.base0F};
         --dim-green:     #${colors.base0A};
         --dim-aqua:      #${colors.base0B};
         --dim-blue:      #${colors.base0D};
