@@ -14,17 +14,19 @@
     ../common/features/power/drain.nix
     ../common/features/sound/pipewire
     ../common/features/gvfs.nix
-    # ../common/features/x11.nix
 
     # Services
     ../common/features/auto-cpufreq.nix
     ../common/features/services/syncthing
     ../common/features/services/qemu
     ../common/features/services/flatpak.nix
+    ../common/features/services/bluetooth.nix
+    ../common/features/services/adb.nix
 
     # Other features
     ../common/features/langs/c
     ../common/features/langs/rust
+    ../common/features/langs/py.nix
 
     # WARN: Vital stuff
     ../common/global
