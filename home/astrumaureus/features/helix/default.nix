@@ -57,9 +57,9 @@
           };
         };
 
-        file-picker = {
-          hidden = false;
-        };
+        # file-picker = {
+        #   hidden = false;
+        # };
 
         auto-pairs = {
           "(" = ")";
@@ -68,7 +68,7 @@
           "\"" = "\"";
           "'" = "'";
           "`" = "`";
-          "<" = ">";
+          # "<" = ">";
         };
 
         soft-wrap.enable = true;
@@ -82,6 +82,25 @@
       }
       {
         name = "nix";
+      }
+      {
+        name = "c-sharp";
+        language-server.command = "OmniSharp";
+      }
+      {
+        name = "python";
+        scope = "source.python";
+        injection-regex = "python";
+        file-types = ["py" "pyi" "py3" "pyw" "ptl" ".pythonstartup" ".pythonrc" "SConstruct"];
+        shebangs = ["python"];
+        roots = ["setup.py"  "setup.cfg"  "pyproject.toml"];
+        comment-token = "#";
+        language-server = {
+          command = "pyright-langserver";
+          args = ["--stdio"];
+        };
+        indent = { tab-width = 4; unit = "    "; };
+        config = {}; # will get "Async jobs timed out" errors if this empty config is not added
       }
     ];
   };
