@@ -50,7 +50,7 @@ in {
       }
 
       .icon {
-        font-size: 16;
+        // font-size: 16;
         color: #${colors.base0D};
       }
     }
