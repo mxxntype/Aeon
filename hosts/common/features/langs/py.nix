@@ -3,7 +3,8 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    (python3.withPackages (ps: with ps; [ numpy matplotlib ]))
     nodePackages.pyright
-    python3Full
+    # jupyter
   ];
 }
