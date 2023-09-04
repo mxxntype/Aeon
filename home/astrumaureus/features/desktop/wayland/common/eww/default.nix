@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ./statusbar.nix
+    ./statusbar
   ];
 
   home.packages = with pkgs; [
