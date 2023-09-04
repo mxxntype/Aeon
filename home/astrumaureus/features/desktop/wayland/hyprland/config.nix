@@ -222,7 +222,7 @@ in {
         sensitivity = 0.4
         touchpad {
           natural_scroll = no
-          disable_while_typing = false
+          # disable_while_typing = false
         }
 
         # --[[ keyboard ]]--
