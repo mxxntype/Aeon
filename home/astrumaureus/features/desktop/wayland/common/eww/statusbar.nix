@@ -68,7 +68,7 @@ in {
       :monitor 0
       :geometry (geometry
         :anchor "left center"
-        :height "${toString ((maxDimensions.height - (2 * wm-config.gaps.outer)) / maxDimensions.scale)}"
+        :height "${toString ((maxDimensions.height / maxDimensions.scale - (2 * wm-config.gaps.outer)))}"
       )
       :stacking "fg"
       :focusable false
