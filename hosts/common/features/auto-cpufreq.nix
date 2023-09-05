@@ -9,8 +9,8 @@
         turbo = "never";
       };
       charger = {
-        governor = "performance";
-        turbo = "never";
+        governor = "ondemand";
+        turbo = "auto";
       };
     };
   };
