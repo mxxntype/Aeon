@@ -71,6 +71,16 @@
         id = "in9ln-y1wl5";
       };
 
+      wallpapers = {
+        label = "Wallpapers";
+        path = "${config.users.users.astrumaureus.home}/Images/Wallpapers";
+        devices = [
+          "luna"
+          "wisp"
+        ];
+        id = "ga53t-wdz4c";
+      };
+
     };
 
     settings = {
