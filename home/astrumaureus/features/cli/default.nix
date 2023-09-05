@@ -17,14 +17,16 @@
     nvtop   # Process monitor [GPU]
 
     exa     # Better `ls`
+    erdtree
     ripgrep # Better `grep`
     fd      # Better `find`
     procs   # Better `ps`
 
+    neofetch
+    nitch
+
     jq      # JSON processor
-
     killall # Friendlier `kill`
-
     timg    # Terminal image viewer
 
     gnumake # Build system
