@@ -70,8 +70,19 @@
           "`" = "`";
           # "<" = ">";
         };
-
         soft-wrap.enable = true;
+      };
+
+      keys = {
+        insert = {
+          "A-h" = "move_char_left";
+          "A-j" = "move_line_down";
+          "A-k" = "move_line_up";
+          "A-l" = "move_char_right";
+        };
+        # normal = {
+        #   "space-W" = "write";
+        # };
       };
     };
 
