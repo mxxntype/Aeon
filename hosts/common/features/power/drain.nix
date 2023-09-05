@@ -4,7 +4,7 @@
 }: {
   environment.systemPackages = with pkgs; [
     (writeShellScriptBin "powerdrain" ''
-      echo - | awk "{printf \"% 3d\", \
+      echo - | awk "{printf \"%3d\", \
       $(( \
         $(cat /sys/class/power_supply/BAT0/current_now) * \
         $(cat /sys/class/power_supply/BAT0/voltage_now) \
