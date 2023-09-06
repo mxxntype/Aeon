@@ -15,6 +15,7 @@
     htop    # Process monitor
     bottom  # Process monitor
     nvtop   # Process monitor [GPU]
+    duf     # Disk usage monitor
 
     exa     # Better `ls`
     erdtree
@@ -32,6 +33,7 @@
     gnumake # Build system
 
     unzip   # .zip tool
+    e2fsprogs
 
     # outputs.packages."x86_64-linux".repalette
 
