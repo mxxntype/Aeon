@@ -80,21 +80,29 @@ in {
       s = "sudo";
       free = "free -h --si";
       duf = "duf -theme ansi";
-      sz = "du -sh";
       btm = "btm --battery";
       ps = "procs";
       nvt = "nvtop";
+      # sz = "du -sh";
 
       # Power
       poweroff = "systemctl poweroff";
       shutdown = "systemctl poweroff";
       reboot = "systemctl reboot";
 
-      # Exa
-      l = "exa";
-      ls = "exa -l";
-      lsa = "exa -la";
-      tree = "exa -l --tree";
+      # # Exa
+      # l = "exa";
+      # ls = "exa -l";
+      # lsa = "exa -la";
+      # tree = "exa -l --tree";
+
+      # Erdtree
+      ls = "erdtree --level 1";
+      lsa = "erdtree --hidden --level 1";
+      tree = "erdtree";
+      atree = "erdtree --hidden --no-git";
+      sz = "erdsize --hidden --level 1";
+
 
       # Neovim
       nv = "nvim";
@@ -170,7 +178,10 @@ in {
     # Aliases expand after abbreviations do, so they can be used to
     # silently enable stuff for certain commands, for example, exa:
     shellAliases = {
-      exa = "exa --icons --sort=type";
+      # exa = "exa --icons --sort=type";
+      erd = "erd --layout inverted --human --icons --dir-order first";
+      erdtree = "echo && erd --suppress-size --follow";
+      erdsize = "echo && erd --no-ignore";
     };
 
     functions = {
