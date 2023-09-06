@@ -1,10 +1,12 @@
 {
   inputs,
   config,
+  lib,
   pkgs,
   ...
 }: let
   inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) shellThemeFromScheme;
+  inherit (config.colorscheme) colors;
 in {
   programs.fish = {
     enable = true; # ISSUE: users.users.*.shell complains for some reason
@@ -40,6 +42,24 @@ in {
       set fish_pager_color_prefix 'normal'  '--bold'  '--underline'
       set fish_pager_color_progress 'brwhite'  '--background=cyan'
       set fish_pager_color_selected_background -r
+      set PALETTE "${lib.concatStringsSep "," [
+        "${colors.base00}"
+        "${colors.base01}"
+        "${colors.base02}"
+        "${colors.base03}"
+        "${colors.base04}"
+        "${colors.base05}"
+        "${colors.base06}"
+        "${colors.base07}"
+        "${colors.base08}"
+        "${colors.base09}"
+        "${colors.base0A}"
+        "${colors.base0B}"
+        "${colors.base0C}"
+        "${colors.base0D}"
+        "${colors.base0E}"
+        "${colors.base0F}"
+      ]}"
 
       # `anywhere` abbreviations
       abbr --add --position anywhere -- "rd" "rmdir"
