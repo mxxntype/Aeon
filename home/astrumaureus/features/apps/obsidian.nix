@@ -83,7 +83,7 @@ in {
         --bg_yellow:      #${colors.base02};
         --shadow:         #${colors.base00}70;
 
-        --fg-dark:        #${colors.base04};
+        --fg-dark:        #${colors.base05};
         --grey0-dark:     #${colors.base03};
         --grey1-dark:     #${colors.base04};
         --grey2-dark:     #${colors.base04};
