@@ -61,7 +61,7 @@ in {
         "ui.selection" = { bg = surface0; };
         "ui.cursor.match" = { bg = surface0; };
 
-        "comment" = { fg = surface1; modifiers = ["italic"]; };
+        "comment" = { fg = subtext; modifiers = ["italic"]; };
         "ui.linenr" = surface1;
         "ui.virtual.whitespace" = surface0;
         "ui.virtual.inlay-hint" = { fg = surface0; };
