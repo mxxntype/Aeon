@@ -25,6 +25,7 @@
 
     neofetch
     nitch
+    onefetch
 
     jq      # JSON processor
     killall # Friendlier `kill`
