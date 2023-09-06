@@ -42,6 +42,16 @@ nvme0n1
       device = "/dev/disk/by-label/LUNA_EFI";
       fsType = "vfat";
     };
+
+    "/mnt/data" = {
+      device = "/dev/luna/data";
+      fsType = "ext4";
+    };
+
+    "/mnt/ubuntu" = {
+      device = "/dev/disk/by-label/LUNA_UBNT";
+      fsType = "ext4";
+    };
   };
 
   boot.loader.efi.efiSysMountPoint = lib.mkForce "/boot";
