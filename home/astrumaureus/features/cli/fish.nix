@@ -136,6 +136,7 @@ in {
       nf = "nix flake";
       nfu = "nix flake update";
       nfc = "nix flake check";
+      nfl = "nix flake lock";
       nd = "nix develop";
       hm = "home-manager";
 
