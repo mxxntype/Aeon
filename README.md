@@ -32,7 +32,7 @@ I started my Linux journey on an Arch-based distribution, then hopped between Vo
 17" **Dell i7559**, the one that started everything and hosted the growth of this configuration.
 
 #### Wyrm
-A desktop with an **i7-8700K**, **GTX 1080** and **16**Gb RAM. Was my main worker before [[#Luna]]. Was the second one to be Nix'ed.
+A desktop with an **i7-8700K**, **GTX 1080** and **16**Gb RAM. Was my main worker before **Luna**.
 
 #### Luna
 2023' **ASUS Zenbook 14X** with an **i9-13900H**, **RTX 3050** and **32**Gb RAM. My favorite and the current daily driver.
