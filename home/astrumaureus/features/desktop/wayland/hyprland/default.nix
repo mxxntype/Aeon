@@ -22,7 +22,7 @@
     };
 
     plugins = [
-      # inputs.hyprland-plugins.packages.${pkgs.system}.borders-plus-plus
+      # inputs.hyprland-plugins.packages.${pkgs.system}.borders-plus-plus # WARN: Does not compile
       inputs.hyprland-hy3.packages.${pkgs.system}.hy3
     ];
   };

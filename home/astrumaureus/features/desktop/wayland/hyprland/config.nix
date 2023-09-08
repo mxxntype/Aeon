@@ -183,6 +183,8 @@ in {
           blur {
             size = 4
             passes = 3
+            brightness = 1
+            contrast = 1
           }
         }
 
