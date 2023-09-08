@@ -177,6 +177,9 @@ in {
           shadow_range = 16
           col.shadow = rgb(${colors.base00})
 
+          dim_inactive = true
+          dim_strength = 0.3
+
           blur {
             size = 4
             passes = 3
@@ -283,8 +286,8 @@ in {
           # gaps_out = ${toString wm-config.gaps.outer}
           border_size = ${toString wm-config.border.thickness}
 
-          col.active_border = rgb(${colors.base0E})
-          col.inactive_border = rgb(${colors.base00})
+          col.active_border = rgba(${colors.base04}00)
+          col.inactive_border = rgba(${colors.base00}00)
 
           # --[[ Mouse & cursor ]]--
           apply_sens_to_raw = 1
