@@ -35,10 +35,10 @@ in {
 
     (defwidget statusbar []
       (box
-        :class "statusbar top outer-border"
+        :class "statusbar left outer-border"
         (centerbox
           :orientation "v"
-          :class "statusbar top container"
+          :class "statusbar left container"
             (box
             :halign "center"
             :valign "start"
@@ -51,12 +51,14 @@ in {
             :halign "center"
             :valign "center"
             :orientation "vertical"
+            :space-evenly false
             (workspaces)
           )
           (box
             :halign "center"
             :valign "end"
             :orientation "vertical"
+            :space-evenly false
             (CPU)
             (battery)
           )
@@ -78,33 +80,25 @@ in {
   '';
 
   xdg.configFile."eww/statusbar/statusbar.scss".text = ''
-    @use './clock';
-    @use './workspaces';
-    @use './battery';
-    @use './sysinfo';
-    @use './keyboard';
+    @use './statusbar/clock';
+    @use './statusbar/workspaces';
+    @use './statusbar/battery';
+    @use './statusbar/sysinfo';
+    @use './statusbar/keyboard';
 
     .statusbar {
-      &.top {
+      &.left {
         background: #${colors.base00};
         color: #${colors.base05};
         opacity: 0.95;
 
-        &.outer-border {
-          background: transparent;
-          // border-right: 4px solid #${colors.base01};
-          // border-top: 4px solid #${colors.base01};
-          // border-bottom: 4px solid #${colors.base01};
-        }
-
         &.container {
           border-top-right-radius: ${toString wm-config.rounding}px;
           border-bottom-right-radius: ${toString wm-config.rounding}px;
-          border-right: 2px solid #${colors.base02};
-          border-top: 2px solid #${colors.base02};
-          border-bottom: 2px solid #${colors.base02};
+          // border-right: 2px solid #${colors.base02};
+          // border-top: 2px solid #${colors.base02};
+          // border-bottom: 2px solid #${colors.base02};
           padding-right: 4px;
-          padding-left: 4px;
         }
       }
     }

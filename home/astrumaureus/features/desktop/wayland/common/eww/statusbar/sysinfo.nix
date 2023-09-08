@@ -37,6 +37,21 @@ in {
         background-color: #${colors.base02};
         border-radius: ${toString wm-config.rounding}px;
       }
+
+      .icon {
+        color: #${colors.base0F};
+      }
+
+      .scale trough {
+        min-width: 6px;
+        min-height: 48px;
+        border-radius: ${toString wm-config.rounding}px;
+        background-color: #${colors.base03};
+        highlight {
+          border-radius: ${toString wm-config.rounding}px;
+          background-color: #${colors.base0F};
+        }
+      }
     }
   '';
 }
