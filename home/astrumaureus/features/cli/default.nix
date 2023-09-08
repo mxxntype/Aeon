@@ -12,29 +12,42 @@
 
   home.packages = with pkgs; [
 
-    htop    # Process monitor
-    bottom  # Process monitor
-    nvtop   # Process monitor [GPU]
-    duf     # Disk usage monitor
+    # System monitors
+    htop
+    bottom
+    nvtop
+    duf
 
-    exa     # Better `ls`
+    # Alternative implementations of the basic tools
+    exa
     erdtree
-    ripgrep # Better `grep`
-    fd      # Better `find`
-    procs   # Better `ps`
+    ripgrep
+    fd
+    procs
+    killall
 
+    # Text & image processors
+    jq
+    timg
+
+    # Build systems & automation
+    gnumake
+
+    # Archiving tools
+    unzip
+    unrar
+
+    # Filesystems
+    e2fsprogs
+    efibootmgr
+
+    # Fetches and other cool TUI stuff
     neofetch
     nitch
     onefetch
-
-    jq      # JSON processor
-    killall # Friendlier `kill`
-    timg    # Terminal image viewer
-
-    gnumake # Build system
-
-    unzip   # .zip tool
-    e2fsprogs
+    cbonsai
+    cmatrix
+    pipes-rs
 
     # outputs.packages."x86_64-linux".repalette
 
