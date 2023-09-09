@@ -100,6 +100,9 @@ in {
         # env = GBM_BACKEND,nvidia-drm
         # env = __GLX_VENDOR_LIBRARY_NAME,nvidia
         # env = WLR_NO_HARDWARE_CURSORS,1
+        env = SWWW_TRANSITION_DURATION, 2
+        env = SWWW_TRANSITION_FPS, 120
+        env = SWWW_TRANSITION, left
 
         ${  # INFO: Monitors
           lib.concatStringsSep "\n" (lib.forEach enabledMonitors (m: ''
@@ -115,14 +118,14 @@ in {
           ''))
         }
         exec-once = swww init
-        exec-once = eww daemon && eww open statusbar
+        exec-once = eww daemon --restart --force-wayland && eww open statusbar
         exec-once = hypridle.sh
 
-        exec      = sleep 0.5 && swww img ~/.wallpaper --transition-duration 2 --transition-fps 60 -t left
+        exec      = sleep 0.5 && swww img ~/.wallpaper
 
-        # Slight randomness in border position to protect OLED screens
-        exec = hyprctl keyword general:gaps_in  $((${toString wm-config.gaps.inner} + ($RANDOM % 8)))
-        exec = hyprctl keyword general:gaps_out $((${toString wm-config.gaps.outer} + ($RANDOM % 8)))
+        # # Slight randomness in border position to protect OLED screens
+        # exec = hyprctl keyword general:gaps_in  $((${toString wm-config.gaps.inner} + ($RANDOM % 8)))
+        # exec = hyprctl keyword general:gaps_out $((${toString wm-config.gaps.outer} + ($RANDOM % 8)))
 
         # --[[ Kill window | Exit / reload hyprland | Lock screen ]]--
         bind =      SUPER SHIFT,      Q, killactive,
@@ -170,23 +173,6 @@ in {
         windowrule = float, ^(${floatingTerminalClass})$
         windowrule = size 50% 70%, ^(${floatingTerminalClass})$
         windowrule = move 25% 15%, ^(${floatingTerminalClass})$
-
-        decoration {
-          rounding = ${toString wm-config.rounding}
-          drop_shadow = true
-          shadow_range = 16
-          col.shadow = rgb(${colors.base00})
-
-          dim_inactive = true
-          dim_strength = 0.3
-
-          blur {
-            size = 4
-            passes = 3
-            brightness = 1
-            contrast = 1
-          }
-        }
 
         # --[[ switch to ws ]]--
         bind = SUPER, 1, workspace, 1
@@ -281,15 +267,32 @@ in {
           animation = border,       1,        8,     default
         }
 
+        decoration {
+          rounding = ${toString wm-config.rounding}
+          drop_shadow = true
+          shadow_range = 16
+          col.shadow = rgb(${colors.base00})
+
+          dim_inactive = true
+          dim_strength = 0.3
+
+          blur {
+            size = 4
+            passes = 3
+            brightness = 1
+            contrast = 1
+          }
+        }
+
         general {
           # --[[ Layout ]]--
           layout = hy3
-          # gaps_in = ${toString wm-config.gaps.inner}
-          # gaps_out = ${toString wm-config.gaps.outer}
+          gaps_in = ${toString wm-config.gaps.inner}
+          gaps_out = ${toString wm-config.gaps.outer}
           border_size = ${toString wm-config.border.thickness}
 
-          col.active_border = rgba(${colors.base04}00)
-          col.inactive_border = rgba(${colors.base00}00)
+          col.active_border = rgb(${colors.base00})
+          col.inactive_border = rgb(${colors.base00})
 
           # --[[ Mouse & cursor ]]--
           apply_sens_to_raw = 1
