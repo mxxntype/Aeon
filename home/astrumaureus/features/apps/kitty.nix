@@ -29,7 +29,7 @@ in {
       single_window_margin_width = 8;
 
       # Opacity
-      background_opacity = "0.80";
+      background_opacity = "0.9";
 
       # Colors
       foreground = "#${colors.base05}";
