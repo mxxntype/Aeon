@@ -92,6 +92,11 @@ in {
         color: #${colors.base05};
         opacity: 0.95;
 
+        &.outer-border {
+          border-top-right-radius: ${toString wm-config.rounding}px;
+          border-bottom-right-radius: ${toString wm-config.rounding}px;
+        }
+
         &.container {
           border-top-right-radius: ${toString wm-config.rounding}px;
           border-bottom-right-radius: ${toString wm-config.rounding}px;
