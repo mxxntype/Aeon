@@ -180,7 +180,7 @@ in {
     # silently enable stuff for certain commands, for example, exa:
     shellAliases = {
       # exa = "exa --icons --sort=type";
-      erd = "erd --layout inverted --human --icons --dir-order first";
+      erd = "erd --layout inverted --human --icons --truncate --dir-order first";
       erdtree = "echo && erd --suppress-size --follow";
       erdsize = "echo && erd --no-ignore";
     };
