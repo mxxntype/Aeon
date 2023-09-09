@@ -395,9 +395,6 @@ in {
         windowrulev2 = workspace 8,                         class:^(.*keepassxc.*)$
         windowrulev2 = bordercolor $BORDER_COLOR_KEEPASSXC, class:^(.*keepassxc.*)$
 
-        # Ncmpcpp
-        windowrulev2 = workspace 9,                    title:^(.*ncmpcpp.*)$
-
         # Freetube
         windowrulev2 = workspace 9,                        class:^(.*FreeTube.*)$
         windowrulev2 = idleinhibit fullscreen,             class:^(.*FreeTube.*)$
