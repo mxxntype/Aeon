@@ -4,8 +4,11 @@
 }: let
   inherit (config.colorscheme) colors;
   inherit (config) wm-config;
+
+  widgetName = "workspaces-hyprland";
+  moduleName = "statusbar/${widgetName}";
 in {
-  xdg.configFile."eww/statusbar/workspaces.yuck".text = let
+  xdg.configFile."eww/${moduleName}.yuck".text = let
     workspaceID = "\${ws.id}";
     occupiedWorkspacePredicate = "\ws.windows > 0 ? \"occupied\" : \"\"";
     activeWorkspacePredicate = "\${ws.id == active-workspace ? \"active\" : ${occupiedWorkspacePredicate}}";
@@ -41,7 +44,7 @@ in {
     )
   '';
 
-  xdg.configFile."eww/statusbar/workspaces.scss".text = let
+  xdg.configFile."eww/${moduleName}.scss".text = let
     emptyWorkspaceHeight = 12;
     occupiedWorkspaceHeight = emptyWorkspaceHeight * 2;
     activeWorkspaceHeight = emptyWorkspaceHeight * 3;
@@ -56,7 +59,7 @@ in {
       }
 
       .active-numerical {
-        color: #${colors.base0A};
+        color: #${colors.base0D};
       }
 
       .entry {

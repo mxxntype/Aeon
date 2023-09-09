@@ -4,9 +4,10 @@
 }: let
   inherit (config.colorscheme) colors;
   inherit (config) wm-config;
-  batteryPercentage = "\${EWW_BATTERY.BAT0.capacity}";
-  batteryLowPredicate = "\${${batteryPercentage} > 30 ? \"\" : \"low\"}";
-  batteryPredicate = "\${${batteryPercentage} > 10 ? ${batteryLowPredicate} : \"critical\"}";
+  batteryPercentage = "\EWW_BATTERY.BAT0.capacity";
+  batteryPercentageText = "\${${batteryPercentage}}";
+  batteryLowPredicate = "\${${batteryPercentage} > 30 ? '' : 'low'}";
+  batteryPredicate = "\${${batteryPercentage} > 10 ? ${batteryLowPredicate} : 'critical'}";
   powerDrain = "\${powerdrain}";
 in {
   xdg.configFile."eww/statusbar/battery.yuck".text = ''
@@ -23,8 +24,8 @@ in {
           :text "󰁹"
         )
         (label
-          :class "percentage ${batteryPercentage}"
-          :text "${batteryPercentage}%"
+          ;; :class "percentage ${batteryPredicate}"
+          :text "${batteryPercentageText}%"
         )
         (label
           :class "drain"
@@ -46,11 +47,11 @@ in {
 
       .icon {
         font-size: 16;
-        color: #${colors.base0A};
+        color: #${colors.base05};
       }
 
       .percentage {
-        color: #${colors.base0A};
+        color: #${colors.base05};
         &.low { color: #${colors.base08}; }
         &.critical { color: #${colors.base06}; }
       }

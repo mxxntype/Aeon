@@ -29,7 +29,7 @@ in {
   xdg.configFile."eww/statusbar/statusbar.yuck".text = ''
     (include "./statusbar/clock.yuck")
     (include "./statusbar/battery.yuck")
-    (include "./statusbar/workspaces.yuck")
+    (include "./statusbar/workspaces-hyprland.yuck")
     (include "./statusbar/sysinfo.yuck")
     (include "./statusbar/keyboard.yuck")
 
@@ -81,7 +81,7 @@ in {
 
   xdg.configFile."eww/statusbar/statusbar.scss".text = ''
     @use './statusbar/clock';
-    @use './statusbar/workspaces';
+    @use './statusbar/workspaces-hyprland';
     @use './statusbar/battery';
     @use './statusbar/sysinfo';
     @use './statusbar/keyboard';

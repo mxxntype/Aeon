@@ -4,10 +4,6 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ./eww
-  ];
-
   home.packages = with pkgs; [
     wl-clipboard
     wlr-randr

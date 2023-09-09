@@ -39,7 +39,7 @@ in {
 
   xdg.configFile."eww/statusbar/clock.scss".text = ''
     .clock {
-      color: #${colors.base0D};
+      color: #${colors.base05};
       font-weight: 600;
 
       &.widget {
@@ -47,11 +47,6 @@ in {
         padding: 4px;
         background-color: #${colors.base02};
         border-radius: ${toString wm-config.rounding}px;
-      }
-
-      .icon {
-        // font-size: 16;
-        color: #${colors.base0D};
       }
     }
   '';
