@@ -188,6 +188,13 @@ in {
     functions = {
       # Silent startup (disable greeting)
       fish_greeting = "";
+      fish_user_key_bindings = ''
+        if status --is-login
+            if test (tty) = "/dev/tty1"
+                dbus-run-session Hyprland
+            end
+        end
+      '';
     };
   };
 }

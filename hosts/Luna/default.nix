@@ -1,6 +1,8 @@
 /* INFO: Host configuration: Luna (Zenbook 14X) */
 
 {
+  pkgs,
+  lib,
   ...
 }: {
   # List of features that form the host configuration
@@ -31,6 +33,7 @@
     # WARN: Vital stuff
     ../common/global
     ../common/users/root
+    ../common/users/astrumaureus/autologin.nix
     ./fstab.nix
     ./hardware.nix
 
