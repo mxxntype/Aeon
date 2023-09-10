@@ -34,4 +34,8 @@
       gh-markdown-preview
     ];
   };
+
+  home.packages = with pkgs; [
+    git-filter-repo
+  ];
 }
