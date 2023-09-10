@@ -38,4 +38,6 @@
 
   networking.hostName = "Luna";
   system.stateVersion = "23.05";
+
+  virtualisation.waydroid.enable = true;
 }
