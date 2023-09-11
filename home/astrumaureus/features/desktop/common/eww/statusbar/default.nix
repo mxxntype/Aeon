@@ -24,6 +24,7 @@ in {
     ./battery.nix
     ./sysinfo.nix
     ./keyboard.nix
+    ./volume.nix
   ];
 
   xdg.configFile."eww/statusbar/statusbar.yuck".text = ''
@@ -32,6 +33,7 @@ in {
     (include "./statusbar/workspaces-hyprland.yuck")
     (include "./statusbar/sysinfo.yuck")
     (include "./statusbar/keyboard.yuck")
+    (include "./statusbar/volume.yuck")
 
     (defwidget statusbar []
       (box
@@ -46,6 +48,7 @@ in {
             :space-evenly false
             (clock)
             (keyboard-layout)
+            (volume)
           )
           (box
             :halign "center"
