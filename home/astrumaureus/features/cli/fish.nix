@@ -15,6 +15,8 @@ in {
       # Colorscheme
       # sh ${shellThemeFromScheme {scheme = config.colorscheme;}}
 
+      fish_add_path ~/.cargo/bin
+
       set fish_color_autosuggestion 'brblack'
       set fish_color_cancel -r
       set fish_color_command green
