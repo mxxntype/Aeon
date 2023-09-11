@@ -54,9 +54,9 @@
 
   };
 
-  # TODO: Move to userspace
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    corefonts
   ];
 
   hardware.enableRedistributableFirmware = true;
