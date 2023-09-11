@@ -5,6 +5,8 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nix-std.url = "github:chessai/nix-std";
+
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
