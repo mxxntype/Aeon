@@ -15,17 +15,8 @@
     ./features/desktop/wayland/hyprland
 
     # Userspace apps
-    ./features/apps/freetube.nix
-    ./features/apps/gimp.nix
-    ./features/apps/keepassxc.nix
-    ./features/apps/libreoffice.nix
-    ./features/apps/librewolf.nix
+    ./features/apps
     ./features/apps/obsidian.nix
-    ./features/apps/surroundings.nix
-    ./features/apps/telegram
-    ./features/apps/upscayl.nix
-    ./features/apps/wezterm
-    ./features/apps/rocketchat.nix
 
     # Features
     ./features/music
