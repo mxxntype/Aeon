@@ -41,15 +41,12 @@
   environment = {
     enableAllTerminfo = true;
     systemPackages = with pkgs; [
-      bottom
-      exa
       file
-      htop
       pciutils
-      ripgrep
-      sops
       usbutils
       wget
+      # pkg-config
+      # openssl
     ];
 
   };
