@@ -207,7 +207,7 @@ in {
         bind = CTRL SHIFT, 6, exec, ${offloadCommand} virt-manager
         bind = CTRL SHIFT, 7, exec, ${offloadCommand} smart-offload prismlauncher
         bind = CTRL SHIFT, 8, exec, ${offloadCommand} keepassxc
-        bind = CTRL SHIFT, 9, exec, ${offloadCommand} freetube
+        bind = CTRL SHIFT, 9, exec, ${offloadCommand} freetube --ozone-platform=wayland
         bind = CTRL SHIFT, o, exec, ${floatingTerminalCommand} ncmpcpp
 
         # --[[ brightness ]]--
