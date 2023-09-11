@@ -24,6 +24,31 @@
       { key = "J"; command = [ "select_item" "scroll_down" ]; }
       { key = "K"; command = [ "select_item" "scroll_up" ]; }
     ];
+    settings = {
+      connected_message_on_startup = "no";
+      startup_screen = "media_library";
+
+      # Theme
+      main_window_color = "white";
+      statusbar_color = "white";
+      header_window_color = "blue";
+      volume_color = "magenta";
+      alternative_ui_separator_color = "cyan";
+      window_border_color = "blue";
+      active_window_border = "magenta";
+
+      visualizer_color = "blue,cyan,magenta";
+      visualizer_fps = "60";
+
+      progressbar_color = "blue";
+      progressbar_elapsed_color = "magenta";
+
+      color1 = "magenta";
+      color2 = "cyan";
+
+      empty_tag_color = "black";
+      empty_tag_marker = "...";
+    };
   };
 
   home.packages = with pkgs; [
