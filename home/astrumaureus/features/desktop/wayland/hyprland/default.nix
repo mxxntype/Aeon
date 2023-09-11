@@ -30,8 +30,8 @@
   wm-config = {
     border.thickness = 2;
     gaps = {
-      inner = 8;
-      outer = 32;
+      inner = 12;
+      outer = 24;
     };
     rounding = 8;
   };
