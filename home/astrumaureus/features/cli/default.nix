@@ -8,6 +8,7 @@
     ./fish.nix
     ./git.nix
     ./starship.nix
+    ./wiki-tui.nix
   ];
 
   home.packages = with pkgs; [
@@ -32,6 +33,7 @@
     # Text & image processors
     jq
     timg
+    toml2nix
 
     # Build systems & automation
     gnumake
@@ -51,6 +53,10 @@
     cbonsai
     cmatrix
     pipes-rs
+
+    # Secrets
+    sops
+    ssh-to-age
 
     # outputs.packages."x86_64-linux".repalette
 
