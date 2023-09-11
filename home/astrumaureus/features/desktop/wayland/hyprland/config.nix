@@ -202,7 +202,7 @@ in {
         bind = CTRL SHIFT, 1, exec, ${terminalCommand}
         bind = CTRL SHIFT, 2, exec, ${offloadCommand} gimp
         bind = CTRL SHIFT, 3, exec, ${offloadCommand} librewolf
-        bind = CTRL SHIFT, 4, exec, ${offloadCommand} kotatogram-desktop
+        bind = CTRL SHIFT, 4, exec, ${offloadCommand} telegram-desktop
         bind = CTRL SHIFT, 5, exec, ${offloadCommand} libreoffice
         bind = CTRL SHIFT, 6, exec, ${offloadCommand} virt-manager
         bind = CTRL SHIFT, 7, exec, ${offloadCommand} smart-offload prismlauncher
@@ -361,9 +361,9 @@ in {
         windowrulev2 = workspace 3,                         class:^(.*librewolf.*)$
         windowrulev2 = bordercolor $BORDER_COLOR_LIBREWOLF, class:^(.*librewolf.*)$
 
-        # Kotatogram
-        windowrulev2 = workspace 4,                          title:^(.*Kotatogram.*)$
-        windowrulev2 = bordercolor $BORDER_COLOR_KOTATOGRAM, title:^(.*Kotatogram.*)$
+        # Telegram
+        windowrulev2 = workspace 4,                          title:^(.*Telegram.*)$
+        windowrulev2 = bordercolor $BORDER_COLOR_KOTATOGRAM, title:^(.*Telegram.*)$
 
         # Element
         windowrulev2 = workspace 4,                          title:^(.*Element.*)$
