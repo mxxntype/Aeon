@@ -1,21 +1,11 @@
 /* INFO: Host configuration: Luna (Zenbook 14X) */
 
 {
-  pkgs,
-  lib,
   ...
 }: {
-  # List of features that form the host configuration
   imports = [
-
     # Users that should be present on the system
     ../common/users/astrumaureus
-
-    # Optinonal system-level modules
-    ../common/features/boot/quiet-boot.nix
-    ../common/features/power/drain.nix
-    ../common/features/sound/pipewire
-    ../common/features/gvfs.nix
 
     # Services
     ../common/features/auto-cpufreq.nix
@@ -25,12 +15,21 @@
     ../common/features/services/bluetooth.nix
     ../common/features/services/adb.nix
 
-    # Other features
+    # DB's
+    ../common/features/db/postgres.nix
+
+    # Languages
     ../common/features/langs/c
     ../common/features/langs/rust
     ../common/features/langs/py.nix
 
-    # WARN: Vital stuff
+    # Optinonal system-level modules
+    ../common/features/boot/quiet-boot.nix
+    ../common/features/power/drain.nix
+    ../common/features/sound/pipewire
+    ../common/features/gvfs.nix
+
+    # NOTE: Vital
     ../common/global
     ../common/users/root
     ../common/users/astrumaureus/autologin.nix
@@ -42,5 +41,8 @@
   networking.hostName = "Luna";
   system.stateVersion = "23.05";
 
-  virtualisation.waydroid.enable = true;
+  virtualisation = {
+    waydroid.enable = true;
+    docker.enable = true;
+  };
 }
