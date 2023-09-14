@@ -55,8 +55,26 @@
   hyprlock = let
     screenPoweroffDelay = 2;
   in pkgs.writeShellScriptBin "hyprlock.sh" ''
-    pgrep gtklock || ${pkgs.gtklock}/bin/gtklock &
-    sleep ${toString screenPoweroffDelay} && hyprctl dispatch dpms off
+    KBD_LED_PATH="/sys/class/leds/asus::kbd_backlight/brightness"
+    KBD_LED_PREV="$(cat $KBD_LED_PATH)"
+
+    function lock() {
+      if [[ $(pgrep gtklock) != 0 ]]; then
+        gtklock
+        echo $KBD_LED_PREV > $KBD_LED_PATH
+        brillo -I
+      fi
+    }
+
+    function turn_lights_off() {
+      brillo -S 10
+      echo 0 > $KBD_LED_PATH
+      hyprctl dispatch dpms off
+    }
+
+    brillo -O
+    lock &
+    sleep ${toString screenPoweroffDelay} && turn_lights_off
   '';
 
   hypridle = let
@@ -70,9 +88,7 @@
   hyprsuspend = let
     keyboardBacklightRestorationTimeout = 2;
   in pkgs.writeShellScriptBin "hyprsuspend.sh" ''
-    KBD_LED_PATH="/sys/class/leds/asus::kbd_backlight/brightness"
     hyprlock.sh
-    PREVIOUS_BRIGHTNESS="$(cat $KBD_LED_PATH)"
     echo 0 > $KBD_LED_PATH
     systemctl suspend && sleep ${toString keyboardBacklightRestorationTimeout}
     echo "$PREVIOUS_BRIGHTNESS" > $KBD_LED_PATH
@@ -200,7 +216,7 @@ in {
 
         # --[[ Workspace-assigned apps ]]--
         bind = CTRL SHIFT, 1, exec, ${terminalCommand}
-        bind = CTRL SHIFT, 2, exec, ${offloadCommand} gimp
+        bind = CTRL SHIFT, 2, exec, ${offloadCommand} inkscape
         bind = CTRL SHIFT, 3, exec, ${offloadCommand} librewolf
         bind = CTRL SHIFT, 4, exec, ${offloadCommand} telegram-desktop
         bind = CTRL SHIFT, 5, exec, ${offloadCommand} libreoffice
