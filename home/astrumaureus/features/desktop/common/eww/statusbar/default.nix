@@ -75,7 +75,7 @@ in {
         :anchor "left center"
         :height "${toString ((maxDimensions.height / maxDimensions.scale - (2 * wm-config.gaps.outer)))}"
       )
-      :stacking "fg"
+      :stacking "bg"
       :focusable false
       :exclusive true
       (statusbar)
