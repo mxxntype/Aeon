@@ -34,30 +34,59 @@
     text ? "Entry",
     command ? "echo",
     color ? "#${colors.base05}",
-  }: let
-    activeEntryPredicate = "\${${powermenuActiveRow} == ${toString position.row} ? 'active' : ''}";
-  in ''
+  }: ''
       (eventbox
-        :onhover "eww-powermenu-ctl --set-focus ${toString position.row} ${toString position.col}"
-        :onhoverlost "eww-powermenu-ctl --set-focus -1 -1"
+
+        :onhover "${lib.concatStringsSep " " [
+          "eww-powermenu-ctl"
+          "--set-focus"
+          "${toString position.row} ${toString position.col}"
+
+          # "&&"
+
+          # "hyprctl notify"
+          # "-1 1000"                    # Timeout
+          # "'rgb(${colors.base0A})'"    # Color
+          # "'${widgetName}: gained hover [${toString position.row}:${toString position.col}]'"
+
+          # "&&"
+
+          # "hyprctl notify"
+          # "-1 3000"                    # Timeout
+          # "'rgb(${colors.base0E})'"    # Color
+          # "$(eww get ${powermenuActiveRow}):$(eww get ${powermenuActiveCol})"
+        ]}"
+
+        :onhoverlost "${lib.concatStringsSep " " [
+          "eww-powermenu-ctl"
+          "--set-focus"
+          "-1 -1"
+
+          # "&&"
+
+          # "hyprctl notify"
+          # "-1 1000"                    # Timeout
+          # "'rgb(${colors.base06})'"    # Color
+          # "'${widgetName}: lost hover [${toString position.row}:${toString position.col}]'"
+        ]}" 
+
         (box
           :orientation "vertical"
           :space-evenly false
-          :class "${widgetName}-entry ${activeEntryPredicate}"
           :width ${toString tileWidth}
           :height ${toString tileHeight}
           :style "${style [
-            "background-color: #${colors.base02};"
-            "border-radius: ${toString wm-config.rounding};"
+            "background-color: #${colors.base02}"
+            "border-radius: ${toString wm-config.rounding}px"
           ]}"
           (button
             :vexpand true
             :onclick "${toString command} & ${resetCommand}"
-            :cursor "pointer"
+            :class "${widgetName}-entry ''${${powermenuActiveRow} == "${toString position.row}" ? ${powermenuActiveCol} == "${toString position.col}" ? "active" : "" : ""}"
             :style "${style [
               "color: #${color}"
-              "font-size: ${toString (tileHeight / 4)}"
-              "border-radius: ${toString wm-config.rounding};"
+              "font-size: ${toString (tileHeight / 4)}px"
+              "border-radius: ${toString wm-config.rounding}px"
               "margin: 4px"
             ]}"
             "${toString icon}"
@@ -74,9 +103,9 @@
     '';
 
   eww-powermenu-ctl = pkgs.writeShellScriptBin "eww-powermenu-ctl" ''
-    if [[ "$2" == "--set-focus" ]]; then
-      eww update ${powermenuActiveRow}=$3
-      eww update ${powermenuActiveCol}=$4
+    if [[ "$1" == "--set-focus" ]]; then
+      eww update ${powermenuActiveRow}=$2
+      eww update ${powermenuActiveCol}=$3
     fi
   '';
 in {
@@ -90,7 +119,7 @@ in {
         :style "${style [
           "padding: 8px"
           "background-color: #${colors.base00}"
-          "border-radius: ${toString wm-config.rounding}"
+          "border-radius: ${toString wm-config.rounding}px"
         ]}"
         :spacing "${toString tileSpacing}"
         (box
@@ -171,7 +200,7 @@ in {
     )
   '';
 
-  # TODO: Button:hover
+  # FIXME
   xdg.configFile."eww/${moduleName}.scss".text = ''
     .${widgetName}-entry {
       &.active {
