@@ -15,7 +15,10 @@ in {
   in ''
     (deflisten active-workspace "~/.cargo/bin/hyprquery -sq active-workspace")
     (deflisten active-window "~/.cargo/bin/hyprquery -sq active-window")
-    (deflisten workspaces "~/.cargo/bin/hyprquery -sq workspaces")
+    (deflisten workspaces
+      :initial "[]"
+      "~/.cargo/bin/hyprquery -sq workspaces"
+    )
 
     (defwidget workspaces []
       (box

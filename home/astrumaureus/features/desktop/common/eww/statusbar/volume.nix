@@ -12,6 +12,7 @@ in {
   xdg.configFile."eww/${moduleName}.yuck".text = ''
     (defpoll pipewire-volume
       :interval "2s"
+      :initial "0.0"
       "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2}'"
     )
     (defpoll pipewire-mute
