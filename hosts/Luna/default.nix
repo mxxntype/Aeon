@@ -28,6 +28,8 @@
     ../common/features/power/drain.nix
     ../common/features/sound/pipewire
     ../common/features/gvfs.nix
+    ../common/features/gamemode.nix
+    ../common/features/services/cups.nix
 
     # NOTE: Vital
     ../common/global
