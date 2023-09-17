@@ -34,7 +34,7 @@ in {
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOvBw3klXzVq5oTXtS061cfcGEjHWflPZNRBRg48N3w/ astrumaureus@Nox"
     ];
-    passwordFile = config.sops.secrets.astrumaureus-password.path;
+    hashedPasswordFile = config.sops.secrets.astrumaureus-password.path;
     packages = [ pkgs.home-manager ];
   };
 

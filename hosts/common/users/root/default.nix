@@ -5,7 +5,7 @@
   users.mutableUsers = false;
 
   users.users.root = {
-    passwordFile = config.sops.secrets.root-password.path;
+    hashedPasswordFile = config.sops.secrets.root-password.path;
   };
 
   sops.secrets.root-password = {
