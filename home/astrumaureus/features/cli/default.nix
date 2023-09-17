@@ -28,6 +28,7 @@
     fd
     procs
     killall
+    yazi
 
     # Text & image processors
     jq
