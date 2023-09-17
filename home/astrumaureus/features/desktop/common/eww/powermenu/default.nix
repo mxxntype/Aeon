@@ -1,4 +1,4 @@
-# INFO: Eww-powered, keyboard-driven (not yet though) powermenu for Hyprland
+# INFO: Eww-powered, keyboard-driven powermenu for Hyprland
 
 {
   config,
@@ -18,13 +18,14 @@
   resetCommand = lib.concatStringsSep " && " [
     "hyprctl dispatch submap reset"
     "eww close ${widgetName}"
-    "eww-powermenu-ctl --set-focus -1 -1"
+    "eww-powermenu-ctl --set-focus 0 0"
   ];
 
   powermenuActiveRow = "powermenu-active-row";
   powermenuActiveCol = "powermenu-active-col";
 
   style = lib.concatStringsSep ";";
+
   entry = {
     position ? {
       row = 0;
@@ -34,7 +35,9 @@
     text ? "Entry",
     command ? "echo",
     color ? "#${colors.base05}",
-  }: ''
+  }: {
+    command = command;
+    syntax = ''
       (eventbox
 
         :onhover "${lib.concatStringsSep " " [
@@ -79,6 +82,7 @@
             "background-color: #${colors.base02}"
             "border-radius: ${toString wm-config.rounding}px"
           ]}"
+
           (button
             :vexpand true
             :onclick "${toString command} & ${resetCommand}"
@@ -91,6 +95,7 @@
             ]}"
             "${toString icon}"
           )
+
           (label
             :text "${toString text}"
             :style "${style [
@@ -101,11 +106,78 @@
         )
       )
     '';
+  };
+
+  entries = [
+    # Row 0
+    [
+      (entry {
+        position = {
+          row = 0;
+          col = 0;
+        };
+        icon = "󰌾";
+        text = "Lockscreen";
+        command = "hyprlock.sh";
+        color = colors.base0A;
+      })
+
+      (entry {
+        position = {
+          row = 0;
+          col = 1;
+        };
+        icon = "󰤄";
+        text = "Suspend";
+        command = "hyprsuspend.sh";
+        color = colors.base08;
+      })
+
+      (entry {
+        position = {
+          row = 0;
+          col = 2;
+        };
+        icon = "󰗼";
+        text = "Exit Hyprland";
+        command = "hyprexit.sh";
+        color = colors.base0D;
+      })
+    ]
+
+    # Row 2
+    [
+      (entry {
+        position = {
+          row = 1;
+          col = 0;
+        };
+        icon = "󰐥";
+        text = "Shutdown";
+        command = "systemctl poweroff";
+        color = colors.base06;
+      })
+
+      (entry {
+        position = {
+          row = 1;
+          col = 1;
+        };
+        icon = "󰜉";
+        text = "Reboot";
+        command = "systemctl reboot";
+        color = colors.base07;
+      })
+    ]
+  ];
 
   eww-powermenu-ctl = pkgs.writeShellScriptBin "eww-powermenu-ctl" ''
     if [[ "$1" == "--set-focus" ]]; then
       eww update ${powermenuActiveRow}=$2
       eww update ${powermenuActiveCol}=$3
+    elif [[ "$1" == "--update-focus" ]]; then
+      eww update ${powermenuActiveRow}=$(( $(eww get ${powermenuActiveRow}) + $2))
+      eww update ${powermenuActiveCol}=$(( $(eww get ${powermenuActiveCol}) + $3))
     fi
   '';
 in {
@@ -114,78 +186,24 @@ in {
     (defvar ${powermenuActiveCol} 0)
 
     (defwidget ${widgetName} []
-      (box
-        :orientation "vertical"
-        :style "${style [
-          "padding: 8px"
-          "background-color: #${colors.base00}"
-          "border-radius: ${toString wm-config.rounding}px"
-        ]}"
-        :spacing "${toString tileSpacing}"
         (box
-          :orientation "horizontal"
-          :spacing "${toString tileSpacing}"
-          ${entry {
-              position = {
-                row = 0;
-                col = 0;
-              };
-              icon = "󰌾";
-              text = "Lockscreen";
-              command = "hyprlock.sh";
-              color = colors.base0A;
+            :orientation "vertical"
+            :spacing "${toString tileSpacing}"
+            :style "${style [
+                "padding: 8px"
+                "background-color: #${colors.base00}"
+                "border-radius: ${toString wm-config.rounding}px"
+            ]}"
+
+            ${lib.concatLines (lib.forEach entries (row: ''
+                    (box
+                        :spacing ${toString tileSpacing}
+                        :orientation "horizontal"
+                        ${lib.concatLines (lib.forEach row (entry: entry.syntax))}
+                    )
+                ''))
             }
-          }
-          ${entry {
-              position = {
-                row = 0;
-                col = 1;
-              };
-              icon = "󰤄";
-              text = "Suspend";
-              command = "hyprsuspend.sh";
-              color = colors.base08;
-            }
-          }
-          ${entry {
-              position = {
-                row = 0;
-                col = 2;
-              };
-              icon = "󰗼";
-              text = "Exit Hyprland";
-              command = "hyprexit.sh";
-              color = colors.base0D;
-            }
-          }
         )
-        (box
-          :orientation "horizontal"
-          :spacing "${toString tileSpacing}"
-          ${entry {
-              position = {
-                row = 1;
-                col = 0;
-              };
-              icon = "󰐥";
-              text = "Shutdown";
-              command = "systemctl poweroff";
-              color = colors.base06;
-            }
-          }
-          ${entry {
-              position = {
-                row = 1;
-                col = 1;
-              };
-              icon = "󰜉";
-              text = "Reboot";
-              command = "systemctl reboot";
-              color = colors.base07;
-            }
-          }
-        )
-      )
     )
 
     (defwindow ${widgetName}
@@ -209,18 +227,39 @@ in {
     }
   '';
 
+  xdg.configFile."eww/${moduleName}.json".text = builtins.toJSON (
+    lib.forEach entries (row: (
+      lib.forEach row (entry: entry.command)
+    ))
+  );
+
   wayland.windowManager.hyprland.configParts = [
     ''
+      # Show the ${widgetName} & enter its submap
       bind = SUPER SHIFT, E, exec, eww open ${widgetName}
       bind = SUPER SHIFT, E, submap, eww-${widgetName}
 
       submap = eww-${widgetName}
 
-      bind = SUPER SHIFT, E, exec, eww close ${widgetName}
-      bind = SUPER SHIFT, E, submap, reset
+        # Shift focus between entries
+        bind = , h, exec, eww-powermenu-ctl --update-focus 0 -1
+        bind = , j, exec, eww-powermenu-ctl --update-focus 1 0
+        bind = , k, exec, eww-powermenu-ctl --update-focus -1 0
+        bind = , l, exec, eww-powermenu-ctl --update-focus 0 1
 
-      bind = , escape, exec, eww close ${widgetName}
-      bind = , escape, submap, reset
+        # Execute the command assigned to the ${widgetName} entry
+        bind = , RETURN, exec, ${lib.concatStringsSep " && " [
+          "${resetCommand}"
+          "bash -c \"$(${lib.concatStringsSep " " [
+            "jq"
+            ".[$(eww get ${powermenuActiveRow})][$(eww get ${powermenuActiveCol})]"
+            "< ~/.config/eww/${moduleName}.json"
+          ]})\""
+        ]}
+
+        # Close the ${widgetName} & exit the submap without doing anything
+        bind = SUPER SHIFT, E, exec, ${resetCommand}
+        bind = , escape, exec, ${resetCommand}
 
       submap = reset
     ''
