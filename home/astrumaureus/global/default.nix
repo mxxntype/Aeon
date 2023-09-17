@@ -59,6 +59,19 @@ in {
     };
   };
 
+  xdg = {
+    enable = true;
+
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+      desktop = "${config.home.homeDirectory}/Desktop";
+      documents = "${config.home.homeDirectory}/Documents";
+      music = "${config.home.homeDirectory}/Music";
+      pictures = "${config.home.homeDirectory}/Images";
+    };
+  };
+
   # Sets global colorscheme
   # colorscheme = schemeFromYAML "base16" (builtins.readFile ../../../colorschemes/everblush.yaml);
   colorscheme = schemeFromYAML "base16" (builtins.readFile ../../../colorschemes/catppuccin-oled.yaml);
