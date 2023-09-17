@@ -8,6 +8,8 @@
       numpy
       matplotlib
       scipy
+      yfinance
+      tkinter
     ]))
     nodePackages.pyright
     # jupyter
