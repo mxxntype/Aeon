@@ -15,7 +15,8 @@
   enabledMonitors = lib.filter (m: m.enable) monitors;
 
   # Apps & CLI tools
-  offloadCommand = ""; # TODO: Fix smart-offload
+  offloadCommand = "smart-offload"; # TODO: Fix smart-offload
+  gamemodeCommand = "gamemoderun";
   terminalName = "kitty";
   terminalCommand = "${offloadCommand} ${terminalName}";
   floatingTerminalClass = "${terminalName}Floating";
@@ -136,6 +137,7 @@ in {
         exec-once = swww init
         exec-once = eww daemon --restart --force-wayland && eww open statusbar
         exec-once = hypridle.sh
+        exec-once = hyprprofile
 
         exec      = sleep 0.5 && swww img ~/.wallpaper
 
@@ -184,7 +186,7 @@ in {
         bind = SUPER SHIFT, RETURN, exec, ${floatingTerminalCommand}
         bind = SUPER,       P,      exec, ${floatingTerminalCommand} btm --battery
         bind = SUPER,       M,      exec, ${floatingTerminalCommand} alsamixer
-        bind = SUPER SHIFT, N,      exec, ${offloadCommand} obsidian --ozone-platform=wayland
+        bind = SUPER SHIFT, N,      exec, obsidian --ozone-platform=wayland
 
         windowrule = float, ^(${floatingTerminalClass})$
         windowrule = size 50% 70%, ^(${floatingTerminalClass})$
@@ -216,14 +218,14 @@ in {
 
         # --[[ Workspace-assigned apps ]]--
         bind = CTRL SHIFT, 1, exec, ${terminalCommand}
-        bind = CTRL SHIFT, 2, exec, ${offloadCommand} inkscape
-        bind = CTRL SHIFT, 3, exec, ${offloadCommand} librewolf
-        bind = CTRL SHIFT, 4, exec, ${offloadCommand} telegram-desktop
-        bind = CTRL SHIFT, 5, exec, ${offloadCommand} libreoffice
-        bind = CTRL SHIFT, 6, exec, ${offloadCommand} virt-manager
-        bind = CTRL SHIFT, 7, exec, ${offloadCommand} smart-offload prismlauncher
-        bind = CTRL SHIFT, 8, exec, ${offloadCommand} keepassxc
-        bind = CTRL SHIFT, 9, exec, ${offloadCommand} freetube --ozone-platform=wayland
+        bind = CTRL SHIFT, 2, exec, inkscape
+        bind = CTRL SHIFT, 3, exec, librewolf
+        bind = CTRL SHIFT, 4, exec, telegram-desktop
+        bind = CTRL SHIFT, 5, exec, libreoffice
+        bind = CTRL SHIFT, 6, exec, virt-manager
+        bind = CTRL SHIFT, 7, exec, ${offloadCommand} ${gamemodeCommand} prismlauncher
+        bind = CTRL SHIFT, 8, exec, keepassxc
+        bind = CTRL SHIFT, 9, exec, freetube --ozone-platform=wayland
         bind = CTRL SHIFT, o, exec, ${floatingTerminalCommand} ncmpcpp
 
         # --[[ brightness ]]--
@@ -234,6 +236,9 @@ in {
         bind = , XF86AudioMute,         exec, amixer -q set Master toggle
         bind = , XF86AudioRaiseVolume,  exec, amixer -q set Master 10%+ unmute
         bind = , XF86AudioLowerVolume,  exec, amixer -q set Master 10%- unmute
+
+        bindl = , switch:on:Lid Switch, exec, hyprsuspend.sh
+        bindl = , switch:off:Lid Switch, dpms, on
 
         # --[[ move & resize floating windows ]]--
         bindm = SUPER, mouse:272, movewindow
