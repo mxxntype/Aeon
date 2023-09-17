@@ -150,10 +150,10 @@ in {
         bind = CTRL SUPER SHIFT, L, exec, hyprlock.sh
         bind =      SUPER SHIFT, R, exec, hyprctl reload && eww reload
 
-        bind =         , PRINT, exec, grim - | wl-copy
-        bind = ALT     , PRINT, exec, grim -g $(slurp) - | wl-copy
-        bind = CTRL    , PRINT, exec, grim
-        bind = CTRL ALT, PRINT, exec, grim -g $(slurp)
+        bind =         , PRINT, exec, grimblast copy output
+        bind = ALT     , PRINT, exec, grimblast copy area
+        bind = CTRL    , PRINT, exec, grimblast copysave output
+        bind = CTRL ALT, PRINT, exec, grimblast copysave area
 
         # --[[ Shift focus ]]--
         bind = SUPER, H, hy3:movefocus, l
