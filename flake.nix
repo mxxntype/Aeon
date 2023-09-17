@@ -30,6 +30,7 @@
 
     # Stable & nightly Rust
     rust-overlay.url = "github:oxalica/rust-overlay";
+    naersk.url = "github:nix-community/naersk";
 
     # Hyprland, the smooth wayland compositor
     hyprland.url = "github:hyprwm/Hyprland";
@@ -40,6 +41,10 @@
     hyprland-hy3 = {      
       url = "github:outfoxxed/hy3";
       inputs.hyprland.follows = "hyprland";
+    };
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Lanzaboote, UEFI secure boot for NixOS
