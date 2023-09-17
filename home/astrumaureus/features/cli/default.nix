@@ -23,7 +23,6 @@
     porsmo
 
     # Alternative implementations of the basic tools
-    exa
     erdtree
     ripgrep
     fd
