@@ -237,7 +237,7 @@ in {
         bind = , XF86AudioRaiseVolume,  exec, amixer -q set Master 10%+ unmute
         bind = , XF86AudioLowerVolume,  exec, amixer -q set Master 10%- unmute
 
-        bindl = , switch:on:Lid Switch, exec, hyprsuspend.sh
+        bindl = , switch:on:Lid Switch, exec, hyprlock.sh
         bindl = , switch:off:Lid Switch, dpms, on
 
         # --[[ move & resize floating windows ]]--
