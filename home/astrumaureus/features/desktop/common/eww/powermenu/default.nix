@@ -18,7 +18,7 @@
   resetCommand = lib.concatStringsSep " && " [
     "hyprctl dispatch submap reset"
     "eww close ${widgetName}"
-    "eww-powermenu-ctl --set-focus 0 0"
+    "eww-powermenu-ctl --set-focus 0 1"
   ];
 
   powermenuActiveRow = "powermenu-active-row";
@@ -119,7 +119,7 @@
         icon = "󰌾";
         text = "Lockscreen";
         command = "hyprlock.sh";
-        color = colors.base0A;
+        color = colors.base0F;
       })
 
       (entry {
@@ -130,7 +130,7 @@
         icon = "󰤄";
         text = "Suspend";
         command = "hyprsuspend.sh";
-        color = colors.base08;
+        color = colors.base0E;
       })
 
       (entry {
@@ -183,7 +183,7 @@
 in {
   xdg.configFile."eww/${moduleName}.yuck".text = ''
     (defvar ${powermenuActiveRow} 0)
-    (defvar ${powermenuActiveCol} 0)
+    (defvar ${powermenuActiveCol} 1)
 
     (defwidget ${widgetName} []
         (box
