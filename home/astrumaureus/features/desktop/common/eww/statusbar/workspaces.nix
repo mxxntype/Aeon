@@ -13,11 +13,11 @@ in {
     occupiedWorkspacePredicate = "\ws.windows > 0 ? \"occupied\" : \"\"";
     activeWorkspacePredicate = "\${ws.id == active-workspace ? \"active\" : ${occupiedWorkspacePredicate}}";
   in ''
-    (deflisten active-workspace "~/.cargo/bin/hyprquery -sq active-workspace")
-    (deflisten active-window "~/.cargo/bin/hyprquery -sq active-window")
+    (deflisten active-workspace "hyprquery -sq active-workspace")
+    (deflisten active-window "hyprquery -sq active-window")
     (deflisten workspaces
       :initial "[]"
-      "~/.cargo/bin/hyprquery -sq workspaces"
+      "hyprquery -sq workspaces"
     )
 
     (defwidget workspaces []

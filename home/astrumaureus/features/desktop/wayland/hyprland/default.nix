@@ -16,6 +16,7 @@
 
   home.packages = [
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+    inputs.hyprquery.defaultPackage.${pkgs.system}
     pkgs.hyprpicker
   ];
   

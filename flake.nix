@@ -46,6 +46,10 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprquery = {
+      url = "github:mxxntype/hyprquery";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Lanzaboote, UEFI secure boot for NixOS
     lanzaboote = {

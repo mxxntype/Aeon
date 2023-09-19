@@ -14,7 +14,7 @@ in {
     keyboardIcon = "󰌌";
   in ''
     (deflisten keyboard-layout
-      "~/.cargo/bin/hyprquery -sq keyboard-layout"
+      "hyprquery -sq keyboard-layout"
     )
 
     (defwidget keyboard-layout []
