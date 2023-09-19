@@ -229,8 +229,8 @@ in {
         bind = CTRL SHIFT, o, exec, ${floatingTerminalCommand} ncmpcpp
 
         # --[[ brightness ]]--
-        bind = , XF86MonBrightnessUp,   exec, brillo -A 10 -u 100000
-        bind = , XF86MonBrightnessDown, exec, brillo -U 10 -u 100000
+        bind = , XF86MonBrightnessUp,   exec, brillo -q -A 10 -u 100000
+        bind = , XF86MonBrightnessDown, exec, brillo -q -U 10 -u 100000
 
         bind = SUPER SHIFT,         M,  exec, amixer -q set Master toggle
         bind = , XF86AudioMute,         exec, amixer -q set Master toggle
