@@ -54,8 +54,11 @@ in {
       size = 32;
     };
 
-    sessionVariables = {
-      GRIM_DEFAULT_DIR = "${config.home.homeDirectory}/Images/Screenshots";
+    sessionVariables = let
+      dirName = "Screenshots";
+    in {
+      GRIM_DEFAULT_DIR = "${config.xdg.userDirs.pictures}/${dirName}";
+      XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/${dirName}";
     };
   };
 
