@@ -19,7 +19,9 @@
     nvtop
     duf
 
-    # Productivity
+    # Other TUIs
+    yazi
+    zellij
     porsmo
 
     # Alternative implementations of the basic tools
@@ -28,7 +30,6 @@
     fd
     procs
     killall
-    yazi
 
     # Text & image processors
     jq
