@@ -56,5 +56,9 @@
     corefonts
   ];
 
+  programs = {
+    traceroute.enable = true;
+  };
+
   hardware.enableRedistributableFirmware = true;
 }
