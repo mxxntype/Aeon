@@ -1,5 +1,5 @@
-scheme: "Everblush"
-slug: "everblush"
+scheme: "Catppuccin OLED"
+slug: "catppuccin-oled"
 
 base00: "000000" # Darker background
 base01: "000000" # Background
