@@ -1,4 +1,4 @@
-/* INFO: Host configuration: Nox (Dell i7559) */
+/* INFO: Host configuration: Wyrm (Desktop PC) */
 
 {
   ...
@@ -12,7 +12,6 @@
     # Optinonal system-level modules
     ../common/features/boot/quiet-boot.nix
     ../common/features/sound/pipewire
-    ../common/features/gvfs.nix
     # ../common/features/x11.nix
 
     # Services

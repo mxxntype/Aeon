@@ -27,7 +27,6 @@
     ../common/features/boot/quiet-boot.nix
     ../common/features/power/drain.nix
     ../common/features/sound/pipewire
-    ../common/features/gvfs.nix
     ../common/features/gamemode.nix
     ../common/features/services/cups.nix
 
@@ -42,6 +41,8 @@
 
   networking.hostName = "Luna";
   system.stateVersion = "23.05";
+
+  # services.logmein-hamachi.enable = true;
 
   virtualisation = {
     waydroid.enable = true;

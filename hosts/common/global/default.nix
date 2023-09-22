@@ -12,7 +12,6 @@
     ../features/boot
     ../features/environment.nix
     ../features/locale.nix
-    ../features/dconf.nix
     ../features/network.nix
     ../features/nix.nix
     ../features/sops.nix
@@ -45,8 +44,8 @@
       pciutils
       usbutils
       wget
-      # pkg-config
-      # openssl
+      jmtpfs
+      pkg-config
     ];
 
   };
@@ -58,6 +57,11 @@
 
   programs = {
     traceroute.enable = true;
+    dconf.enable = true;
+  };
+
+  services = {
+    gvfs.enable = true;
   };
 
   hardware.enableRedistributableFirmware = true;

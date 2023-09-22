@@ -14,7 +14,6 @@
     ../common/features/boot/quiet-boot.nix
     ../common/features/power/drain.nix
     ../common/features/sound/pipewire
-    ../common/features/gvfs.nix
     ../common/features/x11.nix
 
     # Services
