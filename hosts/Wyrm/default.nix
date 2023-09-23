@@ -19,9 +19,8 @@
     ../common/features/services/qemu
     ../common/features/services/flatpak.nix
 
-    # Other features
-    ../common/features/langs/c
-    ../common/features/langs/rust
+    # Devtools
+    ../common/features/devtools
 
     # WARN: Vital stuff
     ../common/global

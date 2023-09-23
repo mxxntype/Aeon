@@ -20,9 +20,8 @@
     ../common/features/services/syncthing
     ../common/features/services/qemu
 
-    # Other features
-    ../common/features/langs/c
-    ../common/features/langs/rust
+    # Devtools
+    ../common/features/devtools
 
     # WARN: Vital stuff
     ../common/global

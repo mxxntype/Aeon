@@ -18,10 +18,8 @@
     # DB's
     ../common/features/db/postgres.nix
 
-    # Languages
-    ../common/features/langs/c
-    ../common/features/langs/rust
-    ../common/features/langs/py.nix
+    # Devtools
+    ../common/features/devtools
 
     # Optinonal system-level modules
     ../common/features/boot/quiet-boot.nix
