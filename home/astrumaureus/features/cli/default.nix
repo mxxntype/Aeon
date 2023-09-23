@@ -1,5 +1,6 @@
+# INFO: Common CLI utilities
+
 {
-  outputs,
   pkgs,
   ...
 }: {
@@ -9,6 +10,8 @@
     ./git.nix
     ./starship.nix
     ./wiki-tui.nix
+    ./zellij.nix
+    ./yazi.nix
   ];
 
   home.packages = with pkgs; [
@@ -20,8 +23,6 @@
     duf
 
     # Other TUIs
-    yazi
-    zellij
     porsmo
 
     # Alternative implementations of the basic tools
