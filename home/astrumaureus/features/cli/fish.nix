@@ -105,6 +105,8 @@ in {
       atree = "erdtree --hidden --no-git";
       sz = "erdsize --hidden --level 1";
 
+      # Yazi
+      y = "yazi";
 
       # Neovim
       nv = "nvim";
