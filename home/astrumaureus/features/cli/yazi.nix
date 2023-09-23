@@ -72,6 +72,14 @@ in {
     mime = "application/x-rar"
 
     [[filetype.rules]]
+    fg = "#${colors.base07}"
+    name = "*.iso"
+
+    [[filetype.rules]]
+    fg = "#${colors.base0F}"
+    name = "default.nix"
+
+    [[filetype.rules]]
     fg = "#${colors.base0E}"
     name = "*.nix"
 
@@ -161,6 +169,7 @@ in {
     "*.yml" = "󰒓"
     "*.nix" = "󱄅"
     "*.zip" = "󰀼"
+    "*.iso" = "󰀥"
     "*.key" = "󰌆"
     "*.gpg" = "󰌆"
     "*.kdbx" = "󰌆"
@@ -178,6 +187,8 @@ in {
     ".zshenv" = "󰒓"
     ".zshrc" = "󰒓"
     "*_history" = "󰋚"
+    "common/" = "󰾶"
+    "global/" = ""
     "Camera/" = "󰉏"
     "Desktop/" = "󰇄"
     "Repos/" = "󱧼"
@@ -207,10 +218,12 @@ in {
     fg = "#${colors.base0D}"
 
     [preview]
-    syntect_theme = "~/.config/bat/themes/Catppuccin-macchiato.tmTheme"
+    syntect_theme = "~/.config/bat/themes/Catppuccin-mocha.tmTheme"
 
     [preview.hovered]
-    underline = true
+    underline = false
+    bg = "#${colors.base02}"
+    fg = "#${colors.base06}"
 
     [progress]
     [progress.gauge]
@@ -224,7 +237,7 @@ in {
     [selection]
     [selection.hovered]
     bg = "#${colors.base02}"
-    fg = "#${colors.base05}"
+    fg = "#${colors.base06}"
 
     [status]
     [status.body]
