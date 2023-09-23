@@ -184,6 +184,7 @@ in {
         bind = SUPER SHIFT, RETURN, exec, ${floatingTerminalCommand}
         bind = SUPER,       P,      exec, ${floatingTerminalCommand} btm --battery
         bind = SUPER,       M,      exec, ${floatingTerminalCommand} alsamixer
+        bind = SUPER,       E,      exec, ${floatingTerminalCommand} fish -C yazi
         bind = SUPER SHIFT, N,      exec, obsidian --ozone-platform=wayland
 
         windowrule = float, ^(${floatingTerminalClass})$
