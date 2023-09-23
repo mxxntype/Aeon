@@ -24,9 +24,9 @@ in {
       # Splits
       enabled_layouts = "horizontal";
       window_border_width = "1.5";
-      window_padding_width = 8;
-      window_margin_width = 6;
-      single_window_margin_width = 8;
+      window_padding_width = 4;
+      # window_margin_width = 6;
+      single_window_margin_width = 4;
 
       # Opacity
       background_opacity = "0.9";
