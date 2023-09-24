@@ -69,6 +69,7 @@ in {
       selection_foreground = "#${colors.base00}";
 
       cursor = "#${colors.base05}";
+      cursor_shape = "beam";
       url_color = "#${colors.base04}";
 
       active_border_color = "#${colors.base03}";
