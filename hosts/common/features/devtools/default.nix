@@ -1,4 +1,4 @@
-{ pkgs }: {
+{ pkgs, ... }: {
   imports = [
     ./c.nix
     ./rust.nix
