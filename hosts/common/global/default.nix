@@ -46,6 +46,7 @@
       wget
       jmtpfs
       pkg-config
+      libnotify
     ];
 
   };
