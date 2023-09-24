@@ -68,7 +68,7 @@ in {
 
         "ui.cursor.primary" = { fg = subtext; modifiers = ["reversed"]; };
         "attribute" = text;
-        "variable" = text;
+        "variable" = orange;
         "constant" = text;
         "variable.builtin" = text;
         "constant.builtin" = text;
@@ -86,8 +86,8 @@ in {
         "function.macro" = blue;
         "function.builtin" = blue;
 
-        "punctuation.delimiter" = orange;
-        "operator" = orange;
+        "punctuation.delimiter" = text;
+        "operator" = text;
         # "variable.other.member" = orange;
 
         "keyword" = purple;
