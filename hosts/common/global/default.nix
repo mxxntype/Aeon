@@ -45,7 +45,6 @@
       usbutils
       wget
       jmtpfs
-      pkg-config
       libnotify
     ];
 
