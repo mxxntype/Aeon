@@ -15,12 +15,15 @@
   enabledMonitors = lib.filter (m: m.enable) monitors;
 
   # Apps & CLI tools
-  offloadCommand = "smart-offload"; # TODO: Fix smart-offload
-  gamemodeCommand = "gamemoderun";
   terminalName = "kitty";
   terminalCommand = "${offloadCommand} ${terminalName}";
   floatingTerminalClass = "${terminalName}Floating";
   floatingTerminalCommand = "${terminalCommand} --class ${floatingTerminalClass}";
+
+  # Wrappers & prefixes
+  offloadCommand = "smart-offload"; # TODO: Fix smart-offload
+  gamemodeCommand = "gamemoderun";
+  GTKFileDialogEnv = "QT_QPA_PLATFORMTHEME=gtk3";
 
   # Wallpapers
   wallpaper-base00 = let
@@ -219,11 +222,11 @@ in {
         bind = CTRL SHIFT, 1, exec, ${terminalCommand}
         bind = CTRL SHIFT, 2, exec, inkscape
         bind = CTRL SHIFT, 3, exec, librewolf
-        bind = CTRL SHIFT, 4, exec, telegram-desktop
+        bind = CTRL SHIFT, 4, exec, ${GTKFileDialogEnv} telegram-desktop
         bind = CTRL SHIFT, 5, exec, libreoffice
         bind = CTRL SHIFT, 6, exec, virt-manager
         bind = CTRL SHIFT, 7, exec, ${offloadCommand} ${gamemodeCommand} prismlauncher
-        bind = CTRL SHIFT, 8, exec, keepassxc
+        bind = CTRL SHIFT, 8, exec, ${GTKFileDialogEnv} keepassxc
         bind = CTRL SHIFT, 9, exec, freetube --ozone-platform=wayland
         bind = CTRL SHIFT, o, exec, ${floatingTerminalCommand} ncmpcpp
 
@@ -371,6 +374,9 @@ in {
           }
         }
 
+        # GTK file dialogs
+        windowrulev2 = float, title:^(Open.*)$
+
         # Gimp
         windowrulev2 = workspace 2, class:^(.*Gimp.*)$
 
@@ -411,7 +417,7 @@ in {
         windowrulev2 = workspace 7,                             class:^(.*prismlauncher.*)$
         windowrulev2 = bordercolor $BORDER_COLOR_PRISMLAUNCHER, class:^(.*prismlauncher.*)$
 
-        # keepassxc ]]
+        # KeePassXC
         windowrulev2 = workspace 8,                         class:^(.*keepassxc.*)$
         windowrulev2 = bordercolor $BORDER_COLOR_KEEPASSXC, class:^(.*keepassxc.*)$
 
