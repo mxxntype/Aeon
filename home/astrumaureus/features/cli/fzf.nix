@@ -33,6 +33,8 @@ in {
       "--height 40%"
       "--bind=tab:down"
       "--bind=btab:up"
+      "--bind=alt-j:down"
+      "--bind=alt-k:up"
     ];
 
     # CTRL+T
