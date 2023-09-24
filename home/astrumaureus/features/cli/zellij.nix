@@ -17,7 +17,6 @@ in {
 
   xdg.configFile."zellij/config.kdl".text = ''
     theme "nix"
-
     themes {
         nix {
             fg "#${colors.base04}"
@@ -34,6 +33,8 @@ in {
             magenta "#${colors.base0E}"
         }
     }
+
+    default_layout "compact"
     
     // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
     keybinds {
