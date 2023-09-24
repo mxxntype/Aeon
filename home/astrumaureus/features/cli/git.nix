@@ -1,9 +1,5 @@
 # INFO: Git & GitHub CLI
-
-{
-  pkgs,
-  ...
-}: {
+{ pkgs, ... }: {
   programs.git = {
     enable = true;
     userName = "mxxntype";

@@ -1,8 +1,5 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+# INFO: `wiki-tui`, Wikipedia in the terminal
+{ inputs, pkgs, ... }: {
   home.packages = with pkgs; [
     wiki-tui
   ];

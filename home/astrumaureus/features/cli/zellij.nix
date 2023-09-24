@@ -1,10 +1,7 @@
-# INFO: Zellij, a terminal multiplexer in Rust
+# INFO: `zellij`, a terminal multiplexer in Rust
 
-{
-    config,
-    ...
-}: let
-    inherit (config.colorscheme) colors;
+{ config, ... }: let
+  inherit (config.colorscheme) colors;
 in {
   programs.zellij = {
     enable = true;

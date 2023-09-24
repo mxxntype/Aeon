@@ -1,3 +1,4 @@
+# INFO: `fish`, the friendly interactive shell
 {
   inputs,
   config,

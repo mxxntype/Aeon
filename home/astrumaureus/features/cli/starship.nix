@@ -1,7 +1,5 @@
-{
-  lib,
-  ...
-}: {
+# INFO: `starship.rs`, rust-powered, cross-platform shell propmt
+{ lib, ... }: {
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
