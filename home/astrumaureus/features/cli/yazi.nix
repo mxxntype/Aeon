@@ -1,3 +1,4 @@
+# INFO: `yazi`, terminal file manager in Rust
 {
   inputs,
   config,
@@ -8,6 +9,8 @@
 in {
   home.packages = with pkgs; [
     yazi
+    ffmpegthumbnailer
+    unar
   ]; 
 
   xdg.configFile."yazi/yazi.toml".text = inputs.nix-std.lib.serde.toTOML {
