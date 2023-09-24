@@ -131,7 +131,7 @@ in {
         # --[[ Autostart ]]--
         ${ # INFO: Gamma setup
           lib.concatStringsSep "\n" (lib.forEach enabledMonitors (m: ''
-            exec-once = wlsunset -t 5000 -T 7000 -g ${toString m.gamma}
+            # exec-once = wlsunset -t 6500 -T 6501 -g ${toString m.gamma}
           ''))
         }
         exec-once = swww init
