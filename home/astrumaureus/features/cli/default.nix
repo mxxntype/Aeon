@@ -1,17 +1,14 @@
 # INFO: Common CLI utilities
-
-{
-  pkgs,
-  ...
-}: {
+{ pkgs, ... }: {
   imports = [
     ./bat.nix
     ./fish.nix
+    ./fzf.nix
     ./git.nix
     ./starship.nix
     ./wiki-tui.nix
-    ./zellij.nix
     ./yazi.nix
+    ./zellij.nix
   ];
 
   home.packages = with pkgs; [
@@ -39,6 +36,7 @@
 
     # Build systems & automation
     gnumake
+    comma
 
     # Archiving tools
     unzip
