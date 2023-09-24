@@ -73,6 +73,17 @@ in {
       music = "${config.home.homeDirectory}/Music";
       pictures = "${config.home.homeDirectory}/Images";
     };
+
+    mime.enable = true;
+    mimeApps = let
+      mimes = {
+        "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
+      };
+    in {
+      enable = true;
+      associations.added = mimes;
+      defaultApplications = mimes;
+    };
   };
 
   # Sets global colorscheme
