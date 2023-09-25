@@ -54,24 +54,29 @@ nvme0n1
     };
   };
 
-  boot.loader.efi.efiSysMountPoint = lib.mkForce "/boot";
-  boot.initrd = {
-    luks = {
-      devices = {
-        "root" = {
-          device = "/dev/disk/by-label/LUNA_ENC";
-          preLVM = true;
-          # keyFile = "/keyfile-luna.bin";
-          allowDiscards = true;
+  boot = {
+    loader = {
+      grub.device = "/dev/nvme0n1";
+      efi.efiSysMountPoint = lib.mkForce "/boot";
+    };
+    initrd = {
+      luks = {
+        devices = {
+          "root" = {
+            device = "/dev/disk/by-label/LUNA_ENC";
+            preLVM = true;
+            # keyFile = "/keyfile-luna.bin";
+            allowDiscards = true;
+          };
         };
       };
+
+      # Include necessary keyfiles in the InitRD
+      # secrets = {
+      #   "keyfile-wyrm.bin" = "/etc/secrets/initrd/keyfile-wyrm.bin"; # Root partition key
+      # };
     };
 
-    # Include necessary keyfiles in the InitRD
-    # secrets = {
-    #   "keyfile-wyrm.bin" = "/etc/secrets/initrd/keyfile-wyrm.bin"; # Root partition key
-    # };
+    supportedFilesystems = [ "ntfs" ];
   };
-
-  boot.supportedFilesystems = [ "ntfs" ];
 }
