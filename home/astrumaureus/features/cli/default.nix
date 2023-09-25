@@ -1,5 +1,5 @@
 # INFO: Common CLI utilities
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   imports = [
     ./bat.nix
     ./fish.nix
@@ -59,6 +59,7 @@
     ssh-to-age
 
     # outputs.packages."x86_64-linux".repalette
+    inputs.reddot.packages.${pkgs.system}.default
 
   ];
 }

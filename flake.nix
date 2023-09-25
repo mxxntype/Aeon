@@ -50,6 +50,10 @@
       url = "github:mxxntype/hyprquery";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    reddot = {
+      url = "github:mxxntype/reddot";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Lanzaboote, UEFI secure boot for NixOS
     lanzaboote = {
