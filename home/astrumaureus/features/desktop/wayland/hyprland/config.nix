@@ -93,9 +93,7 @@
     keyboardBacklightRestorationTimeout = 2;
   in pkgs.writeShellScriptBin "hyprsuspend.sh" ''
     hyprlock.sh
-    echo 0 > $KBD_LED_PATH
     systemctl suspend && sleep ${toString keyboardBacklightRestorationTimeout}
-    echo "$PREVIOUS_BRIGHTNESS" > $KBD_LED_PATH
   '';
 in {
   imports = [
