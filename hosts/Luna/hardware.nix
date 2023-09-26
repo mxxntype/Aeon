@@ -3,16 +3,11 @@
 # System architecture, microcode updates & etc.
 
 {
-  # inputs,
   lib,
   pkgs,
   config,
   ...
 }: {
-  # imports = [
-  #   inputs.hardware.nixosModules.common-gpu-nvidia-disable
-  # ];
-
   boot = {
     kernelModules = [ "kvm-intel" ];
     initrd = {
@@ -41,6 +36,11 @@
     };
     nvidia.enableSmartOffloadCmd = true; # `smart-offload` stub
   };
+
+  imports = [
+    # Disable the dGPU with udev rules in the iGPU specialisation
+    ./igpu-specialisation.nix
+  ];
 
   # DGPU: Nvidia RTX 3050
   specialisation."dGPU" = {
