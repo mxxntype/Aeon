@@ -178,6 +178,8 @@
     elif [[ "$1" == "--update-focus" ]]; then
       eww update ${powermenuActiveRow}=$(( $(eww get ${powermenuActiveRow}) + $2))
       eww update ${powermenuActiveCol}=$(( $(eww get ${powermenuActiveCol}) + $3))
+    elif [[ "$1" == "--trigger" ]]; then
+      eval $(jq ".[$2][$3]" < ~/.config/eww/${moduleName}.json | tr -d '"')
     fi
   '';
 in {
@@ -218,7 +220,6 @@ in {
     )
   '';
 
-  # FIXME
   xdg.configFile."eww/${moduleName}.scss".text = ''
     .${widgetName}-entry {
       &.active {
@@ -248,13 +249,9 @@ in {
         bind = , l, exec, eww-powermenu-ctl --update-focus 0 1
 
         # Execute the command assigned to the ${widgetName} entry
-        bind = , RETURN, exec, ${lib.concatStringsSep " && " [
+        bind = , RETURN, exec, ${lib.concatStringsSep " " [
+          "eww-powermenu-ctl --trigger $(eww get ${powermenuActiveRow}) $(eww get ${powermenuActiveCol}) &"
           "${resetCommand}"
-          "bash -c \"$(${lib.concatStringsSep " " [
-            "jq"
-            ".[$(eww get ${powermenuActiveRow})][$(eww get ${powermenuActiveCol})]"
-            "< ~/.config/eww/${moduleName}.json"
-          ]})\""
         ]}
 
         # Close the ${widgetName} & exit the submap without doing anything
