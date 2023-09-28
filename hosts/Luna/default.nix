@@ -27,6 +27,7 @@
     ../common/features/sound/pipewire
     ../common/features/gamemode.nix
     ../common/features/services/cups.nix
+    ../common/features/gpg.nix
 
     # NOTE: Vital
     ../common/global
