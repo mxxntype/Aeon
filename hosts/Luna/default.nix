@@ -14,6 +14,7 @@
     ../common/features/services/flatpak.nix
     ../common/features/services/bluetooth.nix
     ../common/features/services/adb.nix
+    ../common/features/services/moonlight.nix
 
     # DB's
     ../common/features/db/postgres.nix

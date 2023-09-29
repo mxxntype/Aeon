@@ -18,6 +18,7 @@
     ../common/features/services/syncthing
     ../common/features/services/qemu
     ../common/features/services/flatpak.nix
+    ../common/features/services/moonlight.nix
 
     # Devtools
     ../common/features/devtools
