@@ -68,7 +68,7 @@ in {
 
         "ui.cursor.primary" = { fg = subtext; modifiers = ["reversed"]; };
         "attribute" = text;
-        "variable" = orange;
+        "variable" = yellow;
         "constant" = text;
         "variable.builtin" = text;
         "constant.builtin" = text;
@@ -92,7 +92,7 @@ in {
 
         "keyword" = purple;
         "keyword.directive" = purple;
-        "variable.parameter" = purple;
+        "variable.parameter" = red;
 
         "error" = red;
 
