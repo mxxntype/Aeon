@@ -213,7 +213,7 @@ in {
       :geometry (geometry
         :anchor "center"
       )
-      :stacking "fg"
+      :stacking "overlay"
       :exclusive false
       :focusable false
       (powermenu)
