@@ -77,9 +77,9 @@ in {
         "ui.text" = text;
         "punctuation" = text;
 
-        "type" = yellow;
-        "type.builtin" = yellow;
-        "label" = yellow;
+        "type" = pink;
+        "type.builtin" = pink;
+        "label" = pink;
 
         "constructor" = blue;
         "function" = blue;
