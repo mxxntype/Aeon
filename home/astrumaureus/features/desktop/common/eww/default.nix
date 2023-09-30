@@ -16,6 +16,7 @@
   xdg.configFile."eww/eww.yuck".text = ''
     (include "./statusbar/statusbar.yuck")
     (include "./powermenu/powermenu.yuck")
+    (include "./revealer-test.yuck")
   '';
   xdg.configFile."eww/eww.scss".text = ''
     @use './statusbar/statusbar';

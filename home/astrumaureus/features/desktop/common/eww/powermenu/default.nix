@@ -6,11 +6,12 @@
   lib,
   ...
 }: let
-  inherit (config) wm-config;
-  inherit (config.colorscheme) colors;
-
   widgetName = "powermenu";
   moduleName = "${widgetName}/${widgetName}";
+
+  shared = import ../shared.nix { inherit config lib; };
+  inherit (shared) style colors wm-config variables;
+
   tileHeight = 150;
   tileWidth = tileHeight;
   tileSpacing = 8;
@@ -21,10 +22,9 @@
     "eww-powermenu-ctl --set-focus 0 1"
   ];
 
-  powermenuActiveRow = "powermenu-active-row";
-  powermenuActiveCol = "powermenu-active-col";
-
-  style = lib.concatStringsSep ";";
+  # NOTE: Now in ../shared.nix
+  # variables.powermenuActiveRow = "powermenu-active-row";
+  # variables.powermenuActiveCol = "powermenu-active-col";
 
   entry = {
     position ? {
@@ -57,7 +57,7 @@
           # "hyprctl notify"
           # "-1 3000"                    # Timeout
           # "'rgb(${colors.base0E})'"    # Color
-          # "$(eww get ${powermenuActiveRow}):$(eww get ${powermenuActiveCol})"
+          # "$(eww get ${variables.powermenuActiveRow}):$(eww get ${variables.powermenuActiveCol})"
         ]}"
 
         :onhoverlost "${lib.concatStringsSep " " [
@@ -86,7 +86,7 @@
           (button
             :vexpand true
             :onclick "${toString command} & ${resetCommand}"
-            :class "${widgetName}-entry ''${${powermenuActiveRow} == "${toString position.row}" ? ${powermenuActiveCol} == "${toString position.col}" ? "active" : "" : ""}"
+            :class "${widgetName}-entry ''${${variables.powermenuActiveRow} == "${toString position.row}" ? ${variables.powermenuActiveCol} == "${toString position.col}" ? "active" : "" : ""}"
             :style "${style [
               "color: #${color}"
               "font-size: ${toString (tileHeight / 4)}px"
@@ -173,19 +173,19 @@
 
   eww-powermenu-ctl = pkgs.writeShellScriptBin "eww-powermenu-ctl" ''
     if [[ "$1" == "--set-focus" ]]; then
-      eww update ${powermenuActiveRow}=$2
-      eww update ${powermenuActiveCol}=$3
+      eww update ${variables.powermenuActiveRow}=$2
+      eww update ${variables.powermenuActiveCol}=$3
     elif [[ "$1" == "--update-focus" ]]; then
-      eww update ${powermenuActiveRow}=$(( $(eww get ${powermenuActiveRow}) + $2))
-      eww update ${powermenuActiveCol}=$(( $(eww get ${powermenuActiveCol}) + $3))
+      eww update ${variables.powermenuActiveRow}=$(( $(eww get ${variables.powermenuActiveRow}) + $2))
+      eww update ${variables.powermenuActiveCol}=$(( $(eww get ${variables.powermenuActiveCol}) + $3))
     elif [[ "$1" == "--trigger" ]]; then
       eval $(jq ".[$2][$3]" < ~/.config/eww/${moduleName}.json | tr -d '"')
     fi
   '';
 in {
   xdg.configFile."eww/${moduleName}.yuck".text = ''
-    (defvar ${powermenuActiveRow} 0)
-    (defvar ${powermenuActiveCol} 1)
+    (defvar ${variables.powermenuActiveRow} 0)
+    (defvar ${variables.powermenuActiveCol} 1)
 
     (defwidget ${widgetName} []
         (box
@@ -250,7 +250,7 @@ in {
 
         # Execute the command assigned to the ${widgetName} entry
         bind = , RETURN, exec, ${lib.concatStringsSep " " [
-          "eww-powermenu-ctl --trigger $(eww get ${powermenuActiveRow}) $(eww get ${powermenuActiveCol}) &"
+          "eww-powermenu-ctl --trigger $(eww get ${variables.powermenuActiveRow}) $(eww get ${variables.powermenuActiveCol}) &"
           "${resetCommand}"
         ]}
 
