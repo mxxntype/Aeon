@@ -18,6 +18,7 @@
     bottom
     nvtop
     duf
+    nmap
 
     # Other TUIs
     porsmo
