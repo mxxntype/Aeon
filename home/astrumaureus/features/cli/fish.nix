@@ -139,10 +139,13 @@ in {
       ns = "nix shell";
       nr = "nix run";
       nf = "nix flake";
+      nfi = "nix flake init";
       nfu = "nix flake update";
       nfc = "nix flake check";
       nfl = "nix flake lock";
       nd = "nix develop";
+      nst = "nix store";
+      nsto = "nix store optimise";
       hm = "home-manager";
 
       # Rust & cargo
