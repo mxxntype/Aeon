@@ -486,15 +486,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1696036450,
-        "narHash": "sha256-h8Bm29mgi84ExURlvXS1BGctts2FKmbtLHK9/H0dq0E=",
-        "owner": "Infinidoge",
+        "lastModified": 1696034871,
+        "narHash": "sha256-XCLtavO2b9G39z/sxaXPunjftn9I1IwVFM94OtaB0l0=",
+        "owner": "Misterio77",
         "repo": "nix-minecraft",
-        "rev": "1c3622d8b71d32deaaa5d27220703fbe2dc3d900",
+        "rev": "930a57683746891765ac64aa08d48586c4f4ea92",
         "type": "github"
       },
       "original": {
-        "owner": "Infinidoge",
+        "owner": "Misterio77",
         "repo": "nix-minecraft",
         "type": "github"
       }
