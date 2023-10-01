@@ -47,6 +47,12 @@
     enableSmartOffloadCmd = true;
   };
 
+  networking.interfaces = {
+    enp0s31f6 = {
+      wakeOnLan.enable = true;
+    };
+  };
+
   # The REAL hardware configuration
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
