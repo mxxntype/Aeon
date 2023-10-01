@@ -1,6 +1,6 @@
 # INFO: Networking settings
 
-{ lib, ... }: {
+{ lib, pkgs, ... }: {
   networking = {
     useDHCP = lib.mkDefault true;
     networkmanager.enable = true;
@@ -11,4 +11,8 @@
       "192.168.68.111" = [ "Luna" "luna" ];
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    wakeonlan
+  ];
 }
