@@ -155,7 +155,15 @@ in {
       ci = "cargo install";
       cu = "cargo update";
       cc = "cargo check";
-      ccl = "cargo clippy";
+      # ccl = "cargo clippy -- \\\n-W clippy::nursery \\\n-W clippy::pedantic \\\n-W clippy::unwrap_used";
+      ccl = lib.concatStringsSep " \\\n" [
+        "cargo clippy --all-features --all-targets --"
+        "-W clippy::nursery"
+        "-W clippy::pedantic"
+        "-W clippy::style"
+        "-W clippy::complexity"
+        "-W clippy::perf"
+      ];
       cb = "cargo build";
       cbr = "cargo build --release";
       cr = "cargo run";
