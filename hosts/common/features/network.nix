@@ -10,6 +10,16 @@
       "192.168.68.101" = [ "Wyrm" "wyrm" ];
       "192.168.68.111" = [ "Luna" "luna" ];
     };
+
+    firewall = let
+      alwaysOpenPorts = [
+        9 # WakeOnLAN
+      ];
+    in {
+      enable = true;
+      allowedTCPPorts = alwaysOpenPorts;
+      allowedUDPPorts = alwaysOpenPorts;
+    };
   };
 
   environment.systemPackages = with pkgs; [
