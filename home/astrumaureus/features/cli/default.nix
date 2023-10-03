@@ -32,6 +32,7 @@
 
     # Text & image processors
     jq
+    jaq
     timg
     toml2nix
 

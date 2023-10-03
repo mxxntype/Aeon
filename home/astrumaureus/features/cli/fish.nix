@@ -86,6 +86,7 @@ in {
       btm = "btm --battery";
       ps = "procs";
       nvt = "nvtop";
+      jq = "jaq";
       # sz = "du -sh";
 
       # Power
