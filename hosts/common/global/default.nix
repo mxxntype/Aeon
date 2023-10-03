@@ -62,6 +62,9 @@
 
   services = {
     gvfs.enable = true;
+    logind.extraConfig = ''
+      HandlePowerKey=suspend
+    '';
   };
 
   hardware.enableRedistributableFirmware = true;
