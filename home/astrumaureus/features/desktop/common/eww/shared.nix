@@ -20,7 +20,7 @@
 
     commandPrompt = {
       name = "command-prompt";
-      openBind = "SUPER, P";
+      openBind = "SUPER, D";
       variables = {
         commands = "${commandPrompt.name}-commands";
       };
