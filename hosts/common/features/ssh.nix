@@ -23,8 +23,7 @@
 
   programs.ssh.startAgent = true;
 
-  # BUG: https://github.com/NixOS/nixpkgs/issues/256713
-  # security.pam.enableSSHAgentAuth = true; # Passwordless sudo when SSH'ing with keys
+  security.pam.enableSSHAgentAuth = true; # Passwordless sudo when SSH'ing with keys
 
   environment.systemPackages = with pkgs; [
     sshfs
