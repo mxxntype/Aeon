@@ -46,7 +46,7 @@
 
   # Smooth exit
   hyprexit = let
-    exitDuration = 1;
+    exitDuration = 0.5;
     exitWorkspace = 11; # The '100%-empty' workspace to switch to instead of killing all windows
   in pkgs.writeShellScriptBin "hyprexit.sh" ''
     eww close-all
@@ -57,7 +57,7 @@
 
   # Lockscreen
   hyprlock = let
-    screenPoweroffDelay = 2;
+    screenPoweroffDelay = 0.1;
   in pkgs.writeShellScriptBin "hyprlock.sh" ''
     KBD_LED_PATH="/sys/class/leds/asus::kbd_backlight/brightness"
     KBD_LED_PREV="$(cat $KBD_LED_PATH)"
@@ -228,15 +228,20 @@ in {
         bind = CTRL SHIFT, 9, exec, freetube --ozone-platform=wayland
         bind = CTRL SHIFT, o, exec, ${floatingTerminalCommand} ncmpcpp
 
-        # --[[ brightness ]]--
+        # Brightness
         bind = , XF86MonBrightnessUp,   exec, brillo -q -A 10 -u 100000
         bind = , XF86MonBrightnessDown, exec, brillo -q -U 10 -u 100000
 
+        # Volume
         bind = SUPER SHIFT,         M,  exec, amixer -q set Master toggle
         bind = , XF86AudioMute,         exec, amixer -q set Master toggle
         bind = , XF86AudioRaiseVolume,  exec, amixer -q set Master 10%+ unmute
         bind = , XF86AudioLowerVolume,  exec, amixer -q set Master 10%- unmute
 
+        # Power button
+        bind = , XF86PowerOff, exec, hyprlock.sh
+
+        # Laptop lid
         bindl = , switch:on:Lid Switch, exec, hyprlock.sh
         bindl = , switch:off:Lid Switch, dpms, on
 
