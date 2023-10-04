@@ -48,4 +48,6 @@
     waydroid.enable = true;
     # docker.enable = true;
   };
+
+  services.tailscale.enable = true;
 }

@@ -6,9 +6,10 @@
     networkmanager.enable = true;
 
     hosts = {
+      # NOTE: Replaced by Tailscale's MagicDNS
       # Reserved addresses in home WiFi
-      "192.168.68.101" = [ "Wyrm" "wyrm" ];
-      "192.168.68.111" = [ "Luna" "luna" ];
+      # "192.168.68.101" = [ "Wyrm" "wyrm" ];
+      # "192.168.68.111" = [ "Luna" "luna" ];
     };
 
     firewall = let
