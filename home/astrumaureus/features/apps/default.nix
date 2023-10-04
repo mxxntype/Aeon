@@ -12,6 +12,7 @@
     session-desktop
     rocketchat-desktop
     revolt-desktop
+    signal-desktop-beta
 
     # Media
     inkscape
