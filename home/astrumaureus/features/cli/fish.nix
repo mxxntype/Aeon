@@ -69,6 +69,7 @@ in {
       abbr --add --position anywhere -- "md" "mkdir -pv"
       abbr --add --position anywhere -- "cat" "bat"
       abbr --add --position anywhere -- "scl" "systemctl"
+      abbr --add --position anywhere -- "ts" "tailscale"
       abbr --add --position anywhere -- R "| rg"
       abbr --add --position anywhere L --set-cursor "% | less"
 
@@ -87,6 +88,7 @@ in {
       ps = "procs";
       nvt = "nvtop";
       jq = "jaq";
+      y = "yazi";
       # sz = "du -sh";
 
       # Power
@@ -106,9 +108,6 @@ in {
       tree = "erdtree";
       atree = "erdtree --hidden --no-git";
       sz = "erdsize --hidden --level 1";
-
-      # Yazi
-      y = "yazi";
 
       # Neovim
       nv = "nvim";
@@ -182,15 +181,14 @@ in {
       # db = "dotnet build";
       # dr = "dotnet run";
 
-      # Packwiz
-      pw = "packwiz";
-
       # Desktops
       Hyprland = "dbus-run-session Hyprland";
       hcl = "hyprctl";
 
-      # CTL's
+      # Other CTL's
       bcl = "bluetoothctl";
+      jcl = "journalctl";
+      pw = "packwiz";
     };
 
     # Aliases expand after abbreviations do, so they can be used to
