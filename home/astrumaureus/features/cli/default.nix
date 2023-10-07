@@ -18,7 +18,11 @@
     bottom
     nvtop
     duf
+
+    # Networking
     nmap
+    netdiscover
+    speedtest-rs
 
     # Other TUIs
     porsmo
