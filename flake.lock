@@ -621,10 +621,10 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1694767346,
-        "narHash": "sha256-5uH27SiVFUwsTsqC5rs3kS7pBoNhtoy9QfTP9BmknGk=",
-        "path": "/nix/store/6s86padm2iikrwhlq8nwfv0lw9d1sbvq-source",
-        "rev": "ace5093e36ab1e95cb9463863491bee90d5a4183",
+        "lastModified": 1696019113,
+        "narHash": "sha256-X3+DKYWJm93DRSdC5M6K5hLqzSya9BjibtBsuARoPco=",
+        "path": "/nix/store/r88zkfh22shcgj0c4zh9jj2q5r1z9wjn-source",
+        "rev": "f5892ddac112a1e9b3612c39af1b72987ee5783a",
         "type": "path"
       },
       "original": {
@@ -688,11 +688,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1696691793,
-        "narHash": "sha256-a3cF6uFOAgopWL/AwMPZrdWiP+Gwj0g3vUTnG6zTJHg=",
+        "lastModified": 1696699282,
+        "narHash": "sha256-q01A/beM+259b4YTDs3v95wlIZhhU/5VnOblpBfT2xs=",
         "owner": "mxxntype",
         "repo": "reddot",
-        "rev": "2434ddf962dd88fa952c0c802458d5cafa44bc17",
+        "rev": "bd498171044757fac9ab01168d94a299a90a501a",
         "type": "github"
       },
       "original": {
