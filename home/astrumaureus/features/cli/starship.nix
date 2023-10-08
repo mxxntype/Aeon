@@ -1,5 +1,7 @@
 # INFO: `starship.rs`, rust-powered, cross-platform shell propmt
-{ lib, ... }: {
+{ config, lib, ... }: let
+  inherit (config.colorscheme) colors;
+in {
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
@@ -8,6 +10,7 @@
       add_newline = false;
 
       format = lib.concatStrings [
+        " "
         "$directory"
         "$git_branch"
         "$battery"
@@ -62,29 +65,42 @@
         ];
       };
 
-      hostname = {
-        style = "bold white";
+      hostname = let
+        bg = "cyan";
+        fg = "black";
+      in {
+        style = "italic bold fg:${fg} bg:${bg}";
         format = lib.concatStrings [
+          "[](fg:${bg})"
           "[$ssh_symbol]($style)"
-          "[$hostname ]($style)"
+          "[$hostname]($style)"
+          "[ ](fg:${bg} bg:${fg})"
         ];
         ssh_only = false;
         ssh_symbol = "SSH: ";
       };
 
-      cmd_duration = {
+      cmd_duration = let
+        bg = "black";
+        fg = "white";
+        accent = "yellow";
+      in {
         min_time = 1000;
-        style = "cyan";
+        style = "fg:${accent} bg:${bg}";
         format = lib.concatStrings [
           "[\\(]($style)"
-          "took [$duration]($style)"
+          "[took ](fg:${fg} bg:${bg})[$duration]($style)"
           "[\\) ]($style)"
         ];
       };
 
-      character = {
-          success_symbol = "[󰄾](bold green)";
-          error_symbol = "[x](bold red)";
+      character = let
+        bg = "black";
+        fg_success = "green";
+        fg_error = "red";
+      in {
+          success_symbol = "[[](fg:${bg})](bold fg:${fg_success} bg:${bg})";
+          error_symbol = "[[](fg:${bg})](bold fg:${fg_error} bg:${bg})";
       };
     };
   };
