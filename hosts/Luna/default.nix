@@ -42,12 +42,5 @@
   networking.hostName = "Luna";
   system.stateVersion = "23.05";
 
-  # services.logmein-hamachi.enable = true;
-
-  virtualisation = {
-    waydroid.enable = true;
-    # docker.enable = true;
-  };
-
   services.tailscale.enable = true;
 }
