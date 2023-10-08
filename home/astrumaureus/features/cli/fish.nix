@@ -76,6 +76,11 @@ in {
       function last_history_item
         echo $history[1]
       end
+
+      function postexec_test --on-event fish_postexec
+       echo
+      end
+
       abbr --add !! --position anywhere --function last_history_item
     '';
 
