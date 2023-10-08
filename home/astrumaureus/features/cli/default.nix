@@ -59,6 +59,7 @@
     cbonsai
     cmatrix
     pipes-rs
+    cava
 
     # Secrets
     sops
