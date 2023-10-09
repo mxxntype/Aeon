@@ -8,49 +8,58 @@
     "background: #${colors.base00}"
     "border-top-left-radius: ${toString wm-config.rounding}px"
     "border-top-right-radius: ${toString wm-config.rounding}px"
-    "color: #${colors.base02}" # FIXME
+    "color: #${colors.base02}"
   ]);
 in {
   imports = [
     ./workspaces.nix
   ];
 
-  xdg.configFile."eww/${moduleName}.yuck".text = ''
-    ${lib.concatStringsSep "\n" (lib.forEach (builtins.attrValues subModules) (sm: ''
-      (include "./${sm.moduleName}.yuck")
-    ''))}
+  xdg.configFile."eww/${moduleName}.yuck".text = lib.concatLines [
+    '';; Include all sub-widget definitions      
+      ${lib.concatLines (lib.forEach (builtins.attrValues subModules) (sm: ''
+        (include "./${sm.moduleName}.yuck")
+      ''))}
+    ''
+
+    '';; Widgets
+      (defwidget ${widgetName} []
+        (box
+          :spacing ${toString (wm-config.gaps.inner * 2)}
+
+          ;; Left dock
+          (box
+            :style "${dockStyle}"
+            "${widgetName}-dock-left"
+          )
+
+          ;; Middle dock
+          (box
+            :style "${dockStyle}"
+            (${subModules.workspaces.widgetName})
+          )
+
+          ;; Right dock
+          (box
+            :style "${dockStyle}"
+            "${widgetName}-dock-right"
+          )
+        )
+      )
+    ''
   
-    (defwindow ${widgetName}
-      :monitor 0
-      :geometry (geometry
-        :anchor "bottom center"
-        :width "${toString (largestMonitor.width / largestMonitor.scale - (2 * wm-config.gaps.outer))}"
+    '';; Windows
+      (defwindow ${widgetName}
+        :monitor 0
+        :geometry (geometry
+          :anchor "bottom center"
+          :width "${toString (largestMonitor.width / largestMonitor.scale - (2 * wm-config.gaps.outer))}"
+        )
+        :stacking "fg"
+        :exclusive true
+        :focusable false
+        (${widgetName})
       )
-      :stacking "fg"
-      :exclusive true
-      :focusable false
-      (${widgetName})
-    )
-
-    (defwidget ${widgetName} []
-      (box
-        :spacing ${toString (2 * wm-config.gaps.inner)}
-
-        (box
-          :style "${dockStyle}"
-          "${widgetName}-0"
-        )
-
-        (box
-          :style "${dockStyle}"
-          (${subModules.workspaces.widgetName})
-        )
-
-        (box
-          :style "${dockStyle}"
-          "${widgetName}-2"
-        )
-      )
-    )
-  '';
+    ''
+  ];
 }
