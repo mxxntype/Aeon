@@ -1,15 +1,10 @@
 # INFO: Eww-powered, keyboard-driven powermenu for Hyprland
 
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
+{ inputs, config, lib, pkgs, ... }: let
   widgetName = "powermenu";
   moduleName = "${widgetName}/${widgetName}";
 
-  shared = import ../shared.nix { inherit config lib; };
+  shared = import ../shared.nix { inherit inputs config lib pkgs; };
   inherit (shared) style colors wm-config variables;
 
   tileHeight = 150;
@@ -21,10 +16,6 @@
     "eww close ${widgetName}"
     "eww-powermenu-ctl --set-focus 0 1"
   ];
-
-  # NOTE: Now in ../shared.nix
-  # variables.powermenuActiveRow = "powermenu-active-row";
-  # variables.powermenuActiveCol = "powermenu-active-col";
 
   entry = {
     position ? {

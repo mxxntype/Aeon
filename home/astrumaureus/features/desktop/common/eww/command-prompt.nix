@@ -1,5 +1,7 @@
-{ config, lib, ... }: let
-  shared = import ./shared.nix { inherit config lib; };
+# INFO: `Command prompt` widget for executing something in $PATH
+
+{ inputs, config, lib, pkgs, ... }: let
+  shared = import ./shared.nix { inherit inputs config lib pkgs; };
   inherit (shared) colors style wm-config;
   inherit (shared.widgets) commandPrompt;
 in {
