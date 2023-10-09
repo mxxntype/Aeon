@@ -34,7 +34,7 @@ in {
         ];
         read_only = "RO ";
         read_only_style = "bold yellow";
-        truncation_length = 5;
+        truncation_length = 3;
       };
 
       git_branch = {
