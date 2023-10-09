@@ -1,11 +1,6 @@
 # INFO: Hyprland's configuration
 
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config, lib, pkgs, ... }: let
   # Colors
   inherit (config) wm-config;
   inherit (config.colorscheme) colors;
@@ -21,7 +16,7 @@
   floatingTerminalCommand = "${terminalCommand} --class ${floatingTerminalClass}";
 
   # Wrappers & prefixes
-  offloadCommand = "smart-offload"; # TODO: Fix smart-offload
+  offloadCommand = "smart-offload"; # TODO: Fix/rework smart-offload
   gamemodeCommand = "gamemoderun";
   GTKFileDialogEnv = "QT_QPA_PLATFORMTHEME=gtk3";
 
@@ -112,7 +107,7 @@ in {
     extraConfig = lib.concatStringsSep "\n" config.wayland.windowManager.hyprland.configParts;
     configParts = [
       ''
-        # --[[ Envvars ]]--
+        # Envvars
         # env = LIBVA_DRIVER_NAME,nvidia
         # env = XDG_SESSION_TYPE,wayland
         # env = GBM_BACKEND,nvidia-drm
@@ -120,8 +115,7 @@ in {
         # env = WLR_NO_HARDWARE_CURSORS,1
         env = SWWW_TRANSITION_DURATION, 2
         env = SWWW_TRANSITION_FPS, 120
-        env = SWWW_TRANSITION, left
-
+        env = SWWW_TRANSITION, left 
         ${  # INFO: Monitors
           lib.concatStringsSep "\n" (lib.forEach enabledMonitors (m: ''
             monitor=${m.name}, ${toString m.width}x${toString m.height}@${toString m.refreshRate}, ${toString m.x}x${toString m.y}, ${toString m.scale}
@@ -129,34 +123,36 @@ in {
           ''))
         }
 
-        # --[[ Autostart ]]--
+        # Autostart
         ${ # INFO: Gamma setup
           lib.concatStringsSep "\n" (lib.forEach enabledMonitors (m: ''
             # exec-once = wlsunset -t 6500 -T 6501 -g ${toString m.gamma}
           ''))
         }
+
         exec-once = swww init
         exec-once = eww daemon --restart --force-wayland && eww open statusbar-bottom
         exec-once = hypridle.sh
         exec-once = hyprprofile
 
-        exec      = sleep 0.5 && swww img ~/.wallpaper
+        exec = sleep 0.5 && swww img ~/.wallpaper
 
-        # # Slight randomness in border position to protect OLED screens
+        # Slight randomness in border position to protect OLED screens
         # exec = hyprctl keyword general:gaps_in  $((${toString wm-config.gaps.inner} + ($RANDOM % 8)))
         # exec = hyprctl keyword general:gaps_out $((${toString wm-config.gaps.outer} + ($RANDOM % 8)))
 
-        # --[[ Kill window | Exit / reload hyprland | Lock screen ]]--
+        # Kill window | Exit or reload hyprland | Lock screen
         bind =      SUPER SHIFT,      Q, killactive,
         bind =      SUPER CTRL SHIFT, Q, exec, kill -9 $(hyprctl activewindow -j | jq '.pid')
         bind = CTRL SUPER SHIFT, E, exec, hyprexit.sh
         bind = CTRL SUPER SHIFT, L, exec, hyprlock.sh
         bind =      SUPER SHIFT, R, exec, hyprctl reload && eww reload
 
+        # Screenshots
         bind = , PRINT,        exec, grimblast copysave output
         bind = SUPER SHIFT, S, exec, grimblast copysave area
 
-        # --[[ Shift focus ]]--
+        # Shift focus
         bind = SUPER, H, hy3:movefocus, l
         bind = SUPER, J, hy3:movefocus, d
         bind = SUPER, K, hy3:movefocus, u
@@ -164,7 +160,7 @@ in {
         # bind = SUPER, J, layoutmsg, cyclenext
         # bind = SUPER, K, layoutmsg, cycleprev
 
-        # --[[ Move windows within layout ]]--
+        # Move windows within layout
         bind = SUPER SHIFT, H, hy3:movewindow, l
         bind = SUPER SHIFT, J, hy3:movewindow, d
         bind = SUPER SHIFT, K, hy3:movewindow, u
@@ -176,11 +172,11 @@ in {
         bind = SUPER, V, exec, hyprctl dispatch hy3:makegroup v
         bind = SUPER, N, exec, hyprctl dispatch hy3:makegroup h
 
-        # --[[ Float | fullscreen ]]--
+        # Float | fullscreen
         bind = SUPER, T, togglefloating,
         bind = SUPER, F, fullscreen,
 
-        # --[[ Main apps ]]--
+        # Main apps
         bind = SUPER,       RETURN, exec, ${terminalCommand}
         bind = SUPER SHIFT, RETURN, exec, ${floatingTerminalCommand}
         bind = SUPER,       P,      exec, ${floatingTerminalCommand} btm --battery
@@ -188,11 +184,12 @@ in {
         bind = SUPER,       E,      exec, ${floatingTerminalCommand} fish -C yazi
         bind = SUPER SHIFT, N,      exec, obsidian --ozone-platform=wayland
 
+        # Make the 'floating' terminal actually float
         windowrule = float, ^(${floatingTerminalClass})$
         windowrule = size 50% 70%, ^(${floatingTerminalClass})$
         windowrule = move 25% 15%, ^(${floatingTerminalClass})$
 
-        # --[[ switch to ws ]]--
+        # Workspace switching
         bind = SUPER, 1, workspace, 1
         bind = SUPER, 2, workspace, 2
         bind = SUPER, 3, workspace, 3
@@ -204,7 +201,7 @@ in {
         bind = SUPER, 9, workspace, 9
         bind = SUPER, 0, workspace, 10
 
-        # --[[ move focused window to ws ]]--
+        # Move focused window to workspace
         bind = SUPER SHIFT, 1, movetoworkspace, 1
         bind = SUPER SHIFT, 2, movetoworkspace, 2
         bind = SUPER SHIFT, 3, movetoworkspace, 3
@@ -216,7 +213,7 @@ in {
         bind = SUPER SHIFT, 9, movetoworkspace, 9
         bind = SUPER SHIFT, 0, movetoworkspace, 10
 
-        # --[[ Workspace-assigned apps ]]--
+        # Workspace-assigned apps
         bind = CTRL SHIFT, 1, exec, ${terminalCommand}
         bind = CTRL SHIFT, 2, exec, inkscape
         bind = CTRL SHIFT, 3, exec, librewolf
@@ -245,11 +242,11 @@ in {
         bindl = , switch:on:Lid Switch, exec, hyprlock.sh
         bindl = , switch:off:Lid Switch, dpms, on
 
-        # --[[ move & resize floating windows ]]--
+        # Move & resize floating windows
         bindm = SUPER, mouse:272, movewindow
         bindm = SUPER, mouse:273, resizewindow
         input {
-          # --[[ mouse ]]--
+          # Mouse
           follow_mouse = 1
           sensitivity = 0.4
           touchpad {
@@ -257,12 +254,12 @@ in {
             # disable_while_typing = false
           }
 
-          # --[[ keyboard ]]--
+          # Keyboard
           kb_layout = us, ru
           kb_options = grp:win_space_toggle
         }
 
-        # --[[ per-device configuration ]]--
+        # Per-device configuration
         device:Cooler Master Technology Inc. Gaming MECH KB {
           repeat_rate = 50
           repeat_delay = 250
@@ -275,7 +272,7 @@ in {
           sensitivity = -0.4
         }
 
-        # --[[ custom bezier curves ]]--
+        # Custom bezier curves
         bezier = cubic, 0.65, 0, 0.35, 1
         bezier = sine, 0.37, 0, 0.63, 1
         bezier = quad, 0.45, 0, 0.55, 1
@@ -289,8 +286,8 @@ in {
           animation = windowsMove,  1,        3,      expo
           animation = fade,         1,        3,      expo
           animation = fadeOut,      1,        3,      expo
-          animation = workspaces,   1,        4,      expo,     slidevert
-          animation = border,       1,        8,     default
+          animation = workspaces,   1,        4,      expo,     slide
+          animation = border,       1,        8,      default
         }
 
         decoration {
@@ -311,7 +308,7 @@ in {
         }
 
         general {
-          # --[[ Layout ]]--
+          # Layout
           layout = hy3
           gaps_in = ${toString wm-config.gaps.inner}
           gaps_out = ${toString wm-config.gaps.outer}
@@ -320,13 +317,13 @@ in {
           col.active_border = rgb(${colors.base00})
           col.inactive_border = rgb(${colors.base00})
 
-          # --[[ Mouse & cursor ]]--
+          # Mouse & cursor
           apply_sens_to_raw = 1
           cursor_inactive_timeout = 5
           no_cursor_warps = true
         }
 
-        # --[[ Master layout ]]--
+        # Master layout
         master {
           special_scale_factor =  0.8
           new_is_master =         false
@@ -334,7 +331,7 @@ in {
           no_gaps_when_only =     false
         }
 
-        # --[[ Dwindle layout ]]--
+        # Dwindle layout
         dwindle {
           force_split = 2
         }
