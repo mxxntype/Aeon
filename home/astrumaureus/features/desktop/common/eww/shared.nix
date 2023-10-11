@@ -37,6 +37,39 @@
     # "margin-bottom: ${toString margin.vertical}px"
   ]);
 
+  mixin-widgets = {
+    containers = {
+      with-icon = { fg, bg, icon, text }: ''
+        (box
+          :halign "center"
+          :space-evenly false
+          (label
+            :text "${toString icon}"
+            :style "${style [
+              "background: #${fg}"
+              "margin-top: 4px"
+              "color: #${bg}"
+              "padding-left: 8px"
+              "padding-right: 8px"
+              "border-top-left-radius: 512px"
+              "border-bottom-left-radius: 512px"
+            ]}")
+          (label
+            :text "${toString text}"
+            :style "${style [
+              "background: #${bg}"
+              "margin-top: 4px"
+              "color: #${colors.base05}"
+              "padding-left: 4px"
+              "padding-right: 8px"
+              "border-top-right-radius: 512px"
+              "border-bottom-right-radius: 512px"
+            ]}")
+        )
+      '';
+    };
+  };
+
   # TODO: Move to relevant widgets
   variables = {
     powermenuActiveRow = "powermenu-active-row";
@@ -74,6 +107,10 @@
               name = toString var;
               value = "${statusbars.bottom.widgetName}-${toString var}";
             }));
+          };
+          music = rec {
+            widgetName = "${statusbars.bottom.widgetName}-music";
+            moduleName = "${statusbars.bottom.widgetName}/${widgetName}";
           };
         };
       };

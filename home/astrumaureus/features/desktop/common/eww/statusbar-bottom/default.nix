@@ -8,15 +8,17 @@
     "background: #${colors.base00}"
     "border-top-left-radius: ${toString wm-config.rounding}px"
     "border-top-right-radius: ${toString wm-config.rounding}px"
-    "color: #${colors.base02}"
+    # "color: #${colors.base02}"
   ]);
 in {
   imports = [
     ./workspaces.nix
+    ./music.nix
   ];
 
   xdg.configFile."eww/${moduleName}.yuck".text = lib.concatLines [
-    '';; Include all sub-widget definitions      
+    ''
+      ;; Include all sub-widget definitions      
       ${lib.concatLines (lib.forEach (builtins.attrValues subModules) (sm: ''
         (include "./${sm.moduleName}.yuck")
       ''))}
@@ -30,7 +32,7 @@ in {
           ;; Left dock
           (box
             :style "${dockStyle}"
-            "${widgetName}-dock-left"
+            (${subModules.music.widgetName})
           )
 
           ;; Middle dock
