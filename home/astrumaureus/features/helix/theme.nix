@@ -34,7 +34,6 @@ in {
         purple = "#${colors.base0E}";
         pink = "#${colors.base0F}";
       in {
-        "ui.linenr.selected" = subtext;
         "ui.cursorline.primary" = { bg = base; };
         "ui.text.focus" = { fg = purple; modifiers = ["bold"]; };
         "ui.menu" = { fg = text; bg = surface0; };
@@ -62,11 +61,13 @@ in {
         "ui.cursor.match" = { bg = surface0; };
 
         "comment" = { fg = subtext; modifiers = ["italic"]; };
-        "ui.linenr" = surface1;
+        "ui.linenr" = subtext;
+        "ui.linenr.selected" = text;
         "ui.virtual.whitespace" = surface0;
         "ui.virtual.inlay-hint" = { fg = surface0; };
+        "ui.virtual.indent-guide" = { fg = subtext; };
 
-        "ui.cursor.primary" = { fg = subtext; modifiers = ["reversed"]; };
+        "ui.cursor.primary" = { modifiers = ["reversed"]; };
         "attribute" = text;
         "variable" = yellow;
         "constant" = text;
