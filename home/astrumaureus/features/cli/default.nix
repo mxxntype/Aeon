@@ -66,8 +66,11 @@
     sops
     ssh-to-age
 
+    # Terminal recording
+    vhs
+    asciinema
+
     # outputs.packages."x86_64-linux".repalette
     inputs.reddot.packages.${pkgs.system}.default
-
   ];
 }
