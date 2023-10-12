@@ -29,6 +29,8 @@
       block_ipv6 = true;
       ipv6_servers = false;
 
+      bootstrap_resolvers = [ "1.1.1.1:53" ];
+
       # Captive portals
       captive_portals = {
         map_file = "/etc/dnscrypt-proxy/captive_portals.txt";
