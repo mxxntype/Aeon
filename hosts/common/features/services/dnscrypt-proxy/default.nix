@@ -4,10 +4,8 @@
   services.dnscrypt-proxy2 = {
     enable = true;
     settings = {
-
       # Server filtering
       ipv4_servers = true;
-      ipv6_servers = false;
       dnscrypt_servers = true;
       doh_servers = true;
       require_dnssec = true;
@@ -26,6 +24,10 @@
 
       # DNS Cache
       cache = true;
+
+      # IPv6
+      block_ipv6 = true;
+      ipv6_servers = false;
 
       # Captive portals
       captive_portals = {
