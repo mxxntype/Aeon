@@ -14,6 +14,7 @@ in {
   imports = [
     ./workspaces.nix
     ./music.nix
+    ./battery.nix
   ];
 
   xdg.configFile."eww/${moduleName}.yuck".text = lib.concatLines [
@@ -44,7 +45,8 @@ in {
           ;; Right dock
           (box
             :style "${dockStyle}"
-            "${widgetName}-dock-right"
+            (${subModules.battery.widgetName}
+              :halign "end")
           )
         )
       )

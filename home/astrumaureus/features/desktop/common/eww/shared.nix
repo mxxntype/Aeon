@@ -112,6 +112,17 @@
             widgetName = "${statusbars.bottom.widgetName}-music";
             moduleName = "${statusbars.bottom.widgetName}/${widgetName}";
           };
+          battery = rec {
+            widgetName = "${statusbars.bottom.widgetName}-battery";
+            moduleName = "${statusbars.bottom.widgetName}/${widgetName}";
+            variables = builtins.listToAttrs (lib.forEach [
+              "chargeLevelIcons"
+              "powerdrain"
+            ] (var: {
+              name = toString var;
+              value = "${statusbars.bottom.widgetName}-${toString var}";
+            }));
+          };
         };
       };
     };
