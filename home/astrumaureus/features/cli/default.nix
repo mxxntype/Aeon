@@ -40,6 +40,7 @@
     jaq
     timg
     toml2nix
+    exiftool
 
     # Build systems & automation
     gnumake
