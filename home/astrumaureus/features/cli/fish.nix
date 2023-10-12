@@ -203,6 +203,7 @@ in {
       erd = "erd --layout inverted --human --icons --truncate --dir-order last";
       erdtree = "echo && erd --suppress-size --follow";
       erdsize = "echo && erd --no-ignore";
+      ip = "ip --color";
     };
 
     functions = {
