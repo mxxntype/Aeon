@@ -60,7 +60,7 @@
               "background: #${bg}"
               "margin-top: 4px"
               "color: #${colors.base05}"
-              "padding-left: 4px"
+              "padding-left: 8px"
               "padding-right: 8px"
               "border-top-right-radius: 512px"
               "border-bottom-right-radius: 512px"
