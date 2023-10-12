@@ -23,6 +23,7 @@
     nmap
     netdiscover
     speedtest-rs
+    ethtool
 
     # Other TUIs
     porsmo
