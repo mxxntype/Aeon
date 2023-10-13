@@ -27,6 +27,7 @@ in {
       @use './statusbar/statusbar';
       @use './powermenu/powermenu';
       @use './${shared.widgets.statusbars.bottom.subModules.workspaces.moduleName}';
+      @use './${shared.widgets.statusbars.bottom.subModules.battery.moduleName}';
 
       * {
         all: unset;

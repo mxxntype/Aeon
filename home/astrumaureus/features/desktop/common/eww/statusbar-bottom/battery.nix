@@ -1,12 +1,19 @@
 { config, inputs, lib, pkgs, ... }: let
   shared = import ../shared.nix { inherit inputs config lib pkgs; };
-  inherit (shared) colors style wm-config;
+
+  inherit (shared) colors style conditional;
   inherit (shared.widgets.statusbars.bottom) subModules;
   inherit (subModules.battery) widgetName moduleName variables;
 
+  EWW_BATTERY = rec {
+    name = "EWW_BATTERY";
+    total_avg = "${name}.total_avg";
+    status = "${name}.BAT0.status";
+  };
+
   icons = {
     chargeLevel = "[${lib.concatStringsSep ", " [
-      "\\\"󰁺\\\""
+      "\\\"󰁺\\\"" # Manual JSON because of nested escapes
       "\\\"󰁻\\\""
       "\\\"󰁽\\\""
       "\\\"󰁽\\\""
@@ -21,7 +28,21 @@
     discharging = "󱐋";
   };
 
-  percentage = "\${ round(EWW_BATTERY.total_avg, 0) }";
+  chargeLevels = {
+    normal = {
+      color = colors.base0A;
+    };
+    low = {
+      threshold = 30;
+      color = colors.base08;
+    };
+    critical = {
+      threshold = 15;
+      color = colors.base06;
+    };
+  };
+
+  percentage = "\${ round(${EWW_BATTERY.total_avg}, 0) }";
 in {
   xdg.configFile."eww/${moduleName}.yuck".text = ''
     (defvar ${variables.chargeLevelIcons} "${icons.chargeLevel}")
@@ -45,20 +66,41 @@ in {
 
         ;; Icon
         (label
-          :text "''${${variables.chargeLevelIcons}[round( EWW_BATTERY.total_avg / 10, 0) - 1]}"
+          :text "''${${variables.chargeLevelIcons}[round( ${EWW_BATTERY.total_avg} / 10, 0) - 1]}"
           :style "${style [
-            "color: #${colors.base0A}"
+            "color: #\${ ${(conditional {
+              condition = "${EWW_BATTERY.total_avg} > ${toString chargeLevels.low.threshold}";
+              ifTrue = "'${chargeLevels.normal.color}'";
+              ifFalse = "${(conditional {
+                condition = "${EWW_BATTERY.total_avg} > ${toString chargeLevels.critical.threshold}";
+                ifTrue = "'${chargeLevels.low.color}'";
+                ifFalse = "'${chargeLevels.critical.color}'";
+              })}";
+            })} }"
             "font-size: 16px"
           ]}"
         )
 
         ;; Charge
-        (progress
-          :value "${percentage}"
-          :orientation "horizontal"
+        (box
           :style "${style [
-            "color: #${colors.base06}"
+            "padding-left: 4px"
+            "padding-right: 4px"
           ]}"
+          (scale
+            :value "${percentage}"
+            :orientation "horizontal"
+            :min 0 :max 100
+            :class "${widgetName}-scale ${(conditional {
+              condition = "${EWW_BATTERY.total_avg} > ${toString chargeLevels.low.threshold}";
+              ifTrue = "normal";
+              ifFalse = "${(conditional {
+                condition = "${EWW_BATTERY.total_avg} > ${toString chargeLevels.critical.threshold}";
+                ifTrue = "low";
+                ifFalse = "critical";
+              })}";
+            })}"
+          )
         )
         
         (box
@@ -75,10 +117,17 @@ in {
 
           ;; Charge / Discharge icon
           (label
-            :text "''${ EWW_BATTERY.BAT0.status == 'Charging' ? '${icons.charging}' : '${icons.discharging}' }"
+            :text "''${${(conditional {
+              condition = "${EWW_BATTERY.status} == 'Charging'";
+              ifTrue = "'${icons.charging}'";
+              ifFalse = "'${icons.discharging}'";
+            })}}"
             :style "${style [
-              "color: #\${ EWW_BATTERY.BAT0.status == 'Charging' ? '${colors.base0B}' : '${colors.base09}' }"
-              # "font-size: 16px"
+              "color: #\${${(conditional {
+                condition = "${EWW_BATTERY.status} == 'Charging'";
+                ifTrue = "'${colors.base0B}'";
+                ifFalse = "'${colors.base09}'";
+              })}}"
             ]}"
           )
 
@@ -93,4 +142,19 @@ in {
       )
     )
   '';
-}
+
+  xdg.configFile."eww/${moduleName}.scss".text = ''
+    .${widgetName}-scale {
+      trough {
+        min-width: 96px;
+        min-height: 6px;
+        background: #${colors.base04};
+        border-radius: 512px;
+        highlight {
+          border-radius: 512px;
+          background: #${chargeLevels.normal.color};
+        }
+      }
+    }
+  '';
+} 

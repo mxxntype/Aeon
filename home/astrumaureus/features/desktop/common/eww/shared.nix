@@ -26,6 +26,9 @@
   style = lib.concatStringsSep ";";
   bashBatch = lib.concatStringsSep "; ";
   bashSequence = lib.concatStringsSep " && ";
+  conditional = { condition, ifTrue, ifFalse }: (lib.concatStringsSep " " [
+    "${toString condition} ? ${toString ifTrue} : ${toString ifFalse}"
+  ]);
 
   # Mixins
   container = let
@@ -34,7 +37,6 @@
     "border-radius: 512px"
     "background: #${background}"
     "margin-top: ${toString margin.vertical}px"
-    # "margin-bottom: ${toString margin.vertical}px"
   ]);
 
   mixin-widgets = {
