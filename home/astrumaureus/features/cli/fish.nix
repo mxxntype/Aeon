@@ -94,6 +94,7 @@ in {
       nvt = "nvtop";
       jq = "jaq";
       y = "yazi";
+      z = "zellij";
       # sz = "du -sh";
 
       # Power
