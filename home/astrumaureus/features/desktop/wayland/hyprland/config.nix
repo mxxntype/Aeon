@@ -59,6 +59,7 @@
 
     function lock() {
       if [[ $(pgrep gtklock) != 0 ]]; then
+        hyprctl keyword input:kb_layout us,ru & # Switch layout to EN
         gtklock
         echo $KBD_LED_PREV > $KBD_LED_PATH
         brillo -I
