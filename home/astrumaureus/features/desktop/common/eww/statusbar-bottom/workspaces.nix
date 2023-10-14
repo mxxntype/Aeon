@@ -2,7 +2,7 @@
 
 { inputs, config, lib, pkgs, ...}: let
   shared = import ../shared.nix { inherit inputs config lib pkgs; };
-  inherit (shared) style colors hyprquery;
+  inherit (shared) style colors hyprquery conditional;
   inherit (shared.widgets.statusbars.bottom) subModules;
   inherit (subModules.workspaces) widgetName moduleName variables;
 
@@ -10,13 +10,6 @@
     empty = "";
     occupied = "";
     active = "";
-  };
-
-  predicates = {
-    workspace = {
-      active = "ws.id == ${variables.active-workspace}";
-      occupied = "ws.windows > 0";
-    };
   };
 in {
   xdg.configFile."eww/${moduleName}.yuck".text = lib.concatLines [
@@ -32,18 +25,37 @@ in {
           :halign "center"
 
           (box
-            :style "${shared.container { background = colors.base02; }}"
+            :style "${shared.container { background = colors.base02; } + ";" + (style [
+              "padding-left: 5px"
+              "padding-right: 4px"
+            ])}"
             (for ws in ${variables.workspaces}
               (button
                 :onclick "hyprctl dispatch workspace ''${ws.id}"
                 :class "${widgetName}-ws ''${ws.id}"
                 :style "${style [
-                  "color: #\${${predicates.workspace.active} ? '${colors.base06}' : ${predicates.workspace.occupied} ? '${colors.base05}' : '${colors.base04}' }"
-                  "padding-left: 2px"
+                  "color: \${${(conditional {
+                    condition = "ws.id == ${variables.active-workspace}";
+                    ifTrue = "'#${colors.base06}'";
+                    ifFalse = (conditional {
+                      condition = "ws.windows > 0";
+                      ifTrue = "'#${colors.base05}'";
+                      ifFalse = "'#${colors.base04}'";
+                    });
+                  })}}"
+                  # "padding-left: 2px"
                   "padding-right: 6px"
                   "font-size: 16px"
                 ]}"
-                "''${${predicates.workspace.active} ? '${icons.active}' : ${predicates.workspace.occupied} ? '${icons.occupied}' : '${icons.empty}' }"
+                "''${${conditional {
+                  condition = "ws.id == ${variables.active-workspace}";
+                  ifTrue = "'${icons.active}'";
+                  ifFalse = (conditional {
+                    condition = "ws.windows > 0";
+                    ifTrue = "'${icons.occupied}'";
+                    ifFalse = "'${icons.empty}'";
+                  });
+                }}}"
               )
             )
           )
