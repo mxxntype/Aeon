@@ -140,6 +140,7 @@ in {
         exec-once = eww daemon --restart --force-wayland && eww open statusbar
         exec-once = hypridle.sh
         exec-once = hyprprofile
+        exec-once = ${pkgs.avizo}/bin/avizo-service
 
         exec      = sleep 0.5 && swww img ~/.wallpaper
 
@@ -234,10 +235,11 @@ in {
         bind = , XF86MonBrightnessDown, exec, brillo -q -U 10 -u 100000
 
         # Volume
-        bind = SUPER SHIFT,         M,  exec, amixer -q set Master toggle
-        bind = , XF86AudioMute,         exec, amixer -q set Master toggle
-        bind = , XF86AudioRaiseVolume,  exec, amixer -q set Master 10%+ unmute
-        bind = , XF86AudioLowerVolume,  exec, amixer -q set Master 10%- unmute
+        bind = SUPER SHIFT, M,          exec, volumectl toggle-mute
+        bind = , XF86AudioMute,         exec, volumectl toggle-mute
+        bind = , XF86AudioMicMute,      exec, volumectl -m toggle-mute
+        bind = , XF86AudioRaiseVolume,  exec, volumectl -u up
+        bind = , XF86AudioLowerVolume,  exec, volumectl -u down
 
         # Power button
         bind = , XF86PowerOff, exec, hyprlock.sh
