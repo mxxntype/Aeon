@@ -194,6 +194,7 @@ in {
       bcl = "bluetoothctl";
       jcl = "journalctl";
       pw = "packwiz";
+      pwm = "packwiz modrinth";
     };
 
     # Aliases expand after abbreviations do, so they can be used to
