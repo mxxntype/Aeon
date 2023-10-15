@@ -1,8 +1,6 @@
 /* INFO: Host configuration: Luna (Zenbook 14X) */
 
-{
-  ...
-}: {
+{ pkgs, ... }: {
   imports = [
     # Users that should be present on the system
     ../common/users/astrumaureus
@@ -37,6 +35,12 @@
     ./fstab.nix
     ./hardware.nix
 
+  ];
+
+  environment.systemPackages = with pkgs; [
+    (writeShellScriptBin "appimage-thai-run" ''
+      LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${pkgs.libthai}/lib/ ${pkgs.appimage-run}/bin/appimage-run $@
+    '')
   ];
 
   networking.hostName = "Luna";
