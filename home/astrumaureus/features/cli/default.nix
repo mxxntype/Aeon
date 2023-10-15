@@ -41,6 +41,7 @@
     timg
     toml2nix
     exiftool
+    mpv
 
     # Build systems & automation
     gnumake
