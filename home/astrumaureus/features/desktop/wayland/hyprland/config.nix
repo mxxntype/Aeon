@@ -354,6 +354,12 @@ in {
           key_press_enables_dpms = true
         }
 
+        # Fix HiDPI XWayland
+        xwayland {
+          force_zero_scaling = true
+        }
+        env = GDK_SCALE,2
+
         plugin {
           borders-plus-plus {
             add_borders = 2
