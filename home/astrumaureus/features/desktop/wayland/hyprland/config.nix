@@ -355,7 +355,8 @@ in {
         xwayland {
           force_zero_scaling = true
         }
-        env = GDK_SCALE,2
+        env = GDK_SCALE, 2
+        env = GDK_DPI_SCALE, 2
 
         plugin {
           borders-plus-plus {

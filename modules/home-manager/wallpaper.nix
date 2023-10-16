@@ -26,7 +26,8 @@
         else
           echo "[WARN] $WALLPAPER_FILE not found, creating new one"
         fi
-        ln -s "$NEW_WALLPAPER_PATH" "$WALLPAPER_FILE" &&
+        ln -s "$NEW_WALLPAPER_PATH" "$WALLPAPER_FILE"
+        [[ ! -z "$HYPRLAND_INSTANCE_SIGNATURE" ]] && hyprctl reload
         echo "[TRACE] all good."
       }
 
