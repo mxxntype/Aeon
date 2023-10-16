@@ -9,6 +9,8 @@
       yfinance
       tkinter
       python-lsp-server
+      sklearn-deap
+      seaborn
     ]))
     # nodePackages.pyright
   ];
