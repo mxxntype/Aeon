@@ -688,11 +688,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1696699282,
-        "narHash": "sha256-q01A/beM+259b4YTDs3v95wlIZhhU/5VnOblpBfT2xs=",
+        "lastModified": 1697549560,
+        "narHash": "sha256-LWOccJQg1EFDcwXxoZ7capWHRdXc8ocSWPCM9q7o8tM=",
         "owner": "mxxntype",
         "repo": "reddot",
-        "rev": "bd498171044757fac9ab01168d94a299a90a501a",
+        "rev": "ee9d74be3371f8da4d7e7bfc4852c294b1d3ec44",
         "type": "github"
       },
       "original": {
