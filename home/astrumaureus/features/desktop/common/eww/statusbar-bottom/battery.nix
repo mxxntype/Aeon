@@ -60,8 +60,6 @@ in {
           "margin-top: 4px"
           "padding-left: 8px"
           "padding-right: 2px"
-          "margin-left: 4px"
-          "margin-right: 4px"
         ]}"
 
         ;; Icon
