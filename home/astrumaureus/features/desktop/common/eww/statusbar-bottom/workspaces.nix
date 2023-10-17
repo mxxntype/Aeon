@@ -19,10 +19,10 @@ in {
     ''
 
     ''
-      (defwidget ${widgetName} []
+      (defwidget ${widgetName} [position]
         (box
           :space-evenly false
-          :halign "center"
+          :halign position
 
           (box
             :style "${shared.container { background = colors.base02; } + ";" + (style [

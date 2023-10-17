@@ -36,7 +36,7 @@ in {
           ;; Left dock
           (box
             :style "${dockStyle}"
-            (${subModules.music.widgetName})
+            (${subModules.music.widgetName} :position "center")
           )
 
           ;; Middle dock
@@ -44,15 +44,14 @@ in {
             :space-evenly false
             :style "${dockStyle}"
             (${subModules.clock.widgetName} :position "start")
-            (${subModules.workspaces.widgetName})
+            (${subModules.workspaces.widgetName} :position "center")
             ""
           )
 
           ;; Right dock
           (box
             :style "${dockStyle}"
-            (${subModules.battery.widgetName}
-              :halign "end")
+            (${subModules.battery.widgetName} :position "end")
           )
         )
       )

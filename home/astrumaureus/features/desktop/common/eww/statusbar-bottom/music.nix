@@ -4,7 +4,7 @@
   shared = import ../shared.nix { inherit inputs config lib pkgs; };
   inherit (shared) colors style wm-config;
   inherit (shared.widgets.statusbars.bottom) subModules;
-  inherit (subModules.music) widgetName moduleName;
+  inherit (subModules.music) widgetName moduleName variables;
 
   mpc-listener = pkgs.writeShellScriptBin "mpc-listener" ''
     while true; do
@@ -14,14 +14,17 @@
   '';
 in {
   xdg.configFile."eww/${moduleName}.yuck".text = ''
-    (deflisten mpc-title "${mpc-listener}/bin/mpc-listener")
-    (defwidget ${widgetName} []
-      ${(shared.mixin-widgets.containers.with-icon {
-        fg = colors.base0E;
-        bg = colors.base02;
-        text = "\${mpc-title}";
-        icon = "󰝚";
-      })}
+    (deflisten ${variables.mpc-listener} "${mpc-listener}/bin/mpc-listener")
+    (defwidget ${widgetName} [position]
+      (box
+        :halign position
+          ${(shared.mixin-widgets.containers.with-icon {
+            fg = colors.base0E;
+            bg = colors.base02;
+            text = "\${${variables.mpc-listener}}";
+            icon = "󰝚";
+          })}
+      )
     )
   '';
 

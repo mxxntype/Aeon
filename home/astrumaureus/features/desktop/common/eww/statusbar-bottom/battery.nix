@@ -50,9 +50,9 @@ in {
       :interval "2s"
       "powerdrain")
     
-    (defwidget ${widgetName} []
+    (defwidget ${widgetName} [position]
       (box
-        :halign "end"
+        :halign position
         :space-evenly false
         :style "${style [
           "background: #${colors.base02}"
