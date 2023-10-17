@@ -222,7 +222,7 @@ in {
         bind = CTRL SHIFT, 4, exec, ${GTKFileDialogEnv} telegram-desktop
         bind = CTRL SHIFT, 5, exec, libreoffice
         bind = CTRL SHIFT, 6, exec, virt-manager
-        bind = CTRL SHIFT, 7, exec, ${offloadCommand} ${gamemodeCommand} prismlauncher
+        bind = CTRL SHIFT, 7, exec, prismlauncher
         bind = CTRL SHIFT, 8, exec, ${GTKFileDialogEnv} keepassxc
         bind = CTRL SHIFT, 9, exec, freetube --ozone-platform=wayland
         bind = CTRL SHIFT, o, exec, ${floatingTerminalCommand} ncmpcpp
