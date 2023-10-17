@@ -22,6 +22,14 @@
     }
   ) { width = 0; height = 0; scale = 0; } enabledMonitors;
 
+  mkVariables = {
+    names,
+    prefix ? "",
+  }: builtins.listToAttrs (lib.forEach names (name: {
+    name = toString name;
+    value = "${toString prefix}-${toString name}";
+  }));
+
   # Helpful aliases
   style = lib.concatStringsSep ";";
   bashBatch = lib.concatStringsSep "; ";
@@ -102,28 +110,38 @@
           workspaces = rec {
             widgetName = "${statusbars.bottom.widgetName}-workspaces";
             moduleName = "${statusbars.bottom.widgetName}/${widgetName}";
-            variables = builtins.listToAttrs (lib.forEach [
-              "workspaces"
-              "active-workspace"
-            ] (var: {
-              name = toString var;
-              value = "${statusbars.bottom.widgetName}-${toString var}";
-            }));
+            variables = (mkVariables {
+              prefix = statusbars.bottom.widgetName;
+              names = [
+                "workspaces"
+                "active-workspace"
+              ];
+            });
           };
           music = rec {
             widgetName = "${statusbars.bottom.widgetName}-music";
             moduleName = "${statusbars.bottom.widgetName}/${widgetName}";
           };
+          clock = rec {
+            widgetName = "${statusbars.bottom.widgetName}-clock";
+            moduleName = "${statusbars.bottom.widgetName}/${widgetName}";
+            variables = (mkVariables {
+              prefix = statusbars.bottom.widgetName;
+              names = [
+                "time"
+              ];
+            });
+          };
           battery = rec {
             widgetName = "${statusbars.bottom.widgetName}-battery";
             moduleName = "${statusbars.bottom.widgetName}/${widgetName}";
-            variables = builtins.listToAttrs (lib.forEach [
-              "chargeLevelIcons"
-              "powerdrain"
-            ] (var: {
-              name = toString var;
-              value = "${statusbars.bottom.widgetName}-${toString var}";
-            }));
+            variables = (mkVariables {
+              prefix = statusbars.bottom.widgetName;
+              names = [
+                "chargeLevelIcons"
+                "powerdrain"
+              ];
+            });
           };
         };
       };

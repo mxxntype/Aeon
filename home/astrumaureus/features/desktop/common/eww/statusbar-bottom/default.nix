@@ -8,6 +8,8 @@
     "background: #${colors.base00}"
     "border-top-left-radius: ${toString wm-config.rounding}px"
     "border-top-right-radius: ${toString wm-config.rounding}px"
+    "padding-left: 4px"
+    "padding-right: 4px"
     # "color: #${colors.base02}"
   ]);
 in {
@@ -15,6 +17,7 @@ in {
     ./workspaces.nix
     ./music.nix
     ./battery.nix
+    ./clock.nix
   ];
 
   xdg.configFile."eww/${moduleName}.yuck".text = lib.concatLines [
@@ -37,9 +40,12 @@ in {
           )
 
           ;; Middle dock
-          (box
+          (centerbox
+            :space-evenly false
             :style "${dockStyle}"
+            (${subModules.clock.widgetName} :position "start")
             (${subModules.workspaces.widgetName})
+            ""
           )
 
           ;; Right dock
