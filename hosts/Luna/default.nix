@@ -19,6 +19,7 @@
 
     # Devtools
     ../common/features/devtools
+    ../common/features/devtools/qt.nix
 
     # Optinonal system-level modules
     ../common/features/boot/quiet-boot.nix
