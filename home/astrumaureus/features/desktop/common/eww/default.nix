@@ -1,11 +1,11 @@
-# INFO: Elkowar's wacky widgets
+# INFO: Elkowar's wacky widgets configuration
 
-{
-  pkgs,
-  ...
-}: {
+{ inputs, config, lib, pkgs, ... }: let
+  shared = import ./shared.nix { inherit inputs config lib pkgs; };
+in {
   imports = [
     ./statusbar
+    ./statusbar-bottom
     ./powermenu
     ./command-prompt.nix
   ];
@@ -14,18 +14,24 @@
     eww-wayland
   ];
 
-  # TODO: Automatically via `lib.forEach builtins.attrvalues`
-  xdg.configFile."eww/eww.yuck".text = ''
-    (include "./statusbar/statusbar.yuck")
-    (include "./powermenu/powermenu.yuck")
-    (include "./command-prompt.yuck")
-  '';
-  xdg.configFile."eww/eww.scss".text = ''
-    @use './statusbar/statusbar';
-    @use './powermenu/powermenu';
+  xdg.configFile = {
+    # TODO: Automatically via `lib.forEach builtins.attrValues`
+    "eww/eww.yuck".text = ''
+      (include "./statusbar/statusbar.yuck")
+      (include "./powermenu/powermenu.yuck")
+      (include "./command-prompt.yuck")
+      (include "./${shared.widgets.statusbars.bottom.moduleName}.yuck")
+    '';
 
-    * {
-      all: unset;
-    }
-  '';
+    "eww/eww.scss".text = ''
+      @use './statusbar/statusbar';
+      @use './powermenu/powermenu';
+      @use './${shared.widgets.statusbars.bottom.subModules.workspaces.moduleName}';
+      @use './${shared.widgets.statusbars.bottom.subModules.battery.moduleName}';
+
+      * {
+        all: unset;
+      }
+    '';
+  };
 }
