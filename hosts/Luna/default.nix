@@ -9,6 +9,7 @@
     ../common/features/auto-cpufreq.nix
     ../common/features/services/syncthing
     ../common/features/services/qemu
+    ../common/features/services/docker.nix
     ../common/features/services/flatpak.nix
     ../common/features/services/bluetooth.nix
     ../common/features/services/adb.nix
@@ -46,8 +47,6 @@
 
   networking.hostName = "Luna";
   system.stateVersion = "23.05";
-
-  virtualisation.docker.enable = true;
 
   services.tailscale.enable = true;
 }
