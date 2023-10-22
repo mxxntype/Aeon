@@ -17,6 +17,7 @@
     # Services
     ../common/features/services/syncthing
     ../common/features/services/qemu
+    ../common/features/services/docker.nix
     ../common/features/services/flatpak.nix
     ../common/features/services/moonlight.nix
 
