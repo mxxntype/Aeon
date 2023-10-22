@@ -2,6 +2,7 @@
 { pkgs, inputs, ... }: {
   imports = [
     ./bat.nix
+    ./fd.nix
     ./fish.nix
     ./fzf.nix
     ./git.nix
@@ -31,7 +32,6 @@
     # Alternative implementations of the basic tools
     erdtree
     ripgrep
-    fd
     procs
     killall
 
