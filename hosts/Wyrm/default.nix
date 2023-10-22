@@ -21,6 +21,9 @@
     ../common/features/services/flatpak.nix
     ../common/features/services/moonlight.nix
 
+    # Servers
+    ../common/features/servers/minecraft/default.nix
+
     # Devtools
     ../common/features/devtools
 
