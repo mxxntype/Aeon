@@ -47,5 +47,7 @@
   networking.hostName = "Luna";
   system.stateVersion = "23.05";
 
+  virtualisation.docker.enable = true;
+
   services.tailscale.enable = true;
 }

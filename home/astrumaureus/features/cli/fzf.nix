@@ -44,7 +44,7 @@ in {
     ];
 
     # ALT+C
-    changeDirWidgetCommand = "fd --type directory";
+    changeDirWidgetCommand = "fd --type directory --hidden";
     # changeDirWidgetOptions = [
     #   "--preview 'erd --dirs-only --suppress-size --icons --layout inverted {} | head -n 100'"
     # ];
