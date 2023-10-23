@@ -154,6 +154,12 @@ in {
       nsto = "nix store optimise";
       hm = "home-manager";
 
+      # Docker & docker-compose
+      d = "docker";
+      dps = "docker ps";
+      dc = "docker compose";
+      dcps = "docker compose ps";
+
       # Rust & cargo
       c = "cargo";
       cn = "cargo new";
