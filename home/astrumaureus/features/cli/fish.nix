@@ -95,6 +95,7 @@ in {
       jq = "jaq";
       y = "yazi";
       z = "zellij";
+      zl = "zellij --layout";
       # sz = "du -sh";
 
       # Power
