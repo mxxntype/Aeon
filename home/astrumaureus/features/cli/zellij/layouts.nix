@@ -11,7 +11,12 @@ in {
                     }
                 }
 
-                tab name="󱆃 CLI [~]" cwd="~/" focus=true
+                tab name="󱆃 CLI [~]" cwd="~/" focus=true {
+                    pane split_direction="vertical" {
+                        pane
+                        pane cwd="Aeon/"
+                    }
+                }
 
                 tab name="󰍳 Subliminal | 󰡨 " cwd="~/Repos/Subliminal" {
                     pane split_direction="horizontal" {
