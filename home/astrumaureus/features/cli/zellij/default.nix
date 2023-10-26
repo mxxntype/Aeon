@@ -39,7 +39,8 @@ in {
 
         ui {
             pane_frames {
-                rounded_cornes true
+                rounded_corners true
+                hide_session_name true
             }
         }
     
