@@ -16,6 +16,12 @@ in {
                 tab name="Tab #1 | 󰊠 " focus=true {
                     pane
                 }
+                tab name="Tab #2 | 󱃽 " {
+                    pane
+                }
+                tab name="Tab #3 | 󰚌 " {
+                    pane
+                }
             }
         '';
         
