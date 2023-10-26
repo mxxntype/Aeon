@@ -16,7 +16,7 @@ in {
 
     xdg.configFile."zellij/config.kdl".text = ''
         layout_dir "${config.xdg.configHome}/zellij/layouts/"
-        default_layout "compact"
+        default_layout "cli"
         pane_frames false
 
         theme "nix"
@@ -58,6 +58,8 @@ in {
 
                 bind "Alt ." { GoToNextTab; }
                 bind "Alt ," { GoToPreviousTab; }
+
+                bind "Alt i" { ToggleFloatingPanes; }
             }
 
             locked {

@@ -1,16 +1,27 @@
 { config, ... }: let
     layoutDir = "${config.xdg.configHome}/zellij/layouts/";
+    defaultTabTemplate = ''
+        default_tab_template {
+            children
+            pane size=1 borderless=true {
+                plugin location="zellij:compact-bar"
+            }
+        }
+    '';
 in {
     xdg.configFile = {
+        "${layoutDir}/cli.kdl".text = ''
+            layout {
+                ${defaultTabTemplate}
+                tab name="Tab #1 | 󰊠 " focus=true {
+                    pane
+                }
+            }
+        '';
+        
         "${layoutDir}/wyrm.kdl".text = ''
             layout {
-                default_tab_template {
-                    children
-                    pane size=1 borderless=true {
-                        plugin location="zellij:compact-bar"
-                    }
-                }
-
+                ${defaultTabTemplate}
                 tab name="󱆃 CLI [~]" cwd="~/" focus=true {
                     pane split_direction="vertical" {
                         pane
@@ -37,6 +48,18 @@ in {
                             command "btm"
                             args "--battery"
                         }
+                        pane
+                    }
+                }
+            }
+        '';
+
+        "${layoutDir}/monocle.kdl".text = ''
+            layout {
+                ${defaultTabTemplate}
+                tab name="Monocle | 󰹻 " focus=true {
+                    pane split_direction="horizontal" {
+                        pane size="70%" edit="./"
                         pane
                     }
                 }
