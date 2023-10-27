@@ -135,7 +135,9 @@ in {
       gcmsg = "git commit --message";
       # Git: Remotes & stash
       gp = "git push";
+      gpa = "git push --all";
       gl = "git pull";
+      gla = "git pull --all";
       gsta = "git stash";
       gstaa = "git stash apply";
       gstac = "git stash clear";
