@@ -34,6 +34,7 @@
     ripgrep
     procs
     killall
+    sd
 
     # Text & image processors
     jq
@@ -42,6 +43,7 @@
     toml2nix
     exiftool
     mpv
+    hexyl
 
     # Build systems & automation
     gnumake
