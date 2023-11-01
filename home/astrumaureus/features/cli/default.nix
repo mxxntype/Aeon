@@ -43,7 +43,8 @@
     toml2nix
     exiftool
     mpv
-    hexyl
+    hexyl # Hex viewer
+    heh   # Hex editor
 
     # Build systems & automation
     gnumake
