@@ -18,6 +18,9 @@
     # DB's
     ../common/features/db/postgres.nix
 
+    # Servers
+    ../common/features/servers/searxng.nix
+
     # Devtools
     ../common/features/devtools
     ../common/features/devtools/qt.nix
