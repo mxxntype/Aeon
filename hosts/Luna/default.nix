@@ -16,7 +16,7 @@
     ../common/features/services/moonlight.nix
 
     # DB's
-    ../common/features/db/postgres.nix
+    # ../common/features/db/postgres.nix
 
     # Servers
     ../common/features/servers/searxng.nix
