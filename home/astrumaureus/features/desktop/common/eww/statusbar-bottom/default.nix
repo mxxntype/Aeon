@@ -18,6 +18,7 @@ in {
     ./music.nix
     ./battery.nix
     ./clock.nix
+    ./keyboard.nix
   ];
 
   xdg.configFile."eww/${moduleName}.yuck".text = lib.concatLines [
@@ -45,7 +46,7 @@ in {
             :style "${dockStyle}"
             (${subModules.clock.widgetName} :position "start")
             (${subModules.workspaces.widgetName} :position "center")
-            ""
+            (${subModules.keyboard.widgetName} :position "end")
           )
 
           ;; Right dock

@@ -134,6 +134,14 @@
               names = [ "time" ];
             });
           };
+          keyboard = rec {
+            widgetName = "${statusbars.bottom.widgetName}-keyboard";
+            moduleName = "${statusbars.bottom.widgetName}/${widgetName}";
+            variables = (mkVariables {
+              prefix = statusbars.bottom.widgetName;
+              names = [ "layout" ];
+            });
+          };
           battery = rec {
             widgetName = "${statusbars.bottom.widgetName}-battery";
             moduleName = "${statusbars.bottom.widgetName}/${widgetName}";
