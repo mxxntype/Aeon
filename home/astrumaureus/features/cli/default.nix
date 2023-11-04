@@ -66,6 +66,7 @@
     cmatrix
     pipes-rs
     cava
+    lolcat
 
     # Secrets
     sops
