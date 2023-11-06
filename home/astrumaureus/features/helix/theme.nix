@@ -1,128 +1,247 @@
-# INFO: Dynamic colorscheme for helix
-
-{
-  config,
-  ...
-}: let 
+# INFO: Dynamic colorscheme for `helix`
+{ config, ... }: let
   inherit (config.colorscheme) colors;
 in {
   programs.helix = {
     themes = {
-      base16 = let 
-        # Common colors
-        transparent = "none";
-
-        # Backgrounds
-        # mantle = "#${colors.base00}";
-        base = "#${colors.base01}";
-        surface0 = "#${colors.base02}";
-        surface1 = "#${colors.base03}";
-
-        # Foregrounds
-        subtext = "#${colors.base04}";
-        text = "#${colors.base05}";
-
-        # Accents
-        red = "#${colors.base06}";
-        maroon = "#${colors.base07}";
-        orange = "#${colors.base08}";
-        yellow = "#${colors.base09}";
-        green = "#${colors.base0A}";
-        cyan = "#${colors.base0B}";
-        teal = "#${colors.base0C}";
-        blue = "#${colors.base0D}";
-        purple = "#${colors.base0E}";
-        pink = "#${colors.base0F}";
-      in {
-        "ui.cursorline.primary" = { bg = base; };
-        "ui.text.focus" = { fg = purple; modifiers = ["bold"]; };
-        "ui.menu" = { fg = text; bg = surface0; };
-        "ui.menu.selected" = { fg = purple; bg = surface0; };
-        "ui.virtual.ruler" = { bg = base; };
-
-        "info" = purple;
-        "hint" = pink;
-
-        # Polar Night
-        # nord0 - background color
-        "ui.background" = transparent;
-
-        "ui.statusline" = { fg = subtext; bg = surface0; };
-        "ui.statusline.inactive" = { fg = subtext; bg = surface0; };
-        "ui.statusline.normal" = { fg = base; bg = purple; };
-        "ui.statusline.insert" = { fg = base; bg = green; };
-        "ui.statusline.select" = { fg = base; bg = blue; };
-
-        "ui.popup" = { bg = base; };
-        "ui.window" = { bg = base; };
-        "ui.help" = { bg = base; fg = text; };
-
-        "ui.selection" = { bg = surface0; };
-        "ui.cursor.match" = { bg = surface0; };
-
-        "comment" = { fg = subtext; modifiers = ["italic"]; };
-        "ui.linenr" = subtext;
-        "ui.linenr.selected" = text;
-        "ui.virtual.whitespace" = surface0;
-        "ui.virtual.inlay-hint" = { fg = surface0; };
-        "ui.virtual.indent-guide" = { fg = subtext; };
-
-        "ui.cursor.primary" = { modifiers = ["reversed"]; };
-        "attribute" = text;
-        "variable" = yellow;
-        "constant" = text;
-        "variable.builtin" = text;
-        "constant.builtin" = text;
-        "namespace" = cyan;
-
-        "ui.text" = text;
-        "punctuation" = text;
-
-        "type" = pink;
-        "type.builtin" = pink;
-        "label" = pink;
-
-        "constructor" = blue;
-        "function" = blue;
-        "function.macro" = blue;
-        "function.builtin" = blue;
-
-        "punctuation.delimiter" = text;
-        "operator" = text;
-        # "variable.other.member" = orange;
-
-        "keyword" = purple;
-        "keyword.directive" = purple;
-        "variable.parameter" = red;
-
-        "error" = red;
-
-        "special" = pink;
-        "module" = pink;
-
-        "warning" = orange;
-        "constant.character.escape" = subtext;
-
-        "string" = green;
-
-        "constant.numeric" = orange;
-
-        "markup.heading" = maroon;
-        "markup.list" = cyan;
-        "markup.bold" = { modifiers = ["bold"]; };
-        "markup.italic" = { modifiers = ["italic"]; };
-        "markup.strikethrough" = { modifiers = ["crossed_out"]; };
-        "markup.link.text" = blue;
-        "markup.raw" = teal;
-
-        "diagnostic.error" = { underline = { color = red; style = "curl"; }; };
-        "diagnostic.warning" = { underline = { color = orange; style = "curl"; }; };
-        "diagnostic.info" = { underline = { color = purple; style = "curl"; }; };
-        "diagnostic.hint" = { underline = { color = pink; style = "curl"; }; };
-
-        "diff.plus" = green;
-        "diff.delta" = purple;
-        "diff.minus" = red;
+      base16 = {
+        palette = {
+          # Backgrounds
+          crust = "#${colors.base00}";
+          mantle = "#${colors.base00}";
+          base = "#${colors.base01}";
+          # Surfaces
+          surface0 = "#${colors.base02}";
+          surface1 = "#${colors.base03}";
+          surface2 = "#${colors.base04}";
+          # Overlays
+          overlay0 = "#6c7086"; # FIXME
+          overlay1 = "#7f849c"; # FIXME
+          overlay2 = "#9399b2"; # FIXME
+          # Texts
+          subtext0 = "#a6adc8"; # FIXME
+          subtext1 = "#bac2de"; # FIXME
+          text = "#${colors.base05}";
+          # Cursor
+          secondary_cursor = "#b5a6a8"; # FIXME
+          cursorline = "#${colors.base03}";
+          # Accents
+          red = "#${colors.base06}";
+          maroon = "#${colors.base07}";
+          peach = "#${colors.base08}";
+          yellow = "#${colors.base09}";
+          flamingo = "#f2cdcd";  # FIXME
+          rosewater = "#f5e0dc"; # FIXME
+          green = "#${colors.base0A}";
+          teal = "#${colors.base0B}";
+          sky = "#${colors.base0C}";
+          sapphire = "#74c7ec";  # FIXME
+          blue = "#${colors.base0D}";
+          mauve = "#${colors.base0E}";
+          pink = "#${colors.base0F}";
+          lavender = "#b4befe"; # FIXME
+        };
+        attribute = "blue";
+        comment = {
+          fg = "overlay1";
+          modifiers = ["italic"];
+        };
+        constant = "peach";
+        "constant.builtin" = "peach";
+        "constant.character" = "teal";
+        "constant.character.escape" = "pink";
+        constructor = "sapphire";
+        "diagnostic.error" = {
+          underline = {
+            color = "red";
+            style = "curl";
+          };
+        };
+        "diagnostic.hint" = {
+          underline = {
+            color = "teal";
+            style = "curl";
+          };
+        };
+        "diagnostic.info" = {
+          underline = {
+            color = "sky";
+            style = "curl";
+          };
+        };
+        "diagnostic.warning" = {
+          underline = {
+            color = "yellow";
+            style = "curl";
+          };
+        };
+        "diff.delta" = "blue";
+        "diff.minus" = "red";
+        "diff.plus" = "green";
+        error = "red";
+        function = "blue";
+        "function.macro" = "mauve";
+        hint = "teal";
+        info = "sky";
+        keyword = "mauve";
+        "keyword.control.conditional" = {
+          fg = "mauve";
+          modifiers = [ "italic" ];
+        };
+        "keyword.storage.modifier.ref" = "teal";
+        label = "sapphire";
+        "markup.bold" = {
+          modifiers = [ "bold" ];
+        };
+        "markup.heading.1" = "lavender";
+        "markup.heading.2" = "mauve";
+        "markup.heading.3" = "green";
+        "markup.heading.4" = "yellow";
+        "markup.heading.5" = "pink";
+        "markup.heading.6" = "teal";
+        "markup.heading.marker" = {
+          fg = "peach";
+          modifiers = [ "bold" ];
+        };
+        "markup.italic" = {
+          modifiers = [ "italic" ];
+        };
+        "markup.link.text" = "blue";
+        "markup.link.url" = {
+          fg = "rosewater";
+          modifiers = [ "underlined" ];
+        };
+        "markup.list" = "mauve";
+        "markup.raw" = "flamingo";
+        "markup.strikethrough" = {
+          modifiers = [ "crossed_out" ];
+        };
+        namespace = {
+          fg = "blue";
+          modifiers = [ "italic" ];
+        };
+        operator = "sky";
+        punctuation = "overlay2";
+        "punctuation.special" = "sky";
+        special = "blue";
+        string = "green";
+        "string.regexp" = "peach";
+        "string.special" = "blue";
+        tag = "mauve";
+        type = "yellow";
+        "ui.background" = {
+          bg = "base";
+          fg = "text";
+        };
+        "ui.bufferline" = {
+          bg = "mantle";
+          fg = "subtext0";
+        };
+        "ui.bufferline.active" = {
+          bg = "base";
+          fg = "mauve";
+          underline = {
+            color = "mauve";
+            style = "line";
+          };
+        };
+        "ui.bufferline.background" = {
+          bg = "crust";
+        };
+        "ui.cursor" = {
+          bg = "secondary_cursor";
+          fg = "base";
+        };
+        "ui.cursor.match" = {
+          fg = "peach";
+          modifiers = [ "bold" ];
+        };
+        "ui.cursor.primary" = {
+          bg = "rosewater";
+          fg = "base";
+        };
+        "ui.cursorline.primary" = {
+          bg = "cursorline";
+        };
+        "ui.help" = {
+          bg = "surface0";
+          fg = "overlay2";
+        };
+        "ui.highlight" = {
+          bg = "surface1";
+          modifiers = [ "bold" ];
+        };
+        "ui.linenr" = {
+          fg = "surface1";
+        };
+        "ui.linenr.selected" = {
+          fg = "lavender";
+        };
+        "ui.menu" = {
+          bg = "surface0";
+          fg = "overlay2";
+        };
+        "ui.menu.selected" = {
+          bg = "surface1";
+          fg = "text";
+          modifiers = [ "bold" ];
+        };
+        "ui.popup" = {
+          bg = "surface0";
+          fg = "text";
+        };
+        "ui.selection" = {
+          bg = "surface1";
+        };
+        "ui.statusline" = {
+          bg = "mantle";
+          fg = "subtext1";
+        };
+        "ui.statusline.inactive" = {
+          bg = "mantle";
+          fg = "surface2";
+        };
+        "ui.statusline.insert" = {
+          bg = "green";
+          fg = "base";
+          modifiers = [ "bold" ];
+        };
+        "ui.statusline.normal" = {
+          bg = "lavender";
+          fg = "base";
+          modifiers = [ "bold" ];
+        };
+        "ui.statusline.select" = {
+          bg = "flamingo";
+          fg = "base";
+          modifiers = [ "bold" ];
+        };
+        "ui.text" = "text";
+        "ui.text.focus" = {
+          bg = "surface0";
+          fg = "text";
+          modifiers = [ "bold" ];
+        };
+        "ui.virtual" = "overlay0";
+        "ui.virtual.indent-guide" = "surface0";
+        "ui.virtual.inlay-hint" = {
+          bg = "mantle";
+          fg = "surface1";
+        };
+        "ui.virtual.ruler" = {
+          bg = "surface0";
+        };
+        "ui.window" = {
+          fg = "crust";
+        };
+        "variable" = "text";
+        "variable.builtin" = "red";
+        "variable.other.member" = "teal";
+        "variable.parameter" = {
+          fg = "maroon";
+          modifiers = [ "italic" ];
+        };
+        warning = "yellow";
       };
     };
   };
