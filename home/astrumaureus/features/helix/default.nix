@@ -17,9 +17,10 @@
       editor = {
         idle-timeout = 0;
         completion-trigger-len = 1;
-        # lsp = {
-        #   display-inlay-hints = true;
-        # };
+        lsp = {
+          display-inlay-hints = true;
+          display-messages = true;
+        };
 
         indent-guides = {
           render = true;
@@ -93,10 +94,6 @@
       }
       {
         name = "nix";
-      }
-      {
-        name = "c-sharp";
-        language-server.command = "OmniSharp";
       }
       # {
       #   name = "python";
