@@ -52,6 +52,7 @@
     comma
 
     # Archiving tools
+    zip
     unzip
     unrar
 
