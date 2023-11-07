@@ -22,7 +22,7 @@ I started my Linux journey on an Arch-based distribution, then hopped between Vo
 
 *Everything is kind of "forever WIP", as it always was with my systems.*
 
-![Screenshot of Hyprland @ October 2023](assets/hyprland-oct-23-1.png)
+![Screenshot of Hyprland @ November 2023](assets/hyprland-nov-23-1.png)
 
 ---
 
