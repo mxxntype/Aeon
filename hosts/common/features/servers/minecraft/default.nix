@@ -1,6 +1,6 @@
 # INFO: Self-hosted Minecraft!
 
-{ ... }: let
+_: let
   serverPort = 25565;
 in {
   # NOTE: Decided to use Docker to manage the server;

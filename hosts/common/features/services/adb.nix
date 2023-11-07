@@ -1,8 +1,4 @@
-{
-  ...
-}: {
-  programs.adb = {
-    enable = true;
-  };
+_: {
+  programs.adb.enable = true;
   users.users.astrumaureus.extraGroups = [ "adbusers" ];
 }

@@ -1,11 +1,6 @@
-{
-  pkgs,
-  ...
-}: {
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [
-      hplipWithPlugin
-    ];
-  };
+{ pkgs, ... }: {
+    lib.printing = {
+        enable = true;
+        drivers = with pkgs; [ hplipWithPlugin ];
+    };
 }

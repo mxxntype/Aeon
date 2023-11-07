@@ -17,9 +17,7 @@ Convert a LUKS1 header into LUKS2:
 $ sudo cryptsetup convert /dev/sdb1 --type luks2
 */
 
-{
-  ...
-}: {
+_: {
   boot = {
     loader = {
       # Make GRUB aware of LUKS

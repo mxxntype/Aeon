@@ -1,8 +1,5 @@
 # INFO: Bootloader settings
-
-{
-  ...
-}: {
+_: {
   boot = {
     loader = {
       # UEFI support

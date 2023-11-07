@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     (writeShellScriptBin "powerdrain" ''
       echo - | awk "{printf \"%3d\", \

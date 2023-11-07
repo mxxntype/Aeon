@@ -1,10 +1,6 @@
 # INFO: All known syncthing devices
-
-{
-  ...
-}: {
+_: {
   services.syncthing.settings.devices = {
-
     wisp = {
       name = "Wisp";
       introducer = false;
@@ -28,6 +24,5 @@
       introducer = false;
       id = "LNPTMFK-C3ZABPC-YPQRAOY-TM275QR-54QWXX6-4Q4MASJ-NLKEHLM-P7JLMQA";
     };
-
   };
 }

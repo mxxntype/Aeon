@@ -2,10 +2,6 @@
 # games to request a set of optimisations be temporarily
 # applied to the host OS and/or a game process.
 
-{
-    ...
-}: {
-    programs.gamemode = {
-        enable = true;
-    };
+_: {
+    programs.gamemode.enable = true;
 }

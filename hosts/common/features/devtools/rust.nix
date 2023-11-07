@@ -1,11 +1,6 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
-  imports = [
-    ./c.nix  # Rust needs `cc` linker
-  ];
+{ inputs, pkgs, ... }: {
+  # Rust needs `cc` linker
+  imports = [ ./c.nix ];
 
   nixpkgs = {
     overlays = [

@@ -1,8 +1,5 @@
 # INFO: A nice & smooth graphical boot animation
-
-{
-  ...
-}: {
+_: {
   console = {
     useXkbConfig = true;
     earlySetup = false;
@@ -14,9 +11,7 @@
     # loader.timeout = 0;
 
     # BUG: Plymouth does not `cover` the entire boot process, some messages still leak
-    plymouth = {
-      enable = true;
-    };
+    plymouth.enable = true;
 
     kernelParams = [
       "quiet"

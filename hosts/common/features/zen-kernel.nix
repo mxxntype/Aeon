@@ -1,8 +1,4 @@
 # INFO: The `zen` linux kernel
-
-{
-  pkgs,
-  ...
-}: {
+{ pkgs, ... }: {
   boot.kernelPackages = pkgs.linuxPackages_zen;
 }

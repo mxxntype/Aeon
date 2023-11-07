@@ -5,7 +5,5 @@
     # ./python.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    pkg-config
-  ];
+  environment.systemPackages = with pkgs; [ pkg-config ];
 }

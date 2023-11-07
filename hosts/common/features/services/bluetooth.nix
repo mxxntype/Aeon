@@ -1,11 +1,4 @@
-{
-  ...
-}: {
-  hardware.bluetooth = {
-    enable = true;
-  };
-
-  services.blueman = {
-    enable = true;
-  };
+_: {
+    hardware.bluetooth.enable = true;
+    services.blueman.enable = true;
 }

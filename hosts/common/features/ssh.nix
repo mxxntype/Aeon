@@ -1,9 +1,5 @@
 # INFO: OpenSSH & related settings
-
-{
-  pkgs,
-  ...
-}: {
+{ pkgs, ... }: {
   services.openssh = {
     enable = true;
     settings = {
@@ -22,10 +18,6 @@
   };
 
   programs.ssh.startAgent = true;
-
   security.pam.enableSSHAgentAuth = true; # Passwordless sudo when SSH'ing with keys
-
-  environment.systemPackages = with pkgs; [
-    sshfs
-  ];
+  environment.systemPackages = with pkgs; [ sshfs ];
 }

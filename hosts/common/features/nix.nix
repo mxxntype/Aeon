@@ -1,11 +1,6 @@
 # INFO: Nix settings
 
-{
-  inputs,
-  pkgs,
-  lib,
-  ...
-}: {
+{ inputs, pkgs, lib, ... }: {
   nix = {
     settings = {
       trusted-users = [ "root" "@wheel" ];
@@ -41,7 +36,5 @@
     nixPath = [ "nixpkgs=${inputs.nixpkgs.outPath}" ];
   };
 
-  environment.systemPackages = with pkgs; [
-    cachix
-  ];
+  environment.systemPackages = with pkgs; [ cachix ];
 }

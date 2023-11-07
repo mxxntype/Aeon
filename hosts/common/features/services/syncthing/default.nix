@@ -1,9 +1,5 @@
 # INFO: Syncthing, file synchronization service
-
-{
-  config,
-  ...
-}: {
+{ config, ... }: {
   imports = [
     ./devices.nix
     ../../../users/astrumaureus # Needed to run as user
@@ -22,7 +18,6 @@
 
     # TODO: Declare separately & define per-device
     settings.folders = {
-
       camera = {
         label = "Camera";
         path = "${config.users.users.astrumaureus.home}/Camera";
@@ -80,7 +75,6 @@
         ];
         id = "ga53t-wdz4c";
       };
-
     };
 
     settings = {

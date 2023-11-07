@@ -1,9 +1,5 @@
 # INFO: PipeWire sound server
-
-{
-  pkgs,
-  ...
-}: {
+{ pkgs, ... }: {
   # HACK: https://nixos.wiki/wiki/PipeWire
   sound.enable = false;
 
@@ -24,7 +20,5 @@
 
   # Extra utilities like `alsamixer`
   # TODO: maybe add `pamixer` for easy volume control
-  environment.systemPackages = [
-    pkgs.alsaUtils
-  ];
+  environment.systemPackages = [ pkgs.alsaUtils ];
 }

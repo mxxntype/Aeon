@@ -1,9 +1,6 @@
 # INFO: KMSCon, an alternative console
 
-{
-  pkgs,
-  ...
-}: {
+{ pkgs, ... }: {
   # WARN: KMSCon is really cool, but its development has been
   # stopped for several years now. Needa find some alternative...
   services.kmscon = {
