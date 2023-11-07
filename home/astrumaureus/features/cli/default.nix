@@ -10,6 +10,7 @@
     ./wiki-tui.nix
     ./yazi.nix
     ./zellij
+    ./nushell.nix
   ];
 
   home.packages = with pkgs; [
