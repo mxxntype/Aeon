@@ -17,7 +17,14 @@
     ];
   };
 
-  programs.ssh.startAgent = true;
+  programs = {
+    ssh.startAgent = true;
+    mosh = {
+      enable = true;
+      withUtempter = true;
+    };
+  };
+
   security.pam.enableSSHAgentAuth = true; # Passwordless sudo when SSH'ing with keys
   environment.systemPackages = with pkgs; [ sshfs ];
 }
