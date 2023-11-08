@@ -19,5 +19,6 @@
     cargo-tauri
     cargo-binutils  # LLVM tools shipped with the Rust toolchain
     bacon           # Background Rust code checker
+    diesel-cli
   ];
 }
