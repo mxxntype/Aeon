@@ -28,6 +28,8 @@
     settings.git_protocol = "ssh";
     extensions = with pkgs; [
       gh-markdown-preview
+      gh-dash
+      gh-eco
     ];
   };
 
