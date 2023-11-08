@@ -19,7 +19,7 @@ in {
         ]}"
         (input
           :value "Binary name..."
-          :onchange "eww update ${commandPrompt.variables.commands}=$(reddot --pattern {} -e 10)"
+          :onchange "eww update ${commandPrompt.variables.commands}=$(reddot {} -m 10)"
           :onaccept "${shared.bashSequence [
             "hyprctl dispatch exec \${jq(${commandPrompt.variables.commands}, '.[0]')}"
             commandPrompt.resetCommand
