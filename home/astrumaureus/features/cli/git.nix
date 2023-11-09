@@ -1,5 +1,7 @@
 # INFO: Git & GitHub CLI
-{ pkgs, ... }: {
+{ config, pkgs, ... }: let
+  inherit (config.colorscheme) colors;
+in {
   programs.git = {
     enable = true;
     userName = "mxxntype";
@@ -36,4 +38,25 @@
   home.packages = with pkgs; [
     git-filter-repo
   ];
+
+  xdg.configFile."gh-dash/config.yml".text = ''
+    theme:
+      ui:
+        table:
+          showSeparator: true
+      colors:
+        text:
+          primary: "#${colors.base05}"
+          secondary: "#${colors.base04}"
+          inverted: "#${colors.base02}"
+          faint: "#${colors.base04}"
+          warning: "#${colors.base07}"
+          success: "#${colors.base0A}"
+        background:
+          selected: "#${colors.base02}"
+        border:
+          primary: "#${colors.base02}"
+          secondary: "#${colors.base03}"
+          faint: "#${colors.base02}"
+  '';
 }
