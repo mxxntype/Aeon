@@ -38,7 +38,6 @@
     # Alternative implementations of the basic tools
     erdtree
     ripgrep
-    procs
     killall
     sd
     tree

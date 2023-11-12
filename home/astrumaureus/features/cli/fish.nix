@@ -90,7 +90,6 @@ in {
       free = "free -h --si";
       duf = "duf -theme ansi";
       btm = "btm --battery";
-      ps = "procs";
       nvt = "nvtop";
       jq = "jaq";
       y = "yazi";
