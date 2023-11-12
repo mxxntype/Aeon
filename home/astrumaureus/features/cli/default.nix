@@ -41,6 +41,7 @@
     procs
     killall
     sd
+    tree
 
     # Text & image processors
     jq
@@ -74,6 +75,7 @@
     pipes-rs
     cava
     lolcat
+    vivid
 
     # Secrets
     sops
