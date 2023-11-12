@@ -35,29 +35,31 @@ in {
       foreground = "#${colors.base05}";
       background = "#${colors.base01}";
 
+      # Black
       color0 = "#${colors.base02}";
       color8 = "#${colors.base03}";
-
+      # Red
       color1 = "#${colors.base06}";
       color9 = "#${colors.base06}";
-
+      # Green
       color2 = "#${colors.base0A}";
       color10 = "#${colors.base0A}";
-
+      # Yellow
       color3 = "#${colors.base09}";
       color11 = "#${colors.base09}";
-
+      # Blue
       color4 = "#${colors.base0D}";
       color12 = "#${colors.base0D}";
-
+      # Magenta
       color5 = "#${colors.base0E}";
       color13 = "#${colors.base0E}";
-
+      # Purple
       color6 = "#${colors.base0B}";
       color14 = "#${colors.base0B}";
-
+      # White
       color7 = "#${colors.base05}";
       color15 = "#${colors.base05}";
+      # Indexed
       # color16 = "#${colors.base09}";
       # color17 = "#${colors.base0F}";
       # color18 = "#${colors.base01}";
