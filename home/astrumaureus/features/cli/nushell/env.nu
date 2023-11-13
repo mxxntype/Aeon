@@ -63,12 +63,12 @@ $env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
 # This can be useful if you have a 2-line prompt and it's taking up a lot of space
 # because every command entered takes up 2 lines instead of 1. You can then uncomment
 # the line below so that previously entered commands show with a single `🚀`.
-$env.TRANSIENT_PROMPT_COMMAND = {|| "~> " }
-$env.TRANSIENT_PROMPT_INDICATOR = {|| "" }
-$env.TRANSIENT_PROMPT_INDICATOR_VI_INSERT = {|| "" }
-$env.TRANSIENT_PROMPT_INDICATOR_VI_NORMAL = {|| "" }
-$env.TRANSIENT_PROMPT_MULTILINE_INDICATOR = {|| "" }
-$env.TRANSIENT_PROMPT_COMMAND_RIGHT = {|| "" }
+# $env.TRANSIENT_PROMPT_COMMAND = {|| "~> " }
+# $env.TRANSIENT_PROMPT_INDICATOR = {|| "" }
+# $env.TRANSIENT_PROMPT_INDICATOR_VI_INSERT = {|| "" }
+# $env.TRANSIENT_PROMPT_INDICATOR_VI_NORMAL = {|| "" }
+# $env.TRANSIENT_PROMPT_MULTILINE_INDICATOR = {|| "" }
+# $env.TRANSIENT_PROMPT_COMMAND_RIGHT = {|| "" }
 
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
