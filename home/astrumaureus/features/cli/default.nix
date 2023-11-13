@@ -10,7 +10,7 @@
     ./wiki-tui.nix
     ./yazi.nix
     ./zellij
-    ./nushell.nix
+    ./nushell
   ];
 
   programs.direnv = {
