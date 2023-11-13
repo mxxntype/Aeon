@@ -45,6 +45,7 @@
     # Text & image processors
     jq
     jaq
+    jc
     timg
     toml2nix
     exiftool
