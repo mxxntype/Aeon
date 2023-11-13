@@ -5,7 +5,8 @@
     envFile.source = ./env.nu;
     configFile.source = ./config.nu;
     shellAliases = {
-      cat = "bat --style plain,grid,numbers,changes,snip";
+      lsa = "ls -a";
+      cat = "bat";
     };
   };
 
