@@ -2,6 +2,9 @@
 _: {
   programs.bat = {
     enable = true;
-    config.theme = "base16";
+    config = {
+      theme = "base16";
+      style = "plain,grid,numbers,changes,snip";
+    };
   };
 }
