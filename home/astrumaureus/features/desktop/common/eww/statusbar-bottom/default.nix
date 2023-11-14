@@ -10,6 +10,8 @@
     "border-top-right-radius: ${toString wm-config.rounding}px"
     "padding-left: 4px"
     "padding-right: 4px"
+    "border: 1px solid #${colors.base02}"
+    "border-bottom: none"
     # "color: #${colors.base02}"
   ]);
 in {
