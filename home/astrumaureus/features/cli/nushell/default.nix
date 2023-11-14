@@ -7,6 +7,7 @@
     shellAliases = {
       lsa = "ls -a";
       cat = "bat";
+      btm = "btm --battery";
     };
   };
 
