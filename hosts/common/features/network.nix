@@ -13,9 +13,7 @@
     };
 
     firewall = let
-      alwaysOpenPorts = [
-        9 # WakeOnLAN
-      ];
+      alwaysOpenPorts = [ 9 ]; # WakeOnLAN
     in {
       enable = true;
       allowedTCPPorts = alwaysOpenPorts;
@@ -23,7 +21,5 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    wakeonlan
-  ];
+  environment.systemPackages = with pkgs; [ wakeonlan ];
 }

@@ -2,12 +2,7 @@
 # Bootloader & InitRD parameters & modules
 # System architecture, microcode updates & etc.
 
-{
-  lib,
-  pkgs,
-  config,
-  ...
-}: {
+{ lib, pkgs, config, ... }: {
   boot = {
     kernelModules = [ "kvm-intel" ];
     initrd = {

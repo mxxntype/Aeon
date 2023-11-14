@@ -10,9 +10,7 @@ sda
     └─nixos-root btrfs                NOX_ROOT 934cdd09-eabd-402e-949f-d125a98b76fd   /nix/store
 */
 
-{
-  ...
-}: {
+_: {
   imports = [
     ../common/features/boot/fde.nix
   ];

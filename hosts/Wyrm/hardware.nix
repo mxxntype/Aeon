@@ -2,12 +2,7 @@
 # Bootloader & InitRD parameters & modules
 # System architecture, microcode updates & etc.
 
-{
-  lib,
-  pkgs,
-  config,
-  ...
-}: {
+{ lib, pkgs, config, ... }: {
   boot = {
     kernelModules = [ "kvm-intel" ];
     kernelParams = [ "video=HDMI-A-2:1920x1080@74" ];
@@ -48,9 +43,7 @@
   };
 
   networking.interfaces = {
-    enp0s31f6 = {
-      wakeOnLan.enable = true;
-    };
+    enp0s31f6.wakeOnLan.enable = true;
   };
 
   # The REAL hardware configuration

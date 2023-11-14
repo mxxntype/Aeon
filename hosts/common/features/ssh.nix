@@ -1,14 +1,13 @@
 # INFO: OpenSSH & related settings
+
 { pkgs, ... }: {
   services.openssh = {
     enable = true;
     settings = {
-      # Harden
       PasswordAuthentication = false;
       PermitRootLogin = "no";
       StreamLocalBindUnlink = "yes";  # Automatically remove stale sockets
     };
-
     hostKeys = [
       {
         path = "/etc/ssh/ssh_host_ed25519_key";

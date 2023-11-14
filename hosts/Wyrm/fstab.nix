@@ -9,10 +9,7 @@ sda
     └─ssd--wyrm-root btrfs                WYRM_ROOT    0be657d8-4a60-4d12-8b04-0fbc6309d606                  /nix/store
 */
 
-{
-  config,
-  ...
-}: {
+{ config, ... }: {
   imports = [
     ../common/features/boot/fde.nix
   ];
@@ -23,18 +20,15 @@ sda
       fsType = "btrfs";
       options = [ "ssd" "compress=zstd" "space_cache=v2" "subvol=@" ];
     };
-    
     "/nix" = {
       device = "/dev/disk/by-label/WYRM_ROOT";
       fsType = "btrfs";
       options = [ "ssd" "compress=zstd" "space_cache=v2" "noatime" "subvol=@nix" ];
     };
-
     "/boot/efi" = {
       device = "/dev/disk/by-label/WYRM_EFI";
       fsType = "vfat";
     };
-
     "/mnt/windows" = {
       device = "/dev/disk/by-uuid/E61AED861AED53D9";
       fsType = "ntfs";

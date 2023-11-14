@@ -14,12 +14,8 @@
     ../common/features/services/bluetooth.nix
     ../common/features/services/adb.nix
     ../common/features/services/moonlight.nix
-
-    # DB's
-    # ../common/features/db/postgres.nix
-
-    # Servers
-    ../common/features/servers/searxng.nix
+    ../common/features/services/searxng.nix
+    # ../common/features/services/postgres.nix
 
     # Devtools
     ../common/features/devtools
@@ -28,14 +24,14 @@
     # Optinonal system-level modules
     ../common/features/boot/quiet-boot.nix
     ../common/features/power/drain.nix
-    ../common/features/sound/pipewire
+    ../common/features/sound/pipewire.nix
     ../common/features/gamemode.nix
     ../common/features/services/cups.nix
     ../common/features/gpg.nix
 
     # NOTE: Vital
-    ../common/global
-    ../common/users/root
+    ../common/global.nix
+    ../common/users/root.nix
     ../common/users/astrumaureus/autologin.nix
     ./fstab.nix
     ./hardware.nix

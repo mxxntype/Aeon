@@ -1,26 +1,15 @@
-# INFO: Default, imports other files.
-# Some common and/or unsorted settings
-
-{
-  inputs,
-  outputs,
-  pkgs,
-  ...
-}: {
+{ inputs, outputs, pkgs, ... }: {
   imports = [
-
-    ../features/boot
-    ../features/environment.nix
-    ../features/locale.nix
-    ../features/network.nix
-    ../features/nix.nix
-    ../features/sops.nix
-    ../features/ssh.nix
-    ../features/zen-kernel.nix
-
-    ../features/services/dnscrypt-proxy
-    ../features/services/xdg-portal.nix
-
+    ../common/features/boot
+    ../common/features/environment.nix
+    ../common/features/locale.nix
+    ../common/features/network.nix
+    ../common/features/nix.nix
+    ../common/features/sops.nix
+    ../common/features/ssh.nix
+    ../common/features/zen-kernel.nix
+    ../common/features/services/dnscrypt-proxy
+    ../common/features/services/xdg-portal.nix
     inputs.home-manager.nixosModules.home-manager
   ] ++ (builtins.attrValues outputs.nixosModules);
 
@@ -47,11 +36,18 @@
       jmtpfs
       libnotify
     ];
-
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    (nerdfonts.override {
+      fonts = [
+        "JetBrainsMono"
+        "BigBlueTerminal"
+        "Gohu"
+        "Iosevka"
+        "IosevkaTerm"
+      ];
+    })
     corefonts
   ];
 

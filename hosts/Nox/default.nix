@@ -1,9 +1,6 @@
-/* INFO: Host configuration: Nox (Dell i7559) */
+# INFO: Host configuration: Nox (Dell i7559)
 
-{
-  inputs,
-  ...
-}: {
+{ inputs, ... }: {
   # List of features that form the host configuration
   imports = [
 
@@ -13,7 +10,7 @@
     # Optinonal system-level modules
     ../common/features/boot/quiet-boot.nix
     ../common/features/power/drain.nix
-    ../common/features/sound/pipewire
+    ../common/features/sound/pipewire.nix
     ../common/features/x11.nix
 
     # Services
@@ -24,13 +21,12 @@
     ../common/features/devtools
 
     # WARN: Vital stuff
-    ../common/global
-    ../common/users/root
+    ../common/global.nix
+    ../common/users/root.nix
     ./fstab.nix
     ./hardware.nix
 
     # inputs.hardware.nixosModules.common-gpu-nvidia-disable
-
   ];
 
   networking.hostName = "Nox";

@@ -1,15 +1,7 @@
 # INFO: System-level astrumaureus config
-
-{
-  pkgs,
-  config,
-  ...
-}: let
+{ pkgs, config, ... }: let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
-  #T TODO: Get rid of this
-  programs.fish.enable = true;
-
   users.users.astrumaureus = {
     isNormalUser = true;
 

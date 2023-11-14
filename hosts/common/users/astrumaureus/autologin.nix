@@ -1,10 +1,6 @@
 # INFO: Auto-login as <user> (for use with full-disk encryption)
 
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
   systemd.services.autologin = {
     enable = true;
     description = "Autologin on TTY1";
