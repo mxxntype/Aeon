@@ -12,8 +12,8 @@
   # Apps & CLI tools
   terminalName = "kitty";
   terminalCommand = "${terminalName}";
-  # FIXME: Fish is hardcoded
-  zellijWrapper = "fish --init-command ${pkgs.zellij}/bin/zellij";
+  # FIXME: Nushell is hardcoded
+  zellijWrapper = "nu --execute ${pkgs.zellij}/bin/zellij";
   zellijTerminalCommand = "${terminalCommand} ${zellijWrapper}";
   floatingTerminalClass = "${terminalName}Floating";
   floatingTerminalCommand = "${terminalCommand} --class ${floatingTerminalClass}";
@@ -187,7 +187,7 @@ in {
         bind = SUPER SHIFT, RETURN, exec, ${floatingZellijTerminalCommand}
         bind = SUPER,       P,      exec, ${floatingTerminalCommand} btm --battery
         bind = SUPER,       M,      exec, ${floatingTerminalCommand} alsamixer
-        bind = SUPER,       E,      exec, ${floatingTerminalCommand} fish -C yazi
+        bind = SUPER,       E,      exec, ${floatingTerminalCommand} yazi
         bind = SUPER SHIFT, N,      exec, obsidian --ozone-platform=wayland
 
         # Make the 'floating' terminal actually float

@@ -18,7 +18,7 @@ in {
     uid = 1000;
     # gid = 100;
 
-    shell = pkgs.fish;
+    shell = pkgs.nushellFull;
     extraGroups = [
       "wheel"
       "video"
