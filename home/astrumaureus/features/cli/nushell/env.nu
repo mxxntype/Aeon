@@ -102,3 +102,4 @@ $env.NU_PLUGIN_DIRS = [
 
 $env.LS_COLORS = (vivid generate catppuccin-mocha)
 $env.RUSTC_WRAPPER = sccache
+$env.EDITOR = hx
