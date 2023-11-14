@@ -8,7 +8,7 @@
 
   mpc-listener = pkgs.writeShellScriptBin "mpc-listener" ''
     while true; do
-      mpc current -f '%title%' | head --lines 1
+      mpc current -f '%artist% - %title%' | head --lines 1
       mpc idle player > /dev/null
     done
   '';
