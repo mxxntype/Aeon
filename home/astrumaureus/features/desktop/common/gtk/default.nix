@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
-in rec {
+in {
   gtk = {
     enable = true;
     font = {
@@ -22,13 +22,13 @@ in rec {
     # };
   };
 
-  services.xsettingsd = {
-    enable = true;
-    settings = {
-      "Net/ThemeName" = "${gtk.theme.name}";
-      # "Net/IconThemeName" = "${gtk.iconTheme.name}";
-    };
-  };
+  # services.xsettingsd = {
+  #   enable = true;
+  #   settings = {
+  #     "Net/ThemeName" = "${gtk.theme.name}";
+  #     # "Net/IconThemeName" = "${gtk.iconTheme.name}";
+  #   };
+  # };
 
   home.packages = with pkgs; [
     gtk-engine-murrine
