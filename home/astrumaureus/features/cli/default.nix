@@ -2,6 +2,7 @@
 { pkgs, inputs, ... }: {
   imports = [
     ./bat.nix
+    ./cava.nix
     ./fd.nix
     ./fish.nix
     ./fzf.nix
@@ -73,7 +74,6 @@
     cbonsai
     cmatrix
     pipes-rs
-    cava
     lolcat
     vivid
 
