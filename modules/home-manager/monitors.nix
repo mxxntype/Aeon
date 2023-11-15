@@ -1,12 +1,8 @@
-{
-  lib,
-  config,
-  ...
-}: let
+# INFO: Monitor configuration module
+
+{ lib, ... }: let
   inherit (lib) mkOption types;
-  cfg = config.monitors;
-in
-{
+in {
   options.monitors = mkOption {
     type = types.listOf (types.submodule {
       options = {
