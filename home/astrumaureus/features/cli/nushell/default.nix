@@ -1,9 +1,12 @@
 { pkgs, ... }: {
+  imports = [
+    # ./env.nix
+    ./config.nix
+  ];
+  
   programs.nushell = {
     enable = true;
     package = pkgs.nushellFull;
-    envFile.source = ./env.nu;
-    configFile.source = ./config.nu;
     shellAliases = {
       lsa = "ls -a";
       cat = "bat";
