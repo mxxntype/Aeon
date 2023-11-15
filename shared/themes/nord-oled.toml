@@ -1,0 +1,35 @@
+[colors]
+# Backgrounds
+crust     = "000000"
+mantle    = "000000"
+base      = "000000"
+# Surfaces
+surface0  = "2e3440"
+surface1  = "3b4252"
+surface2  = "434c5e"
+# Overlays
+overlay0  = "4c566a"
+overlay1  = "4c566a"
+overlay2  = "4c566a"
+# Texts
+subtext0  = "d8dee9"
+subtext1  = "e5e9f0"
+text      = "eceff4"
+# Accents
+red       = "bf616a"
+maroon    = "bf616a"
+peach     = "d08770"
+yellow    = "88c0d0"
+rosewater = "ebcb8b"
+flamingo  = "ebcb8b"
+green     = "a3be8c"
+teal      = "8fbcbb"
+sky       = "88c0d0"
+sapphire  = "81a1c1"
+blue      = "5e81ac"
+lavender  = "81a1c1"
+mauve     = "b48ead"
+pink      = "b48ead"
+
+[meta]
+url = "https://www.nordtheme.com/"
