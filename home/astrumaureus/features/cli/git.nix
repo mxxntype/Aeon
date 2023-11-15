@@ -1,6 +1,6 @@
 # INFO: Git & GitHub CLI
 { config, pkgs, ... }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
 in {
   programs.git = {
     enable = true;
@@ -46,17 +46,17 @@ in {
           showSeparator: true
       colors:
         text:
-          primary: "#${colors.base05}"
-          secondary: "#${colors.base04}"
-          inverted: "#${colors.base02}"
-          faint: "#${colors.base04}"
-          warning: "#${colors.base07}"
-          success: "#${colors.base0A}"
+          primary: "#${colors.text}"
+          secondary: "#${colors.surface2}"
+          inverted: "#${colors.surface0}"
+          faint: "#${colors.surface2}"
+          warning: "#${colors.maroon}"
+          success: "#${colors.green}"
         background:
-          selected: "#${colors.base02}"
+          selected: "#${colors.surface0}"
         border:
-          primary: "#${colors.base02}"
-          secondary: "#${colors.base03}"
-          faint: "#${colors.base02}"
+          primary: "#${colors.surface0}"
+          secondary: "#${colors.surface1}"
+          faint: "#${colors.surface0}"
   '';
 }

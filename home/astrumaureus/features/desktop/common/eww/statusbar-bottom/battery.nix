@@ -30,15 +30,15 @@
 
   chargeLevels = {
     normal = {
-      color = colors.base0A;
+      color = colors.green;
     };
     low = {
       threshold = 30;
-      color = colors.base08;
+      color = colors.peach;
     };
     critical = {
       threshold = 15;
-      color = colors.base06;
+      color = colors.red;
     };
   };
 
@@ -55,7 +55,7 @@ in {
         :halign position
         :space-evenly false
         :style "${style [
-          "background: #${colors.base02}"
+          "background: #${colors.surface0}"
           "border-radius: 512px"
           "margin-top: 4px"
           "padding-left: 8px"
@@ -105,7 +105,7 @@ in {
           :space-evenly false
           :spacing 4
           :style "${style [
-            "background: #${colors.base03}"
+            "background: #${colors.surface1}"
             "margin-top: 2px"
             "margin-bottom: 2px"
             "border-radius: 512px"
@@ -123,8 +123,8 @@ in {
             :style "${style [
               "color: #\${${(conditional {
                 condition = "${EWW_BATTERY.status} == 'Charging'";
-                ifTrue = "'${colors.base0B}'";
-                ifFalse = "'${colors.base09}'";
+                ifTrue = "'${colors.teal}'";
+                ifFalse = "'${colors.yellow}'";
               })}}"
             ]}"
           )
@@ -133,7 +133,7 @@ in {
           (label
             :text "''${ ${variables.powerdrain} }w"
             :style "${style [
-              "color: #${colors.base05}"
+              "color: #${colors.text}"
             ]}"
           )
         )
@@ -146,7 +146,7 @@ in {
       trough {
         min-width: 96px;
         min-height: 6px;
-        background: #${colors.base04};
+        background: #${colors.surface2};
         border-radius: 512px;
         highlight {
           border-radius: 512px;

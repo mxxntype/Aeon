@@ -25,7 +25,7 @@
     icon ? "",
     text ? "Entry",
     command ? "echo",
-    color ? "#${colors.base05}",
+    color ? "#${colors.text}",
   }: {
     command = command;
     syntax = ''
@@ -40,14 +40,14 @@
 
           # "hyprctl notify"
           # "-1 1000"                    # Timeout
-          # "'rgb(${colors.base0A})'"    # Color
+          # "'rgb(${colors.green})'"    # Color
           # "'${widgetName}: gained hover [${toString position.row}:${toString position.col}]'"
 
           # "&&"
 
           # "hyprctl notify"
           # "-1 3000"                    # Timeout
-          # "'rgb(${colors.base0E})'"    # Color
+          # "'rgb(${colors.mauve})'"    # Color
           # "$(eww get ${variables.powermenuActiveRow}):$(eww get ${variables.powermenuActiveCol})"
         ]}"
 
@@ -60,7 +60,7 @@
 
           # "hyprctl notify"
           # "-1 1000"                    # Timeout
-          # "'rgb(${colors.base06})'"    # Color
+          # "'rgb(${colors.red})'"    # Color
           # "'${widgetName}: lost hover [${toString position.row}:${toString position.col}]'"
         ]}" 
 
@@ -70,7 +70,7 @@
           :width ${toString tileWidth}
           :height ${toString tileHeight}
           :style "${style [
-            "background-color: #${colors.base02}"
+            "background-color: #${colors.surface0}"
             "border-radius: ${toString wm-config.rounding}px"
           ]}"
 
@@ -91,7 +91,7 @@
             :text "${toString text}"
             :style "${style [
               "padding-bottom: 4px"
-              "color: #${colors.base05}"
+              "color: #${colors.text}"
             ]}"
           )
         )
@@ -110,7 +110,7 @@
         icon = "󰌾";
         text = "Lockscreen";
         command = "hyprlock.sh";
-        color = colors.base0F;
+        color = colors.pink;
       })
 
       (entry {
@@ -121,7 +121,7 @@
         icon = "󰤄";
         text = "Suspend";
         command = "hyprsuspend.sh";
-        color = colors.base0E;
+        color = colors.mauve;
       })
 
       (entry {
@@ -132,7 +132,7 @@
         icon = "󰗼";
         text = "Exit Hyprland";
         command = "hyprexit.sh";
-        color = colors.base0D;
+        color = colors.blue;
       })
     ]
 
@@ -146,7 +146,7 @@
         icon = "󰐥";
         text = "Shutdown";
         command = "systemctl poweroff";
-        color = colors.base06;
+        color = colors.red;
       })
 
       (entry {
@@ -157,7 +157,7 @@
         icon = "󰜉";
         text = "Reboot";
         command = "systemctl reboot";
-        color = colors.base07;
+        color = colors.maroon;
       })
     ]
   ];
@@ -184,7 +184,7 @@ in {
             :spacing "${toString tileSpacing}"
             :style "${style [
                 "padding: 8px"
-                "background-color: #${colors.base00}"
+                "background-color: #${colors.base}"
                 "border-radius: ${toString wm-config.rounding}px"
             ]}"
 
@@ -214,7 +214,7 @@ in {
   xdg.configFile."eww/${moduleName}.scss".text = ''
     .${widgetName}-entry {
       &.active {
-        background-color: #${colors.base03};
+        background-color: #${colors.surface1};
       }
     }
   '';

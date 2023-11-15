@@ -1,6 +1,10 @@
 /* INFO: Host configuration: Wyrm (Desktop PC) */
 
-_: {
+_: let
+  state = builtins.fromTOML (
+    builtins.readFile ./state.toml
+  );
+in {
   # List of features that form the host configuration
   imports = [
     # Users that should be present on the system
@@ -31,4 +35,8 @@ _: {
   networking.hostName = "Wyrm";
   system.stateVersion = "23.05";
   services.tailscale.enable = true;
+
+  theme = builtins.fromTOML (
+    builtins.readFile ../../shared/themes/${state.theme}.toml
+  );
 }

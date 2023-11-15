@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
 in {
   programs.wezterm = {
     extraConfig = ''
@@ -26,18 +26,18 @@ in {
         font_size = 10.0,
 
         -- The overall background color of the tab bar when the window is focused
-        active_titlebar_bg = '${colors.base00}',
+        active_titlebar_bg = '${colors.base}',
 
         -- The overall background color of the tab bar when the window is not focused
-        inactive_titlebar_bg = '${colors.base00}',
+        inactive_titlebar_bg = '${colors.base}',
       }
 
       config.enable_tab_bar = false
 
       --[[ Nix-friendly colorscheme ]]--
       config.colors = {
-        foreground = '${colors.base05}',  -- The default text color
-        background = '${colors.base00}',   -- The default background color
+        foreground = '${colors.text}',  -- The default text color
+        background = '${colors.base}',   -- The default background color
 
         -- Overrides the cell background color when the current cell is occupied by the
         -- cursor and the cursor style is set to Block
@@ -55,30 +55,30 @@ in {
         selection_bg = '#fffacd',
 
         -- The portion that represents the current viewport
-        scrollbar_thumb = '${colors.base00}',
+        scrollbar_thumb = '${colors.base}',
 
         -- The color of the split lines between panes
         split = '#444444',
 
         ansi = {
-          '${colors.base01}',
-          '${colors.base0E}',
-          '${colors.base0D}',
-          '${colors.base0A}',
-          '${colors.base08}',
-          '${colors.base09}',
-          '${colors.base0B}',
-          '${colors.base05}',
+          '${colors.base}',
+          '${colors.mauve}',
+          '${colors.blue}',
+          '${colors.green}',
+          '${colors.peach}',
+          '${colors.yellow}',
+          '${colors.teal}',
+          '${colors.text}',
         },
         brights = {
-          '${colors.base03}',
-          '${colors.base0E}',
-          '${colors.base0D}',
-          '${colors.base0A}',
-          '${colors.base08}',
-          '${colors.base09}',
-          '${colors.base0B}',
-          '${colors.base05}',
+          '${colors.surface1}',
+          '${colors.mauve}',
+          '${colors.blue}',
+          '${colors.green}',
+          '${colors.peach}',
+          '${colors.yellow}',
+          '${colors.teal}',
+          '${colors.text}',
         },
 
         -- Indexed colors

@@ -1,8 +1,10 @@
 # INFO: astrumaureus@Nox configuration
 
-{
-  ...
-}: {
+_: let
+  state = builtins.fromTOML (
+    builtins.readFile ../../hosts/Luna/state.toml
+  );
+in {
   imports = [
     ./global
 
@@ -42,4 +44,9 @@
       enable = true;
     }
   ];
+
+  # Set the userspace theme
+  theme = builtins.fromTOML (
+    builtins.readFile ../../shared/themes/${state.theme}.toml
+  );
 }

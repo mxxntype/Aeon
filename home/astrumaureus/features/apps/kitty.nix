@@ -10,7 +10,7 @@
     ${config.programs.kitty.package}/bin/kitty -1 "$@"
   '';
 
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
 in {
   programs.kitty = {
     enable = true;
@@ -32,55 +32,55 @@ in {
       background_opacity = "0.9";
 
       # Colors
-      foreground = "#${colors.base05}";
-      background = "#${colors.base01}";
+      foreground = "#${colors.text}";
+      background = "#${colors.base}";
 
       # Black
-      color0 = "#${colors.base02}";
-      color8 = "#${colors.base03}";
+      color0 = "#${colors.surface0}";
+      color8 = "#${colors.surface1}";
       # Red
-      color1 = "#${colors.base06}";
-      color9 = "#${colors.base06}";
+      color1 = "#${colors.red}";
+      color9 = "#${colors.red}";
       # Green
-      color2 = "#${colors.base0A}";
-      color10 = "#${colors.base0A}";
+      color2 = "#${colors.green}";
+      color10 = "#${colors.green}";
       # Yellow
-      color3 = "#${colors.base09}";
-      color11 = "#${colors.base09}";
+      color3 = "#${colors.yellow}";
+      color11 = "#${colors.yellow}";
       # Blue
-      color4 = "#${colors.base0D}";
-      color12 = "#${colors.base0D}";
+      color4 = "#${colors.blue}";
+      color12 = "#${colors.blue}";
       # Magenta
-      color5 = "#${colors.base0E}";
-      color13 = "#${colors.base0E}";
+      color5 = "#${colors.mauve}";
+      color13 = "#${colors.mauve}";
       # Purple
-      color6 = "#${colors.base0B}";
-      color14 = "#${colors.base0B}";
+      color6 = "#${colors.teal}";
+      color14 = "#${colors.teal}";
       # White
-      color7 = "#${colors.base05}";
-      color15 = "#${colors.base05}";
+      color7 = "#${colors.text}";
+      color15 = "#${colors.text}";
       # Indexed
-      # color16 = "#${colors.base09}";
-      # color17 = "#${colors.base0F}";
-      # color18 = "#${colors.base01}";
-      # color19 = "#${colors.base02}";
-      # color20 = "#${colors.base04}";
-      # color21 = "#${colors.base06}";
+      # color16 = "#${colors.yellow}";
+      # color17 = "#${colors.pink}";
+      # color18 = "#${colors.base}";
+      # color19 = "#${colors.surface0}";
+      # color20 = "#${colors.surface2}";
+      # color21 = "#${colors.red}";
 
-      selection_background = "#${colors.base05}";
-      selection_foreground = "#${colors.base00}";
+      selection_background = "#${colors.text}";
+      selection_foreground = "#${colors.base}";
 
-      cursor = "#${colors.base05}";
+      cursor = "#${colors.text}";
       cursor_shape = "beam";
-      url_color = "#${colors.base04}";
+      url_color = "#${colors.surface2}";
 
-      active_border_color = "#${colors.base03}";
-      inactive_border_color = "#${colors.base01}";
-      active_tab_background = "#${colors.base00}";
-      active_tab_foreground = "#${colors.base05}";
-      inactive_tab_background = "#${colors.base01}";
-      inactive_tab_foreground = "#${colors.base04}";
-      tab_bar_background = "#${colors.base01}";
+      active_border_color = "#${colors.surface1}";
+      inactive_border_color = "#${colors.base}";
+      active_tab_background = "#${colors.base}";
+      active_tab_foreground = "#${colors.text}";
+      inactive_tab_background = "#${colors.base}";
+      inactive_tab_foreground = "#${colors.surface2}";
+      tab_bar_background = "#${colors.base}";
     };
   };
 

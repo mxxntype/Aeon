@@ -1,6 +1,10 @@
 # INFO: Host configuration: Nox (Dell i7559)
 
-{ inputs, ... }: {
+_: let
+  state = builtins.fromTOML (
+    builtins.readFile ./state.toml
+  );
+in {
   # List of features that form the host configuration
   imports = [
 
@@ -31,4 +35,8 @@
 
   networking.hostName = "Nox";
   system.stateVersion = "22.11";
+
+  theme = builtins.fromTOML (
+    builtins.readFile ../../shared/themes/${state.theme}.toml
+  );
 }

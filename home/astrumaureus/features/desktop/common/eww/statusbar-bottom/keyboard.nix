@@ -14,8 +14,8 @@ in {
       (box
         :halign position
         ${(shared.mixin-widgets.containers.with-icon {
-          fg = colors.base0C;
-          bg = colors.base02;
+          fg = colors.sky;
+          bg = colors.surface0;
           text = "\${${variables.layout}}";
           icon = "󰌌";
         })}

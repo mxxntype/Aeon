@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
   fonts = {
     names = [ "JetBrainsMono Nerd Font" ];
     style = "SemiBold";
@@ -98,27 +98,27 @@ in {
       # INFO: Colors
       colors = {
         focused = {
-          background = "#${colors.base00}";
-          border = "#${colors.base09}";
-          childBorder = "#${colors.base09}";
-          indicator = "#${colors.base08}";
-          text = "#${colors.base05}";
+          background = "#${colors.base}";
+          border = "#${colors.yellow}";
+          childBorder = "#${colors.yellow}";
+          indicator = "#${colors.peach}";
+          text = "#${colors.text}";
         };
 
         unfocused = {
-          background = "#${colors.base00}";
-          border = "#${colors.base03}";
-          childBorder = "#${colors.base03}";
-          indicator = "#${colors.base03}";
-          text = "#${colors.base05}";
+          background = "#${colors.base}";
+          border = "#${colors.surface1}";
+          childBorder = "#${colors.surface1}";
+          indicator = "#${colors.surface1}";
+          text = "#${colors.text}";
         };
 
         urgent = {
-          background = "#${colors.base00}";
-          border = "#${colors.base0E}";
-          childBorder = "#${colors.base0E}";
-          indicator = "#${colors.base0C}";
-          text = "#${colors.base05}";
+          background = "#${colors.base}";
+          border = "#${colors.mauve}";
+          childBorder = "#${colors.mauve}";
+          indicator = "#${colors.sky}";
+          text = "#${colors.text}";
         };
       };
 
@@ -131,32 +131,32 @@ in {
           statusCommand = "i3status"; # Configured in ./i3status.nix
 
           colors = {
-            background = "#${colors.base00}";
-            statusline = "#${colors.base05}";
-            separator = "#${colors.base09}";
+            background = "#${colors.base}";
+            statusline = "#${colors.text}";
+            separator = "#${colors.yellow}";
 
             focusedWorkspace = {
-              background = "#${colors.base09}";
-              border = "#${colors.base09}";
-              text = "#${colors.base00}";
+              background = "#${colors.yellow}";
+              border = "#${colors.yellow}";
+              text = "#${colors.base}";
             };
 
             inactiveWorkspace = {
-              background = "#${colors.base02}";
-              border = "#${colors.base02}";
-              text = "#${colors.base05}";
+              background = "#${colors.surface0}";
+              border = "#${colors.surface0}";
+              text = "#${colors.text}";
             };
 
             urgentWorkspace = {
-              background = "#${colors.base0E}";
-              border = "#${colors.base0E}";
-              text = "#${colors.base00}";
+              background = "#${colors.mauve}";
+              border = "#${colors.mauve}";
+              text = "#${colors.base}";
             };
 
             bindingMode = {
-              background = "#${colors.base08}";
-              border = "#${colors.base08}";
-              text = "#${colors.base00}";
+              background = "#${colors.peach}";
+              border = "#${colors.peach}";
+              text = "#${colors.base}";
             };
           };
           

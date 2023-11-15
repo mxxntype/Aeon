@@ -2,7 +2,7 @@
   config,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
   inherit (config) wm-config;
   moduleName = "statusbar/keyboard";
 in {
@@ -38,7 +38,7 @@ in {
     .keyboard {
       &.widget {
         padding: 4px;
-        background-color: #${colors.base02};
+        background-color: #${colors.surface0};
         margin-top: 4px;
         margin-bottom: 4px;
         border-radius: ${toString wm-config.rounding}px;
@@ -46,7 +46,7 @@ in {
 
       .icon {
         // font-size: 16;
-        color: #${colors.base07};
+        color: #${colors.maroon};
       }
     }
   '';

@@ -2,7 +2,7 @@
 
 scheme: let c = scheme.colors;
 in ''
-  let g:colors_name="nix-${scheme.slug}"
+  let g:colors_name="nix"
 
   if exists("syntax_on")
     syntax reset

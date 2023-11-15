@@ -1,3 +1,5 @@
+slug = "catppuccin-mocha"
+
 [colors]
 # Backgrounds
 crust     = "000000"

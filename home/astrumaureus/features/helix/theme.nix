@@ -1,19 +1,19 @@
 # INFO: Dynamic colorscheme for `helix`
 { config, ... }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
 in {
   programs.helix = {
     themes = {
       base16 = {
         palette = {
           # Backgrounds
-          crust = "#${colors.base00}";
-          mantle = "#${colors.base00}";
-          base = "#${colors.base01}";
+          crust = "#${colors.base}";
+          mantle = "#${colors.base}";
+          base = "#${colors.base}";
           # Surfaces
-          surface0 = "#${colors.base02}";
-          surface1 = "#${colors.base03}";
-          surface2 = "#${colors.base04}";
+          surface0 = "#${colors.surface0}";
+          surface1 = "#${colors.surface1}";
+          surface2 = "#${colors.surface2}";
           # Overlays
           overlay0 = "#6c7086"; # FIXME
           overlay1 = "#7f849c"; # FIXME
@@ -21,24 +21,24 @@ in {
           # Texts
           subtext0 = "#a6adc8"; # FIXME
           subtext1 = "#bac2de"; # FIXME
-          text = "#${colors.base05}";
+          text = "#${colors.text}";
           # Cursor
           secondary_cursor = "#b5a6a8"; # FIXME
-          cursorline = "#${colors.base03}";
+          cursorline = "#${colors.surface1}";
           # Accents
-          red = "#${colors.base06}";
-          maroon = "#${colors.base07}";
-          peach = "#${colors.base08}";
-          yellow = "#${colors.base09}";
+          red = "#${colors.red}";
+          maroon = "#${colors.maroon}";
+          peach = "#${colors.peach}";
+          yellow = "#${colors.yellow}";
           flamingo = "#f2cdcd";  # FIXME
           rosewater = "#f5e0dc"; # FIXME
-          green = "#${colors.base0A}";
-          teal = "#${colors.base0B}";
-          sky = "#${colors.base0C}";
+          green = "#${colors.green}";
+          teal = "#${colors.teal}";
+          sky = "#${colors.sky}";
           sapphire = "#74c7ec";  # FIXME
-          blue = "#${colors.base0D}";
-          mauve = "#${colors.base0E}";
-          pink = "#${colors.base0F}";
+          blue = "#${colors.blue}";
+          mauve = "#${colors.mauve}";
+          pink = "#${colors.pink}";
           lavender = "#b4befe"; # FIXME
         };
         attribute = "blue";

@@ -3,7 +3,7 @@
 { config, lib, pkgs, ... }: let
   # Colors
   inherit (config) wm-config;
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
 
   # Monitors
   inherit (config) monitors;
@@ -39,7 +39,7 @@
     buildInputs = [ pkgs.imagemagick ];
     builder = pkgs.writeScript "builder" ''
       source $stdenv/setup
-      convert -size ${toString maxDimensions.width}x${toString maxDimensions.height} xc:#${colors.base00} png:$out
+      convert -size ${toString maxDimensions.width}x${toString maxDimensions.height} xc:#${colors.base} png:$out
     '';
   };
 
@@ -301,7 +301,7 @@ in {
           rounding = ${toString wm-config.rounding}
           drop_shadow = true
           shadow_range = 16
-          col.shadow = rgb(${colors.base00})
+          col.shadow = rgb(${colors.base})
 
           dim_inactive = true
           dim_strength = 0.3
@@ -321,8 +321,8 @@ in {
           gaps_out = ${toString wm-config.gaps.outer}
           border_size = ${toString wm-config.border.thickness}
 
-          col.active_border = rgb(${colors.base00})
-          col.inactive_border = rgb(${colors.base00})
+          col.active_border = rgb(${colors.base})
+          col.inactive_border = rgb(${colors.base})
 
           # Mouse & cursor
           apply_sens_to_raw = 1
@@ -365,8 +365,8 @@ in {
         plugin {
           borders-plus-plus {
             add_borders = 2
-            col.border_1 = rgb(${colors.base01})
-            col.border_2 = rgb(${colors.base01})
+            col.border_1 = rgb(${colors.base})
+            col.border_2 = rgb(${colors.base})
           }
 
           hy3 {
@@ -378,12 +378,12 @@ in {
               text_height = 10
               text_padding = 4
 
-              col.active = rgb(${colors.base0E})
-              col.urgent = rgb(${colors.base06})
-              col.inactive = rgb(${colors.base05})
-              col.text.active = rgb(${colors.base0E})
-              col.text.urgent = rgb(${colors.base06})
-              col.text.inactive = rgb(${colors.base05})
+              col.active = rgb(${colors.mauve})
+              col.urgent = rgb(${colors.red})
+              col.inactive = rgb(${colors.text})
+              col.text.active = rgb(${colors.mauve})
+              col.text.urgent = rgb(${colors.red})
+              col.text.inactive = rgb(${colors.text})
             }
           }
         }

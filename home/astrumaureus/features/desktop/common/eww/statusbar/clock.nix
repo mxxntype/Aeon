@@ -2,7 +2,7 @@
   config,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
   inherit (config) wm-config;
 in {
   xdg.configFile."eww/statusbar/clock.yuck".text = ''
@@ -39,13 +39,13 @@ in {
 
   xdg.configFile."eww/statusbar/clock.scss".text = ''
     .clock {
-      color: #${colors.base05};
+      color: #${colors.text};
       font-weight: 600;
 
       &.widget {
         margin-top: 4px;
         padding: 4px;
-        background-color: #${colors.base02};
+        background-color: #${colors.surface0};
         border-radius: ${toString wm-config.rounding}px;
       }
     }

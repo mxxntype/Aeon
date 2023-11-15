@@ -5,14 +5,14 @@
   inherit (shared) colors style wm-config largestMonitor;
   inherit (shared.widgets.statusbars.bottom) widgetName moduleName subModules;
   dockStyle = (style [
-    "background: #${colors.base00}"
+    "background: #${colors.base}"
     "border-top-left-radius: ${toString wm-config.rounding}px"
     "border-top-right-radius: ${toString wm-config.rounding}px"
     "padding-left: 4px"
     "padding-right: 4px"
-    "border: 1px solid #${colors.base02}"
+    "border: 1px solid #${colors.surface0}"
     "border-bottom: none"
-    # "color: #${colors.base02}"
+    # "color: #${colors.surface0}"
   ]);
 in {
   imports = [

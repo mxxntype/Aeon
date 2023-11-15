@@ -7,14 +7,12 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (inputs.nix-colors.lib) schemeFromYAML;
-in {
+}: {
   imports = [
     ../features/cli
-    ../features/nvim
+    # ../features/nvim
     ../features/helix
-    inputs.nix-colors.homeManagerModules.default
+    # inputs.nix-colors.homeManagerModules.default
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   nixpkgs = {
@@ -86,11 +84,9 @@ in {
     };
   };
 
-  # Sets global colorscheme
-  # colorscheme = schemeFromYAML "base16" (builtins.readFile ../../../colorschemes/everblush.yaml);
-  colorscheme = schemeFromYAML "base16" (builtins.readFile ../../../colorschemes/catppuccin-oled.yaml);
-  # colorscheme = schemeFromYAML "base16" (builtins.readFile ../../../colorschemes/decay.yaml);
-  # colorscheme = lib.mkDefault colorSchemes.catppuccin-frappe;
-  # Echoes it to ~/.colorscheme
-  # home.file.".colorscheme".text = config.colorscheme.slug; 
+  # Store the userspace theme in `~/.config` in various formats
+  xdg.configFile = {
+    "theme.toml".text = inputs.nix-std.lib.serde.toTOML config.theme;
+    "theme.json".text = builtins.toJSON config.theme;
+  };
 }

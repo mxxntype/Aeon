@@ -2,7 +2,7 @@
   config,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
 in {
   xdg.configFile."awesome/theme.lua".text = ''
     local theme_assets = require("beautiful.theme_assets")
@@ -17,22 +17,22 @@ in {
 
     theme.font          = "JetBrainsMonoNerdFont SemiBold 10"
 
-    theme.bg_normal     = "#${colors.base00}"
-    theme.bg_focus      = "#${colors.base00}"
-    theme.bg_urgent     = "#${colors.base00}"
-    theme.bg_minimize   = "#${colors.base01}"
+    theme.bg_normal     = "#${colors.base}"
+    theme.bg_focus      = "#${colors.base}"
+    theme.bg_urgent     = "#${colors.base}"
+    theme.bg_minimize   = "#${colors.base}"
     theme.bg_systray    = theme.bg_normal
 
-    theme.fg_normal     = "#${colors.base04}"
-    theme.fg_focus      = "#${colors.base05}"
-    theme.fg_urgent     = "#${colors.base05}"
-    theme.fg_minimize   = "#${colors.base05}"
+    theme.fg_normal     = "#${colors.surface2}"
+    theme.fg_focus      = "#${colors.text}"
+    theme.fg_urgent     = "#${colors.text}"
+    theme.fg_minimize   = "#${colors.text}"
 
     theme.useless_gap         = 8
     theme.border_width        = 2
-    theme.border_color_normal = "#${colors.base03}"
-    theme.border_color_active = "#${colors.base0E}"
-    theme.border_color_marked = "#${colors.base06}"
+    theme.border_color_normal = "#${colors.surface1}"
+    theme.border_color_active = "#${colors.mauve}"
+    theme.border_color_marked = "#${colors.red}"
 
     -- There are other variable sets
     -- overriding the default one when
@@ -133,7 +133,7 @@ in {
     rnotification.connect_signal('request::rules', function()
         rnotification.append_rule {
             rule       = { urgency = 'critical' },
-            properties = { bg = '#${colors.base06}', fg = '#${colors.base05}' }
+            properties = { bg = '#${colors.red}', fg = '#${colors.text}' }
         }
     end)
 

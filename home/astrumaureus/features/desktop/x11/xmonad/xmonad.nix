@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
 in {
   xsession.windowManager.xmonad = {
     config = pkgs.writeText "xmonad.hs" ''
@@ -45,8 +45,8 @@ in {
           {
             modMask = mod4Mask
           , borderWidth         = 2
-          , normalBorderColor   = "#${colors.base03}"
-          , focusedBorderColor  = "#${colors.base09}"
+          , normalBorderColor   = "#${colors.surface1}"
+          , focusedBorderColor  = "#${colors.yellow}"
 
           , startupHook = do
               spawnOnce "nvidia-offload picom --experimental-backends"

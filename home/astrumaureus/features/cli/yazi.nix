@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  inherit(config.colorscheme) colors;
+  inherit(config.theme) colors;
 in {
   home.packages = with pkgs; [
     yazi
@@ -35,87 +35,87 @@ in {
   xdg.configFile."yazi/theme.toml".text = ''
     [filetype]
     [[filetype.rules]]
-    fg = "#${colors.base0E}"
+    fg = "#${colors.mauve}"
     mime = "image/*"
 
     [[filetype.rules]]
-    fg = "#${colors.base0F}"
+    fg = "#${colors.pink}"
     mime = "video/*"
 
     [[filetype.rules]]
-    fg = "#${colors.base0C}"
+    fg = "#${colors.sky}"
     mime = "audio/*"
 
     [[filetype.rules]]
-    fg = "#${colors.base07}"
+    fg = "#${colors.maroon}"
     mime = "application/zip"
 
     [[filetype.rules]]
-    fg = "#${colors.base07}"
+    fg = "#${colors.maroon}"
     mime = "application/gzip"
 
     [[filetype.rules]]
-    fg = "#${colors.base07}"
+    fg = "#${colors.maroon}"
     mime = "application/x-tar"
 
     [[filetype.rules]]
-    fg = "#${colors.base07}"
+    fg = "#${colors.maroon}"
     mime = "application/x-bzip"
 
     [[filetype.rules]]
-    fg = "#${colors.base07}"
+    fg = "#${colors.maroon}"
     mime = "application/x-bzip2"
 
     [[filetype.rules]]
-    fg = "#${colors.base07}"
+    fg = "#${colors.maroon}"
     mime = "application/x-7z-compressed"
 
     [[filetype.rules]]
-    fg = "#${colors.base07}"
+    fg = "#${colors.maroon}"
     mime = "application/x-rar"
 
     [[filetype.rules]]
-    fg = "#${colors.base07}"
+    fg = "#${colors.maroon}"
     name = "*.iso"
 
     [[filetype.rules]]
-    fg = "#${colors.base0F}"
+    fg = "#${colors.pink}"
     name = "default.nix"
 
     [[filetype.rules]]
-    fg = "#${colors.base0E}"
+    fg = "#${colors.mauve}"
     name = "*.nix"
 
     [[filetype.rules]]
-    fg = "#${colors.base0A}"
+    fg = "#${colors.green}"
     name = "*.key"
 
     [[filetype.rules]]
-    fg = "#${colors.base0A}"
+    fg = "#${colors.green}"
     name = "*.gpg"
 
     [[filetype.rules]]
-    fg = "#${colors.base0A}"
+    fg = "#${colors.green}"
     name = "*.kdbx"
 
     [[filetype.rules]]
-    fg = "#${colors.base0C}"
+    fg = "#${colors.sky}"
     name = "*.doc?"
 
     [[filetype.rules]]
-    fg = "#${colors.base06}"
+    fg = "#${colors.red}"
     name = "*.sh"
 
     [[filetype.rules]]
-    fg = "#${colors.base06}"
+    fg = "#${colors.red}"
     name = "*.fish"
 
     [[filetype.rules]]
-    fg = "#${colors.base0D}"
+    fg = "#${colors.blue}"
     name = "*/"
 
     [[filetype.rules]]
-    fg = "#${colors.base05}"
+    fg = "#${colors.text}"
     name = "*"
 
     [icons]
@@ -213,94 +213,94 @@ in {
 
     [marker]
     [marker.selected]
-    bg = "#${colors.base02}"
-    fg = "#${colors.base0E}"
+    bg = "#${colors.surface0}"
+    fg = "#${colors.mauve}"
 
     [marker.selecting]
-    bg = "#${colors.base02}"
-    fg = "#${colors.base0D}"
+    bg = "#${colors.surface0}"
+    fg = "#${colors.blue}"
 
     [preview]
     syntect_theme = "~/.config/bat/themes/Catppuccin-mocha.tmTheme"
 
     [preview.hovered]
     underline = false
-    bg = "#${colors.base02}"
-    fg = "#${colors.base06}"
+    bg = "#${colors.surface0}"
+    fg = "#${colors.red}"
 
     [progress]
     [progress.gauge]
-    bg = "#${colors.base03}"
-    fg = "#${colors.base08}"
+    bg = "#${colors.surface1}"
+    fg = "#${colors.peach}"
 
     [progress.label]
     bold = true
-    fg = "#${colors.base05}"
+    fg = "#${colors.text}"
 
     [selection]
     [selection.hovered]
-    bg = "#${colors.base02}"
-    fg = "#${colors.base06}"
+    bg = "#${colors.surface0}"
+    fg = "#${colors.red}"
 
     [status]
     [status.body]
-    normal = "#${colors.base03}"
-    select = "#${colors.base03}"
-    unset = "#${colors.base03}"
+    normal = "#${colors.surface1}"
+    select = "#${colors.surface1}"
+    unset = "#${colors.surface1}"
 
     [status.danger]
-    normal = "#${colors.base06}"
-    select = "#${colors.base06}"
-    unset = "#${colors.base06}"
+    normal = "#${colors.red}"
+    select = "#${colors.red}"
+    unset = "#${colors.red}"
 
     [status.emphasis]
-    normal = "#${colors.base08}"
-    select = "#${colors.base08}"
-    unset = "#${colors.base08}"
+    normal = "#${colors.peach}"
+    select = "#${colors.peach}"
+    unset = "#${colors.peach}"
 
     [status.info]
-    normal = "#${colors.base0A}"
-    select = "#${colors.base0A}"
-    unset = "#${colors.base0A}"
+    normal = "#${colors.green}"
+    select = "#${colors.green}"
+    unset = "#${colors.green}"
 
     [status.primary]
-    normal = "#${colors.base0E}"
-    select = "#${colors.base0D}"
-    unset = "#${colors.base0B}"
+    normal = "#${colors.mauve}"
+    select = "#${colors.blue}"
+    unset = "#${colors.teal}"
 
     [status.secondary]
-    normal = "#${colors.base00}"
-    select = "#${colors.base00}"
-    unset = "#${colors.base00}"
+    normal = "#${colors.base}"
+    select = "#${colors.base}"
+    unset = "#${colors.base}"
 
     [status.separator]
     closing = ""
     opening = ""
 
     [status.success]
-    normal = "#${colors.base0A}"
-    select = "#${colors.base0A}"
-    unset = "#${colors.base0A}"
+    normal = "#${colors.green}"
+    select = "#${colors.green}"
+    unset = "#${colors.green}"
 
     [status.tertiary]
-    normal = "#${colors.base0A}"
-    select = "#${colors.base0A}"
-    unset = "#${colors.base0A}"
+    normal = "#${colors.green}"
+    select = "#${colors.green}"
+    unset = "#${colors.green}"
 
     [status.warning]
-    normal = "#${colors.base07}"
-    select = "#${colors.base07}"
-    unset = "#${colors.base07}"
+    normal = "#${colors.maroon}"
+    select = "#${colors.maroon}"
+    unset = "#${colors.maroon}"
 
     [tab]
     max_width = 1
 
     [tab.active]
-    bg = "#${colors.base0E}"
-    fg = "#${colors.base00}"
+    bg = "#${colors.mauve}"
+    fg = "#${colors.base}"
 
     [tab.inactive]
-    bg = "#${colors.base02}"
-    fg = "#${colors.base05}"
+    bg = "#${colors.surface0}"
+    fg = "#${colors.text}"
   '';
 }

@@ -45,12 +45,8 @@ in {
     }
   ];
 
-  # Set the theme & store it in ~/.config in different formats
+  # Set the userspace theme
   theme = builtins.fromTOML (
     builtins.readFile ../../shared/themes/${state.theme}.toml
   );
-  xdg.configFile = {
-    "theme.toml".text = inputs.nix-std.lib.serde.toTOML config.theme;
-    "theme.json".text = builtins.toJSON config.theme;
-  };
 }

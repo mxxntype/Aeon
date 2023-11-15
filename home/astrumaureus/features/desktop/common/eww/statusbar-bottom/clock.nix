@@ -15,8 +15,8 @@ in {
       (box
         :halign position
         ${(shared.mixin-widgets.containers.with-icon {
-          fg = colors.base0D;
-          bg = colors.base02;
+          fg = colors.blue;
+          bg = colors.surface0;
           text = "\${${variables.time}}";
           icon = "";
         })}

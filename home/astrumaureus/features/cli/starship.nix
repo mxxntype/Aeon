@@ -1,6 +1,6 @@
 # INFO: `starship.rs`, rust-powered, cross-platform shell propmt
 { config, lib, ... }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
 in {
   programs.starship = {
     enable = true;

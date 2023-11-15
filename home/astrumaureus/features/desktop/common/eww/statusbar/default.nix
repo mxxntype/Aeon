@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
   inherit (config) wm-config;
   inherit (config) monitors;
   enabledMonitors = lib.filter (m: m.enable) monitors;
@@ -91,8 +91,8 @@ in {
 
     .statusbar {
       &.left {
-        background: #${colors.base00};
-        color: #${colors.base05};
+        background: #${colors.base};
+        color: #${colors.text};
         opacity: 0.95;
 
         &.outer-border {
@@ -103,9 +103,9 @@ in {
         &.container {
           border-top-right-radius: ${toString wm-config.rounding}px;
           border-bottom-right-radius: ${toString wm-config.rounding}px;
-          // border-right: 2px solid #${colors.base02};
-          // border-top: 2px solid #${colors.base02};
-          // border-bottom: 2px solid #${colors.base02};
+          // border-right: 2px solid #${colors.surface0};
+          // border-top: 2px solid #${colors.surface0};
+          // border-bottom: 2px solid #${colors.surface0};
           padding-right: 4px;
         }
       }

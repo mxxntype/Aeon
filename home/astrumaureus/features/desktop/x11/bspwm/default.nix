@@ -5,7 +5,7 @@
   ...
 }: let
   offloadCommand = "smart-offload";
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
   inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
 in {
   imports = [
@@ -21,7 +21,7 @@ in {
     enable = true;
     startupPrograms = let
       # wallpaper = nixWallpaperFromScheme {
-      #   scheme = config.colorscheme;
+      #   scheme = config.theme;
       #   width = 1920;
       #   height = 1080;
       #   logoScale = 5.0;
@@ -36,9 +36,9 @@ in {
 
       "bspc config window_gap 12"
       "bspc config border_width 2"
-      "bspc config normal_border_color '#${colors.base03}'"
-      "bspc config active_border_color '#${colors.base03}'"
-      "bspc config focused_border_color '#${colors.base0E}'"
+      "bspc config normal_border_color '#${colors.surface1}'"
+      "bspc config active_border_color '#${colors.surface1}'"
+      "bspc config focused_border_color '#${colors.mauve}'"
 
       "pkill polybar; sleep 0.2 && ${offloadCommand} polybar"
     ];

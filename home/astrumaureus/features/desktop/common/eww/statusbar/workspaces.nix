@@ -2,7 +2,7 @@
   config,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
   inherit (config) wm-config;
 
   widgetName = "workspaces-hyprland";
@@ -57,12 +57,12 @@ in {
         padding: 4px;
         margin-top: 4px;
         margin-left: 4px;
-        background-color: #${colors.base02};
+        background-color: #${colors.surface0};
         border-radius: ${toString wm-config.rounding}px;
       }
 
       .active-numerical {
-        color: #${colors.base0D};
+        color: #${colors.blue};
       }
 
       .entry {
@@ -70,16 +70,16 @@ in {
 
         min-width: ${toString emptyWorkspaceHeight}px;
         min-height: ${toString emptyWorkspaceHeight}px;
-        background-color: #${colors.base03};
+        background-color: #${colors.surface1};
         border-radius: ${toString wm-config.rounding}px;
 
         &.occupied {
           min-height: ${toString occupiedWorkspaceHeight}px;
-          background-color: #${colors.base04};
+          background-color: #${colors.surface2};
         }
         &.active {
           min-height: ${toString activeWorkspaceHeight}px;
-          background-color: #${colors.base0E};
+          background-color: #${colors.mauve};
         }
       }
     }

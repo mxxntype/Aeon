@@ -2,7 +2,7 @@
   config,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
 in {
   xdg.configFile."awesome/rc.lua".text = ''
     -- If LuaRocks is installed, make sure that packages installed through it are
@@ -55,22 +55,22 @@ in {
     beautiful.init({
       font          = "JetBrainsMonoNerdFont SemiBold 10",
 
-      bg_normal     = "#${colors.base00}",
-      bg_focus      = "#${colors.base00}",
-      bg_urgent     = "#${colors.base00}",
-      bg_minimize   = "#${colors.base01}",
-      bg_systray    = "#${colors.base00}",
+      bg_normal     = "#${colors.base}",
+      bg_focus      = "#${colors.base}",
+      bg_urgent     = "#${colors.base}",
+      bg_minimize   = "#${colors.base}",
+      bg_systray    = "#${colors.base}",
 
-      fg_normal     = "#${colors.base04}",
-      fg_focus      = "#${colors.base05}",
-      fg_urgent     = "#${colors.base05}",
-      fg_minimize   = "#${colors.base05}",
+      fg_normal     = "#${colors.surface2}",
+      fg_focus      = "#${colors.text}",
+      fg_urgent     = "#${colors.text}",
+      fg_minimize   = "#${colors.text}",
 
       useless_gap         = 8,
       border_width        = 2,
-      border_color_normal = "#${colors.base03}",
-      border_color_active = "#${colors.base0E}",
-      border_color_marked = "#${colors.base06}",
+      border_color_normal = "#${colors.surface1}",
+      border_color_active = "#${colors.mauve}",
+      border_color_marked = "#${colors.red}",
     })
 
     -- This is used later as the default terminal and editor to run.
