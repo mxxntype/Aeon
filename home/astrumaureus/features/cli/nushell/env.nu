@@ -103,3 +103,24 @@ $env.NU_PLUGIN_DIRS = [
 $env.LS_COLORS = (vivid generate catppuccin-mocha)
 $env.RUSTC_WRAPPER = sccache
 $env.EDITOR = hx
+
+# Autostart an SSH agent and don't start more than one of it.
+let sshAgentEnvPath = $"/tmp/ssh-agent-($env.USER).nuon"
+if ($sshAgentEnvPath | path exists) and ($"/proc/(open $sshAgentEnvPath | get SSH_AGENT_PID)" | path exists) {
+    load-env (open $sshAgentEnvPath)
+} else {
+    ^ssh-agent -c
+        | lines
+        | first 2
+        | parse "setenv {name} {value};"
+        | transpose -r
+        | into record
+        | save --force $sshAgentEnvPath
+    load-env (open $sshAgentEnvPath)
+}
+
+# TODO: If no keys are added, prompt to add one ASAP.
+let addedKeysCount = (ssh-add -l | lines | enumerate | where item =~ SHA | length)
+if ($addedKeysCount == 0) {
+    ssh-add
+}
