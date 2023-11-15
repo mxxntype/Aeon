@@ -10,7 +10,7 @@ in {
   xdg.configFile."eww/${moduleName}.yuck".text = let
     cpuIcon = "󰋘";
     cpuLoad = "\${EWW_CPU.avg}";
-  in ''
+  in /* yuck */ ''
     (defwidget CPU []
       (box
         :class "CPU widget"
@@ -30,7 +30,7 @@ in {
     )
   '';
 
-  xdg.configFile."eww/${moduleName}.scss".text = ''
+  xdg.configFile."eww/${moduleName}.scss".text = /* scss */ ''
     .CPU {
       &.widget {
         padding: 4px;

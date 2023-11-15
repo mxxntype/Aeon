@@ -4,7 +4,7 @@
 }: let
   inherit (config.theme) colors;
 in {
-  xdg.configFile."awesome/rc.lua".text = ''
+  xdg.configFile."awesome/rc.lua".text = /* lua */ ''
     -- If LuaRocks is installed, make sure that packages installed through it are
     -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
     pcall(require, "luarocks.loader")

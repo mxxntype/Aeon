@@ -13,7 +13,7 @@
     done
   '';
 in {
-  xdg.configFile."eww/${moduleName}.yuck".text = ''
+  xdg.configFile."eww/${moduleName}.yuck".text = /* yuck */ ''
     (deflisten ${variables.mpc-listener} "${mpc-listener}/bin/mpc-listener")
     (defwidget ${widgetName} [position]
       (box

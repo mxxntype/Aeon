@@ -18,7 +18,7 @@
   };
 
   home.file.".xinitrc" = {
-    text = ''
+    text = /* sh */ ''
       #!/bin/sh
       picom -b
       exec awesome

@@ -1,14 +1,10 @@
 # INFO: XMonad config
 
-{
-  config,
-  pkgs,
-  ...
-}: let
+{ config, ... }: let
   inherit (config.theme) colors;
 in {
   xsession.windowManager.xmonad = {
-    config = pkgs.writeText "xmonad.hs" ''
+    config = /* haskell */ ''
       import XMonad
 
       import XMonad.Util.EZConfig

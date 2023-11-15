@@ -12,7 +12,7 @@ in {
     workspaceID = "\${ws.id}";
     occupiedWorkspacePredicate = "\ws.windows > 0 ? \"occupied\" : \"\"";
     activeWorkspacePredicate = "\${ws.id == active-workspace ? \"active\" : ${occupiedWorkspacePredicate}}";
-  in ''
+  in /* yuck */ ''
     (deflisten active-workspace "hyprquery -sq active-workspace")
     (deflisten active-window "hyprquery -sq active-window")
     (deflisten workspaces
@@ -51,7 +51,7 @@ in {
     emptyWorkspaceHeight = 12;
     occupiedWorkspaceHeight = emptyWorkspaceHeight * 2;
     activeWorkspaceHeight = emptyWorkspaceHeight * 3;
-  in ''
+  in /* scss */ ''
     .workspaces {
       &.container {
         padding: 4px;

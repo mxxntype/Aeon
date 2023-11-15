@@ -6,7 +6,7 @@ in {
   programs.fish = {
     enable = true; # ISSUE: users.users.*.shell complains for some reason
     
-    interactiveShellInit = ''
+    interactiveShellInit = /* fish */ ''
       fish_add_path ~/.cargo/bin
 
       set fish_color_autosuggestion 'brblack'

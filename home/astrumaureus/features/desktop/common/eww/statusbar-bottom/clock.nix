@@ -6,7 +6,7 @@
   inherit (shared.widgets.statusbars.bottom) subModules;
   inherit (subModules.clock) widgetName moduleName variables;
 in {
-  xdg.configFile."eww/${moduleName}.yuck".text = ''
+  xdg.configFile."eww/${moduleName}.yuck".text = /* yuck */ ''
     (defpoll ${variables.time}
       :interval "10s"
       'date +"%H:%M"')

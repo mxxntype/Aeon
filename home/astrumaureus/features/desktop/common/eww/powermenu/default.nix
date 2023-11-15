@@ -28,7 +28,7 @@
     color ? "#${colors.text}",
   }: {
     command = command;
-    syntax = ''
+    syntax = /* yuck */ ''
       (eventbox
 
         :onhover "${lib.concatStringsSep " " [
@@ -162,7 +162,7 @@
     ]
   ];
 
-  eww-powermenu-ctl = pkgs.writeShellScriptBin "eww-powermenu-ctl" ''
+  eww-powermenu-ctl = pkgs.writeShellScriptBin "eww-powermenu-ctl" /* bash */ ''
     if [[ "$1" == "--set-focus" ]]; then
       eww update ${variables.powermenuActiveRow}=$2
       eww update ${variables.powermenuActiveCol}=$3
@@ -174,7 +174,7 @@
     fi
   '';
 in {
-  xdg.configFile."eww/${moduleName}.yuck".text = ''
+  xdg.configFile."eww/${moduleName}.yuck".text = /* yuck */ ''
     (defvar ${variables.powermenuActiveRow} 0)
     (defvar ${variables.powermenuActiveCol} 1)
 
@@ -211,7 +211,7 @@ in {
     )
   '';
 
-  xdg.configFile."eww/${moduleName}.scss".text = ''
+  xdg.configFile."eww/${moduleName}.scss".text = /* scss */ ''
     .${widgetName}-entry {
       &.active {
         background-color: #${colors.surface1};
@@ -226,7 +226,7 @@ in {
   );
 
   wayland.windowManager.hyprland.configParts = [
-    ''
+    /* toml */ ''
       # Show the ${widgetName} & enter its submap
       bind = SUPER SHIFT, E, exec, eww open ${widgetName}
       bind = SUPER SHIFT, E, submap, eww-${widgetName}

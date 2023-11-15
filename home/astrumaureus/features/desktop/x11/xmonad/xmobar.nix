@@ -8,7 +8,7 @@
 in {
   programs.xmobar = {
     enable = true;
-    extraConfig = ''
+    extraConfig = /* haskell */ ''
       Config { overrideRedirect = False
              , font     = "xft:JetBrainsMono Nerd Font-10"
              , bgColor  = "#${colors.base}"

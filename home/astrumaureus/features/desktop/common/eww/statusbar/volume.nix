@@ -9,7 +9,7 @@
   moduleName = "statusbar/${widgetName}";
   style = lib.concatStringsSep ";";
 in {
-  xdg.configFile."eww/${moduleName}.yuck".text = ''
+  xdg.configFile."eww/${moduleName}.yuck".text = /* yuck */ ''
     (defpoll pipewire-volume
       :interval "2s"
       :initial "0.0"

@@ -8,7 +8,7 @@
     {
       plugin = nvim-tree-lua;
       type = "lua";
-      config = ''
+      config = /* lua */ ''
         require("nvim-tree").setup({
           renderer = {
             symlink_destination = false,

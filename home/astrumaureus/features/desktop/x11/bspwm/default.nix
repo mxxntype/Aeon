@@ -49,7 +49,7 @@ in {
   ];
 
   home.file.".xinitrc" = {
-    text = ''
+    text = /* sh */ ''
       #!/bin/sh
       export SXHKD_SHELL="/bin/sh"
       sxhkd &

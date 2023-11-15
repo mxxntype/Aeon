@@ -8,7 +8,7 @@
     {
       plugin = todo-comments-nvim;
       type = "lua";
-      config = ''
+      config = /* lua */ ''
         require("todo-comments").setup({
           keywords = {
             FIX   = { icon = " ", color = "error",     alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, },

@@ -32,7 +32,7 @@ in {
     };
   };
 
-  xdg.configFile."yazi/theme.toml".text = ''
+  xdg.configFile."yazi/theme.toml".text = /* toml */ ''
     [filetype]
     [[filetype.rules]]
     fg = "#${colors.mauve}"

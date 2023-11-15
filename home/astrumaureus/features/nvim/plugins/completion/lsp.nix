@@ -12,7 +12,7 @@
     {
       plugin = lazy-lsp-nvim;
       type = "lua";
-      config = ''
+      config = /* lua */ ''
         require("lazy-lsp").setup({
           excluded_servers = {
             "sqls",       -- Complains on startup, should be `sqlls`

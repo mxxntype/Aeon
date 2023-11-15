@@ -9,7 +9,7 @@ in {
     prismlauncher
   ];
 
-  home.file.".local/share/PrismLauncher/themes/custom/theme.json".text = ''
+  home.file.".local/share/PrismLauncher/themes/custom/theme.json".text = /* json */ ''
     {
       "colors": {
         "AlternateBase": "#${colors.surface0}",
@@ -34,7 +34,7 @@ in {
     }
   '';
 
-  home.file.".local/share/PrismLauncher/themes/custom/themeStyle.css".text = ''
+  home.file.".local/share/PrismLauncher/themes/custom/themeStyle.css".text = /* css */ ''
     QToolTip {
       color: #${colors.text};
       background-color: #${colors.base};

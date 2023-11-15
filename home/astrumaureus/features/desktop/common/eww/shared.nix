@@ -49,7 +49,7 @@
 
   mixin-widgets = {
     containers = {
-      with-icon = { fg, bg, icon, text }: ''
+      with-icon = { fg, bg, icon, text }: /* yuck */ ''
         (box
           :halign "center"
           :space-evenly false

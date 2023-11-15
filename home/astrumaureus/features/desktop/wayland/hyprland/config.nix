@@ -111,7 +111,7 @@ in {
     # INFO: See modules/home-manager/hyprland.nix
     extraConfig = lib.concatStringsSep "\n" config.wayland.windowManager.hyprland.configParts;
     configParts = [
-      ''
+      /* shell */ ''
         # Envvars
         # env = LIBVA_DRIVER_NAME,nvidia
         # env = XDG_SESSION_TYPE,wayland

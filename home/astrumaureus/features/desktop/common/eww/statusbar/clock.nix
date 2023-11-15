@@ -5,7 +5,7 @@
   inherit (config.theme) colors;
   inherit (config) wm-config;
 in {
-  xdg.configFile."eww/statusbar/clock.yuck".text = ''
+  xdg.configFile."eww/statusbar/clock.yuck".text = /* yuck */ ''
     (defpoll time-hour
       :interval "1m"
       "date +%H"
@@ -37,7 +37,7 @@ in {
     )
   '';
 
-  xdg.configFile."eww/statusbar/clock.scss".text = ''
+  xdg.configFile."eww/statusbar/clock.scss".text = /* scss */ ''
     .clock {
       color: #${colors.text};
       font-weight: 600;

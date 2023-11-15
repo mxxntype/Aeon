@@ -12,7 +12,7 @@ in {
     layoutShorthand = enLayoutShorthand;
 
     keyboardIcon = "󰌌";
-  in ''
+  in /* yuck */ ''
     (deflisten keyboard-layout
       "hyprquery -sq keyboard-layout"
     )
@@ -34,7 +34,7 @@ in {
     )
   '';
 
-  xdg.configFile."eww/${moduleName}.scss".text = ''
+  xdg.configFile."eww/${moduleName}.scss".text = /* scss */ ''
     .keyboard {
       &.widget {
         padding: 4px;

@@ -44,7 +44,7 @@
 
   percentage = "\${ round(${EWW_BATTERY.total_avg}, 0) }";
 in {
-  xdg.configFile."eww/${moduleName}.yuck".text = ''
+  xdg.configFile."eww/${moduleName}.yuck".text = /* yuck */ ''
     (defvar ${variables.chargeLevelIcons} "${icons.chargeLevel}")
     (defpoll ${variables.powerdrain}
       :interval "2s"
@@ -141,7 +141,7 @@ in {
     )
   '';
 
-  xdg.configFile."eww/${moduleName}.scss".text = ''
+  xdg.configFile."eww/${moduleName}.scss".text = /* scss */ ''
     .${widgetName}-scale {
       trough {
         min-width: 96px;

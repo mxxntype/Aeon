@@ -16,14 +16,14 @@ in {
 
   xdg.configFile = {
     # TODO: Automatically via `lib.forEach builtins.attrValues`
-    "eww/eww.yuck".text = ''
+    "eww/eww.yuck".text = /* yuck */ ''
       (include "./statusbar/statusbar.yuck")
       (include "./powermenu/powermenu.yuck")
       (include "./command-prompt.yuck")
       (include "./${shared.widgets.statusbars.bottom.moduleName}.yuck")
     '';
 
-    "eww/eww.scss".text = ''
+    "eww/eww.scss".text = /* scss */ ''
       @use './statusbar/statusbar';
       @use './powermenu/powermenu';
       @use './${shared.widgets.statusbars.bottom.subModules.workspaces.moduleName}';

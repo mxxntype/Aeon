@@ -27,7 +27,7 @@ in {
   ];
 
   home.file.".xinitrc" = {
-    text = ''
+    text = /* sh */ ''
       #!/bin/sh
       trayer  --edge top \
               --align right \

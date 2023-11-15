@@ -27,7 +27,7 @@ in {
     ./volume.nix
   ];
 
-  xdg.configFile."eww/statusbar/statusbar.yuck".text = ''
+  xdg.configFile."eww/statusbar/statusbar.yuck".text = /* yuck */ ''
     (include "./statusbar/clock.yuck")
     (include "./statusbar/battery.yuck")
     (include "./statusbar/workspaces-hyprland.yuck")
@@ -82,7 +82,7 @@ in {
     )
   '';
 
-  xdg.configFile."eww/statusbar/statusbar.scss".text = ''
+  xdg.configFile."eww/statusbar/statusbar.scss".text = /* scss */ ''
     @use './statusbar/clock';
     @use './statusbar/workspaces-hyprland';
     @use './statusbar/battery';

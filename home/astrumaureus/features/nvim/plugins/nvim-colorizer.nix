@@ -8,7 +8,7 @@
     {
       plugin = nvim-colorizer-lua;
       type = "lua";
-      config = ''
+      config = /* lua */ ''
         require("colorizer").setup({});
       '';
     }

@@ -8,7 +8,7 @@
     {
       plugin = nvim-treesitter.withAllGrammars;
       type = "lua";
-      config = ''
+      config = /* lua */ ''
         require("nvim-treesitter.configs").setup({
           highlight = {
             enable = true,

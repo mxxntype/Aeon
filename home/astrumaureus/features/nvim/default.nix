@@ -20,7 +20,7 @@ in {
     defaultEditor = false; # Set EDITOR=nvim
 
     # TODO: Split this into relevant files with lists and lib.strings.concatStrings
-    extraLuaConfig = ''
+    extraLuaConfig = /* lua */ ''
       --[[ Source colorscheme ]]------------------------------------------------
       vim.api.nvim_exec([[${color}]], false)
 

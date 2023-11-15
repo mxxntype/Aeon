@@ -5,7 +5,7 @@
   inherit (shared) colors style wm-config;
   inherit (shared.widgets) commandPrompt;
 in {
-  xdg.configFile."eww/${commandPrompt.name}.yuck".text = ''
+  xdg.configFile."eww/${commandPrompt.name}.yuck".text = /* yuck */ ''
     (defvar ${commandPrompt.variables.commands} "")
 
     (defwidget ${commandPrompt.name} []
@@ -55,7 +55,7 @@ in {
   '';
 
   wayland.windowManager.hyprland.configParts = [
-    ''
+    /* toml */ ''
       # Show the ${commandPrompt.name} & enter its submap
       bind = ${commandPrompt.openBind}, exec, eww open ${commandPrompt.name}
       bind = ${commandPrompt.openBind}, submap, eww-${commandPrompt.name}

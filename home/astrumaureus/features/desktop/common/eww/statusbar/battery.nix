@@ -10,7 +10,7 @@
   batteryPredicate = "\${${batteryPercentage} > 10 ? ${batteryLowPredicate} : 'critical'}";
   powerDrain = "\${powerdrain}";
 in {
-  xdg.configFile."eww/statusbar/battery.yuck".text = ''
+  xdg.configFile."eww/statusbar/battery.yuck".text = /* yuck */ ''
     (defpoll powerdrain
       :interval "2s"
       "powerdrain"
@@ -35,7 +35,7 @@ in {
     )
   '';
 
-  xdg.configFile."eww/statusbar/battery.scss".text = ''
+  xdg.configFile."eww/statusbar/battery.scss".text = /* scss */ ''
     .battery {
       &.widget {
         padding: 4px;

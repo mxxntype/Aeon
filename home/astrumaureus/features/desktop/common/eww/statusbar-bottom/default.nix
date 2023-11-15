@@ -23,55 +23,51 @@ in {
     ./keyboard.nix
   ];
 
-  xdg.configFile."eww/${moduleName}.yuck".text = lib.concatLines [
-    ''
-      ;; Include all sub-widget definitions      
-      ${lib.concatLines (lib.forEach (builtins.attrValues subModules) (sm: ''
-        (include "./${sm.moduleName}.yuck")
-      ''))}
-    ''
+  xdg.configFile."eww/${moduleName}.yuck".text = /* yuck */ ''
+    ;; Include all sub-widget definitions
+    ${lib.concatLines (lib.forEach (builtins.attrValues subModules) (sm: /* yuck */ ''
+      (include "./${sm.moduleName}.yuck")
+    ''))}
 
-    '';; Widgets
-      (defwidget ${widgetName} []
+    ;; Widgets
+    (defwidget ${widgetName} []
+      (box
+        :spacing ${toString (wm-config.gaps.inner * 2)}
+
+        ;; Left dock
         (box
-          :spacing ${toString (wm-config.gaps.inner * 2)}
+          :style "${dockStyle}"
+          (${subModules.music.widgetName} :position "center")
+        )
 
-          ;; Left dock
-          (box
-            :style "${dockStyle}"
-            (${subModules.music.widgetName} :position "center")
-          )
+        ;; Middle dock
+        (centerbox
+          :space-evenly false
+          :style "${dockStyle}"
+          (${subModules.clock.widgetName} :position "start")
+          (${subModules.workspaces.widgetName} :position "center")
+          (${subModules.keyboard.widgetName} :position "end")
+        )
 
-          ;; Middle dock
-          (centerbox
-            :space-evenly false
-            :style "${dockStyle}"
-            (${subModules.clock.widgetName} :position "start")
-            (${subModules.workspaces.widgetName} :position "center")
-            (${subModules.keyboard.widgetName} :position "end")
-          )
-
-          ;; Right dock
-          (box
-            :style "${dockStyle}"
-            (${subModules.battery.widgetName} :position "end")
-          )
+        ;; Right dock
+        (box
+          :style "${dockStyle}"
+          (${subModules.battery.widgetName} :position "end")
         )
       )
-    ''
-  
-    '';; Windows
-      (defwindow ${widgetName}
-        :monitor 0
-        :geometry (geometry
-          :anchor "bottom center"
-          :width "${toString (largestMonitor.width / largestMonitor.scale - (2 * wm-config.gaps.outer))}"
-        )
-        :stacking "fg"
-        :exclusive true
-        :focusable false
-        (${widgetName})
+    )
+
+    ;; Windows
+    (defwindow ${widgetName}
+      :monitor 0
+      :geometry (geometry
+        :anchor "bottom center"
+        :width "${toString (largestMonitor.width / largestMonitor.scale - (2 * wm-config.gaps.outer))}"
       )
-    ''
-  ];
+      :stacking "fg"
+      :exclusive true
+      :focusable false
+      (${widgetName})
+    )
+  '';
 }

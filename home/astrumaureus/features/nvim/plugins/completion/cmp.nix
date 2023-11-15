@@ -1,9 +1,6 @@
 # INFO: LSP & Completion
 
-{
-  pkgs,
-  ...
-}: {
+{ pkgs, ... }: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
 
     # Snippet engine
@@ -17,7 +14,7 @@
     {
       plugin = nvim-cmp;
       type = "lua";
-      config = ''
+      config = /* lua */ ''
         --[[ Shortcuts ]]--
         local cmp = require("cmp")
         local luasnip = require("luasnip")
@@ -28,8 +25,6 @@
           local line, col = unpack(vim.api.nvim_win_get_cursor(0))
           return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
         end
-
-
 
         --[[ Plugin setup ]]--
         cmp.setup({
@@ -77,8 +72,6 @@
             { name = "path" },
           })
         })
-
-
 
         --[[ Completion menu appearance ]]--
         local function format(_, item)
@@ -144,8 +137,6 @@
           formatting = formatting,
           window = window,
         }
-
-
 
         --[[ Integration with nvim-autopairs ]]--
         cmp.event:on(

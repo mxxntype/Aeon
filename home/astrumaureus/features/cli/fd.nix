@@ -1,10 +1,8 @@
 { pkgs, ... }: {
   home = {
-    file.".fdignore".text = ''
+    packages = with pkgs; [ fd ];
+    file.".fdignore".text = /* git-ignore */ ''
       .git/
     '';
-    packages = with pkgs; [
-      fd
-    ];
   };
 }

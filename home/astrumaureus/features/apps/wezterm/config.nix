@@ -7,7 +7,7 @@
   inherit (config.theme) colors;
 in {
   programs.wezterm = {
-    extraConfig = ''
+    extraConfig = /* lua */ ''
       local wezterm = require 'wezterm'
       local config = {}
 

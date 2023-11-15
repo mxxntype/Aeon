@@ -1,6 +1,6 @@
 { config, ... }: let
     layoutDir = "${config.xdg.configHome}/zellij/layouts/";
-    defaultTabTemplate = ''
+    defaultTabTemplate = /* kdl */ ''
         default_tab_template {
             children
             pane size=1 borderless=true {
@@ -10,7 +10,7 @@
     '';
 in {
     xdg.configFile = {
-        "${layoutDir}/cli.kdl".text = ''
+        "${layoutDir}/cli.kdl".text = /* kdl */ ''
             layout {
                 ${defaultTabTemplate}
                 tab name="Tab #1 | 󰊠 " focus=true {
@@ -25,7 +25,7 @@ in {
             }
         '';
         
-        "${layoutDir}/wyrm.kdl".text = ''
+        "${layoutDir}/wyrm.kdl".text = /* kdl */ ''
             layout {
                 ${defaultTabTemplate}
                 tab name="󱆃 CLI [~]" cwd="~/" focus=true {
@@ -60,7 +60,7 @@ in {
             }
         '';
 
-        "${layoutDir}/monocle.kdl".text = ''
+        "${layoutDir}/monocle.kdl".text = /* kdl */ ''
             layout {
                 ${defaultTabTemplate}
                 tab name="Monocle | 󰹻 " focus=true {

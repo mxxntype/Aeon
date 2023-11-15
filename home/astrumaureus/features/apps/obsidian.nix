@@ -9,7 +9,7 @@ in {
     obsidian
   ];
 
-  home.file."Obsidian/Vault/.obsidian/themes/Nix/manifest.json".text = ''
+  home.file."Obsidian/Vault/.obsidian/themes/Nix/manifest.json".text = /* json */ ''
     {
         "name": "Nix",
         "version": "0.1.0",
@@ -18,7 +18,7 @@ in {
     }
   '';
 
-  home.file."Obsidian/Vault/.obsidian/themes/Nix/theme.css".text = ''
+  home.file."Obsidian/Vault/.obsidian/themes/Nix/theme.css".text = /* css */ ''
     /***** TABLE OF CONTENTS *****/
     /* TODO: Reformat entire CSS file as below.
     /* 1. Font

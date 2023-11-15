@@ -4,7 +4,7 @@
 }: let
   inherit (config.theme) colors;
 in {
-  xdg.configFile."awesome/theme.lua".text = ''
+  xdg.configFile."awesome/theme.lua".text = /* lua */ ''
     local theme_assets = require("beautiful.theme_assets")
     local xresources = require("beautiful.xresources")
     local rnotification = require("ruled.notification")

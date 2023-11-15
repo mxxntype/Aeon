@@ -14,7 +14,7 @@ in {
         # enableBashIntegration = true;
     };
 
-    xdg.configFile."zellij/config.kdl".text = ''
+    xdg.configFile."zellij/config.kdl".text = /* kdl */ ''
         layout_dir "${config.xdg.configHome}/zellij/layouts/"
         default_layout "cli"
         pane_frames false

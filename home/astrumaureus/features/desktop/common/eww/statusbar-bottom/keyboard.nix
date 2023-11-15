@@ -6,7 +6,7 @@
   inherit (shared.widgets.statusbars.bottom) subModules;
   inherit (subModules.keyboard) widgetName moduleName variables;
 in {
-  xdg.configFile."eww/${moduleName}.yuck".text = ''
+  xdg.configFile."eww/${moduleName}.yuck".text = /* yuck */ ''
     (deflisten ${variables.layout}
       "${hyprquery}/bin/hyprquery -sq keyboard-layout")
 
