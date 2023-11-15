@@ -15,31 +15,31 @@ in {
           surface1 = "#${colors.surface1}";
           surface2 = "#${colors.surface2}";
           # Overlays
-          overlay0 = "#6c7086"; # FIXME
-          overlay1 = "#7f849c"; # FIXME
-          overlay2 = "#9399b2"; # FIXME
+          overlay0 = "#${colors.overlay0}";
+          overlay1 = "#${colors.overlay1}";
+          overlay2 = "#${colors.overlay2}";
           # Texts
-          subtext0 = "#a6adc8"; # FIXME
-          subtext1 = "#bac2de"; # FIXME
+          subtext0 = "#${colors.subtext0}";
+          subtext1 = "#${colors.subtext1}";
           text = "#${colors.text}";
           # Cursor
-          secondary_cursor = "#b5a6a8"; # FIXME
+          secondary_cursor = "#${colors.subtext1}";
           cursorline = "#${colors.surface1}";
           # Accents
           red = "#${colors.red}";
           maroon = "#${colors.maroon}";
           peach = "#${colors.peach}";
           yellow = "#${colors.yellow}";
-          flamingo = "#f2cdcd";  # FIXME
-          rosewater = "#f5e0dc"; # FIXME
+          flamingo = "#${colors.flamingo}";
+          rosewater = "#${colors.rosewater}";
           green = "#${colors.green}";
           teal = "#${colors.teal}";
           sky = "#${colors.sky}";
-          sapphire = "#74c7ec";  # FIXME
+          sapphire = "#${colors.sapphire}";
           blue = "#${colors.blue}";
           mauve = "#${colors.mauve}";
           pink = "#${colors.pink}";
-          lavender = "#b4befe"; # FIXME
+          lavender = "#${colors.lavender}";
         };
         attribute = "blue";
         comment = {
