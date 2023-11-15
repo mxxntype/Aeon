@@ -6,7 +6,7 @@
   lib,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
 in {
   imports = [
     ../../common  # X11 & Wayland commons
@@ -36,7 +36,7 @@ in {
               --SetPartialStrut true \
               --transparent true \
               --alpha 0 \
-              --tint 0x00${colors.base00} \
+              --tint 0x00${colors.base} \
               --width 5 \
               --height 18 &
       exec xmonad

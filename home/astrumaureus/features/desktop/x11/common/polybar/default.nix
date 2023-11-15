@@ -2,7 +2,7 @@
   config,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
   barName = "bar0";
 in {
   services.polybar = {
@@ -10,11 +10,11 @@ in {
 
     settings = {
       "colors" = {
-        base = "#${colors.base00}";
-        surface = "#${colors.base01}";
-        subtext = "#${colors.base03}";
-        text = "#${colors.base05}";
-        accent = "#${colors.base09}";
+        base = "#${colors.base}";
+        surface = "#${colors.base}";
+        subtext = "#${colors.surface1}";
+        text = "#${colors.text}";
+        accent = "#${colors.yellow}";
       };
 
       "bar/${barName}" = {

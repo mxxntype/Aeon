@@ -14,7 +14,7 @@ in {
         :space-evenly false
         :style "${style [
           "padding: 8px"
-          "background: #${colors.base00}"
+          "background: #${colors.base}"
           "border-radius: ${toString wm-config.rounding}px"
         ]}"
         (input
@@ -31,9 +31,9 @@ in {
           (for command in ${commandPrompt.variables.commands}
             (label
               :style "${style [
-                "background: #${colors.base02}"
+                "background: #${colors.surface0}"
                 "border-radius: ${toString wm-config.rounding}px"
-                "color: #${colors.base0D}"
+                "color: #${colors.blue}"
               ]}"
               :text command
             )

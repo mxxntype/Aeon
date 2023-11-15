@@ -19,8 +19,8 @@ in {
       (box
         :halign position
           ${(shared.mixin-widgets.containers.with-icon {
-            fg = colors.base0E;
-            bg = colors.base02;
+            fg = colors.mauve;
+            bg = colors.surface0;
             text = "\${${variables.mpc-listener}}";
             icon = "󰝚";
           })}

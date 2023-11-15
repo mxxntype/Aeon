@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
 in {
   home.packages = with pkgs; [
     obsidian
@@ -69,40 +69,40 @@ in {
     :root
     {
         /* 2.1 Dark theme color variables */
-        --bg0-dark:       #${colors.base00};
-        --bg1-dark:       #${colors.base01};
-        --bg-dark:        #${colors.base01};
-        --bg2-dark:       #${colors.base02};
-        --bg3-dark:       #${colors.base02};
-        --bg4-dark:       #${colors.base03};
-        --bg5-dark:       #${colors.base03};
-        --bg_visual:      #${colors.base03};
-        --bg_red:         #${colors.base02};
-        --bg_green:       #${colors.base02};
-        --bg_blue:        #${colors.base02};
-        --bg_yellow:      #${colors.base02};
-        --shadow:         #${colors.base00}70;
+        --bg0-dark:       #${colors.base};
+        --bg1-dark:       #${colors.base};
+        --bg-dark:        #${colors.base};
+        --bg2-dark:       #${colors.surface0};
+        --bg3-dark:       #${colors.surface0};
+        --bg4-dark:       #${colors.surface1};
+        --bg5-dark:       #${colors.surface1};
+        --bg_visual:      #${colors.surface1};
+        --bg_red:         #${colors.surface0};
+        --bg_green:       #${colors.surface0};
+        --bg_blue:        #${colors.surface0};
+        --bg_yellow:      #${colors.surface0};
+        --shadow:         #${colors.base}70;
 
-        --fg-dark:        #${colors.base05};
-        --grey0-dark:     #${colors.base03};
-        --grey1-dark:     #${colors.base04};
-        --grey2-dark:     #${colors.base04};
+        --fg-dark:        #${colors.text};
+        --grey0-dark:     #${colors.surface1};
+        --grey1-dark:     #${colors.surface2};
+        --grey2-dark:     #${colors.surface2};
 
-        --faded-red:     #${colors.base06};
-        --faded-orange:  #${colors.base08};
-        --faded-yellow:  #${colors.base0F};
-        --faded-green:   #${colors.base0A};
-        --faded-aqua:    #${colors.base0B};
-        --faded-blue:    #${colors.base0D};
-        --faded-purple:  #${colors.base0E};
+        --faded-red:     #${colors.red};
+        --faded-orange:  #${colors.peach};
+        --faded-yellow:  #${colors.pink};
+        --faded-green:   #${colors.green};
+        --faded-aqua:    #${colors.teal};
+        --faded-blue:    #${colors.blue};
+        --faded-purple:  #${colors.mauve};
 
-        --dim-red:       #${colors.base06};
-        --dim-orange:    #${colors.base08};
-        --dim-yellow:    #${colors.base0F};
-        --dim-green:     #${colors.base0A};
-        --dim-aqua:      #${colors.base0B};
-        --dim-blue:      #${colors.base0D};
-        --dim-purple:    #${colors.base0E};
+        --dim-red:       #${colors.red};
+        --dim-orange:    #${colors.peach};
+        --dim-yellow:    #${colors.pink};
+        --dim-green:     #${colors.green};
+        --dim-aqua:      #${colors.teal};
+        --dim-blue:      #${colors.blue};
+        --dim-purple:    #${colors.mauve};
 
 
         /* 2.2 Light theme color variables */

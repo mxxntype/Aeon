@@ -1,7 +1,7 @@
 # INFO: Functions & variables for use in Eww.
 
 { inputs, config, lib, pkgs, ... }: rec {
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
   inherit (config) wm-config;
 
   # My CLI utils
@@ -69,7 +69,7 @@
             :style "${style [
               "background: #${bg}"
               "margin-top: 4px"
-              "color: #${colors.base05}"
+              "color: #${colors.text}"
               "padding-left: 8px"
               "padding-right: 8px"
               "border-top-right-radius: 512px"

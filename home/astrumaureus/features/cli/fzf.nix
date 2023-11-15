@@ -1,6 +1,6 @@
 # INFO: `fzf`, a general-purpose command-line fuzzy finder
 { config, ... }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
 in {
   programs.fzf = {
     enable = true;
@@ -10,21 +10,21 @@ in {
     enableZshIntegration = true;
 
     colors = rec {
-      bg = "#${colors.base00}"; # Background
-      fg = "#${colors.base04}"; # Text
+      bg = "#${colors.base}"; # Background
+      fg = "#${colors.surface2}"; # Text
       "bg+" = bg; # Background (current line)
-      "fg+" = "#${colors.base05}"; # Text (current line)
+      "fg+" = "#${colors.text}"; # Text (current line)
       hl = fg; # Highlighted substrings
-      "hl+" = "#${colors.base0A}"; # Highlighted substrings (current line)
+      "hl+" = "#${colors.green}"; # Highlighted substrings (current line)
       preview-bg = bg; # Background (preview window)
-      preview-fg = "#${colors.base05}"; # Text (preview window)
+      preview-fg = "#${colors.text}"; # Text (preview window)
       gutter = bg; # Gutter on the left (defaults to bg+)
-      info = "#${colors.base04}";
-      border = "#${colors.base02}"; # Border of the preview window and horizontal separators (--border)
-      prompt = "#${colors.base0E}";
-      pointer = "#${colors.base0A}";
-      spinner = "#${colors.base08}"; # Streaming input indicator
-      header = "#${colors.base04}";
+      info = "#${colors.surface2}";
+      border = "#${colors.surface0}"; # Border of the preview window and horizontal separators (--border)
+      prompt = "#${colors.mauve}";
+      pointer = "#${colors.green}";
+      spinner = "#${colors.peach}"; # Streaming input indicator
+      header = "#${colors.surface2}";
     };
 
     defaultCommand = null;

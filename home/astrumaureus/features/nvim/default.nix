@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  color = import ./theme.nix config.colorscheme;
+  color = import ./theme.nix config.theme;
 in {
   imports = [
     ./plugins/tree-sitter.nix

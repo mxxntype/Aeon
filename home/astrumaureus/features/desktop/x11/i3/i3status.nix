@@ -3,16 +3,16 @@
   pkgs,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
 in {
   programs.i3status = {
     enable = true;
 
     general = {
       colors = true;
-      color_good = "#${colors.base0D}";
-      color_degraded = "#${colors.base0C}";
-      color_bad = "#${colors.base0E}";
+      color_good = "#${colors.blue}";
+      color_degraded = "#${colors.sky}";
+      color_bad = "#${colors.mauve}";
       interval = 1;
     };
   };

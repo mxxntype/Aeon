@@ -1,7 +1,7 @@
 # INFO: `zellij`, a terminal multiplexer in Rust
 
 { config, ... }: let
-    inherit (config.colorscheme) colors;
+    inherit (config.theme) colors;
 in {
     imports = [
         ./layouts.nix
@@ -22,18 +22,18 @@ in {
         theme "nix"
         themes {
             nix {
-                fg "#${colors.base04}"
-                bg "#${colors.base02}"
-                black "#${colors.base00}"
-                white "#${colors.base05}"
+                fg "#${colors.surface2}"
+                bg "#${colors.surface0}"
+                black "#${colors.base}"
+                white "#${colors.text}"
 
-                red "#${colors.base0A}"
-                orange "#${colors.base07}"
-                yellow "#${colors.base08}"
-                green "#${colors.base0E}"
-                blue "#${colors.base0D}"
-                cyan "#${colors.base0B}"
-                magenta "#${colors.base06}"
+                red "#${colors.green}"
+                orange "#${colors.maroon}"
+                yellow "#${colors.peach}"
+                green "#${colors.mauve}"
+                blue "#${colors.blue}"
+                cyan "#${colors.teal}"
+                magenta "#${colors.red}"
             }
         }
 

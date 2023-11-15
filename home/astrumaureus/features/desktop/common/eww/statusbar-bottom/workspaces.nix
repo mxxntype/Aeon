@@ -25,7 +25,7 @@ in {
           :halign position
 
           (box
-            :style "${shared.container { background = colors.base02; } + ";" + (style [
+            :style "${shared.container { background = colors.surface0; } + ";" + (style [
               "padding-left: 5px"
               "padding-right: 4px"
             ])}"
@@ -36,11 +36,11 @@ in {
                 :style "${style [
                   "color: \${${(conditional {
                     condition = "ws.id == ${variables.active-workspace}";
-                    ifTrue = "'#${colors.base06}'";
+                    ifTrue = "'#${colors.red}'";
                     ifFalse = (conditional {
                       condition = "ws.windows > 0";
-                      ifTrue = "'#${colors.base05}'";
-                      ifFalse = "'#${colors.base04}'";
+                      ifTrue = "'#${colors.text}'";
+                      ifFalse = "'#${colors.surface2}'";
                     });
                   })}}"
                   # "padding-left: 2px"
@@ -75,7 +75,7 @@ in {
 
   xdg.configFile."eww/${moduleName}.scss".text = ''
     .${widgetName}-ws:hover {
-      background: #${colors.base03};
+      background: #${colors.surface1};
       border-radius: 512px;
     }
   '';

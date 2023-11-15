@@ -4,29 +4,29 @@
   config,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
 in {
   programs.xmobar = {
     enable = true;
     extraConfig = ''
       Config { overrideRedirect = False
              , font     = "xft:JetBrainsMono Nerd Font-10"
-             , bgColor  = "#${colors.base00}"
-             , fgColor  = "#${colors.base05}"
+             , bgColor  = "#${colors.base}"
+             , fgColor  = "#${colors.text}"
              , position = TopW L 95
              , commands = [ Run Weather "UUBW"
                               [ "--template", "<weather> <tempC>°C"
                               , "-L", "0"
                               , "-H", "25"
-                              , "--low"   , "#${colors.base09}"
-                              , "--normal", "#${colors.base0A}"
-                              , "--high"  , "#${colors.base0B}"
+                              , "--low"   , "#${colors.yellow}"
+                              , "--normal", "#${colors.green}"
+                              , "--high"  , "#${colors.teal}"
                               ] 36000
                           , Run Cpu
                               [ "-L", "3"
                               , "-H", "50"
-                              , "--normal", "#${colors.base0A}"
-                              , "--high"  , "#${colors.base0B}"
+                              , "--normal", "#${colors.green}"
+                              , "--high"  , "#${colors.teal}"
                               ] 10
                           , Run Alsa "default" "Master"
                               [ "--template", "<volumestatus>"
@@ -57,7 +57,7 @@ in {
       expand = true;
       width = 10;
       transparent = true;
-      tint = "0x${colors.base00}";
+      tint = "0x${colors.base}";
       height = 18;
     };
   };

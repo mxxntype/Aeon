@@ -1,21 +1,12 @@
 # INFO: `fish`, the friendly interactive shell
-{
-  inputs,
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
-  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) shellThemeFromScheme;
-  inherit (config.colorscheme) colors;
+{ config, lib, ... }: let
+  # inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) shellThemeFromScheme;
+  inherit (config.theme) colors;
 in {
   programs.fish = {
     enable = true; # ISSUE: users.users.*.shell complains for some reason
     
     interactiveShellInit = ''
-      # Colorscheme
-      # sh ${shellThemeFromScheme {scheme = config.colorscheme;}}
-
       fish_add_path ~/.cargo/bin
 
       set fish_color_autosuggestion 'brblack'
@@ -46,22 +37,22 @@ in {
       set fish_pager_color_progress 'brwhite'  '--background=cyan'
       set fish_pager_color_selected_background -r
       set PALETTE "${lib.concatStringsSep "," [
-        "${colors.base00}"
-        "${colors.base01}"
-        "${colors.base02}"
-        "${colors.base03}"
-        "${colors.base04}"
-        "${colors.base05}"
-        "${colors.base06}"
-        "${colors.base07}"
-        "${colors.base08}"
-        "${colors.base09}"
-        "${colors.base0A}"
-        "${colors.base0B}"
-        "${colors.base0C}"
-        "${colors.base0D}"
-        "${colors.base0E}"
-        "${colors.base0F}"
+        "${colors.base}"
+        "${colors.base}"
+        "${colors.surface0}"
+        "${colors.surface1}"
+        "${colors.surface2}"
+        "${colors.text}"
+        "${colors.red}"
+        "${colors.maroon}"
+        "${colors.peach}"
+        "${colors.yellow}"
+        "${colors.green}"
+        "${colors.teal}"
+        "${colors.sky}"
+        "${colors.blue}"
+        "${colors.mauve}"
+        "${colors.pink}"
       ]}"
 
       # `anywhere` abbreviations

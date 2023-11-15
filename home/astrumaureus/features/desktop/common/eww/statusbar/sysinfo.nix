@@ -3,7 +3,7 @@
   ...
 }: let
   inherit (config) wm-config;
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
 
   moduleName = "statusbar/sysinfo";
 in {
@@ -34,22 +34,22 @@ in {
     .CPU {
       &.widget {
         padding: 4px;
-        background-color: #${colors.base02};
+        background-color: #${colors.surface0};
         border-radius: ${toString wm-config.rounding}px;
       }
 
       .icon {
-        color: #${colors.base0F};
+        color: #${colors.pink};
       }
 
       .scale trough {
         min-width: 6px;
         min-height: 48px;
         border-radius: ${toString wm-config.rounding}px;
-        background-color: #${colors.base03};
+        background-color: #${colors.surface1};
         highlight {
           border-radius: ${toString wm-config.rounding}px;
-          background-color: #${colors.base0F};
+          background-color: #${colors.pink};
         }
       }
     }

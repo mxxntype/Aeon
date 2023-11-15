@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  inherit (config.colorscheme) colors;
+  inherit (config.theme) colors;
   inherit (config) wm-config;
   widgetName = "volume";
   moduleName = "statusbar/${widgetName}";
@@ -24,14 +24,14 @@ in {
       (box
         :orientation "vertical"
         :style "${style [
-          "background-color: #${colors.base02}"
+          "background-color: #${colors.surface0}"
           "padding: 4px"
           "border-radius: ${toString wm-config.rounding}px"
-          "color: #${colors.base05}"
+          "color: #${colors.text}"
         ]}"
         (label
           :style "${style [
-            "color: #\${pipewire-mute == '[MUTED]' ? '${colors.base06}' : '${colors.base0A}'}"
+            "color: #\${pipewire-mute == '[MUTED]' ? '${colors.red}' : '${colors.green}'}"
           ]}"
           :text "󰋋"
         )
