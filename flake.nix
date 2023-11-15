@@ -26,7 +26,7 @@
     };
 
     # Nix-colors, the Nix way around ricing
-    nix-colors.url = "github:misterio77/nix-colors";
+    # nix-colors.url = "github:misterio77/nix-colors";
 
     # Stable & nightly Rust
     rust-overlay.url = "github:oxalica/rust-overlay";
