@@ -1,0 +1,3 @@
+{
+  rice = import ./rice.nix;
+}

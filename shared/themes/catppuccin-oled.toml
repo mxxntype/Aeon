@@ -1,0 +1,35 @@
+[colors]
+# Backgrounds
+crust     = "000000"
+mantle    = "000000"
+base      = "000000"
+# Surfaces
+surface0  = "1e1e2e"
+surface1  = "313244"
+surface2  = "45475a"
+# Overlays
+overlay0  = "585b70"
+overlay1  = "6c7086"
+overlay2  = "7f849c"
+# Texts
+subtext0  = "a6adc8"
+subtext1  = "bac2de"
+text      = "cdd6f4"
+# Accents
+red       = "f38ba8"
+maroon    = "eda0ab"
+peach     = "fab387"
+yellow    = "f9e2af"
+rosewater = "f2cdcd"
+flamingo  = "f5e0dc"
+green     = "a6e3a1"
+teal      = "94e2d5"
+sky       = "98dceb"
+sapphire  = "74c7ec"
+blue      = "89b4fa"
+lavender  = "b4befe"
+mauve     = "cba6f7"
+pink      = "f5c2e7"
+
+[meta]
+url = "https://github.com/catppuccin"

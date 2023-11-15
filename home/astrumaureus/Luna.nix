@@ -1,8 +1,10 @@
 # INFO: astrumaureus@Luna configuration
 
-{
-  ...
-}: {
+{ inputs, config, ... }: let
+  state = builtins.fromTOML (
+    builtins.readFile ../../hosts/Luna/state.toml
+  );
+in {
   imports = [
     ./global
 
@@ -17,14 +19,10 @@
     # ./features/desktop/wayland/swayfx
     ./features/desktop/wayland/hyprland
 
-    # Userspace apps
+    # Userspace
     ./features/apps
     ./features/apps/obsidian.nix
-
-    # Features
     ./features/music
-
-    # Games
     ./features/games/minecraft
   ];
 
@@ -46,4 +44,13 @@
       enable = true;
     }
   ];
+
+  # Set the theme & store it in ~/.config in different formats
+  theme = builtins.fromTOML (
+    builtins.readFile ../../shared/themes/${state.theme}.toml
+  );
+  xdg.configFile = {
+    "theme.toml".text = inputs.nix-std.lib.serde.toTOML config.theme;
+    "theme.json".text = builtins.toJSON config.theme;
+  };
 }

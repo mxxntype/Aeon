@@ -1,6 +1,10 @@
 /* INFO: Host configuration: Luna (Zenbook 14X) */
 
-{ pkgs, ... }: {
+{ pkgs, ... }: let
+  state = builtins.fromTOML (
+    builtins.readFile ./state.toml
+  );
+in {
   imports = [
     # Users that should be present on the system
     ../common/users/astrumaureus
@@ -46,6 +50,9 @@
 
   networking.hostName = "Luna";
   system.stateVersion = "23.05";
-
   services.tailscale.enable = true;
+
+  theme = builtins.fromTOML (
+    builtins.readFile ../../shared/themes/${state.theme}.toml
+  );
 }

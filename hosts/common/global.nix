@@ -7,6 +7,7 @@
     ../common/features/nix.nix
     ../common/features/sops.nix
     ../common/features/ssh.nix
+    ../common/features/console.nix
     ../common/features/zen-kernel.nix
     ../common/features/services/dnscrypt-proxy
     ../common/features/services/xdg-portal.nix

@@ -92,10 +92,8 @@
     };
   in {
     # inherit lib;
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
-
-    # packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs; });
+    nixosModules = import ./modules/nixos // import ./modules/shared;
+    homeManagerModules = import ./modules/home-manager // import ./modules/shared;
 
     # Available through 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
