@@ -31,6 +31,8 @@ in {
 
       * {
         all: unset;
+        font-family: BigBlueTermPlus Nerd Font;
+        font-size: 16px;
       }
     '';
   };

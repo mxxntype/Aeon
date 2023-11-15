@@ -16,8 +16,8 @@ in {
     enable = true;
 
     font = {
-      name = "JetBrainsMono Nerd Font";
-      size = 10;
+      name = "BigBlueTermPlus Nerd Font";
+      size = 12;
     };
 
     settings = {
