@@ -5,10 +5,15 @@
       name = "JetBrainsMono Nerd Font";
       size = 10;
     };
-    # theme = {
-    #   name = "${config.theme.slug}";
-    #   package = gtkThemeFromScheme { scheme = config.theme; };
-    # };
+    theme = {
+      name = "Catppuccin-Mocha-Standard-Mauve-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "mauve" ];
+        size = "standard";
+        tweaks = [];
+        variant = "mocha";
+      };
+    };
     # iconTheme = {
     #   name = "Papirus";
     #   package = pkgs.papirus-icon-theme;
