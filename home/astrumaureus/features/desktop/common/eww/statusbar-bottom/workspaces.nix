@@ -7,9 +7,9 @@
   inherit (subModules.workspaces) widgetName moduleName variables;
 
   icons = {
-    empty = "";
-    occupied = "";
-    active = "";
+    empty = "󰝣";
+    occupied = "󰝣";
+    active = "󰝤";
   };
 in {
   xdg.configFile."eww/${moduleName}.yuck".text = /* yuck */ ''

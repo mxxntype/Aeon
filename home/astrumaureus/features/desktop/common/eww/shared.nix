@@ -42,7 +42,7 @@
   container = let
     margin.vertical = 4;
   in { background }: (style [
-    "border-radius: 512px"
+    "border-radius: ${toString (wm-config.rounding * 512)}px"
     "background: #${background}"
     "margin-top: ${toString margin.vertical}px"
   ]);
@@ -61,8 +61,8 @@
               "color: #${bg}"
               "padding-left: 8px"
               "padding-right: 8px"
-              "border-top-left-radius: 512px"
-              "border-bottom-left-radius: 512px"
+              "border-top-left-radius: ${toString (wm-config.rounding * 512)}px"
+              "border-bottom-left-radius: ${toString (wm-config.rounding * 512)}px"
             ]}")
           (label
             :text "${toString text}"
@@ -72,8 +72,8 @@
               "color: #${colors.text}"
               "padding-left: 8px"
               "padding-right: 8px"
-              "border-top-right-radius: 512px"
-              "border-bottom-right-radius: 512px"
+              "border-top-right-radius: ${toString (wm-config.rounding * 512)}px"
+              "border-bottom-right-radius: ${toString (wm-config.rounding * 512)}px"
             ]}")
         )
       '';

@@ -4,6 +4,7 @@
   inherit (shared) colors style conditional;
   inherit (shared.widgets.statusbars.bottom) subModules;
   inherit (subModules.battery) widgetName moduleName variables;
+  inherit (config) wm-config;
 
   EWW_BATTERY = rec {
     name = "EWW_BATTERY";
@@ -56,7 +57,7 @@ in {
         :space-evenly false
         :style "${style [
           "background: #${colors.surface0}"
-          "border-radius: 512px"
+          "border-radius: ${toString (wm-config.rounding * 512)}px"
           "margin-top: 4px"
           "padding-left: 8px"
           "padding-right: 2px"
@@ -108,7 +109,7 @@ in {
             "background: #${colors.surface1}"
             "margin-top: 2px"
             "margin-bottom: 2px"
-            "border-radius: 512px"
+            "border-radius: ${toString (wm-config.rounding * 512)}px"
             "padding-left: 8px"
             "padding-right: 8px"
           ]}"
@@ -147,9 +148,9 @@ in {
         min-width: 96px;
         min-height: 6px;
         background: #${colors.surface2};
-        border-radius: 512px;
+        border-radius: ${toString (wm-config.rounding * 512)}px;
         highlight {
-          border-radius: 512px;
+          border-radius: ${toString (wm-config.rounding * 512)}px;
           background: #${chargeLevels.normal.color};
         }
       }
