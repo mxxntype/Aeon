@@ -141,7 +141,7 @@ in {
         exec-once = hyprprofile
         exec-once = ${pkgs.avizo}/bin/avizo-service
 
-        exec = sleep 0.5 && swww img ~/.wallpaper
+        exec = sleep 0.5 && swww img ~/.wallpaper --resize=fit
 
         # Slight randomness in border position to protect OLED screens
         # exec = hyprctl keyword general:gaps_in  $((${toString wm-config.gaps.inner} + ($RANDOM % 8)))
