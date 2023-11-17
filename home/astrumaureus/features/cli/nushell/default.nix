@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   imports = [
-    # ./env.nix
+    ./env.nix
     ./config.nix
   ];
   
