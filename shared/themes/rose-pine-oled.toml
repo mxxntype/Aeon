@@ -1,0 +1,35 @@
+[colors]
+# Backgrounds
+crust     = "000000"
+mantle    = "000000"
+base      = "000000"
+# Surfaces
+surface0  = "191724"
+surface1  = "1f1d2e"
+surface2  = "26233a"
+# Overlays
+overlay0  = "6e6a86"
+overlay1  = "6e6a86"
+overlay2  = "6e6a86"
+# Texts
+subtext0  = "908caa"
+subtext1  = "908caa"
+text      = "e0def4"
+# Accents
+red       = "eb6f92"
+maroon    = "eb6f92"
+peach     = "ebbcba"
+yellow    = "f6c177"
+rosewater = "ebbcba"
+flamingo  = "ebbcba"
+green     = "c4a7e7"
+teal      = "9ccfd8"
+sky       = "9ccfd8"
+sapphire  = "9ccfd8"
+blue      = "31748f"
+lavender  = "c4a7e7"
+mauve     = "c4a7e7"
+pink      = "c4a7e7"
+
+[meta]
+url = "https://rosepinetheme.com"
