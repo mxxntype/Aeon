@@ -32,7 +32,7 @@
   };
 
   wm-config = {
-    border.thickness = 2;
+    border.thickness = 0;
     gaps = {
       inner = 12;
       outer = 24;
