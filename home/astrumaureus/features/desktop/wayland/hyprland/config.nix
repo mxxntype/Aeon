@@ -20,8 +20,8 @@
   floatingZellijTerminalCommand = "${floatingTerminalCommand} ${zellijWrapper}";
 
   # Wrappers & prefixes
-  offloadCommand = "smart-offload"; # TODO: Fix/rework smart-offload
-  gamemodeCommand = "gamemoderun";
+  # offloadCommand = "smart-offload"; # TODO: Fix/rework smart-offload
+  # gamemodeCommand = "gamemoderun";
   GTKFileDialogEnv = "QT_QPA_PLATFORMTHEME=gtk3";
 
   # Wallpapers
