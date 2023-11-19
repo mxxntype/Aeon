@@ -8,7 +8,7 @@
 
   icons = {
     empty = "󰝣";
-    occupied = "󰝣";
+    occupied = "󰝤";
     active = "󰝤";
   };
 in {
