@@ -20,6 +20,7 @@ in {
     ./music.nix
     ./battery.nix
     ./clock.nix
+    ./date.nix
     ./keyboard.nix
   ];
 
@@ -50,8 +51,11 @@ in {
         )
 
         ;; Right dock
-        (box
+        (centerbox
           :style "${dockStyle}"
+          :space-evenly false
+          (${subModules.date.widgetName} :position "start")
+          ""
           (${subModules.battery.widgetName} :position "end")
         )
       )

@@ -118,6 +118,7 @@
               ];
             });
           };
+
           music = rec {
             widgetName = "${statusbars.bottom.widgetName}-music";
             moduleName = "${statusbars.bottom.widgetName}/${widgetName}";
@@ -126,6 +127,7 @@
               names = [ "mpc-listener" ];
             });
           };
+
           clock = rec {
             widgetName = "${statusbars.bottom.widgetName}-clock";
             moduleName = "${statusbars.bottom.widgetName}/${widgetName}";
@@ -134,6 +136,16 @@
               names = [ "time" ];
             });
           };
+
+          date = rec {
+            widgetName = "${statusbars.bottom.widgetName}-date";
+            moduleName = "${statusbars.bottom.widgetName}/${widgetName}";
+            variables = (mkVariables {
+              prefix = statusbars.bottom.widgetName;
+              names = [ "date" ];
+            });
+          };
+
           keyboard = rec {
             widgetName = "${statusbars.bottom.widgetName}-keyboard";
             moduleName = "${statusbars.bottom.widgetName}/${widgetName}";
@@ -142,6 +154,7 @@
               names = [ "layout" ];
             });
           };
+
           battery = rec {
             widgetName = "${statusbars.bottom.widgetName}-battery";
             moduleName = "${statusbars.bottom.widgetName}/${widgetName}";
