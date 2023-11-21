@@ -11,6 +11,7 @@
       lsa = "ls -a";
       cat = "bat";
       btm = "btm --battery";
+      ip = "ip --color=always";
     };
   };
 
