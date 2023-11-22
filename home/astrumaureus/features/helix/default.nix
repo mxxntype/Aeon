@@ -18,7 +18,7 @@
         idle-timeout = 0;
         completion-trigger-len = 1;
         lsp = {
-          display-inlay-hints = true;
+          # display-inlay-hints = true;
           display-messages = true;
         };
         file-picker.hidden = false;
