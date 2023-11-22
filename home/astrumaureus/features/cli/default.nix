@@ -42,6 +42,7 @@
     killall
     sd
     tree
+    srm
 
     # Text & image processors
     jq
