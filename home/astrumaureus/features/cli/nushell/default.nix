@@ -12,6 +12,7 @@
       cat = "bat";
       btm = "btm --battery";
       ip = "ip --color=always";
+      tree = "erd";
     };
   };
 

@@ -3,6 +3,7 @@
   imports = [
     ./bat.nix
     ./cava.nix
+    ./erd.nix
     ./fd.nix
     ./fish.nix
     ./fzf.nix
