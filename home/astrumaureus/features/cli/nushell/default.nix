@@ -12,7 +12,8 @@
       cat = "bat";
       btm = "btm --battery";
       ip = "ip --color=always";
-      tree = "erd";
+      tree = "erd --config tree";
+      sz = "erd --config sz";
     };
   };
 
