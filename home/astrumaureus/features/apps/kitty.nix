@@ -21,6 +21,7 @@ in {
     };
 
     settings = {
+      sync_to_monitor = "yes";
       # Splits
       enabled_layouts = "horizontal";
       window_border_width = "1.5";
