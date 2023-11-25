@@ -1,38 +1,27 @@
 {
-  description = "Aeon | NixOS Flake ⚜️";
+  description = "Aeon | NixOS Flake";
 
   inputs = {
-    # Nixpkgs
+    # Nix
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
     nix-std.url = "github:chessai/nix-std";
-
-    # Home manager
+    hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # NixOS Hardware-related modules
-    hardware = {
-      url = "github:nixos/nixos-hardware";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Sops-nix: atomic secret provisioning for NixOS
+    # Atomic secret provisioning for NixOS
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Nix-colors, the Nix way around ricing
-    # nix-colors.url = "github:misterio77/nix-colors";
-
-    # Stable & nightly Rust
+    # Rust
     rust-overlay.url = "github:oxalica/rust-overlay";
     naersk.url = "github:nix-community/naersk";
 
-    # Hyprland, the smooth wayland compositor
+    # Hyprland
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -46,14 +35,6 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprquery = {
-      url = "github:mxxntype/hyprquery";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    reddot = {
-      url = "github:mxxntype/reddot";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # Lanzaboote, UEFI secure boot for NixOS
     lanzaboote = {
@@ -61,8 +42,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-minecraft = {
-      url = "github:Misterio77/nix-minecraft";
+    # My other flakes
+    hyprquery = {
+      url = "github:mxxntype/hyprquery";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    reddot = {
+      url = "github:mxxntype/reddot";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -75,9 +61,6 @@
   } @ inputs: 
   let
     inherit (self) outputs;
-    # lib = nixpkgs.lib // home-manager.lib;
-    # systems = [ "x86_64-linux" ];
-    # forEachSystem = f: lib.genAttrs systems (sys: f nixpkgs.legacyPackages.${sys});
 
     # Declares a NixOS host
     mkNixOS = modules: nixpkgs.lib.nixosSystem {
@@ -91,7 +74,6 @@
       extraSpecialArgs = { inherit inputs outputs; };
     };
   in {
-    # inherit lib;
     nixosModules = import ./modules/nixos // import ./modules/shared;
     homeManagerModules = import ./modules/home-manager // import ./modules/shared;
 
