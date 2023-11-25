@@ -2,13 +2,17 @@
 
 { inputs, config, lib, pkgs, ... }: let
   shared = import ../shared.nix { inherit inputs config lib pkgs; };
-  inherit (shared) colors style wm-config;
+  inherit (shared) colors;
   inherit (shared.widgets.statusbars.bottom) subModules;
   inherit (subModules.music) widgetName moduleName variables;
 
-  mpc-listener = pkgs.writeShellScriptBin "mpc-listener" ''
+  mpc-listener = pkgs.writeShellScriptBin "mpc-listener" /* bash */ ''
     while true; do
-      mpc current -f '%artist% - %title%' | head --lines 1
+      CURRENT="$(mpc current)"
+      if [[ ''${#CURRENT} -gt 45 ]]; then
+        CURRENT="''${CURRENT:0:45}..."
+      fi
+      echo "$CURRENT"
       mpc idle player > /dev/null
     done
   '';
