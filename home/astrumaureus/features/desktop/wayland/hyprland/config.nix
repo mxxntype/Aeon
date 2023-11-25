@@ -136,7 +136,7 @@ in {
         }
 
         exec-once = swww init
-        exec-once = eww daemon --restart --force-wayland && eww open statusbar-bottom
+        exec-once = eww daemon --restart --force-wayland && eww open statusbar
         exec-once = hypridle.sh
         exec-once = hyprprofile
         exec-once = ${pkgs.avizo}/bin/avizo-service
