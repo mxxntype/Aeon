@@ -132,7 +132,7 @@ in {
 
           ;; Powerdrain
           (label
-            :text "''${ ${variables.powerdrain} }w"
+            :text "''${ ${variables.powerdrain} }w | ${percentage}%"
             :style "${style [
               "color: #${colors.text}"
             ]}"
