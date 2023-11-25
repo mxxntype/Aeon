@@ -4,7 +4,7 @@
   shared = import ./shared.nix { inherit inputs config lib pkgs; };
 in {
   imports = [
-    ./statusbar-bottom
+    ./statusbar
     ./powermenu
     ./command-prompt.nix
   ];

@@ -87,9 +87,9 @@
   };
 
   widgets = rec {
-    statusbar.name = "statusbar";
-    powermenu.name = "powermenu";
-
+    powermenu = {
+      name = "powermenu";
+    };
     commandPrompt = {
       name = "command-prompt";
       openBind = "SUPER, D";
@@ -104,7 +104,7 @@
 
     statusbars = {
       bottom = {
-        widgetName = "statusbar-bottom";
+        widgetName = "statusbar";
         moduleName = "${statusbars.bottom.widgetName}/${statusbars.bottom.widgetName}";
         subModules = {
           workspaces = rec {
