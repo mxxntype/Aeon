@@ -249,6 +249,14 @@ in {
         bindl = , switch:on:Lid Switch, exec, hyprlock.sh
         bindl = , switch:off:Lid Switch, dpms, on
 
+        # Passtrough mode
+        bind = SUPER SHIFT, I, exec, hyprctl notify -1 1500 "rgb(${colors.maroon})" "Entering passthrough!"
+        bind = SUPER SHIFT, I, submap, passthrough
+        submap = passthrough
+        bind = SUPER SHIFT, I, exec, hyprctl notify -1 1500 "rgb(${colors.mauve})" "Leaving passthrough!"
+        bind = SUPER SHIFT, I, submap, reset
+        submap = reset
+
         # Move & resize floating windows
         bindm = SUPER, mouse:272, movewindow
         bindm = SUPER, mouse:273, resizewindow
