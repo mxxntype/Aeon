@@ -4,7 +4,6 @@
   shared = import ./shared.nix { inherit inputs config lib pkgs; };
 in {
   imports = [
-    ./statusbar
     ./statusbar-bottom
     ./powermenu
     ./command-prompt.nix
@@ -15,16 +14,13 @@ in {
   ];
 
   xdg.configFile = {
-    # TODO: Automatically via `lib.forEach builtins.attrValues`
     "eww/eww.yuck".text = /* yuck */ ''
-      (include "./statusbar/statusbar.yuck")
       (include "./powermenu/powermenu.yuck")
       (include "./command-prompt.yuck")
       (include "./${shared.widgets.statusbars.bottom.moduleName}.yuck")
     '';
 
     "eww/eww.scss".text = /* scss */ ''
-      @use './statusbar/statusbar';
       @use './powermenu/powermenu';
       @use './${shared.widgets.statusbars.bottom.subModules.workspaces.moduleName}';
       @use './${shared.widgets.statusbars.bottom.subModules.battery.moduleName}';
