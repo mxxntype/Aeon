@@ -14,6 +14,7 @@
       ip = "ip --color=always";
       tree = "erd --config tree";
       sz = "erd --config sz";
+      duf = "duf -theme ansi";
     };
   };
 
