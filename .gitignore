@@ -6,3 +6,6 @@
 
 # Ingore local configuration files
 .local
+
+# Ignore utility Nushell scripts
+/*.nu
