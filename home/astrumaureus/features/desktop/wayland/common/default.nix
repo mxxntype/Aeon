@@ -1,6 +1,9 @@
 # INFO: Wayland commons
 
-{ pkgs, ... }: {
+{ config, pkgs, ... }: let
+  inherit (config.theme) colors;
+  inherit (config) wm-config;
+in {
   home.packages = with pkgs; [
     wl-clipboard
     wlr-randr
@@ -11,6 +14,7 @@
     gtklock
   ];
 
+  # OSD
   services.avizo = {
     enable = true;
     settings = {
@@ -21,5 +25,22 @@
         padding = 24;
       };
     };
+  };
+
+  # Notification daemon
+  services.mako = {
+    enable = true;
+    anchor = "top-right";
+    defaultTimeout = 3000;
+
+    # Colors
+    backgroundColor = "#${colors.base}FF";
+    textColor = "#${colors.text}FF";
+    progressColor = "#${colors.surface0}FF";
+    borderColor = "#${colors.blue}FF";
+
+    borderRadius = wm-config.rounding;
+    borderSize = wm-config.border.thickness;
+    font = "JetBrainsMono Nerd Font 12";
   };
 }
