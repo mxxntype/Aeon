@@ -26,13 +26,13 @@
     # nvidiaPatches = true; # TODO: Set to `config.hardware.nvidia.something`...
 
     plugins = [
-      # inputs.hyprland-plugins.packages.${pkgs.system}.borders-plus-plus # WARN: Does not compile
+      inputs.hyprland-plugins.packages.${pkgs.system}.borders-plus-plus # WARN: Does not compile
       inputs.hyprland-hy3.packages.${pkgs.system}.hy3
     ];
   };
 
   wm-config = {
-    border.thickness = 0;
+    border.thickness = 2;
     gaps = {
       inner = 12;
       outer = 24;

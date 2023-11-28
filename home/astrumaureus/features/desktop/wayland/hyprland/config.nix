@@ -311,7 +311,7 @@ in {
           shadow_range = 16
           col.shadow = rgb(${colors.base})
 
-          dim_inactive = true
+          dim_inactive = false
           dim_strength = 0.3
 
           blur {
@@ -329,8 +329,8 @@ in {
           gaps_out = ${toString wm-config.gaps.outer}
           border_size = ${toString wm-config.border.thickness}
 
-          col.active_border = rgb(${colors.base})
-          col.inactive_border = rgb(${colors.base})
+          col.active_border = rgb(${colors.mauve})
+          col.inactive_border = rgb(${colors.surface0})
 
           # Mouse & cursor
           apply_sens_to_raw = 1
@@ -352,13 +352,9 @@ in {
         }
 
         misc {
-          # Built-in wallpaper things
           disable_hyprland_logo = true
           disable_splash_rendering = true
-
-          # Variable framerate
-          vfr = true
-
+          vfr = true # Variable framerate
           mouse_move_enables_dpms = true
           key_press_enables_dpms = true
         }
@@ -371,12 +367,21 @@ in {
         # env = GDK_DPI_SCALE, 2
 
         plugin {
+          # Additional borders
           borders-plus-plus {
             add_borders = 2
+            # BUG: Border #1 appears draws weirdly for
+            # some reason, but others are OK, so `size`
+            # is set to `0` as a workaround
             col.border_1 = rgb(${colors.base})
+            border_size_1 = 0
+
+            # This is the visible second border
             col.border_2 = rgb(${colors.base})
+            border_size_2 = ${toString (wm-config.border.thickness * 2)}
           }
 
+          # i3-like manual tiling for Hyprland
           hy3 {
             tabs = {
               height = 16
@@ -406,28 +411,28 @@ in {
         windowrulev2 = workspace 2, class:^(.*obsproject.*)$
 
         # Librewolf
-        windowrulev2 = workspace 3,                         class:^(.*librewolf.*)$
-        windowrulev2 = bordercolor $BORDER_COLOR_LIBREWOLF, class:^(.*librewolf.*)$
+        windowrulev2 = workspace 3,                     class:^(.*librewolf.*)$
+        windowrulev2 = bordercolor rgb(${colors.teal}), class:^(.*librewolf.*)$
 
         # Telegram
-        windowrulev2 = workspace 4,                          title:^(.*Telegram.*)$
-        windowrulev2 = bordercolor $BORDER_COLOR_KOTATOGRAM, title:^(.*Telegram.*)$
+        windowrulev2 = workspace 4,                     title:^(.*Telegram.*)$
+        windowrulev2 = bordercolor rgb(${colors.blue}), title:^(.*Telegram.*)$
 
         # Element
-        windowrulev2 = workspace 4,                          title:^(.*Element.*)$
-        windowrulev2 = bordercolor $BORDER_COLOR_ELEMENT, title:^(.*Element.*)$
+        windowrulev2 = workspace 4,                      title:^(.*Element.*)$
+        windowrulev2 = bordercolor rgb(${colors.green}), title:^(.*Element.*)$
 
         # Session
-        windowrulev2 = workspace 4,                          title:^(.*Session.*)$
-        windowrulev2 = bordercolor $BORDER_COLOR_SESSION, title:^(.*Session.*)$
+        windowrulev2 = workspace 4,                      title:^(.*Session.*)$
+        windowrulev2 = bordercolor rgb(${colors.green}), title:^(.*Session.*)$
 
         # Thunderbird
-        windowrulev2 = workspace 4,                           class:^(.*thunderbird.*)$
-        windowrulev2 = bordercolor $BORDER_COLOR_THUNDERBIRD, class:^(.*thunderbird.*)$
+        windowrulev2 = workspace 4,                     class:^(.*thunderbird.*)$
+        windowrulev2 = bordercolor rgb(${colors.blue}), class:^(.*thunderbird.*)$
 
         # Revolt
-        windowrulev2 = workspace 4,             class:^(.*Revolt.*)$
-        windowrulev2 = bordercolor $BORDER_COLOR_REVOLT, class:^(.*Revolt.*)$
+        windowrulev2 = workspace 4,                    class:^(.*Revolt.*)$
+        windowrulev2 = bordercolor rgb(${colors.red}), class:^(.*Revolt.*)$
 
         # Libreoffice
         windowrulev2 = workspace 5, title:^(.*LibreOffice.*)$
@@ -436,17 +441,17 @@ in {
         windowrulev2 = workspace 6, class:^(.*virt-manager.*)$
 
         # Prismlauncher
-        windowrulev2 = workspace 7,                             class:^(.*prismlauncher.*)$
-        windowrulev2 = bordercolor $BORDER_COLOR_PRISMLAUNCHER, class:^(.*prismlauncher.*)$
+        windowrulev2 = workspace 7,                       class:^(.*prismlauncher.*)$
+        windowrulev2 = bordercolor rgb(${colors.yellow}), class:^(.*prismlauncher.*)$
 
         # KeePassXC
-        windowrulev2 = workspace 8,                         class:^(.*keepassxc.*)$
-        windowrulev2 = bordercolor $BORDER_COLOR_KEEPASSXC, class:^(.*keepassxc.*)$
+        windowrulev2 = workspace 8,                      class:^(.*keepassxc.*)$
+        windowrulev2 = bordercolor rgb(${colors.green}), class:^(.*keepassxc.*)$
 
         # Freetube
-        windowrulev2 = workspace 9,                        class:^(.*FreeTube.*)$
-        windowrulev2 = idleinhibit fullscreen,             class:^(.*FreeTube.*)$
-        windowrulev2 = bordercolor $BORDER_COLOR_FREETUBE, class:^(.*FreeTube.*)$
+        windowrulev2 = workspace 9,                         class:^(.*FreeTube.*)$
+        windowrulev2 = idleinhibit fullscreen,              class:^(.*FreeTube.*)$
+        windowrulev2 = bordercolor rgb(${colors.lavender}), class:^(.*FreeTube.*)$
       ''
     ];
   };
