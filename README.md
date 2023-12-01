@@ -10,15 +10,16 @@
 #### Why?
 I started my Linux journey on an Arch-based distribution, then hopped between Void, Artix and Alpine a couple times. However, I never ended up feeling completely settled with my system. I've stumbled upon NixOS and gave it a try; after something like a month of learning it and transferring my setup, I finally decided to nuke my Artix system. NixOS is amazing for a lot of reasons, but what really matters for me is that *NixOS* *feels like home*.
 
+> [!IMPORTANT]
+> This flake contains my *personal* NixOS and Home-manager configurations, which are tied to concere partition `UUID`s, SSH and Age public keys, user passwords and others things that are unique by their nature. This means installing configuration outputs of this flake on foreign systems would require as least ripping out all of the `sops-nix` stuff and defining a new `host`.
+
 ---
 
 ### A brief overview
-- 3 **NixOS** configurations (**Nox**, **Wyrm**, **Luna**)
+- Multiple **NixOS** configurations (**Nox**, **Wyrm**, **Luna**)
 - **BTRFS**-on-**LVM**-on-**LUKS**
 - Support for **UEFI** Secure boot via [Lanzaboote](https://github.com/nix-community/lanzaboote)
-- Multiple **X11** & **Wayland** environments
-- Custom **Fish shell** & **Starship**
-- Nightly **Rust**
+- Rich **Wayland** environment
 
 *Everything is kind of "forever WIP", as it always was with my systems.*
 
@@ -28,13 +29,13 @@ I started my Linux journey on an Arch-based distribution, then hopped between Vo
 
 ### Hosts
 
-#### Luna
+#### *Luna*
 2023' **ASUS Zenbook 14X** with an **i9-13900H**, **RTX 3050** and **32**Gb RAM. My favorite and the current daily driver.
 
-#### Wyrm
+#### *Wyrm*
 A desktop with an **i7-8700K**, **GTX 1080** and **16**Gb RAM. Was my main worker before **Luna**.
 
-#### Nox
+#### *Nox*
 15.6" **Dell i7559**, the one that started everything and hosted the growth of this configuration.
 
 ---
