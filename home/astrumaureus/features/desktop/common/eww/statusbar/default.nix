@@ -4,7 +4,7 @@
   shared = import ../shared.nix { inherit inputs config lib pkgs; };
   inherit (shared) colors style wm-config largestMonitor;
   inherit (shared.widgets.statusbars.bottom) widgetName moduleName subModules;
-  dockStyle = (style [
+  dockStyle = style [
     "background: #${colors.base}"
     "border-top-left-radius: ${toString wm-config.rounding}px"
     "border-top-right-radius: ${toString wm-config.rounding}px"
@@ -13,7 +13,7 @@
     "border: 1px solid #${colors.surface0}"
     "border-bottom: none"
     # "color: #${colors.surface0}"
-  ]);
+  ];
 in {
   imports = [
     ./workspaces.nix

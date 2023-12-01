@@ -24,7 +24,7 @@
     sopsFile = ../../secrets.yaml;
     mode = "0440";
     owner = config.users.users.pgadmin.name;
-    group = config.users.users.pgadmin.group;
+    inherit (config.users.users.pgadmin) group;
     restartUnits = [ "pgadmin.service" ];
   };
 }

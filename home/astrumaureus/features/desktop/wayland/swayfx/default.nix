@@ -160,11 +160,11 @@ in {
             };
           };
           
-          fonts = fonts;
+          inherit fonts;
         }
       ];
 
-      fonts = fonts;
+      inherit fonts;
     };
   };
 }

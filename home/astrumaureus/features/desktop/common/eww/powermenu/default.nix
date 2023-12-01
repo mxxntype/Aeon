@@ -27,7 +27,7 @@
     command ? "echo",
     color ? "#${colors.text}",
   }: {
-    command = command;
+    inherit command;
     syntax = /* yuck */ ''
       (eventbox
 

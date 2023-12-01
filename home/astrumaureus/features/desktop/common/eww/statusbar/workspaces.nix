@@ -34,11 +34,11 @@ in {
                 "color: \${${(conditional {
                   condition = "ws.id == ${variables.active-workspace}";
                   ifTrue = "'#${colors.red}'";
-                  ifFalse = (conditional {
+                  ifFalse = conditional {
                     condition = "ws.windows > 0";
                     ifTrue = "'#${colors.text}'";
                     ifFalse = "'#${colors.surface2}'";
-                  });
+                  };
                 })}}"
                 # "padding-left: 2px"
                 "padding-right: 6px"
@@ -47,11 +47,11 @@ in {
               "''${${conditional {
                 condition = "ws.id == ${variables.active-workspace}";
                 ifTrue = "'${icons.active}'";
-                ifFalse = (conditional {
+                ifFalse = conditional {
                   condition = "ws.windows > 0";
                   ifTrue = "'${icons.occupied}'";
                   ifFalse = "'${icons.empty}'";
-                });
+                };
               }}}"
             )
           )
