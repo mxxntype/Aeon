@@ -29,5 +29,8 @@
     nixPath = [ "nixpkgs=${inputs.nixpkgs.outPath}" ];
   };
 
-  environment.systemPackages = with pkgs; [ cachix ];
+  environment.systemPackages = with pkgs; [
+    cachix
+    statix
+  ];
 }
