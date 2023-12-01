@@ -19,13 +19,9 @@
   };
 
   nixpkgs = {
-    # overlays = builtins.attrValues outputs.overlays;
-    config = {
-      allowUnfree = true;
-    };
+    overlays = [ inputs.nuenv.overlays.nuenv ];
+    config.allowUnfree = true;
   };
-
-  security.pam.services.gtklock = {};
 
   environment = {
     enableAllTerminfo = true;
@@ -36,6 +32,38 @@
       wget
       jmtpfs
       libnotify
+      (pkgs.nuenv.writeScriptBin {
+        name = "aeon";
+        script = /* nu */ ''
+          # Garbage-collect the system
+          def "main gc" [] {
+            print $"(ansi cyan)\n\tGarbage-collecting the system...\n(ansi reset)"
+            home-manager expire-generations 0
+            sudo nix-collect-garbage -d
+            nix store optimise
+          }
+
+          # Rebuild & switch to new Home-manager configuration
+          def "main rebuild home" [] {
+            print $"(ansi cyan)\n\tRebuilding Home-manager config...\n(ansi reset)"
+            do -ps {home-manager switch --flake ~/Aeon}
+          }
+
+          # Rebuild & switch to new Home-manager configuration
+          def "main rebuild host" [] {
+            print $"(ansi magenta)\n\tRebuilding NixOS config...\n(ansi reset)"
+            sudo nixos-rebuild switch --flake ~/Aeon
+          }
+
+          # Rebuild & switch to new Home-manager and NixOS configurations
+          def "main rebuild full" [] {
+            main rebuild home
+            main rebuild host
+          }
+
+          def main [] {}
+        '';
+      })
     ];
   };
 
@@ -66,4 +94,5 @@
   };
 
   hardware.enableRedistributableFirmware = true;
+  security.pam.services.gtklock = {};
 }

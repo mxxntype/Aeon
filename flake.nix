@@ -42,6 +42,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # An experimental Nushell environment for Nix
+    nuenv.url = "github:DeterminateSystems/nuenv";
+
     # My other flakes
     hyprquery = {
       url = "github:mxxntype/hyprquery";
