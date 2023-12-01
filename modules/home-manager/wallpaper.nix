@@ -3,9 +3,9 @@
   ...
 }: {
   home.packages = [
-    (pkgs.writeShellScriptBin "set-wallpaper" ''
+    (pkgs.writeShellScriptBin "set-wallpaper" /**/ ''
       WALLPAPER_FILE="$HOME/.wallpaper"
-      NEW_WALLPAPER_PATH=$(realpath $1)
+      NEW_WALLPAPER_PATH=$(realpath "$1")
 
       function ping_new() {
         if [ -f "$NEW_WALLPAPER_PATH" ]; then
