@@ -2,17 +2,13 @@
 
 { inputs, config, lib, pkgs, ... }: let
   shared = import ../shared.nix { inherit inputs config lib pkgs; };
-  inherit (shared) colors style wm-config largestMonitor;
+  inherit (shared) colors style wm-config;
   inherit (shared.widgets.statusbars.bottom) widgetName moduleName subModules;
-  dockStyle = style [
+  toplevelStyle = style [
     "background: #${colors.base}"
-    "border-top-left-radius: ${toString wm-config.rounding}px"
-    "border-top-right-radius: ${toString wm-config.rounding}px"
-    "padding-left: 4px"
-    "padding-right: 4px"
-    "border: 1px solid #${colors.surface0}"
-    "border-bottom: none"
-    # "color: #${colors.surface0}"
+    "border-top: ${toString wm-config.border.thickness}px solid #${colors.surface0}"
+    "padding-right: 2px"
+    "padding-left: 2px"
   ];
 in {
   imports = [
@@ -32,30 +28,38 @@ in {
 
     ;; Widgets
     (defwidget ${widgetName} []
-      (box
+      (centerbox
+        :style "${toplevelStyle}"
+        :space-evenly true
         :spacing ${toString (wm-config.gaps.inner * 2)}
 
         ;; Left dock
         (box
-          :style "${dockStyle}"
-          (${subModules.music.widgetName} :position "center")
-        )
-
-        ;; Middle dock
-        (centerbox
+          :halign "start"
           :space-evenly false
-          :style "${dockStyle}"
-          (${subModules.clock.widgetName} :position "start")
-          (${subModules.workspaces.widgetName} :position "center")
+          :spacing 4
+          (${subModules.workspaces.widgetName} :position "start")
+          (${subModules.clock.widgetName} :position "center")
           (${subModules.keyboard.widgetName} :position "end")
         )
 
-        ;; Right dock
-        (centerbox
-          :style "${dockStyle}"
+        ;; Middle dock
+        (box
+          :halign "center"
           :space-evenly false
-          (${subModules.date.widgetName} :position "start")
+          :spacing 4
           ""
+          (${subModules.music.widgetName} :position "center")
+          ""
+        )
+
+        ;; Right dock
+        (box
+          :halign "end"
+          :space-evenly false
+          :spacing 4
+          ""
+          (${subModules.date.widgetName} :position "center")
           (${subModules.battery.widgetName} :position "end")
         )
       )
@@ -66,7 +70,7 @@ in {
       :monitor 0
       :geometry (geometry
         :anchor "bottom center"
-        :width "${toString (largestMonitor.width / largestMonitor.scale - (2 * wm-config.gaps.outer))}"
+        :width "100%"
       )
       :stacking "fg"
       :exclusive true
