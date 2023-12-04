@@ -1,21 +1,32 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+# INFO: MPD & Ncmpcpp configuration
+
+{ config, pkgs, ... }: let
+  visualizer = rec {
+    type = "fifo";
+    name = "visualizer_${type}";
+    path = "/tmp/mpd_visualizer.${type}";
+  };
+in {
   services.mpd = {
     enable = true;
     musicDirectory = "${config.home.homeDirectory}/Music";
-    extraConfig = ''
+    extraConfig = /* kdl */ ''
       audio_output {
         type "pipewire"
         name "PipeWire Sound Server"
+      }
+      audio_output {
+        type   "${visualizer.type}"
+        name   "${visualizer.name}"
+        path   "${visualizer.path}"
+        format "44100:16:2"
       }
     '';
   };
 
   programs.ncmpcpp = {
     enable = true;
+    package = pkgs.ncmpcpp.override { visualizerSupport = true; };
     bindings = [
       { key = "h"; command = "previous_column"; }
       { key = "j"; command = "scroll_down"; }
@@ -38,7 +49,12 @@
       active_window_border = "magenta";
 
       visualizer_color = "blue,cyan,magenta";
-      visualizer_fps = "60";
+      visualizer_fps = 30;
+      visualizer_data_source = visualizer.path;
+      visualizer_output_name = visualizer.name;
+      visualizer_in_stereo = "yes";
+      visualizer_type = "ellipse";
+      visualizer_look = "";
 
       progressbar_color = "blue";
       progressbar_elapsed_color = "magenta";
@@ -51,7 +67,5 @@
     };
   };
 
-  home.packages = with pkgs; [
-    mpc-cli
-  ];
+  home.packages = with pkgs; [ mpc-cli ];
 }
