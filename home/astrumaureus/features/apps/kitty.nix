@@ -16,7 +16,7 @@ in {
     enable = true;
 
     font = {
-      name = "BigBlueTermPlus Nerd Font";
+      name = "IosevkaTerm NF Medium";
       size = 12;
     };
 

@@ -37,6 +37,6 @@
       inner = 12;
       outer = 24;
     };
-    rounding = 0;
+    rounding = 8;
   };
 }

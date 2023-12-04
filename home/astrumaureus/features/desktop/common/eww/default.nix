@@ -27,7 +27,7 @@ in {
 
       * {
         all: unset;
-        font-family: BigBlueTermPlus Nerd Font;
+        font-family: IosevkaTerm NF Medium;
         font-size: 16px;
       }
     '';
