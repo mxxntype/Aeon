@@ -1,6 +1,6 @@
-![Static Badge](https://img.shields.io/badge/NixOS-Unstable-cba6f7?style=flat&logo=NixOS&logoColor=cba6f7&labelColor=161B22)
-![Static Badge](https://img.shields.io/badge/State-Forever_WIP-a6e3a1?style=flat&logo=fireship&logoColor=a6e3a1&labelColor=161B22)
-![Static Badge](https://img.shields.io/badge/Powered_by-Sleep_deprivation-89dceb?style=flat&logo=nuke&logoColor=89dceb&labelColor=161B22)
+![Static Badge](https://img.shields.io/badge/NixOS-Unstable-cba6f7?style=for-the-badge&logo=NixOS&logoColor=cba6f7&labelColor=161B22)
+![Static Badge](https://img.shields.io/badge/State-Forever_WIP-a6e3a1?style=for-the-badge&logo=fireship&logoColor=a6e3a1&labelColor=161B22)
+![Static Badge](https://img.shields.io/badge/Powered_by-Sleep_deprivation-89dceb?style=for-the-badge&logo=nuke&logoColor=89dceb&labelColor=161B22)
 
 ### Aeon | NixOS Flake ⚜️
 
