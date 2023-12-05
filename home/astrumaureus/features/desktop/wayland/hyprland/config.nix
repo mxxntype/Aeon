@@ -154,9 +154,10 @@ in {
         bind = CTRL SUPER SHIFT, L, exec, hyprlock.sh
         bind =      SUPER SHIFT, R, exec, hyprctl reload && eww reload
 
-        # Screenshots
+        # Screenshots | Color picker
         bind = , PRINT,        exec, grimblast copysave output
         bind = SUPER SHIFT, S, exec, grimblast copysave area
+        bind = SUPER SHIFT, P, exec, ${pkgs.hyprpicker}/bin/hyprpicker --no-fancy --autocopy
 
         # Shift focus
         bind = SUPER, H, hy3:movefocus, l
@@ -365,6 +366,9 @@ in {
         }
         env = GDK_SCALE, 2
         # env = GDK_DPI_SCALE, 2
+
+        # Blur EWW
+        blurls = gtk-layer-shell
 
         plugin {
           # Additional borders

@@ -1,16 +1,10 @@
 # INFO: Hyprland, the smooth wayland compositor
 
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{ inputs, pkgs, ... }: {
   imports = [
     inputs.hyprland.homeManagerModules.default
-
     ../common
     ../../common
-
     ./config.nix
   ];
 
@@ -23,20 +17,18 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    # nvidiaPatches = true; # TODO: Set to `config.hardware.nvidia.something`...
-
     plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.system}.borders-plus-plus # WARN: Does not compile
+      inputs.hyprland-plugins.packages.${pkgs.system}.borders-plus-plus # WARN: May malfunction
       inputs.hyprland-hy3.packages.${pkgs.system}.hy3
     ];
   };
 
   wm-config = {
     border.thickness = 2;
+    rounding = 8;
     gaps = {
       inner = 12;
       outer = 24;
     };
-    rounding = 8;
   };
 }
