@@ -60,7 +60,7 @@
               "margin-top: 4px"
               "color: #${bg}"
               "padding-left: 8px"
-              "padding-right: 8px"
+              "padding-right: 12px"
               "border-top-left-radius: ${toString (wm-config.rounding * 512)}px"
               "border-bottom-left-radius: ${toString (wm-config.rounding * 512)}px"
             ]}")
