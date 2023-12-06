@@ -5,13 +5,7 @@
 in {
     programs.kitty = {
         enable = true;
-
-        font = {
-            name = "IosevkaTerm NF Medium";
-            size = 12;
-        };
-
-        settings = {
+        settings = let fontFamily = "IosevkaTerm NF"; in {
             sync_to_monitor = "yes";
             window_padding_width = 4;
 
@@ -40,9 +34,9 @@ in {
             # Magenta
             color5 = "#${colors.mauve}";
             color13 = "#${colors.mauve}";
-            # Purple
-            color6 = "#${colors.teal}";
-            color14 = "#${colors.teal}";
+            # Cyan
+            color6 = "#${colors.sky}";
+            color14 = "#${colors.sky}";
             # White
             color7 = "#${colors.text}";
             color15 = "#${colors.text}";
@@ -59,7 +53,7 @@ in {
 
             cursor = "#${colors.text}";
             cursor_shape = "beam";
-            url_color = "#${colors.surface2}";
+            url_color = "#${colors.blue}";
 
             active_border_color = "#${colors.surface1}";
             inactive_border_color = "#${colors.base}";
@@ -68,6 +62,13 @@ in {
             inactive_tab_background = "#${colors.base}";
             inactive_tab_foreground = "#${colors.surface2}";
             tab_bar_background = "#${colors.base}";
+
+            # Font settings
+            font_size = 12;
+            font_family      = "${fontFamily} Medium";
+            bold_font        = "${fontFamily} Bold";
+            italic_font      = "${fontFamily} Medium Italic";
+            bold_italic_font = "${fontFamily} Bold Italic";
         };
 
         keybindings = {
