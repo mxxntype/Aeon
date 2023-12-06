@@ -54,6 +54,10 @@
       url = "github:mxxntype/reddot";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ndrs = {
+      url = "git+ssh://git@github.com/mxxntype/ndrs.git?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
