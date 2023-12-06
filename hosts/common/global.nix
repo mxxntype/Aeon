@@ -72,8 +72,6 @@
       fonts = [
         "JetBrainsMono"
         "BigBlueTerminal"
-        "Gohu"
-        "Iosevka"
         "IosevkaTerm"
       ];
     })
