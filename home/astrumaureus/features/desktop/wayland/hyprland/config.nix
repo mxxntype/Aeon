@@ -1,6 +1,6 @@
 # INFO: Hyprland's configuration
 
-{ config, lib, pkgs, ... }: let
+{ inputs, config, lib, pkgs, ... }: let
     # Colors
     inherit (config) wm-config;
     inherit (config.theme) colors;
@@ -11,9 +11,9 @@
 
     # Apps & CLI tools
     terminalName = "kitty";
-    terminalCommand = "${terminalName}";
+    terminalCommand = "${pkgs.${terminalName}}/bin/${terminalName}";
     # FIXME: Nushell is hardcoded
-    zellijWrapper = "nu --execute ${pkgs.zellij}/bin/zellij";
+    zellijWrapper = "${pkgs.nushellFull}/bin/nu --execute ${pkgs.zellij}/bin/zellij";
     zellijTerminalCommand = "${terminalCommand} ${zellijWrapper}";
     floatingTerminalClass = "${terminalName}Floating";
     floatingTerminalCommand = "${terminalCommand} --class ${floatingTerminalClass}";
@@ -25,7 +25,7 @@
     GTKFileDialogEnv = "QT_QPA_PLATFORMTHEME=gtk3";
 
     # Wallpapers
-    wallpaper-base00 = let
+    wallpaper-base = let
         maxDimensions = builtins.foldl' (acc: monitor: let
                 maxWidth = if monitor.width > acc.width then monitor.width else acc.width;
                 maxHeight = if monitor.height > acc.height then monitor.height else acc.height;
@@ -37,7 +37,7 @@
     in pkgs.stdenv.mkDerivation {
         name = "hyprland-wallpaper-base00";
         buildInputs = [ pkgs.imagemagick ];
-        builder = pkgs.writeScript "builder" ''
+        builder = pkgs.writeScript "builder" /* shell */ ''
             source $stdenv/setup
             convert -size ${toString maxDimensions.width}x${toString maxDimensions.height} xc:#${colors.base} png:$out
         '';
@@ -47,43 +47,43 @@
     hyprexit = let
         exitDuration = 0.5;
         exitWorkspace = 11; # The '100%-empty' workspace to switch to instead of killing all windows
-    in pkgs.writeShellScriptBin "hyprexit.sh" ''
+    in pkgs.writeShellScriptBin "hyprexit.sh" /* bash */ ''
         eww close-all
         hyprctl dispatch workspace ${toString exitWorkspace}
-        swww img ${wallpaper-base00.outPath} -t right --transition-fps 120 --transition-duration ${toString exitDuration}
+        swww img ${wallpaper-base.outPath} -t center --transition-duration ${toString exitDuration}
         sleep ${toString exitDuration} && hyprctl dispatch exit
     '';
 
     # Lockscreen
     hyprlock = let
         screenPoweroffDelay = 0.1;
-    in pkgs.writeShellScriptBin "hyprlock.sh" ''
+    in pkgs.writeShellScriptBin "hyprlock.sh" /* bash */ ''
         KBD_LED_PATH="/sys/class/leds/asus::kbd_backlight/brightness"
         KBD_LED_PREV="$(cat $KBD_LED_PATH)"
 
         function lock() {
             if [[ $(pgrep gtklock) != 0 ]]; then
                 hyprctl keyword input:kb_layout us,ru & # Switch layout to EN
-                gtklock
+                ${pkgs.gtklock}/bin/gtklock
                 echo $KBD_LED_PREV > $KBD_LED_PATH
                 brillo -I
             fi
         }
 
         function turn_lights_off() {
-            brillo -S 10
+            ${pkgs.brillo}/bin/brillo -S 10
             echo 0 > $KBD_LED_PATH
             hyprctl dispatch dpms off
         }
 
-        brillo -O
+        ${pkgs.brillo}/bin/brillo -O
         lock &
         sleep ${toString screenPoweroffDelay} && turn_lights_off
     '';
 
     hypridle = let
         locksreenTimeout = 120;
-    in pkgs.writeShellScriptBin "hypridle.sh" ''
+    in pkgs.writeShellScriptBin "hypridle.sh" /* bash */ ''
         ${pkgs.swayidle}/bin/swayidle -w \
             timeout ${toString locksreenTimeout} 'hyprlock.sh' \
             resume 'hyprctl dispatch dpms on'
@@ -91,7 +91,7 @@
 
     hyprsuspend = let
         keyboardBacklightRestorationTimeout = 2;
-    in pkgs.writeShellScriptBin "hyprsuspend.sh" ''
+    in pkgs.writeShellScriptBin "hyprsuspend.sh" /* bash */ ''
         hyprlock.sh
         systemctl suspend && sleep ${toString keyboardBacklightRestorationTimeout}
     '';
@@ -131,32 +131,31 @@ in {
                 # Autostart
                 ${ # INFO: Gamma setup
                     lib.concatStringsSep "\n" (lib.forEach enabledMonitors (m: ''
-                        # exec-once = wlsunset -t 6500 -T 6501 -g ${toString m.gamma}
+                        # exec-once = ${pkgs.wlsunset}/bin/wlsunset -t 6500 -T 6501 -g ${toString m.gamma}
                     ''))
                 }
-
-                exec-once = swww init
-                exec-once = eww daemon --restart --force-wayland && eww open statusbar
-                exec-once = hypridle.sh
-                exec-once = hyprprofile
+                exec-once = ${pkgs.swww}/bin/swww init
+                exec-once = ${pkgs.eww-wayland}/bin/eww daemon --restart --force-wayland && eww open statusbar
+                exec-once = ${hypridle}/bin/hypridle.sh
+                exec-once = hyprprofile # FIXME: Package this
+                exec-once = ${inputs.ndrs.packages.${pkgs.system}.default}/bin/ndrs > /tmp/ndrs.log # Custom notification daemon
                 exec-once = ${pkgs.avizo}/bin/avizo-service
-
-                exec = sleep 0.5 && swww img ~/.wallpaper
+                exec = sleep 0.5 && ${pkgs.swww}/bin/swww img ~/.wallpaper
 
                 # Slight randomness in border position to protect OLED screens
                 # exec = hyprctl keyword general:gaps_in  $((${toString wm-config.gaps.inner} + ($RANDOM % 8)))
                 # exec = hyprctl keyword general:gaps_out $((${toString wm-config.gaps.outer} + ($RANDOM % 8)))
 
                 # Kill window | Exit or reload hyprland | Lock screen
-                bind =            SUPER SHIFT,            Q, killactive,
-                bind =            SUPER CTRL SHIFT, Q, exec, kill -9 $(hyprctl activewindow -j | jq '.pid')
-                bind = CTRL SUPER SHIFT, E, exec, hyprexit.sh
-                bind = CTRL SUPER SHIFT, L, exec, hyprlock.sh
-                bind =            SUPER SHIFT, R, exec, hyprctl reload && eww reload
+                bind =      SUPER SHIFT, Q, killactive,
+                bind = CTRL SUPER SHIFT, Q, exec, kill -9 $(hyprctl activewindow -j | jq '.pid')
+                bind = CTRL SUPER SHIFT, E, exec, ${hyprexit}/bin/hyprexit.sh
+                bind = CTRL SUPER SHIFT, L, exec, ${hyprlock}/bin/hyprlock.sh
+                bind =      SUPER SHIFT, R, exec, hyprctl reload && eww reload
 
                 # Screenshots | Color picker
-                bind = , PRINT,                exec, grimblast copysave output
-                bind = SUPER SHIFT, S, exec, grimblast copysave area
+                bind = , PRINT,        exec, ${pkgs.grimblast}/bin/grimblast copysave output
+                bind = SUPER SHIFT, S, exec, ${pkgs.grimblast}/bin/grimblast copysave area
                 bind = SUPER SHIFT, P, exec, ${pkgs.hyprpicker}/bin/hyprpicker --no-fancy --autocopy
 
                 # Shift focus
@@ -184,12 +183,12 @@ in {
                 bind = SUPER, F, fullscreen,
 
                 # Main apps
-                bind = SUPER,             RETURN, exec, ${zellijTerminalCommand}
+                bind = SUPER,       RETURN, exec, ${zellijTerminalCommand}
                 bind = SUPER SHIFT, RETURN, exec, ${floatingZellijTerminalCommand}
-                bind = SUPER,             P,            exec, ${floatingTerminalCommand} btm --battery
-                bind = SUPER,             M,            exec, ${floatingTerminalCommand} alsamixer
-                bind = SUPER,             E,            exec, ${floatingTerminalCommand} yazi
-                bind = SUPER SHIFT, N,            exec, obsidian --ozone-platform=wayland
+                bind = SUPER,            P, exec, ${floatingTerminalCommand} ${pkgs.bottom}/bin/btm --battery
+                bind = SUPER,            M, exec, ${floatingTerminalCommand} ${pkgs.alsa-utils}/bin/alsamixer
+                bind = SUPER,            E, exec, ${floatingTerminalCommand} ${pkgs.yazi}/bin/yazi
+                bind = SUPER SHIFT,      N, exec, ${pkgs.obsidian}/bin/obsidian --ozone-platform=wayland
 
                 # Make the 'floating' terminal actually float
                 windowrule = float, ^(${floatingTerminalClass})$
@@ -222,32 +221,32 @@ in {
 
                 # Workspace-assigned apps
                 bind = CTRL SHIFT, 1, exec, ${terminalCommand}
-                bind = CTRL SHIFT, 2, exec, inkscape
-                bind = CTRL SHIFT, 3, exec, librewolf
-                bind = CTRL SHIFT, 4, exec, ${GTKFileDialogEnv} telegram-desktop
-                bind = CTRL SHIFT, 5, exec, libreoffice
-                bind = CTRL SHIFT, 6, exec, virt-manager
-                bind = CTRL SHIFT, 7, exec, prismlauncher
-                bind = CTRL SHIFT, 8, exec, ${GTKFileDialogEnv} keepassxc
-                bind = CTRL SHIFT, 9, exec, freetube --ozone-platform=wayland
+                bind = CTRL SHIFT, 2, exec, ${pkgs.inkscape}/bin/inkscape
+                bind = CTRL SHIFT, 3, exec, ${pkgs.librewolf}/bin/librewolf
+                bind = CTRL SHIFT, 4, exec, ${GTKFileDialogEnv} ${pkgs.telegram-desktop}/bin/telegram-desktop
+                bind = CTRL SHIFT, 5, exec, ${pkgs.libreoffice}/bin/libreoffice
+                bind = CTRL SHIFT, 6, exec, ${pkgs.virt-manager}/bin/virt-manager
+                bind = CTRL SHIFT, 7, exec, ${pkgs.prismlauncher}/bin/prismlauncher
+                bind = CTRL SHIFT, 8, exec, ${GTKFileDialogEnv} ${pkgs.keepassxc}/bin/keepassxc
+                bind = CTRL SHIFT, 9, exec, ${pkgs.freetube}/bin/freetube --ozone-platform=wayland
                 bind = CTRL SHIFT, o, exec, ${floatingTerminalCommand} ncmpcpp
 
                 # Brightness
-                bind = , XF86MonBrightnessUp,     exec, brillo -q -A 10 -u 100000
-                bind = , XF86MonBrightnessDown, exec, brillo -q -U 10 -u 100000
+                bind = , XF86MonBrightnessUp,   exec, ${pkgs.brillo}/bin/brillo -q -A 10 -u 100000
+                bind = , XF86MonBrightnessDown, exec, ${pkgs.brillo}/bin/brillo -q -U 10 -u 100000
 
                 # Volume
-                bind = SUPER SHIFT, M,         exec, volumectl toggle-mute
-                bind = , XF86AudioMute,        exec, volumectl toggle-mute
-                bind = , XF86AudioMicMute,     exec, volumectl -m toggle-mute
-                bind = , XF86AudioRaiseVolume, exec, volumectl -u up
-                bind = , XF86AudioLowerVolume, exec, volumectl -u down
+                bind = SUPER SHIFT, M,         exec, ${pkgs.avizo}/bin/volumectl toggle-mute
+                bind = , XF86AudioMute,        exec, ${pkgs.avizo}/bin/volumectl toggle-mute
+                bind = , XF86AudioMicMute,     exec, ${pkgs.avizo}/bin/volumectl -m toggle-mute
+                bind = , XF86AudioRaiseVolume, exec, ${pkgs.avizo}/bin/volumectl -u up
+                bind = , XF86AudioLowerVolume, exec, ${pkgs.avizo}/bin/volumectl -u down
 
                 # Power button
-                bind = , XF86PowerOff, exec, hyprlock.sh
+                bind = , XF86PowerOff, exec, ${hyprlock}/bin/hyprlock.sh
 
                 # Laptop lid
-                bindl = , switch:on:Lid Switch,  exec, hyprlock.sh
+                bindl = , switch:on:Lid Switch,  exec, ${hyprlock}/bin/hyprlock.sh
                 bindl = , switch:off:Lid Switch, dpms, on
 
                 # Passtrough mode
