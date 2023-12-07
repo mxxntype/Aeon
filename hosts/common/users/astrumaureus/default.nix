@@ -1,39 +1,39 @@
 # INFO: System-level astrumaureus config
 { pkgs, config, ... }: let
-  ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+    ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
-  users.users.astrumaureus = {
-    isNormalUser = true;
+    users.users.astrumaureus = {
+        isNormalUser = true;
 
-    name = "astrumaureus";
-    description = "The Almighty";
-    uid = 1000;
-    # gid = 100;
+        name = "astrumaureus";
+        description = "The Almighty";
+        uid = 1000;
+        # gid = 100;
 
-    shell = pkgs.nushellFull;
-    extraGroups = [
-      "wheel"
-      "video"
-      "audio"
-      "input"
-    ] ++ ifTheyExist [
-      "networkmanager"
-      "docker"
-      "git"
-      "libvirtd"
-    ];
+        shell = pkgs.nushellFull;
+        extraGroups = [
+            "wheel"
+            "video"
+            "audio"
+            "input"
+        ] ++ ifTheyExist [
+            "networkmanager"
+            "docker"
+            "git"
+            "libvirtd"
+        ];
 
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOvBw3klXzVq5oTXtS061cfcGEjHWflPZNRBRg48N3w/ astrumaureus@Nox"
-    ];
-    hashedPasswordFile = config.sops.secrets.astrumaureus-password.path;
-    packages = [ pkgs.home-manager ];
-  };
+        openssh.authorizedKeys.keys = [
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOvBw3klXzVq5oTXtS061cfcGEjHWflPZNRBRg48N3w/ astrumaureus@Nox"
+        ];
+        hashedPasswordFile = config.sops.secrets.astrumaureus-password.path;
+        packages = [ pkgs.home-manager ];
+    };
 
-  sops.secrets.astrumaureus-password = {
-    sopsFile = ../../secrets.yaml;
-    neededForUsers = true;
-  };
+    sops.secrets.astrumaureus-password = {
+        sopsFile = ../../secrets.yaml;
+        neededForUsers = true;
+    };
 
-  home-manager.users.astrumaureus = import ../../../../home/astrumaureus/${config.networking.hostName}.nix;
+    home-manager.users.astrumaureus = import ../../../../home/astrumaureus/${config.networking.hostName}.nix;
 }

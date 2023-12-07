@@ -11,64 +11,64 @@ nvme0n1
 */
 
 { lib, ... }: {
-  imports = [
-    # ../common/features/boot/fde.nix
-    ../common/features/boot/lanzaboote.nix
-  ];
+    imports = [
+        # ../common/features/boot/fde.nix
+        ../common/features/boot/lanzaboote.nix
+    ];
 
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-label/LUNA_ROOT";
-      fsType = "btrfs";
-      options = [ "ssd" "compress=zstd" "space_cache=v2" "noatime" "subvol=@" ];
-    };
-    "/nix" = {
-      device = "/dev/disk/by-label/LUNA_ROOT";
-      fsType = "btrfs";
-      options = [ "ssd" "compress=zstd" "space_cache=v2" "noatime" "subvol=@nix" ];
-    };
-    "/home" = {
-      device = "/dev/disk/by-label/LUNA_ROOT";
-      fsType = "btrfs";
-      options = [ "ssd" "compress=zstd" "space_cache=v2" "subvol=@home" ];
-    };
-    "/boot" = {
-      device = "/dev/disk/by-label/LUNA_EFI";
-      fsType = "vfat";
-    };
-    "/mnt/data" = {
-      device = "/dev/luna/data";
-      fsType = "ext4";
-    };
-    "/mnt/ubuntu" = {
-      device = "/dev/disk/by-label/LUNA_UBNT";
-      fsType = "ext4";
-    };
-  };
-
-  boot = {
-    loader = {
-      grub.device = "/dev/nvme0n1";
-      efi.efiSysMountPoint = lib.mkForce "/boot";
-    };
-    initrd = {
-      luks = {
-        devices = {
-          "root" = {
-            device = "/dev/disk/by-label/LUNA_ENC";
-            preLVM = true;
-            # keyFile = "/keyfile-luna.bin";
-            allowDiscards = true;
-          };
+    fileSystems = {
+        "/" = {
+            device = "/dev/disk/by-label/LUNA_ROOT";
+            fsType = "btrfs";
+            options = [ "ssd" "compress=zstd" "space_cache=v2" "noatime" "subvol=@" ];
         };
-      };
-
-      # Include necessary keyfiles in the InitRD
-      # secrets = {
-      #   "keyfile-wyrm.bin" = "/etc/secrets/initrd/keyfile-wyrm.bin"; # Root partition key
-      # };
+        "/nix" = {
+            device = "/dev/disk/by-label/LUNA_ROOT";
+            fsType = "btrfs";
+            options = [ "ssd" "compress=zstd" "space_cache=v2" "noatime" "subvol=@nix" ];
+        };
+        "/home" = {
+            device = "/dev/disk/by-label/LUNA_ROOT";
+            fsType = "btrfs";
+            options = [ "ssd" "compress=zstd" "space_cache=v2" "subvol=@home" ];
+        };
+        "/boot" = {
+            device = "/dev/disk/by-label/LUNA_EFI";
+            fsType = "vfat";
+        };
+        "/mnt/data" = {
+            device = "/dev/luna/data";
+            fsType = "ext4";
+        };
+        "/mnt/ubuntu" = {
+            device = "/dev/disk/by-label/LUNA_UBNT";
+            fsType = "ext4";
+        };
     };
 
-    supportedFilesystems = [ "ntfs" ];
-  };
+    boot = {
+        loader = {
+            grub.device = "/dev/nvme0n1";
+            efi.efiSysMountPoint = lib.mkForce "/boot";
+        };
+        initrd = {
+            luks = {
+                devices = {
+                    "root" = {
+                        device = "/dev/disk/by-label/LUNA_ENC";
+                        preLVM = true;
+                        # keyFile = "/keyfile-luna.bin";
+                        allowDiscards = true;
+                    };
+                };
+            };
+
+            # Include necessary keyfiles in the InitRD
+            # secrets = {
+            #     "keyfile-wyrm.bin" = "/etc/secrets/initrd/keyfile-wyrm.bin"; # Root partition key
+            # };
+        };
+
+        supportedFilesystems = [ "ntfs" ];
+    };
 }

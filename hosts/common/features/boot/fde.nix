@@ -18,13 +18,13 @@ $ sudo cryptsetup convert /dev/sdb1 --type luks2
 */
 
 _: {
-  boot = {
-    loader = {
-      # Make GRUB aware of LUKS
-      grub = {
-        device = "nodev";
-        enableCryptodisk = true;
-      };
+    boot = {
+        loader = {
+            # Make GRUB aware of LUKS
+            grub = {
+                device = "nodev";
+                enableCryptodisk = true;
+            };
+        };
     };
-  };
 }

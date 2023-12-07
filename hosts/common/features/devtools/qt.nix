@@ -1,6 +1,6 @@
 { pkgs, ... }: {
-  environment.systemPackages = with pkgs; [
-    # qt5Full
-    qtcreator
-  ];
+    environment.systemPackages = with pkgs; [
+        # qt5Full
+        qtcreator
+    ];
 }

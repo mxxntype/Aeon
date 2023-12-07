@@ -10,53 +10,53 @@ sda
 */
 
 { config, ... }: {
-  imports = [
-    ../common/features/boot/fde.nix
-  ];
+    imports = [
+        ../common/features/boot/fde.nix
+    ];
 
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-label/WYRM_ROOT";
-      fsType = "btrfs";
-      options = [ "ssd" "compress=zstd" "space_cache=v2" "subvol=@" ];
-    };
-    "/nix" = {
-      device = "/dev/disk/by-label/WYRM_ROOT";
-      fsType = "btrfs";
-      options = [ "ssd" "compress=zstd" "space_cache=v2" "noatime" "subvol=@nix" ];
-    };
-    "/boot/efi" = {
-      device = "/dev/disk/by-label/WYRM_EFI";
-      fsType = "vfat";
-    };
-    "/mnt/windows" = {
-      device = "/dev/disk/by-uuid/E61AED861AED53D9";
-      fsType = "ntfs";
-      options = [ "rw" "uid=${builtins.toString config.users.users.astrumaureus.uid}" ];
-    };
-  };
-
-  swapDevices = [ 
-    { device = "/dev/disk/by-label/WYRM_SWAP"; }
-  ];
-
-  boot.initrd = {
-    luks = {
-      devices = {
-        "root" = {
-          device = "/dev/disk/by-uuid/03beff81-a4b3-4f1f-8f13-2687f09cfbe7";
-          preLVM = true;
-          keyFile = "/keyfile-wyrm.bin";
-          allowDiscards = true;
+    fileSystems = {
+        "/" = {
+            device = "/dev/disk/by-label/WYRM_ROOT";
+            fsType = "btrfs";
+            options = [ "ssd" "compress=zstd" "space_cache=v2" "subvol=@" ];
         };
-      };
+        "/nix" = {
+            device = "/dev/disk/by-label/WYRM_ROOT";
+            fsType = "btrfs";
+            options = [ "ssd" "compress=zstd" "space_cache=v2" "noatime" "subvol=@nix" ];
+        };
+        "/boot/efi" = {
+            device = "/dev/disk/by-label/WYRM_EFI";
+            fsType = "vfat";
+        };
+        "/mnt/windows" = {
+            device = "/dev/disk/by-uuid/E61AED861AED53D9";
+            fsType = "ntfs";
+            options = [ "rw" "uid=${builtins.toString config.users.users.astrumaureus.uid}" ];
+        };
     };
 
-    # Include necessary keyfiles in the InitRD
-    secrets = {
-      "keyfile-wyrm.bin" = "/etc/secrets/initrd/keyfile-wyrm.bin"; # Root partition key
-    };
-  };
+    swapDevices = [ 
+        { device = "/dev/disk/by-label/WYRM_SWAP"; }
+    ];
 
-  boot.supportedFilesystems = [ "ntfs" ];
+    boot.initrd = {
+        luks = {
+            devices = {
+                "root" = {
+                    device = "/dev/disk/by-uuid/03beff81-a4b3-4f1f-8f13-2687f09cfbe7";
+                    preLVM = true;
+                    keyFile = "/keyfile-wyrm.bin";
+                    allowDiscards = true;
+                };
+            };
+        };
+
+        # Include necessary keyfiles in the InitRD
+        secrets = {
+            "keyfile-wyrm.bin" = "/etc/secrets/initrd/keyfile-wyrm.bin"; # Root partition key
+        };
+    };
+
+    boot.supportedFilesystems = [ "ntfs" ];
 }

@@ -1,9 +1,9 @@
 { pkgs, ... }: {
-  imports = [
-    ./c.nix
-    ./rust.nix
-    # ./python.nix
-  ];
+    imports = [
+        ./c.nix
+        ./rust.nix
+        # ./python.nix
+    ];
 
-  environment.systemPackages = with pkgs; [ pkg-config ];
+    environment.systemPackages = with pkgs; [ pkg-config ];
 }

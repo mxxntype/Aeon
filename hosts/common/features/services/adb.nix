@@ -1,4 +1,4 @@
 _: {
-  programs.adb.enable = true;
-  users.users.astrumaureus.extraGroups = [ "adbusers" ];
+    programs.adb.enable = true;
+    users.users.astrumaureus.extraGroups = [ "adbusers" ];
 }

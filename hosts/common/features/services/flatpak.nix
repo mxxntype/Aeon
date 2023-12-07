@@ -1,4 +1,4 @@
 # INFO: Flatpak, an application sandbox
 _: {
-  services.flatpak.enable = true;
+    services.flatpak.enable = true;
 }
