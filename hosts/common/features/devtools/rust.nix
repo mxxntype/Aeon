@@ -17,9 +17,10 @@
         cargo-deps
         cargo-generate
         cargo-tauri
-        cargo-binutils    # LLVM tools shipped with the Rust toolchain
-        bacon                     # Background Rust code checker
+        cargo-binutils  # LLVM tools shipped with the Rust toolchain
+        bacon           # Background Rust code checker
         diesel-cli
+        sqlx-cli
         sccache
     ];
 }
