@@ -329,7 +329,7 @@ in {
                     gaps_out = ${toString wm-config.gaps.outer}
                     border_size = ${toString wm-config.border.thickness}
 
-                    col.active_border = rgb(${colors.mauve})
+                    col.active_border = rgb(${colors.lavender}) rgb(${colors.mauve}) 45deg
                     col.inactive_border = rgb(${colors.surface0})
 
                     # Mouse & cursor
@@ -357,6 +357,7 @@ in {
                     vfr = true # Variable framerate
                     mouse_move_enables_dpms = true
                     key_press_enables_dpms = true
+                    background_color = rgb(${colors.crust})
                 }
 
                 # Fix HiDPI XWayland
