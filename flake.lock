@@ -692,11 +692,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1699280412,
-        "narHash": "sha256-WnXFaoAb7MfbMj+B/uiS4ruNeI733c7NED7zI00qcoM=",
+        "lastModified": 1703093199,
+        "narHash": "sha256-TT6AUROjXOcuzPYtZ9/gzfikfi+iWPSDNSLhXtU5jPo=",
         "owner": "mxxntype",
         "repo": "reddot",
-        "rev": "026506a1e910d889ac9a587a431b3e81bd7eb821",
+        "rev": "caa16d84d08447f1d7215bbc7402f350b9c2282e",
         "type": "github"
       },
       "original": {
