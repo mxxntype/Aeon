@@ -86,6 +86,12 @@
     vhs
     asciinema
 
+    # Benchmarking
+    hyperfine
+
+    # Command managers
+    mprocs
+
     # outputs.packages."x86_64-linux".repalette
     inputs.reddot.packages.${pkgs.system}.default
   ];
