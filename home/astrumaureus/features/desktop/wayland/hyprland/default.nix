@@ -25,7 +25,7 @@
 
   wm-config = {
     border.thickness = 2;
-    rounding = 8;
+    rounding = 0;
     gaps = {
       inner = 12;
       outer = 24;
