@@ -6,10 +6,11 @@
   inherit (shared.widgets.statusbars.bottom) subModules;
   inherit (subModules.music) widgetName moduleName variables;
 
+  # TODO: Change to a JSON-producing nushell script
   mpc-listener = pkgs.writeShellScriptBin "mpc-listener" /* bash */ ''
     while true; do
       CURRENT="$(mpc current)"
-      if [[ ''${#CURRENT} -gt 45 ]]; then
+      if [[ ''${#CURRENT} -gt 75 ]]; then
         CURRENT="''${CURRENT:0:45}..."
       fi
       echo "$CURRENT"
@@ -25,7 +26,7 @@ in {
           ${(shared.mixin-widgets.containers.with-icon {
             fg = colors.mauve;
             bg = colors.surface0;
-            text = "\${${variables.mpc-listener}}";
+            text = "\${${variables.mpc-listener}}"; # TODO: Change to .text or smth
             icon = "󰝚";
           })}
       )
