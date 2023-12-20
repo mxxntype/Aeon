@@ -12,12 +12,13 @@
     session-desktop
     rocketchat-desktop
     revolt-desktop
-    signal-desktop-beta
+    signal-desktop
 
     # Media
     inkscape
     upscayl
     freetube
+    oculante
 
     # Password management
     keepassxc
