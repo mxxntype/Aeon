@@ -1,0 +1,35 @@
+[colors]
+# Backgrounds
+crust     = "0e0d11"
+mantle    = "0e0d11"
+base      = "0e0d11"
+# Surfaces
+surface0  = "1d1b22"
+surface1  = "2e383c"
+surface2  = "374145"
+# Overlays
+overlay0  = "414b50"
+overlay1  = "495156"
+overlay2  = "7a8478"
+# Texts
+subtext0  = "859289"
+subtext1  = "9da9a0"
+text      = "d3c6aa"
+# Accents
+red       = "e67e80"
+maroon    = "e67e80"
+peach     = "e69875"
+yellow    = "dbbc7f"
+rosewater = "dbbc7f"
+flamingo  = "dbbc7f"
+green     = "a7c080"
+teal      = "83c092"
+sky       = "83c092"
+sapphire  = "7fbbb3"
+blue      = "7fbbb3"
+lavender  = "d3c6aa"
+mauve     = "d699b6"
+pink      = "d699b6"
+
+[meta]
+url = "https://github.com/sainnhe/everforest"
