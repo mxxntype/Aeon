@@ -1,98 +1,99 @@
 # INFO: Common CLI utilities
-{ pkgs, inputs, ... }: {
-  imports = [
-    ./bat.nix
-    ./cava.nix
-    ./erd.nix
-    ./fd.nix
-    ./fish.nix
-    ./fzf.nix
-    ./git.nix
-    ./starship.nix
-    ./wiki-tui.nix
-    ./yazi.nix
-    ./zellij
-    ./nushell
-  ];
 
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
+{ inputs, pkgs, ... }: {
+    imports = [
+        ./bat.nix
+        ./cava.nix
+        ./erd.nix
+        ./fd.nix
+        ./fish.nix
+        ./fzf.nix
+        ./git.nix
+        ./starship.nix
+        ./wiki-tui.nix
+        ./yazi.nix
+        ./zellij
+        ./nushell
+    ];
 
-  home.packages = with pkgs; [
+    programs.direnv = {
+        enable = true;
+        nix-direnv.enable = true;
+    };
 
-    # System monitors
-    htop
-    bottom
-    nvtop
-    duf
+    home.packages = with pkgs; [
 
-    # Networking
-    nmap
-    netdiscover
-    speedtest-rs
-    ethtool
+        # System monitors
+        htop
+        bottom
+        nvtop
+        duf
 
-    # Other TUIs
-    porsmo
+        # Networking
+        nmap
+        netdiscover
+        speedtest-rs
+        ethtool
 
-    # Alternative implementations of the basic tools
-    erdtree
-    ripgrep
-    killall
-    sd
-    srm
+        # Other TUIs
+        porsmo
 
-    # Text & image processors
-    jq
-    jaq
-    jc
-    timg
-    toml2nix
-    exiftool
-    mpv
-    hexyl # Hex viewer
-    heh   # Hex editor
+        # Alternative implementations of the basic tools
+        erdtree
+        ripgrep
+        killall
+        sd
+        srm
 
-    # Build systems & automation
-    gnumake
-    comma
+        # Text & image processors
+        jq
+        jaq
+        jc
+        timg
+        toml2nix
+        exiftool
+        mpv
+        hexyl # Hex viewer
+        heh     # Hex editor
 
-    # Archiving tools
-    zip
-    unzip
-    unrar
+        # Build systems & automation
+        gnumake
+        comma
 
-    # Filesystems
-    e2fsprogs
-    efibootmgr
+        # Archiving tools
+        zip
+        unzip
+        unrar
 
-    # Fetches and other cool TUI stuff
-    neofetch
-    nitch
-    onefetch
-    cbonsai
-    cmatrix
-    pipes-rs
-    lolcat
-    vivid
+        # Filesystems
+        e2fsprogs
+        efibootmgr
 
-    # Secrets
-    sops
-    ssh-to-age
+        # Fetches and other cool TUI stuff
+        neofetch
+        nitch
+        onefetch
+        cbonsai
+        cmatrix
+        pipes-rs
+        lolcat
+        vivid
 
-    # Terminal recording
-    vhs
-    asciinema
+        # Secrets
+        sops
+        ssh-to-age
 
-    # Benchmarking
-    hyperfine
+        # Terminal recording
+        vhs
+        asciinema
 
-    # Command managers
-    mprocs
+        # Benchmarking
+        hyperfine
 
-    # outputs.packages."x86_64-linux".repalette
-    inputs.reddot.packages.${pkgs.system}.default
-  ];
+        # Command managers
+        mprocs
+
+        # outputs.packages."x86_64-linux".repalette
+        inputs.reddot.packages.${pkgs.system}.default
+    ];
 }
