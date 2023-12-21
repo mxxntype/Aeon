@@ -22,7 +22,4 @@
     enable = true;
     enableNushellIntegration = true;
   };
-
-  # Ensure with have vivid
-  home.packages = with pkgs; [ vivid ];
 }
