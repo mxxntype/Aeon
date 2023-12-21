@@ -6,6 +6,7 @@
             trusted-users = [ "root" "@wheel" ];
             auto-optimise-store = lib.mkDefault true;
             experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+            allow-unsafe-native-code-during-evaluation = true; # WARN
             warn-dirty = false;
             
             # Extra binary caches
