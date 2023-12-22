@@ -1,34 +1,32 @@
-{
-  pkgs,
-  ...
-}: {
-  home.packages = with pkgs; [
-    # Main
-    librewolf
-    libreoffice
+{ pkgs, ... }: {
+    home.packages = with pkgs; [
+        # Main
+        librewolf
+        libreoffice
+        drawio
 
-    # Communications
-    telegram-desktop
-    session-desktop
-    rocketchat-desktop
-    revolt-desktop
-    signal-desktop
+        # Communications
+        telegram-desktop
+        session-desktop
+        rocketchat-desktop
+        revolt-desktop
+        signal-desktop
 
-    # Media
-    inkscape
-    upscayl
-    freetube
-    oculante
+        # Media
+        inkscape
+        upscayl
+        freetube
+        oculante
 
-    # Password management
-    keepassxc
+        # Password management
+        keepassxc
 
-    # Surroundings
-    organicmaps
-    gnome.gnome-weather
-  ];
+        # Surroundings
+        organicmaps
+        gnome.gnome-weather
+    ];
 
-  imports = [
-    ./obsidian.nix
-  ];
+    imports = [
+        ./obsidian.nix
+    ];
 }
