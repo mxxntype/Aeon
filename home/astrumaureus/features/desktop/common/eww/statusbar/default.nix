@@ -7,8 +7,9 @@
   toplevelStyle = style [
     "background: #${colors.base}"
     "border-top: ${toString wm-config.border.thickness}px solid #${colors.surface0}"
-    "padding-right: 2px"
-    "padding-left: 2px"
+    "padding-right: 4px"
+    "padding-left: 4px"
+    "padding-bottom: 4px"
   ];
 in {
   imports = [
