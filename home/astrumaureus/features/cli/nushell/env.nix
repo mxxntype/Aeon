@@ -125,6 +125,7 @@ in {
             st=0
             su=0
             tw=0
+            *=0;38;2;${builtins.exec [ "hex-to-decimal" "${colors.text}" ]}
             *.a=1;38;2;${builtins.exec [ "hex-to-decimal" "${colors.red}" ]}
             *.c=0;38;2;${builtins.exec [ "hex-to-decimal" "${colors.green}" ]}
             *.d=0;38;2;${builtins.exec [ "hex-to-decimal" "${colors.green}" ]}
