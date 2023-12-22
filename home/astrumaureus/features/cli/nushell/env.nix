@@ -253,6 +253,9 @@ in {
             *.jar=4;38;2;${builtins.exec [ "hex-to-decimal" "${colors.sapphire}" ]}
             *.jpg=0;38;2;${builtins.exec [ "hex-to-decimal" "${colors.flamingo}" ]}
             *.kex=0;38;2;${builtins.exec [ "hex-to-decimal" "${colors.red}" ]}
+            *.key=4;38;2;${builtins.exec [ "hex-to-decimal" "${colors.green}" ]}
+            *.kdbx=4;38;2;${builtins.exec [ "hex-to-decimal" "${colors.green}" ]}
+            *.crt=4;38;2;${builtins.exec [ "hex-to-decimal" "${colors.green}" ]}
             *.kts=0;38;2;${builtins.exec [ "hex-to-decimal" "${colors.green}" ]}
             *.log=0;38;2;${builtins.exec [ "hex-to-decimal" "${colors.surface2}" ]}
             *.ltx=0;38;2;${builtins.exec [ "hex-to-decimal" "${colors.green}" ]}
