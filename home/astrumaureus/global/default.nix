@@ -4,6 +4,7 @@
     imports = [
         ../features/cli
         ../features/helix
+        ../features/zellij
         # ../features/nvim
     ] ++ (builtins.attrValues outputs.homeManagerModules);
 

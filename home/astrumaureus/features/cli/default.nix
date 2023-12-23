@@ -12,7 +12,6 @@
         ./starship.nix
         ./wiki-tui.nix
         ./yazi.nix
-        ./zellij
         ./nushell
     ];
 
