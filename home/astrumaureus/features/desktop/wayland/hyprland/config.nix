@@ -444,8 +444,8 @@ in {
                 windowrulev2 = workspace 6, class:^(.*virt-manager.*)$
 
                 # Prismlauncher
-                windowrulev2 = workspace 7,                       class:^(.*prismlauncher.*)$
-                windowrulev2 = bordercolor rgb(${colors.yellow}), class:^(.*prismlauncher.*)$
+                windowrulev2 = workspace 7,                      class:^(.*prismlauncher.*)$
+                windowrulev2 = bordercolor rgb(${colors.green}), class:^(.*prismlauncher.*)$
 
                 # KeePassXC
                 windowrulev2 = workspace 8,                      class:^(.*keepassxc.*)$
