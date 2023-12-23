@@ -39,7 +39,7 @@
                     command_git_branch_format   "#[fg=red] {stdout} "
                     command_git_branch_interval  "10"
 
-                    datetime          "#[fg=#${colors.mauve},bold] {format} "
+                    datetime          "#[fg=#${colors.mauve},bold] {format}"
                     datetime_format   "%A, %d %b %Y %H:%M"
                     datetime_timezone "Europe/Moscow"
                 }
