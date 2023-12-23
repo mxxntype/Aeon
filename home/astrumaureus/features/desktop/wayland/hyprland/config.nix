@@ -329,7 +329,7 @@ in {
                     gaps_out = ${toString wm-config.gaps.outer}
                     border_size = ${toString wm-config.border.thickness}
 
-                    col.active_border = rgb(${colors.lavender}) rgb(${colors.mauve}) 45deg
+                    col.active_border = rgb(${colors.surface2}) rgb(${colors.subtext0}) 45deg
                     col.inactive_border = rgb(${colors.surface0})
 
                     # Mouse & cursor
@@ -415,7 +415,7 @@ in {
 
                 # Librewolf
                 windowrulev2 = workspace 3,                     class:^(.*librewolf.*)$
-                windowrulev2 = bordercolor rgb(${colors.teal}), class:^(.*librewolf.*)$
+                windowrulev2 = bordercolor rgb(${colors.blue}), class:^(.*librewolf.*)$
 
                 # Telegram
                 windowrulev2 = workspace 4,                     title:^(.*Telegram.*)$
