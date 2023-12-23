@@ -10,7 +10,7 @@
             pane size=1 borderless=true {
                 plugin location="file:${inputs.zjstatus.packages.${pkgs.system}.default}/bin/zjstatus.wasm" {
                     format_left  "{mode}{tabs}"
-                    format_right "{command_git_branch} #[fg=#${colors.teal},bold]{session}{datetime}"
+                    format_right "{command_git_branch} #[fg=#${colors.teal},bold]{session}{datetime} #[fg=#${colors.crust},bg=#${colors.mauve},bold]   "
                     format_space ""
 
                     border_enabled  "false"
@@ -54,7 +54,7 @@ in {
                 tab name="Tab #1 | 󰊠 " focus=true {
                     pane
                 }
-                tab name="Tab #2 | 󱃽 " {
+                tab name="Tab #2 | 󰼁 " {
                     pane
                 }
                 tab name="Tab #3 | 󰚌 " {
