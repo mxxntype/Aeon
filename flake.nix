@@ -45,6 +45,12 @@
         # An experimental Nushell environment for Nix
         nuenv.url = "github:DeterminateSystems/nuenv";
 
+        # A nice and configurable Zellij statusbar
+        zjstatus = {
+            url = "github:dj95/zjstatus";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         # My other flakes
         hyprquery = {
             url = "github:mxxntype/hyprquery";
