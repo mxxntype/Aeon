@@ -74,6 +74,10 @@
             }
             {
                 name = "nix";
+                indent = {
+                    tab-width = 4;
+                    unit = "    ";
+                };
             }
         ];
     };
