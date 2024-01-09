@@ -1,6 +1,6 @@
 # INFO: Helix, a post-modern vim-like editor
 
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
     imports = [
         ./theme.nix
     ];
@@ -10,7 +10,7 @@
         defaultEditor = true;
 
         settings = {
-            theme = "base16";
+            theme = if config.theme.meta.override_helix then config.theme.meta.slug else "base16";
             editor = {
                 # Common stuff
                 idle-timeout = 0;
