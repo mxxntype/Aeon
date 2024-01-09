@@ -1,0 +1,38 @@
+[colors]
+# Backgrounds
+crust     = "000000"
+mantle    = "000000"
+base      = "0d1117"
+# Surfaces
+surface0  = "21262d"
+surface1  = "30363D"
+surface2  = "363b42"
+# Overlays
+overlay0  = "6e7681"
+overlay1  = "6e7681"
+overlay2  = "6e7681"
+# Texts
+subtext0  = "6e7681"
+subtext1  = "8b949e"
+text      = "c9d1d9"
+bright    = "e6edf3"
+# Accents
+red       = "ff7b72"
+maroon    = "ffa198"
+peach     = "ffa657"
+yellow    = "f2cc60"
+rosewater = "f8e3a1"
+flamingo  = "f8e3a1"
+green     = "7ee787"
+teal      = "a5d6ff"
+sky       = "a5d6ff"
+sapphire  = "79c0ff"
+blue      = "79c0ff"
+lavender  = "cae8ff"
+mauve     = "d2a8ff"
+pink      = "e2c5ff"
+
+[meta]
+override_helix = true
+slug = "github_dark"
+url = "https://github.com/"
