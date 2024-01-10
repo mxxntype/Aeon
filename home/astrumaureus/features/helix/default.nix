@@ -34,7 +34,7 @@
                         "version-control"
                     ];
                     center = [
-                        "file-base-name"
+                        "file-name"
                         "file-modification-indicator"
                     ];
                     right = [
