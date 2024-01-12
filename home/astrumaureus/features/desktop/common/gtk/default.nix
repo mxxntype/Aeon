@@ -68,7 +68,7 @@ in {
     gtk = {
         enable = true;
         font = {
-            name = "JetBrainsMono Nerd Font";
+            name = "IosevkaTerm Nerd Font";
             size = 10;
         };
         theme = {

@@ -41,6 +41,6 @@ in {
 
     borderRadius = wm-config.rounding;
     borderSize = wm-config.border.thickness;
-    font = "JetBrainsMono Nerd Font 12";
+    font = "IosevkaTerm Nerd Font 12";
   };
 }
