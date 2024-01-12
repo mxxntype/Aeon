@@ -33,6 +33,7 @@ mauve     = "d2a8ff"
 pink      = "e2c5ff"
 
 [meta]
+opacity = 1.0
 override_helix = true
 slug = "github_dark"
 url = "https://github.com/"

@@ -10,7 +10,7 @@ in {
             window_padding_width = 4;
 
             # Opacity
-            background_opacity = "0.9";
+            background_opacity = toString config.theme.meta.opacity;
 
             # Colors
             foreground = "#${colors.text}";
