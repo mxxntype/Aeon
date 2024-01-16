@@ -4,6 +4,9 @@
 
 ### Aeon | NixOS Flake ⚜️
 
+> [!NOTE]
+> I'm in the process of migrating this entire thing to [Snowfall](https://github.com/snowfallorg/lib), progress takes place in a private repo. This one is kind of stale for the time being. Once the new version is viable, I will probably merge it into this repo. Forever WIP!
+
 #### What is NixOS?
 [Nix](https://nixos.org/) is a tool that takes a unique, **declarative** approach to package management and system configuration. [NixOS](https://nixos.org/) is a **Linux** distribution built around Nix, focusing on reproducible and declarative system-wide configuration management, atomic upgrades, and rollbacks. It stores all components, including the kernel, applications, system packages, and configuration files, in `/nix/store`. NixOS ensures that configurations don't overwrite each other, can be rolled back, and are built using Nix expressions.
 
